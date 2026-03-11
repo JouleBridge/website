@@ -1,0 +1,68 @@
+---
+title: Quick Start
+description: Build and run your first Bridge Kernel node in minutes.
+---
+
+# Quick Start
+
+This guide gets you from clone to first signed ledger event quickly.
+
+## Prerequisites
+
+- Rust toolchain (`rustup`, `cargo`)
+- Git
+
+## 1. Clone the Bridge Kernel repo
+
+```bash
+git clone https://github.com/joulebridge/bridge-kernel.git
+cd bridge-kernel
+```
+
+## 2. Create local config
+
+```bash
+cp bridge.example.yaml bridge.yaml
+```
+
+## 3. Build release binary
+
+```bash
+cargo build --release
+```
+
+## 4. Run one ingest cycle with mock adapter
+
+```bash
+./target/release/bridge-node ctl run-once --config bridge.yaml
+```
+
+## 5. Check runtime status
+
+```bash
+./target/release/bridge-node ctl status --config bridge.yaml
+```
+
+## 6. Inspect ledger summary
+
+```bash
+./target/release/bridge-node ctl ledger --config bridge.yaml
+```
+
+## 7. View metrics snapshot
+
+```bash
+./target/release/bridge-node ctl metrics --config bridge.yaml
+```
+
+## What success looks like
+
+- Ingest counters increase.
+- Ledger event count is non-zero.
+- Runtime health is `ok` or explains degradation reasons.
+
+## Next
+
+- Read [Architecture](/docs/core-concepts/architecture)
+- Tune [Configuration](/docs/configuration/general)
+- Review [Security](/docs/operations/security)

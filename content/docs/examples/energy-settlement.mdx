@@ -1,0 +1,155 @@
+---
+title: C&I Energy Settlement
+description: End-to-end walkthrough — verify multi-source power contracts for open-access C&I buyers with Bridge Kernel.
+---
+
+# C&I Energy Settlement
+
+This walkthrough demonstrates how Bridge Kernel verifies energy settlement for a commercial and industrial (C&I) buyer with multiple power sources.
+
+## Scenario
+
+**SteelWorks Ltd** is an open-access C&I buyer in Maharashtra, India. They purchase power from:
+
+- A 2 MW rooftop solar installation (metered via SunSpec inverters)
+- A third-party wind farm (metered via Modbus power meters)
+- The local distribution company (MSEDCL) as backup
+
+Each billing period, SteelWorks needs to reconcile actual consumption against contracted supply from each source. Today this takes 2-3 weeks of manual spreadsheet work. Disputes are common.
+
+## What Bridge Kernel does
+
+1. **Ingests** meter reads from all three sources every 15 minutes.
+2. **Signs** each reading with Ed25519, creating a ProofEnvelope.
+3. **Evaluates** policy rules to ensure readings are within expected ranges.
+4. **Persists** verified readings to the immutable ledger.
+5. At billing time, **exports** a signed evidence pack for reconciliation.
+
+## Step 1: Configure adapters
+
+```yaml
+sense:
+  adapters:
+    # Rooftop solar via SunSpec
+    - type: modbus-tcp
+      host: 192.168.1.10
+      port: 502
+      unit_id: 1
+      registers:
+        - address: 40001
+          count: 2
+          name: solar_generation_kw
+          type: float32
+        - address: 40005
+          count: 2
+          name: solar_energy_kwh
+          type: float32
+      poll_interval_ms: 900000  # 15 minutes
+      source: "solar-rooftop-01"
+      sector: power
+      event_type: meter_reading
+
+    # Wind farm via Modbus power meter
+    - type: modbus-tcp
+      host: 10.0.1.50
+      port: 502
+      unit_id: 3
+      registers:
+        - address: 30001
+          count: 2
+          name: wind_generation_kw
+          type: float32
+        - address: 30005
+          count: 2
+          name: wind_energy_kwh
+          type: float32
+      poll_interval_ms: 900000
+      source: "wind-farm-contract-01"
+      sector: power
+      event_type: meter_reading
+
+    # Grid backup via JSONL file (from MSEDCL portal export)
+    - type: jsonl-file
+      path: ./input/msedcl-readings.jsonl
+      tail: true
+      source: "msedcl-grid-backup"
+      sector: power
+      event_type: meter_reading
+```
+
+## Step 2: Configure policy
+
+Only allow meter readings from known sources, reject oversized payloads:
+
+```json
+{
+  "version": "2026-03-01",
+  "default_action": "deny",
+  "rules": [
+    {
+      "name": "allow-solar-readings",
+      "action": "allow",
+      "sector": "power",
+      "event_type": "meter_reading",
+      "source": "solar-rooftop-01"
+    },
+    {
+      "name": "allow-wind-readings",
+      "action": "allow",
+      "sector": "power",
+      "event_type": "meter_reading",
+      "source": "wind-farm-contract-01"
+    },
+    {
+      "name": "allow-grid-readings",
+      "action": "allow",
+      "sector": "power",
+      "event_type": "meter_reading",
+      "source": "msedcl-grid-backup"
+    },
+    {
+      "name": "deny-oversize",
+      "action": "deny",
+      "max_payload_bytes": 65536
+    }
+  ]
+}
+```
+
+## Step 3: Run and verify
+
+```bash
+# Start a single ingest cycle
+bridge-node ctl run-once --config bridge.yaml
+
+# Check status
+bridge-node ctl status --config bridge.yaml
+
+# View ledger
+bridge-node ctl ledger --config bridge.yaml
+```
+
+Expected output after one cycle:
+
+```text
+Total events: 3
+Unsynced events: 3
+```
+
+Each event has a full ProofEnvelope with SHA-256 hash and Ed25519 signature.
+
+## Step 4: Export evidence pack
+
+At billing time, query the ledger for the billing period:
+
+```bash
+bridge-node ctl ledger --from 2026-03-01 --to 2026-03-31 --format json > evidence-pack-march-2026.json
+```
+
+The evidence pack contains every meter reading with its cryptographic proof. Finance teams can verify any reading independently by checking the hash and signature.
+
+## Result
+
+- **Settlement cycle**: Reduced from 2-3 weeks to hours.
+- **Disputes**: Eliminated — every reading has a cryptographic receipt.
+- **Audit trail**: Complete, immutable, and independently verifiable.

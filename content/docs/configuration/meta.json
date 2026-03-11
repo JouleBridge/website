@@ -1,0 +1,4 @@
+{
+  "title": "Configuration",
+  "pages": ["index", "general", "adapter-setup", "policy-rules", "environment"]
+}

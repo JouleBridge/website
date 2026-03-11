@@ -1,0 +1,148 @@
+---
+title: Grid Event Audit
+description: End-to-end walkthrough — reconstruct grid-connected asset state at any point in time using signed event chains.
+---
+
+# Grid Event Audit
+
+This walkthrough demonstrates how Bridge Kernel creates audit-ready evidence trails for grid-connected assets, enabling regulators and counterparties to verify historical state.
+
+## Scenario
+
+**GridWatch Utilities** operates distribution infrastructure across three substations. During a voltage event investigation, the regulator (CERC) requests:
+
+> "Provide timestamped, verifiable evidence of all protection relay events, voltage readings, and demand response actions at Substation B between 14:00-16:00 on March 5, 2026."
+
+Without Bridge Kernel, this requires pulling logs from multiple SCADA systems, manually correlating timestamps, and producing a report that the regulator must trust on faith.
+
+## Step 1: Configure adapters
+
+```yaml
+sense:
+  adapters:
+    # Substation protection relays via IEC 61850
+    - type: iec-61850
+      host: 10.10.2.100
+      dataset: "SubB/LLN0$Protection"
+      report_control: "SubB/LLN0$BR$Protection"
+      source: "substation-b-protection"
+      sector: grid
+      event_type: protection_event
+
+    # Voltage monitoring via DNP3
+    - type: dnp3
+      host: 10.10.2.101
+      port: 20000
+      outstation_address: 1
+      points:
+        - index: 0
+          type: analog
+          name: voltage_kv_phase_a
+        - index: 1
+          type: analog
+          name: voltage_kv_phase_b
+        - index: 2
+          type: analog
+          name: voltage_kv_phase_c
+      poll_interval_ms: 1000  # 1 second for high-resolution
+      source: "substation-b-voltage"
+      sector: grid
+      event_type: voltage_reading
+
+    # Demand response actions via webhook
+    - type: webhook-drop
+      inbound_dir: ./drop/dr-actions
+      archive_dir: ./drop/dr-archive
+      source: "dr-controller-b"
+      sector: grid
+      event_type: demand_response
+```
+
+## Step 2: Policy for grid events
+
+```json
+{
+  "version": "2026-03-01",
+  "default_action": "deny",
+  "rules": [
+    {
+      "name": "allow-protection-events",
+      "action": "allow",
+      "sector": "grid",
+      "event_type": "protection_event",
+      "source": "substation-b-protection"
+    },
+    {
+      "name": "allow-voltage-readings",
+      "action": "allow",
+      "sector": "grid",
+      "event_type": "voltage_reading",
+      "source": "substation-b-voltage"
+    },
+    {
+      "name": "allow-dr-actions",
+      "action": "allow",
+      "sector": "grid",
+      "event_type": "demand_response",
+      "source": "dr-controller-b"
+    }
+  ]
+}
+```
+
+## Step 3: Continuous operation
+
+Bridge Kernel runs continuously, signing and persisting every event:
+
+```bash
+# Run in daemon mode
+bridge-node daemon --config bridge.yaml
+```
+
+Over time, the ledger accumulates a complete, signed history of all grid events at Substation B.
+
+## Step 4: Respond to audit request
+
+When CERC requests the audit, query the exact time window:
+
+```bash
+# Export all events for the requested window
+bridge-node ctl ledger \
+  --from "2026-03-05T14:00:00Z" \
+  --to "2026-03-05T16:00:00Z" \
+  --source substation-b-protection \
+  --source substation-b-voltage \
+  --source dr-controller-b \
+  --format json \
+  > cerc-audit-sub-b-20260305.json
+```
+
+The output contains every event with its full ProofEnvelope. The regulator can independently verify each event by:
+
+1. Rebuilding canonical JSON from the event payload
+2. Recomputing the SHA-256 hash
+3. Verifying the Ed25519 signature against the embedded public key
+
+## Step 5: Audit verification
+
+The regulator (or any third party) verifies the evidence pack:
+
+```bash
+# Verify all proofs in the evidence pack
+bridge-node ctl verify --input cerc-audit-sub-b-20260305.json
+```
+
+```text
+Verified: 7,241 events
+Failed: 0 events
+Time range: 2026-03-05T14:00:00Z to 2026-03-05T16:00:00Z
+Sources: substation-b-protection (23), substation-b-voltage (7200), dr-controller-b (18)
+```
+
+## Result
+
+- **Response time**: Minutes instead of days. Query the ledger, export, done.
+- **Verifiability**: Every event is cryptographically provable — no trust required.
+- **Completeness**: 1-second voltage resolution captures the full picture.
+- **Tamper evidence**: Any modification to the evidence pack would break the hash/signature chain.
+- **Regulatory compliance**: Meets audit requirements with cryptographic proof rather than self-reported logs.

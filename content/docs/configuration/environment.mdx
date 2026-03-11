@@ -1,0 +1,106 @@
+---
+title: Environment
+description: Environment variables, runtime flags, and profile-based configuration for Bridge Kernel.
+---
+
+# Environment Configuration
+
+Bridge Kernel supports environment-based configuration overrides on top of the YAML config file. This is useful for secrets management, CI/CD pipelines, and multi-environment deployments.
+
+## Configuration precedence
+
+1. **CLI flags** (highest priority)
+2. **Environment variables**
+3. **`bridge.yaml`** (lowest priority)
+
+## Environment variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `BRIDGE_CONFIG` | Path to config file | `bridge.yaml` |
+| `BRIDGE_NODE_ID` | Override `runtime.node_id` | from config |
+| `BRIDGE_ENVIRONMENT` | Override `runtime.environment` | `dev` |
+| `BRIDGE_KEYSTORE_PATH` | Override keystore location | from config |
+| `BRIDGE_POLICY_SECRET` | HMAC secret for policy signing | from config |
+| `BRIDGE_LEDGER_PATH` | Override ledger database path | from config |
+| `BRIDGE_LOG_LEVEL` | Log verbosity (`debug`, `info`, `warn`, `error`) | `info` |
+
+## Environment profiles
+
+### Development (`dev`)
+
+Permissive defaults for rapid iteration:
+
+```yaml
+runtime:
+  node_id: bridge-node-local
+  environment: dev
+  replay_window_seconds: 600
+  allowed_future_skew_seconds: 120
+
+layers:
+  proof:
+    provider: software
+```
+
+### Staging (`staging`)
+
+Production-like constraints without strict enforcement:
+
+```yaml
+runtime:
+  node_id: bridge-staging-01
+  environment: staging
+  replay_window_seconds: 300
+  allowed_future_skew_seconds: 60
+
+policy:
+  fail_closed: true
+```
+
+### Production (`production`)
+
+Full enforcement with hardware-backed signing:
+
+```yaml
+runtime:
+  node_id: bridge-prod-site-a
+  environment: production
+  replay_window_seconds: 120
+  allowed_future_skew_seconds: 30
+
+layers:
+  proof:
+    provider: tpm
+    tpm_device: /dev/tpmrm0
+
+policy:
+  fail_closed: true
+```
+
+## Runtime flags
+
+```bash
+bridge-node ctl run-once --config bridge.yaml --log-level debug
+bridge-node ctl status --config bridge.yaml --format json
+```
+
+## Docker environment
+
+Pass environment variables to Docker containers:
+
+```bash
+docker run --rm \
+  -e BRIDGE_ENVIRONMENT=production \
+  -e BRIDGE_POLICY_SECRET=$POLICY_SECRET \
+  -v $(pwd)/bridge.yaml:/app/bridge.yaml:ro \
+  -v $(pwd)/data:/app/data \
+  bridge-kernel:latest
+```
+
+## Best practices
+
+- Never commit secrets (`BRIDGE_POLICY_SECRET`, keystore files) to version control.
+- Use a secret manager (Vault, AWS Secrets Manager, etc.) for production secrets.
+- Keep environment-specific overrides minimal — put shared configuration in `bridge.yaml`.
+- Validate configuration on every deployment with `bridge-node ctl status`.

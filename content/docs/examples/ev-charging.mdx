@@ -1,0 +1,133 @@
+---
+title: EV Fleet Charging
+description: End-to-end walkthrough — meter, sign, and settle high-frequency charge sessions for depot and fleet operators.
+---
+
+# EV Fleet Charging
+
+This walkthrough demonstrates how Bridge Kernel provides cryptographic proof for EV charging sessions in a fleet depot environment.
+
+## Scenario
+
+**GreenFleet Logistics** operates a 50-vehicle electric delivery fleet with a depot charging facility:
+
+- 20 OCPP-connected AC chargers (22 kW each)
+- 5 DC fast chargers (150 kW each)
+- Vehicles charge overnight and during midday breaks
+- Fleet generates 200+ charge sessions per day
+
+The fleet manager needs per-session metering proof for:
+- Driver billing (personal vs. company use)
+- Energy procurement reconciliation
+- Tax credit documentation
+
+## Step 1: Configure OCPP adapters
+
+```yaml
+sense:
+  adapters:
+    # AC chargers via OCPP 1.6
+    - type: ocpp
+      version: "1.6"
+      endpoint: ws://charger-bank-ac.local:9000
+      charge_point_ids:
+        - "ac-01"
+        - "ac-02"
+        # ... through ac-20
+      source: "depot-ac-bank"
+      sector: ev
+      event_type: session_end
+
+    # DC fast chargers via OCPP 2.0
+    - type: ocpp
+      version: "2.0"
+      endpoint: ws://charger-bank-dc.local:9100
+      charge_point_ids:
+        - "dc-01"
+        - "dc-02"
+        - "dc-03"
+        - "dc-04"
+        - "dc-05"
+      source: "depot-dc-bank"
+      sector: ev
+      event_type: session_end
+```
+
+## Step 2: Configure policy
+
+Allow charge session events, deny everything else:
+
+```json
+{
+  "version": "2026-03-01",
+  "default_action": "deny",
+  "rules": [
+    {
+      "name": "allow-ac-sessions",
+      "action": "allow",
+      "sector": "ev",
+      "event_type": "session_end",
+      "source": "depot-ac-bank"
+    },
+    {
+      "name": "allow-dc-sessions",
+      "action": "allow",
+      "sector": "ev",
+      "event_type": "session_end",
+      "source": "depot-dc-bank"
+    }
+  ]
+}
+```
+
+## Step 3: Event flow
+
+When a charge session completes, the OCPP adapter produces an AdapterEvent:
+
+```json
+{
+  "sector": "ev",
+  "event_type": "session_end",
+  "source": "depot-ac-bank",
+  "payload": {
+    "charge_point_id": "ac-07",
+    "connector_id": 1,
+    "transaction_id": "txn-2026030814220001",
+    "id_tag": "driver-badge-042",
+    "start_time": "2026-03-08T01:15:00Z",
+    "end_time": "2026-03-08T06:45:00Z",
+    "energy_kwh": 48.2,
+    "max_power_kw": 21.8
+  },
+  "timestamp": "2026-03-08T06:45:01Z",
+  "dedupe_key": "txn-2026030814220001"
+}
+```
+
+Bridge Kernel then:
+1. Validates timestamp within replay window
+2. Canonicalizes the payload to deterministic JSON
+3. Computes SHA-256 hash
+4. Signs with Ed25519
+5. Evaluates policy (allow — matches `allow-ac-sessions` rule)
+6. Persists ProofEnvelope to ledger
+
+## Step 4: Query session proofs
+
+```bash
+# All sessions for a specific driver
+bridge-node ctl ledger --source depot-ac-bank \
+  --filter "payload.id_tag=driver-badge-042" \
+  --from 2026-03-01 --to 2026-03-31 \
+  --format json
+
+# Total energy delivered across all chargers
+bridge-node ctl metrics --config bridge.yaml
+```
+
+## Result
+
+- **Per-session proof**: Every charge session has a cryptographic receipt with energy delivered, duration, and driver ID.
+- **Billing accuracy**: Driver personal-use charges are provably separated from company fleet charges.
+- **Tax documentation**: Signed evidence packs for EV tax credit claims.
+- **Dispute resolution**: If a driver contests a charge, the ProofEnvelope proves exactly what happened at the charger.

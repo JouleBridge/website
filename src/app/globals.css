@@ -1,0 +1,429 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+/* ─── JouleBridge Design Tokens ─── */
+@theme {
+  --color-jb-dark: #0a0a0b;
+  --color-jb-card: #12161d;
+  --color-jb-card-hover: #171c24;
+  --color-jb-accent: #4dd7c8;
+  --color-jb-green: #b6ff6c;
+  --color-jb-red: #ff7b66;
+  --color-jb-yellow: #ffc667;
+  --color-jb-pink: #ff92df;
+  --color-jb-white: #f7f8fa;
+  --color-jb-light-gray: #eef2f6;
+  --color-jb-mid-gray: #2d333d;
+  --color-jb-dark-gray: #1a1f27;
+  --color-jb-text-muted: #96a0ad;
+
+  /* Fumadocs overrides */
+  --color-fd-background: #f5f7f9;
+  --color-fd-foreground: #101419;
+  --color-fd-primary: #18b8ad;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-card: #ffffff;
+  --color-fd-border: #dddddf;
+  --color-fd-muted: #ececf0;
+
+  /* Layout */
+  --width-container: 87.5rem;
+  --gap-main: 1.5rem;
+
+  /* Fonts */
+  --font-sans: var(--font-jb-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jb-mono), ui-monospace, monospace;
+}
+
+/* ─── Base ─── */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--color-jb-dark);
+  color: var(--color-jb-white);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-jb-accent);
+  color: white;
+}
+
+.jb-section-title {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--color-jb-white);
+}
+
+.jb-section-title-light {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #11151a;
+}
+
+.jb-section-copy {
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgb(150 160 173 / 0.95);
+}
+
+.jb-section-copy-light {
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgb(17 21 26 / 0.68);
+}
+
+.landing-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.landing-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(247, 248, 250, 0.08), rgba(247, 248, 250, 0.08)),
+    linear-gradient(to right, rgba(247, 248, 250, 0.08), rgba(247, 248, 250, 0.08)),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(20% - 1px),
+      rgba(247, 248, 250, 0.05) calc(20% - 1px),
+      rgba(247, 248, 250, 0.05) 20%
+    );
+  background-size:
+    1px 100%,
+    1px 100%,
+    100% 100%;
+  background-position:
+    calc(50% - min(43.75rem, 44%) - var(--gap-main) / 2) 0,
+    calc(50% + min(43.75rem, 44%) + var(--gap-main) / 2) 0,
+    center top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  opacity: 0.7;
+}
+
+.landing-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Lenis Smooth Scroll ─── */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ─── Vertical Lines (section decorator) ─── */
+.section-lines {
+  position: relative;
+}
+.section-lines::before,
+.section-lines::after {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-jb-mid-gray);
+}
+.section-lines::before {
+  left: calc(50% - min(43.75rem, 44%) - var(--gap-main) / 2);
+}
+.section-lines::after {
+  right: calc(50% - min(43.75rem, 44%) - var(--gap-main) / 2);
+}
+
+/* Light section variant */
+.section-lines-light::before,
+.section-lines-light::after {
+  background-color: #3232331a;
+}
+
+.section-grid-light {
+  background-image:
+    linear-gradient(to bottom, rgba(16, 20, 25, 0.08), rgba(16, 20, 25, 0.08)),
+    linear-gradient(to bottom, rgba(16, 20, 25, 0.08), rgba(16, 20, 25, 0.08));
+  background-size: 1px 100%, 1px 100%;
+  background-position: 25% 0, 75% 0;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+}
+
+/* ─── Corner Dot Button ─── */
+.btn-jb {
+  position: relative;
+}
+.btn-jb::before,
+.btn-jb::after,
+.btn-jb .btn-corners::before,
+.btn-jb .btn-corners::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  transition: transform 0.3s cubic-bezier(0.47, 0, 0.53, 1);
+}
+.btn-jb::before {
+  top: -2px;
+  left: -2px;
+}
+.btn-jb::after {
+  top: -2px;
+  right: -2px;
+}
+.btn-jb .btn-corners::before {
+  bottom: -2px;
+  right: -2px;
+}
+.btn-jb .btn-corners::after {
+  bottom: -2px;
+  left: -2px;
+}
+
+/* Primary (white dots) */
+.btn-jb-primary::before,
+.btn-jb-primary::after,
+.btn-jb-primary .btn-corners::before,
+.btn-jb-primary .btn-corners::after {
+  background: white;
+}
+
+/* Secondary (gray dots) */
+.btn-jb-secondary::before,
+.btn-jb-secondary::after,
+.btn-jb-secondary .btn-corners::before,
+.btn-jb-secondary .btn-corners::after {
+  background: var(--color-jb-mid-gray);
+}
+
+/* Hover: dots slide to opposite corners */
+.btn-jb:hover::before {
+  transform: translateX(var(--btn-w, 100%));
+}
+.btn-jb:hover::after {
+  transform: translateY(var(--btn-h, 100%));
+}
+.btn-jb:hover .btn-corners::before {
+  transform: translateX(calc(-1 * var(--btn-w, 100%)));
+}
+.btn-jb:hover .btn-corners::after {
+  transform: translateY(calc(-1 * var(--btn-h, 100%)));
+}
+
+/* ─── GSAP Marching ants animation ─── */
+@keyframes march {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+.animate-march {
+  animation: march 1s linear infinite;
+}
+
+/* ─── Lattice Cube Animation ─── */
+.lattice-scene {
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lattice-camera {
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: lattice-spin 25s linear infinite;
+}
+
+@keyframes lattice-spin {
+  0% { transform: rotateX(-20deg) rotateY(0deg); }
+  100% { transform: rotateX(-20deg) rotateY(360deg); }
+}
+
+.lattice-container {
+  position: absolute;
+  left: -150px;
+  top: -150px;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+}
+
+.lattice-grid-plane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 300px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(100, 102, 241, 0.1);
+  border-left: 1px solid rgba(100, 102, 241, 0.1);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(100, 102, 241, 0.1) 59px, rgba(100, 102, 241, 0.1) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(100, 102, 241, 0.1) 59px, rgba(100, 102, 241, 0.1) 60px);
+}
+
+@keyframes lattice-fade {
+  0% { opacity: 0; }
+  15% { opacity: var(--max-op, 1); }
+  85% { opacity: var(--max-op, 1); }
+  100% { opacity: 0; }
+}
+
+/* Z-axis flow (purple/accent) */
+.lattice-flow-z {
+  position: absolute;
+  left: var(--pos-x, 0px);
+  top: var(--pos-y, 240px);
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+}
+.lattice-mover-z {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: lattice-flowZ 3.5s linear infinite;
+}
+.lattice-plane-z {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(100, 102, 241, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
+  box-shadow: inset 0 0 12px rgba(100, 102, 241, 0.5);
+  animation: lattice-fade 3.5s linear infinite;
+}
+@keyframes lattice-flowZ {
+  0% { transform: translateZ(-180px); }
+  100% { transform: translateZ(250px); }
+}
+
+/* X-axis flow (teal/green) */
+.lattice-flow-x {
+  position: absolute;
+  top: var(--pos-y, 60px);
+  left: 0;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  transform: translateZ(var(--pos-z, -60px));
+}
+.lattice-mover-x {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: lattice-flowX 3s linear infinite;
+  animation-delay: 0.5s;
+}
+.lattice-plane-x {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(133, 247, 143, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
+  box-shadow: inset 0 0 12px rgba(133, 247, 143, 0.4);
+  transform-origin: 50% 50%;
+  animation: lattice-fade 3s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes lattice-flowX {
+  0% { transform: translateX(-30px); }
+  100% { transform: translateX(400px); }
+}
+
+/* Y-axis flow (pink) */
+.lattice-flow-y {
+  position: absolute;
+  left: var(--pos-x, 120px);
+  top: 0;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  transform: translateZ(var(--pos-z, 60px));
+}
+.lattice-mover-y {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: lattice-flowY 4s linear infinite;
+  animation-delay: 1.5s;
+}
+.lattice-plane-y {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(237, 119, 248, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
+  box-shadow: inset 0 0 12px rgba(237, 119, 248, 0.4);
+  animation: lattice-fade 4s linear infinite;
+  animation-delay: 1.5s;
+}
+@keyframes lattice-flowY {
+  0% { transform: translateY(-30px); }
+  100% { transform: translateY(400px); }
+}
+
+/* ─── Fumadocs Dark Mode ─── */
+.dark {
+  --fd-background: 0 0% 4%;
+  --fd-foreground: 0 0% 100%;
+  --fd-primary: 238 90% 66%;
+  --fd-primary-foreground: 0 0% 100%;
+  --fd-card: 0 0% 7%;
+  --fd-border: 0 0% 13%;
+  --fd-muted: 0 0% 11%;
+  --fd-muted-foreground: 0 0% 60%;
+  color-scheme: dark;
+}
+
+.jb-surface {
+  background:
+    radial-gradient(circle at top right, rgba(77, 215, 200, 0.12), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(182, 255, 108, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+.jb-panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 22, 29, 0.82);
+  backdrop-filter: blur(14px);
+}

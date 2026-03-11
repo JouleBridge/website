@@ -1,0 +1,180 @@
+---
+title: Building a Deterministic Event Ledger in Rust
+description: Why we chose Rust for Bridge Kernel, how we ensure deterministic event processing, and the architectural decisions behind our immutable SQLite ledger design.
+category: Engineering
+date: "2026-02-01"
+readTime: 10 min
+author: JouleBridge Team
+---
+
+# Building a Deterministic Event Ledger in Rust
+
+Bridge Kernel is written in Rust. This wasn't a trendy choice — it was a technical one. When you're building infrastructure that creates cryptographic proofs for financial settlement, the language runtime matters.
+
+This post covers why Rust, how we achieve determinism, and the architecture of our immutable SQLite ledger.
+
+## Why Rust
+
+Three properties of Rust made it the right choice for Bridge Kernel:
+
+### No runtime surprises
+
+Rust has no garbage collector, no runtime pauses, and no hidden allocations. When Bridge Kernel signs a meter reading, the timing is predictable. This matters for replay protection — if GC pauses introduce variable latency, timestamp-based replay windows become unreliable.
+
+### Memory safety without overhead
+
+Bridge Kernel handles untrusted input from external devices. Modbus registers, OCPP messages, and webhook payloads are all potential attack surfaces. Rust's borrow checker prevents buffer overflows, use-after-free, and data races at compile time. We get C-level performance with memory safety guarantees.
+
+### Single binary deployment
+
+`cargo build --release` produces a single static binary. No JVM, no Python runtime, no Docker dependency. This binary runs on a Raspberry Pi, an industrial ARM gateway, an x86 server, or a cloud instance. For edge deployment on resource-constrained hardware, minimal footprint is a requirement.
+
+The Bridge Kernel binary is under 50 MB. It starts in milliseconds and uses minimal memory. On an ARM gateway with 512 MB RAM, that leaves plenty of headroom for the operating system and other processes.
+
+## Deterministic processing
+
+Bridge Kernel's core requirement is determinism: given the same input, always produce the same output. This is what makes proofs verifiable across nodes. If two Bridge Kernel instances process the same meter reading, they must produce identical hashes and identical signatures (given the same key).
+
+### Canonical JSON
+
+The first determinism challenge is JSON serialization. Standard JSON serializers don't guarantee key ordering. `{"a":1,"b":2}` and `{"b":2,"a":1}` are semantically identical but produce different bytes — and therefore different hashes.
+
+Bridge Kernel's canonicalization:
+
+1. Walk the JSON value tree recursively
+2. Sort object keys lexicographically at every level
+3. Serialize with no whitespace (no spaces, no newlines)
+4. Encode as UTF-8 bytes
+
+We wrote a custom serializer rather than using `serde_json` with `sorted_keys` because we needed to control every byte of the output. The serializer is fewer than 200 lines of Rust and is the most thoroughly tested code in the codebase.
+
+### Deterministic hashing
+
+SHA-256 is inherently deterministic — same input, same output. But we had to ensure the input (canonical JSON bytes) is always identical. The canonicalization step handles this.
+
+We use the `sha2` crate from RustCrypto, which is pure Rust with constant-time comparison for digest verification.
+
+### Deterministic signing
+
+Ed25519 is a deterministic signature scheme (RFC 8032). Unlike ECDSA, which requires a random nonce, Ed25519 derives its nonce deterministically from the private key and message. Same key + same message = same signature, always.
+
+We use the `ed25519-dalek` crate, which is well-audited and widely deployed.
+
+## The SQLite ledger
+
+Bridge Kernel's ledger is an append-only SQLite database. The choice of SQLite was deliberate:
+
+### Why SQLite
+
+- **Zero configuration.** No separate database server. The ledger is a single file.
+- **ACID guarantees.** SQLite provides full ACID transactions with WAL mode.
+- **Edge-friendly.** SQLite runs on any platform with a C compiler, including bare-metal ARM.
+- **Auditable.** Any SQLite client can open and query the ledger independently.
+- **Battle-tested.** SQLite is the most deployed database engine in the world.
+
+### Schema
+
+The ledger table stores ProofEnvelopes:
+
+```sql
+CREATE TABLE ledger (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_id TEXT UNIQUE NOT NULL,
+    sector TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    source TEXT NOT NULL,
+    timestamp TEXT NOT NULL,
+    payload_hash_hex TEXT NOT NULL,
+    proof_envelope TEXT NOT NULL,  -- JSON blob
+    synced INTEGER DEFAULT 0,
+    created_at TEXT NOT NULL
+);
+
+CREATE INDEX idx_ledger_event_id ON ledger(event_id);
+CREATE INDEX idx_ledger_source ON ledger(source);
+CREATE INDEX idx_ledger_timestamp ON ledger(timestamp);
+CREATE INDEX idx_ledger_synced ON ledger(synced);
+```
+
+### Append-only semantics
+
+The ledger is strictly append-only. There are no UPDATE or DELETE operations on ledger rows. Once a ProofEnvelope is persisted, it's immutable. The only mutable field is `synced`, which tracks P2P synchronization status.
+
+This design means:
+- **No data loss.** Crashed transactions can't partially modify existing records.
+- **Full audit trail.** Every event ever persisted is present and intact.
+- **Simple backup.** Copy the file. That's the backup.
+
+### WAL mode
+
+We run SQLite in WAL (Write-Ahead Logging) mode for concurrent read/write access. The runtime can query the ledger while ingesting new events without blocking.
+
+```rust
+conn.pragma_update(None, "journal_mode", "wal")?;
+conn.pragma_update(None, "synchronous", "normal")?;
+```
+
+## Module architecture
+
+Bridge Kernel is organized as independent modules with clear boundaries:
+
+```
+config → identity → hal → sense → proof → policy → store → runtime → p2p → observability → supervisor
+```
+
+Each module has a single responsibility:
+
+- **config** — Validates YAML, enforces environment rules
+- **identity** — Key lifecycle, DID generation
+- **hal** — Signing abstraction (software or TPM)
+- **sense** — Adapter normalization to `AdapterEvent`
+- **proof** — Canonicalize → hash → sign → verify pipeline
+- **policy** — Allow/deny evaluation
+- **store** — SQLite ledger operations
+- **runtime** — Orchestration of the full ingest pipeline
+- **p2p** — Peer sync protocol
+- **observability** — Metrics, logs, health
+- **supervisor** — Policy bundle lifecycle
+
+Modules communicate through well-defined Rust types. `AdapterEvent` flows from `sense` to `runtime`. `ProofEnvelope` flows from `proof` to `store`. There are no global mutable state, no shared databases between modules, and no runtime reflection.
+
+## Testing for determinism
+
+Our test suite includes determinism-specific tests:
+
+```rust
+#[test]
+fn canonical_json_is_deterministic() {
+    let event = create_test_event();
+    let bytes_1 = canonicalize(&event);
+    let bytes_2 = canonicalize(&event);
+    assert_eq!(bytes_1, bytes_2);
+}
+
+#[test]
+fn signing_is_deterministic() {
+    let event = create_test_event();
+    let key = generate_test_key();
+    let sig_1 = sign(&event, &key);
+    let sig_2 = sign(&event, &key);
+    assert_eq!(sig_1, sig_2);
+}
+```
+
+These tests verify that the same input always produces the same output — the fundamental invariant of the entire system.
+
+## What we learned
+
+Building Bridge Kernel in Rust taught us several lessons:
+
+1. **Determinism is a feature, not a property.** You have to design for it explicitly. Every serialization, every hash, every signature must be deterministically reproducible.
+
+2. **SQLite is underrated for edge infrastructure.** The combination of ACID guarantees, zero configuration, and universal portability makes it ideal for tamper-evident ledgers.
+
+3. **Single binary deployment changes the operational model.** No dependency management, no container orchestration, no version conflicts. Ship a binary, run it.
+
+4. **Rust's type system catches correctness bugs early.** The borrow checker and type system prevented entire classes of bugs — particularly around data ownership in the signing pipeline.
+
+---
+
+*Bridge Kernel is open for pilot deployments. [Start your free 12-week pilot](/contact) or explore the [architecture documentation](/docs/core-concepts/architecture).*

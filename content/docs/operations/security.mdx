@@ -1,0 +1,62 @@
+---
+title: Security
+description: Identity, replay protection, policy signatures, and environment enforcement.
+---
+
+# Security Model
+
+Security in Bridge Kernel is layered and explicit.
+
+## Key generation and storage
+
+- Ed25519 keypairs are generated per node.
+- Software keys are stored in JSON keystore.
+- Production can enforce TPM-backed key operations.
+
+## Key rotation
+
+Each signature carries:
+
+- `key_id`
+- `key_version`
+
+This keeps old and new signatures auditable after rotation.
+
+## DID format
+
+Node identity uses:
+
+`did:joulebridge:<key-id>`
+
+## Replay protection
+
+Defaults:
+
+- replay window: `600s`
+- allowed future skew: `120s`
+
+Events outside policy are rejected before proof persistence.
+
+## Idempotency
+
+Duplicate `event_id` values are ignored to prevent replay and accidental double-ingest.
+
+## Environment enforcement
+
+For staging/production, enforce:
+
+- TPM requirement
+- `fail_closed`
+- `signature_secret` for policy workflows
+
+## Policy bundle signing
+
+Bundles are signed with `HMAC-SHA256` before stage/promote.
+
+## Hardening checklist
+
+- Restrict keystore filesystem permissions.
+- Rotate keys on schedule and after incident response.
+- Protect policy signing secret in secret manager.
+- Lock inbound sync channel permissions by peer identity.
+- Audit bundle promotion and rollback events.

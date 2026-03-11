@@ -1,0 +1,70 @@
+---
+title: Policy
+description: Policy bundle model, rule matching, and supervisor workflow.
+---
+
+# Policy Engine
+
+Policy decides which events are eligible for ledger persistence.
+
+## PolicyBundle
+
+- `version`
+- `default_action`
+- `rules[]`
+
+## PolicyRule fields
+
+- `name`
+- `action` (`allow` or `deny`)
+- `sector`
+- `event_type`
+- `source`
+- `max_payload_bytes`
+
+## Evaluation order
+
+1. Rules are evaluated in order.
+2. First matching rule wins.
+3. If none match, `default_action` is applied.
+
+## Supervisor workflow
+
+1. `policy-sign` signs bundle metadata.
+2. `supervisor-stage` validates and stages candidate.
+3. `supervisor-promote` makes staged bundle active.
+4. `supervisor-rollback` restores last known good bundle.
+
+## Signature model
+
+Policy bundles are signed with `HMAC-SHA256` to prevent unauthorized policy changes.
+
+## Example bundle
+
+```json
+{
+  "version": "2026-03-01",
+  "default_action": "deny",
+  "rules": [
+    {
+      "name": "allow-meter-readings",
+      "action": "allow",
+      "sector": "power",
+      "event_type": "meter_reading",
+      "source": "gateway-a"
+    },
+    {
+      "name": "deny-oversize",
+      "action": "deny",
+      "max_payload_bytes": 65536
+    }
+  ]
+}
+```
+
+## Production guidance
+
+- Prefer `default_action: deny` and explicit allow rules.
+- Keep source targeting narrow for critical settlement events.
+- Version bundles with immutable, auditable labels.
+- Always stage before promote and keep rollback tested.

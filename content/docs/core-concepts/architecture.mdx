@@ -1,0 +1,63 @@
+---
+title: Architecture
+description: Core architecture and event flow for Bridge Kernel.
+---
+
+# System Architecture
+
+Bridge Kernel uses a practical three-tier model designed for verifiable energy settlement in real operations.
+
+## Three tiers
+
+1. **Edge**: adapters + Bridge Kernel runtime near devices.
+2. **P2P Sync**: peer exchange of signed events.
+3. **Cloud (future)**: optional analytics, aggregation, and external APIs.
+
+## Module chain
+
+`config -> identity -> hal -> sense -> proof -> policy -> store -> runtime -> p2p -> observability -> supervisor`
+
+## Module responsibilities
+
+- `config`: validates environment-specific settings and file paths.
+- `identity`: manages key identity (`key_id`, `key_version`, DID).
+- `hal`: abstracts signing provider (software or TPM-backed).
+- `sense`: normalizes adapter input into `AdapterEvent`.
+- `proof`: canonicalizes, hashes, signs, and verifies each event.
+- `policy`: allow/deny gate before persistence.
+- `store`: appends immutable ledger records and sync state.
+- `runtime`: orchestrates ingest, replay checks, policy checks, and persistence.
+- `p2p`: publishes unsynced events and imports verified peer events.
+- `observability`: metrics, logs, health status, degraded reasons.
+- `supervisor`: signed policy stage/promote/rollback workflow.
+
+## Event data flow
+
+1. Event received from adapter.
+2. Replay check validates timestamp window.
+3. Canonical JSON built (stable ordering).
+4. SHA-256 hash computed.
+5. Ed25519 signature created.
+6. Signature verified.
+7. Policy gate evaluates allow/deny.
+8. SQLite ledger append.
+9. Unsynced event published to peers.
+
+## Storage and state
+
+- Ledger records are append-only in SQLite.
+- Peer watermarks track last accepted sync position per peer.
+- Runtime cursor tracks local ingest progress.
+- Policy history preserves staged/promoted bundle lineage for audit.
+
+## Security foundations
+
+- Ed25519 key-based signing.
+- SHA-256 payload digesting.
+- Replay windows and skew limits.
+- Policy gates before storage.
+- HMAC-signed policy bundle workflow.
+
+## Why this matters
+
+You keep your existing device and billing stack, and add a cryptographic verification layer between them.

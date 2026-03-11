@@ -1,0 +1,55 @@
+---
+title: Observability
+description: Metrics, event logs, runtime health, and degradation signals.
+---
+
+# Observability and Health
+
+Bridge Kernel continuously records runtime behavior for operations teams.
+
+## RuntimeMetricsSnapshot
+
+Key fields:
+
+- `ingest_attempted`
+- `ingest_accepted`
+- `ingest_rejected_replay`
+- `ingest_rejected_policy`
+- `sync_published`
+- `sync_received`
+- `queue_peak`
+
+## Event log format
+
+JSONL records with:
+
+- `ts`
+- `event`
+- `detail`
+
+## RuntimeHealthSnapshot
+
+- `kernel_id`
+- `environment`
+- `status`
+- `degraded_reasons[]`
+
+## Degradation signals
+
+- `queue_depth_high`
+- `policy_denies_detected`
+- `replay_rejections_detected`
+
+## Recommended alerts
+
+- Runtime status remains `degraded` for more than N minutes.
+- Replay rejections exceed baseline for a source.
+- Policy denials spike after policy promotion.
+- Publish-receive sync imbalance persists.
+
+## Runbook hints
+
+- Replay spike: inspect source clock drift and parser timestamps.
+- Policy spike: diff current policy bundle vs previous active.
+- Queue spike: inspect adapter throughput and storage latency.
+- Sync lag: inspect inbound/outbound file movement and peer health.

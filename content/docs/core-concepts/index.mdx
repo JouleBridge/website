@@ -1,0 +1,28 @@
+---
+title: Core Concepts
+description: Understand the architecture, proof system, policy engine, protocol adapters, and peer sync that power Bridge Kernel.
+---
+
+# Core Concepts
+
+Bridge Kernel is built around a deterministic pipeline: ingest raw telemetry, generate cryptographic proofs, evaluate policy rules, and persist to an immutable ledger. This section explains each layer.
+
+## Architecture
+
+- **[Architecture](/docs/core-concepts/architecture)** — The layered design of Bridge Kernel: adapters, runtime, proof pipeline, policy gate, store, and observability.
+
+## Proof Pipeline
+
+- **[Proof System](/docs/core-concepts/proof-system)** — How events are canonicalized, hashed with SHA-256, signed with Ed25519, and wrapped in COSE Sign1 envelopes.
+
+## Policy Engine
+
+- **[Policy Engine](/docs/core-concepts/policy)** — Allow/deny rule evaluation, HMAC-signed bundles, and the stage/promote/rollback lifecycle.
+
+## Adapters
+
+- **[Protocol Adapters](/docs/core-concepts/adapters)** — Modbus RTU/TCP, SunSpec, OCPP 1.6/2.0, DNP3, IEEE 2030.5, IEC 61850, and webhook ingestion.
+
+## Peer Sync
+
+- **[P2P Sync](/docs/core-concepts/p2p-sync)** — File-backed peer synchronization that keeps distributed ledger nodes consistent.

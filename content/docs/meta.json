@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "index",
+    "get-started",
+    "core-concepts",
+    "configuration",
+    "operations",
+    "reference",
+    "examples"
+  ]
+}

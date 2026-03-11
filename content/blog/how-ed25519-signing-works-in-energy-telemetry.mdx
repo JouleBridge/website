@@ -1,0 +1,159 @@
+---
+title: How Ed25519 Signing Works in Energy Telemetry
+description: A deep dive into how Bridge Kernel uses Ed25519 digital signatures to create tamper-evident proofs for every energy event, from canonicalization to COSE Sign1 envelopes.
+category: Engineering
+date: "2026-02-20"
+readTime: 8 min
+author: JouleBridge Team
+---
+
+# How Ed25519 Signing Works in Energy Telemetry
+
+Every event that flows through Bridge Kernel gets a cryptographic signature. This isn't a checksum or a hash — it's a mathematical proof that a specific entity signed specific data at a specific time, and that the data hasn't been modified since.
+
+This post walks through the exact signing process, from raw meter reading to verified ProofEnvelope.
+
+## Why Ed25519?
+
+Bridge Kernel uses Ed25519 (Edwards-curve Digital Signature Algorithm) for event signing. The choice wasn't arbitrary:
+
+- **Fast.** Ed25519 signing takes ~50 microseconds on commodity hardware. At 600 events per minute, the signing overhead is negligible.
+- **Compact.** Signatures are 64 bytes. Public keys are 32 bytes. This matters when you're signing millions of energy events and storing them in a ledger.
+- **Deterministic.** Given the same key and message, Ed25519 always produces the same signature. No random nonce means no accidental nonce reuse vulnerabilities.
+- **Widely audited.** Ed25519 is used in SSH, TLS 1.3, Signal Protocol, and blockchain systems. The implementation landscape is mature and battle-tested.
+
+## Step 1: Canonical JSON
+
+Before anything is hashed or signed, the event payload must be deterministically serialized. Two nodes processing the same event must produce identical bytes. If the serialization is non-deterministic (random key order, inconsistent whitespace), the hashes won't match and signatures become unverifiable.
+
+Bridge Kernel's canonical JSON rules:
+
+1. **Sort all keys alphabetically** at every nesting level
+2. **Remove all whitespace** — no spaces after colons or commas
+3. **Normalize to UTF-8** — all string values as UTF-8 bytes
+
+A meter reading like this:
+
+```json
+{
+  "power_kw": 3.1,
+  "voltage_v": 230.5,
+  "current_a": 12.4
+}
+```
+
+Becomes this canonical form:
+
+```
+{"current_a":12.4,"power_kw":3.1,"voltage_v":230.5}
+```
+
+The keys are sorted (`current_a` before `power_kw` before `voltage_v`), whitespace is stripped, and the result is UTF-8 bytes. Any node running the same canonicalization algorithm on the same input data will produce identical bytes.
+
+## Step 2: SHA-256 hashing
+
+The canonical JSON bytes are hashed with SHA-256:
+
+```
+Input:  {"current_a":12.4,"power_kw":3.1,"voltage_v":230.5}
+Output: 8af3c2b1e9d4f7a2... (32 bytes, hex-encoded)
+```
+
+The hash serves two purposes:
+
+1. **Fixed-length digest** — regardless of payload size, Ed25519 signs a fixed 32-byte hash.
+2. **Integrity check** — any modification to the payload produces a completely different hash.
+
+## Step 3: Ed25519 signing
+
+The SHA-256 hash is signed using the node's Ed25519 private key:
+
+```
+Input:  hash bytes + private key
+Output: signature (64 bytes, hex-encoded)
+```
+
+The signature proves that the holder of the corresponding private key endorsed this specific hash. Since the hash is deterministically derived from the canonical payload, the signature effectively endorses the original meter reading.
+
+Each signature includes metadata:
+- `key_id` — identifies which key was used
+- `key_version` — supports key rotation without breaking old signatures
+- `signature_context` — a domain separator (e.g., `bridge-kernel-v2`) to prevent cross-protocol signature reuse
+
+## Step 4: Verification
+
+Verification is the inverse:
+
+1. Take the original event payload
+2. Canonicalize it (sort keys, strip whitespace, UTF-8)
+3. Hash the canonical bytes with SHA-256
+4. Compare the computed hash to the stored `payload_hash_hex`
+5. Verify the Ed25519 signature using the public key
+
+If any step fails — different hash, invalid signature, wrong key — the proof is rejected.
+
+```
+✓ Canonical bytes match
+✓ SHA-256 hash matches payload_hash_hex
+✓ Ed25519 signature valid for public key
+→ Proof VERIFIED
+```
+
+The key insight: verification requires only the public key. Anyone can verify a proof without access to the signing infrastructure, the private key, or the Bridge Kernel node. This is what makes the proofs independently verifiable.
+
+## Step 5: ProofEnvelope
+
+All of this is packaged into a ProofEnvelope:
+
+```json
+{
+  "event": {
+    "current_a": 12.4,
+    "power_kw": 3.1,
+    "voltage_v": 230.5
+  },
+  "key_id": "site-gw-01",
+  "key_version": 3,
+  "signature_context": "bridge-kernel-v2",
+  "signer_public_key_hex": "9f8a...",
+  "payload_hash_hex": "8af3c2b1e9d4f7a2...",
+  "signature_hex": "b7e2f1c3d8a9...",
+  "signed_at": "2026-02-20T14:22:01.123Z",
+  "proof_metadata": {
+    "canonical_algorithm": "json-sorted-keys-no-ws-utf8",
+    "hash_algorithm": "sha-256",
+    "signature_algorithm": "ed25519"
+  }
+}
+```
+
+The envelope is self-contained. It includes everything needed for independent verification: the original event, the hash, the signature, the public key, and the algorithm identifiers. No external lookups required.
+
+## Hardware signing
+
+For production environments requiring higher assurance, Bridge Kernel supports TPM-backed signing via the Hardware Abstraction Layer (HAL):
+
+- **SoftwareHal** — keypair stored in a JSON keystore on disk. Suitable for development and pilot deployments.
+- **TpmHal** — private key stored in a Trusted Platform Module. The key never leaves the hardware. Even if the host system is compromised, the signing key remains protected.
+
+Both HAL implementations produce identical ProofEnvelopes. The difference is where the private key lives.
+
+## Performance
+
+On a Raspberry Pi 4 (ARM Cortex-A72):
+- Canonicalization: ~10 microseconds
+- SHA-256 hashing: ~5 microseconds
+- Ed25519 signing: ~80 microseconds
+- Total proof generation: **under 100 microseconds per event**
+
+At Bridge Kernel's default rate limit of 600 requests per minute, the signing overhead is less than 0.1% of available CPU time. Cryptographic proof is not a performance bottleneck.
+
+## Why this matters for energy
+
+Energy settlement depends on trusted data. Traditionally, trust comes from institutional authority — you trust the utility because they're the utility. But as the energy market decentralizes, institutional trust doesn't scale.
+
+Cryptographic trust scales. An Ed25519 signature on a meter reading is verifiable by anyone, anywhere, without trusting the organization that created it. That's the foundation for a settlement system where trust is in the mathematics, not the institution.
+
+---
+
+*Learn more about Bridge Kernel's proof system in the [documentation](/docs/core-concepts/proof-system), or see it in action with the [Quick Start guide](/docs/get-started/quickstart).*

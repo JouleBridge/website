@@ -1,0 +1,58 @@
+---
+title: Deployment
+description: Local, Docker, and production deployment patterns.
+---
+
+# Deployment Guide
+
+## Local development
+
+1. Use software keys.
+2. Run with mock or file adapters.
+3. Keep data paths local for fast iteration.
+4. Validate status, metrics, and ledger after each config change.
+
+## Docker deployment
+
+- Package `bridge-node` in container image.
+- Mount config, keystore, policy, and ledger volumes.
+- Mount sync inbound/outbound directories per peer.
+- Keep container timezone and host clock synced.
+
+Example runtime pattern:
+
+```bash
+docker run --rm \
+  -v $(pwd)/bridge.yaml:/app/bridge.yaml:ro \
+  -v $(pwd)/data:/app/data \
+  bridge-kernel:latest \
+  bridge-node ctl run-once --config /app/bridge.yaml
+```
+
+## Production considerations
+
+- Use TPM-backed signing where possible.
+- Protect keystore and policy secrets.
+- Back up ledger and policy history.
+- Monitor health degradation reasons continuously.
+- Define RPO/RTO for ledger and policy recovery.
+
+## Environment profiles
+
+- **dev**: permissive defaults for iteration.
+- **staging**: validate production-like constraints.
+- **production**: strict enforcement and controlled rollout.
+
+## Recommended rollout path
+
+1. Single-node pilot with real adapter.
+2. Multi-node peer sync pilot.
+3. Policy hardening with staged promotions.
+4. Production promotion with signed policy and observability alerts.
+
+## Pre-go-live checklist
+
+- Replay and skew settings validated with live sources.
+- Policy bundles signed and rollback tested.
+- Alerting and on-call runbooks verified.
+- Backup restore drill completed for ledger and policy history.

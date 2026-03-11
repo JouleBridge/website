@@ -1,0 +1,120 @@
+---
+title: Event Schema
+description: ProofEnvelope structure, event types, COSE Sign1 format, and canonical JSON specification.
+---
+
+# Event Schema
+
+Every event processed by Bridge Kernel follows a strict schema from ingestion through proof generation to ledger persistence.
+
+## AdapterEvent
+
+The raw event produced by an adapter after normalization:
+
+```json
+{
+  "sector": "power",
+  "event_type": "meter_reading",
+  "source": "inverter-site-a-01",
+  "payload": {
+    "voltage_v": 230.5,
+    "current_a": 12.4,
+    "power_kw": 3.1,
+    "energy_kwh": 142.8
+  },
+  "timestamp": "2026-03-08T14:22:01Z",
+  "dedupe_key": "inverter-site-a-01:2026-03-08T14:22:01Z"
+}
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `sector` | string | Yes | Operational domain: `power`, `ev`, `storage`, `grid`, `logistics` |
+| `event_type` | string | Yes | Event semantic: `meter_reading`, `session_end`, `dispatch`, `handover` |
+| `source` | string | Yes | Stable source identity (device ID, gateway ID) |
+| `payload` | object | Yes | Source data after adapter normalization |
+| `timestamp` | ISO 8601 | Yes | Source event time (UTC) |
+| `dedupe_key` | string | Recommended | Source-derived idempotency key |
+
+## Canonical JSON
+
+Before hashing and signing, events are serialized to canonical JSON:
+
+1. **Sort keys** alphabetically at every nesting level
+2. **Remove whitespace** — no spaces after colons or commas
+3. **UTF-8 encoding** — all strings normalized to UTF-8
+
+Example:
+
+```
+{"current_a":12.4,"energy_kwh":142.8,"power_kw":3.1,"voltage_v":230.5}
+```
+
+This deterministic serialization ensures two nodes hash the same event bytes identically.
+
+## ProofEnvelope
+
+The signed output after the proof pipeline:
+
+```json
+{
+  "event": { ... },
+  "key_id": "key-93ac1f2e2ab1d001",
+  "key_version": 4,
+  "signature_context": "bridge-kernel-v2",
+  "signer_public_key_hex": "9f8a...",
+  "payload_hash_hex": "8af3c2b1e9d4f7a2...",
+  "signature_hex": "b7e2f1c3d8a9...",
+  "signed_at": "2026-03-08T14:22:01.123Z",
+  "proof_metadata": {
+    "canonical_algorithm": "json-sorted-keys-no-ws-utf8",
+    "hash_algorithm": "sha-256",
+    "signature_algorithm": "ed25519",
+    "replay_window_seconds": 600,
+    "node_id": "bridge-prod-site-a"
+  }
+}
+```
+
+### ProofEnvelope fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `event` | object | The original AdapterEvent |
+| `key_id` | string | Signing key identifier |
+| `key_version` | integer | Key version for rotation tracking |
+| `signature_context` | string | Signing context string |
+| `signer_public_key_hex` | string | Ed25519 public key (hex) |
+| `payload_hash_hex` | string | SHA-256 hash of canonical JSON (hex) |
+| `signature_hex` | string | Ed25519 signature (hex) |
+| `signed_at` | ISO 8601 | Timestamp when proof was generated |
+| `proof_metadata` | object | Algorithms, parameters, and node identity |
+
+## Verification
+
+To verify a ProofEnvelope:
+
+1. Extract `event` and serialize to canonical JSON.
+2. Compute SHA-256 hash of the canonical bytes.
+3. Compare computed hash to `payload_hash_hex`.
+4. Verify Ed25519 `signature_hex` using `signer_public_key_hex` and `signature_context`.
+
+If any step fails, the proof is invalid.
+
+## Ledger record
+
+When persisted to SQLite, the ProofEnvelope is stored as a single row with indexed fields:
+
+| Column | Type | Indexed |
+|--------|------|---------|
+| `event_id` | TEXT | Yes (unique) |
+| `sector` | TEXT | Yes |
+| `event_type` | TEXT | Yes |
+| `source` | TEXT | Yes |
+| `timestamp` | TEXT | Yes |
+| `payload_hash_hex` | TEXT | Yes |
+| `proof_envelope` | JSON | No |
+| `synced` | BOOLEAN | Yes |
+| `created_at` | TEXT | Yes |

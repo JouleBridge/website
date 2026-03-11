@@ -1,0 +1,80 @@
+---
+title: FAQ
+description: Frequently asked questions about Bridge Kernel, deployment, and integration.
+---
+
+# Frequently Asked Questions
+
+## General
+
+### What is Bridge Kernel?
+
+Bridge Kernel is a deterministic, tamper-evident event ledger runtime for energy settlement. It ingests raw device telemetry, generates cryptographic proofs (SHA-256 hash + Ed25519 signature), evaluates policy rules, and persists verified events to an immutable SQLite ledger.
+
+### Is Bridge Kernel a blockchain?
+
+No. Bridge Kernel uses cryptographic signing and append-only ledger storage, but it is not a blockchain. There is no consensus mechanism, no token, and no distributed chain. It's a deterministic proof pipeline with peer sync.
+
+### What programming language is Bridge Kernel written in?
+
+Bridge Kernel is written in Rust. It compiles to a single binary with no JVM or Docker dependency.
+
+## Deployment
+
+### What platforms does Bridge Kernel run on?
+
+Bridge Kernel runs on ARM gateways (Raspberry Pi, industrial ARM boards), x86 servers, cloud instances (AWS, GCP, Azure), Docker containers, and Kubernetes clusters. The binary is under 50MB.
+
+### Can I deploy Bridge Kernel on-premise?
+
+Yes. Bridge Kernel is designed for edge and on-premise deployment. It runs as a single binary with a local SQLite ledger and file-based peer sync.
+
+### Do I need an internet connection?
+
+No. Bridge Kernel operates fully offline at the edge. Peer sync uses file-based exchange that works over any transport — local network, USB drive, or cloud sync when connectivity is available.
+
+## Integration
+
+### What protocols does Bridge Kernel support?
+
+Modbus RTU/TCP, SunSpec, OCPP 1.6/2.0, DNP3, IEEE 2030.5, IEC 61850, webhook/REST, JSONL file, and a mock adapter for testing.
+
+### How long does integration take?
+
+A basic integration with mock or file adapters takes minutes. Connecting to real devices via Modbus or OCPP typically takes 1-2 days including configuration and testing. Full production deployment with policy hardening and observability takes 2-4 weeks.
+
+### Can I write custom adapters?
+
+Yes. The webhook/REST adapter accepts any HTTP-based telemetry. For protocol-level adapters, the adapter interface is extensible — contact us for guidance on custom adapter development.
+
+## Security
+
+### How are signing keys managed?
+
+Ed25519 keypairs are generated per node. In development, keys are stored in a JSON keystore. In production, Bridge Kernel supports TPM (Trusted Platform Module) hardware-backed signing for tamper-proof key storage.
+
+### What happens if a key is compromised?
+
+Rotate the key immediately with `bridge-node ctl keys --rotate`. All existing proofs remain valid — they carry their `key_id` and `key_version` for audit. New events will use the rotated key.
+
+### How does replay protection work?
+
+Each event's timestamp is checked against a configurable replay window (default: 600 seconds). Events with timestamps outside this window are rejected before signing. Additionally, duplicate `event_id` values are silently dropped.
+
+## Pricing
+
+### Is Bridge Kernel free?
+
+The pilot program is free for 12 weeks with up to 5 devices. See the [Pricing page](/pricing) for Growth and Enterprise tiers.
+
+### What happens after the pilot?
+
+You can continue on a paid Growth or Enterprise plan, or the pilot instance stops accepting new events. All existing ledger data remains accessible.
+
+## Support
+
+### How do I get help?
+
+- **Documentation**: You're reading it.
+- **Email**: hello@joulebridge.com
+- **Response time**: Typically within 24 hours.

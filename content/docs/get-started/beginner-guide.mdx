@@ -1,0 +1,49 @@
+---
+title: Beginner Guide
+description: Beginner-friendly explanation of how Bridge Kernel works.
+---
+
+# Bridge Kernel for Beginners
+
+If this is your first time working with the system, start here.
+
+## What is Bridge Kernel?
+
+Bridge Kernel is a verification layer for energy events.
+
+When an event arrives (meter read, charger session update, telemetry payload), Bridge Kernel:
+
+1. Validates timing and replay window.
+2. Signs the event with cryptographic identity.
+3. Applies allow/deny policy rules.
+4. Stores allowed records in a tamper-evident ledger.
+5. Synchronizes valid proofs with peers.
+6. Emits metrics and health signals.
+
+## Module map (simple)
+
+1. **`config`**: system settings and limits.
+2. **`identity`**: key lifecycle and DID identity.
+3. **`hal`**: software vs TPM signing provider.
+4. **`proof`**: canonicalize, hash, sign, verify.
+5. **`sense`**: collect and normalize adapter events.
+6. **`runtime`**: orchestrate checks and persistence.
+7. **`store`**: append-only ledger + sync state.
+8. **`p2p`**: peer event exchange.
+9. **`policy`**: allow/deny enforcement before storage.
+10. **`supervisor`**: signed policy stage/promote/rollback.
+11. **`observability`**: metrics, logs, degraded reasons.
+
+## Event journey
+
+`input -> replay check -> proof -> policy -> store -> sync -> observability`
+
+## Memory shortcut
+
+- `sense` gets events
+- `proof` secures events
+- `policy` filters events
+- `store` saves events
+- `p2p` shares events
+- `observability` monitors health
+- `supervisor` controls safe policy rollout

@@ -1,0 +1,58 @@
+---
+title: Proof System
+description: Canonicalization, hashing, signing, and verification details.
+---
+
+# Proof and Signing
+
+Bridge Kernel converts raw adapter events into signed `ProofEnvelope` records.
+
+## EventEnvelope
+
+The normalized event before signing, produced by the adapter + runtime normalization path.
+
+## ProofEnvelope fields
+
+- `event`
+- `key_id`
+- `key_version`
+- `signature_context`
+- `signer_public_key_hex`
+- `payload_hash_hex`
+- `signature_hex`
+- `signed_at`
+
+## Canonical JSON rules
+
+- Sorted keys
+- No extra whitespace
+- UTF-8 bytes
+
+Deterministic serialization ensures two nodes hash the same event bytes identically.
+
+## Hashing
+
+`SHA-256` is computed over canonical JSON bytes and stored as `payload_hash_hex`.
+
+## Signing
+
+`Ed25519` signs canonical payload bytes (or equivalent deterministic digest contract) through HAL abstraction.
+
+## Verification flow
+
+1. Rebuild canonical bytes.
+2. Recompute SHA-256 hash.
+3. Compare computed hash to `payload_hash_hex`.
+4. Verify Ed25519 signature using embedded public key and `signature_context`.
+
+## HAL options
+
+- `SoftwareHal`: software keypair in keystore.
+- `TpmHal`: hardware-backed signing path for strict environments.
+
+## Failure handling
+
+- Canonical mismatch: reject and log proof mismatch reason.
+- Hash mismatch: reject as tamper-evident failure.
+- Signature mismatch: reject and isolate source for triage.
+- Unknown key version: reject until key metadata is refreshed.

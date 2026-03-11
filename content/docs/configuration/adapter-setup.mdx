@@ -1,0 +1,105 @@
+---
+title: Adapter Setup
+description: Connect Bridge Kernel to devices and data sources using protocol adapters.
+---
+
+# Adapter Setup
+
+Bridge Kernel connects to energy devices and data sources through protocol adapters. Each adapter normalizes source-specific input into a common `AdapterEvent` structure for the proof pipeline.
+
+## Supported adapters
+
+| Adapter | Protocol | Typical use case |
+|---------|----------|-----------------|
+| Modbus RTU/TCP | Industrial | Solar inverters, battery BMS, power meters |
+| SunSpec | Solar | PV system monitoring, production data |
+| OCPP 1.6/2.0 | EV Charging | Charge session metering, connector status |
+| DNP3 | Utility | Substation SCADA, distribution automation |
+| IEEE 2030.5 | Smart Grid | DER management, demand response |
+| IEC 61850 | Protection | Substation automation, event logging |
+| Webhook/REST | Custom | Any HTTP-based telemetry source |
+| JSONL File | File | Batch file ingestion, testing |
+| Mock | Testing | Synthetic events for development |
+
+## Configuring adapters in `bridge.yaml`
+
+Adapters are defined under the `sense.adapters` array:
+
+```yaml
+sense:
+  adapters:
+    - type: mock
+      enabled: true
+      interval_ms: 500
+
+    - type: jsonl-file
+      path: ./input/events.jsonl
+      tail: true
+
+    - type: webhook-drop
+      inbound_dir: ./drop/inbound
+      archive_dir: ./drop/archive
+```
+
+## Modbus RTU/TCP setup
+
+```yaml
+sense:
+  adapters:
+    - type: modbus-tcp
+      host: 192.168.1.100
+      port: 502
+      unit_id: 1
+      registers:
+        - address: 40001
+          count: 2
+          name: active_power_kw
+          type: float32
+        - address: 40003
+          count: 2
+          name: voltage_v
+          type: float32
+      poll_interval_ms: 5000
+      source: "inverter-site-a-01"
+      sector: power
+      event_type: meter_reading
+```
+
+## OCPP setup
+
+```yaml
+sense:
+  adapters:
+    - type: ocpp
+      version: "1.6"
+      endpoint: ws://charger-01.local:9000
+      charge_point_id: "cp-depot-01"
+      source: "ev-depot-01"
+      sector: ev
+      event_type: session_end
+```
+
+## Webhook setup
+
+For external systems that push data via HTTP:
+
+```yaml
+sense:
+  adapters:
+    - type: webhook-drop
+      inbound_dir: ./drop/inbound
+      archive_dir: ./drop/archive
+      source: "billing-system"
+      sector: power
+      event_type: settlement_batch
+```
+
+Place JSON payload files in `inbound_dir`. Bridge Kernel processes and moves them to `archive_dir`.
+
+## Best practices
+
+- Keep `source` stable per device — it's used for policy targeting and audit trails.
+- Set `dedupe_key` whenever the upstream source can retry delivery.
+- Use UTC timestamps consistently across all adapters.
+- Split adapters by trust boundary when mixing internal and partner data sources.
+- Start with `mock` or `jsonl-file` adapters during development, then switch to protocol adapters for staging.

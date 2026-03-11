@@ -1,0 +1,77 @@
+---
+title: Overview
+description: Bridge Kernel documentation — the deterministic, tamper-evident event ledger runtime for energy settlement.
+---
+
+# What is Bridge Kernel?
+
+Bridge Kernel is a deterministic, tamper-evident event ledger runtime. It ingests raw energy telemetry, generates cryptographic proofs, evaluates policy rules, and persists verified events to an immutable ledger.
+
+## What problem it solves
+
+Distributed energy settlement depends on unverified meter reads and manual reconciliation. Bridge Kernel adds cryptographic proof from event capture to settlement, so operations, finance, and compliance teams can trust what actually happened at the device.
+
+## End-to-end flow
+
+1. Event arrives from an adapter (Modbus, SunSpec, OCPP, DNP3, webhook).
+2. Runtime checks timestamp and replay window.
+3. Event is converted to canonical JSON (sorted keys, no whitespace, UTF-8).
+4. SHA-256 hash is computed.
+5. Ed25519 signature is generated and verified.
+6. Policy engine decides allow or deny.
+7. If allowed, event plus proof are stored in the SQLite ledger.
+8. Event is marked unsynced until published to peers.
+9. Metrics, logs, and health are updated.
+
+## Major components
+
+| Module | Purpose |
+|--------|---------|
+| `config` | Settings and validation |
+| `identity` | Signing key lifecycle and DID |
+| `hal` | Hardware abstraction (software or TPM signing) |
+| `proof` | Canonicalization, hashing, signing, verification |
+| `sense` | Input adapters and event normalization |
+| `runtime` | Central orchestrator |
+| `store` | SQLite ledger and sync state |
+| `p2p` | Peer synchronization protocol |
+| `policy` | Allow/deny rules before persistence |
+| `supervisor` | Signed policy stage/promote/rollback |
+| `observability` | Metrics, event logs, degraded status |
+
+## Documentation
+
+### Get Started
+- [Quick Start](/docs/get-started/quickstart) — Clone, build, and run your first signed event.
+- [Beginner Guide](/docs/get-started/beginner-guide) — Slower walkthrough explaining each step.
+
+### Core Concepts
+- [Architecture](/docs/core-concepts/architecture) — Three-tier model and module chain.
+- [Proof System](/docs/core-concepts/proof-system) — Canonicalization, hashing, signing, verification.
+- [Policy Engine](/docs/core-concepts/policy) — Allow/deny rules and supervisor workflow.
+- [Adapters](/docs/core-concepts/adapters) — Protocol adapters and event normalization.
+- [P2P Sync](/docs/core-concepts/p2p-sync) — File-backed peer synchronization.
+
+### Configuration
+- [General Configuration](/docs/configuration/general) — YAML reference and environment profiles.
+- [Adapter Setup](/docs/configuration/adapter-setup) — Connect to devices and data sources.
+- [Policy Rules](/docs/configuration/policy-rules) — Write and deploy policy bundles.
+- [Environment](/docs/configuration/environment) — Environment variables and runtime profiles.
+
+### Operations
+- [Deployment](/docs/operations/deployment) — Local, Docker, and production patterns.
+- [Observability](/docs/operations/observability) — Metrics, logs, health, and alerting.
+- [Security](/docs/operations/security) — Keys, replay protection, and hardening.
+- [Troubleshooting](/docs/operations/troubleshooting) — Common issues and resolution.
+
+### Reference
+- [CLI Reference](/docs/reference/cli) — All `bridge-node ctl` commands.
+- [API Reference](/docs/reference/api) — REST and gRPC endpoints.
+- [Event Schema](/docs/reference/event-schema) — ProofEnvelope and COSE Sign1 format.
+- [Glossary](/docs/reference/glossary) — Key terms.
+- [FAQ](/docs/reference/faq) — Frequently asked questions.
+
+### Examples
+- [C&I Energy Settlement](/docs/examples/energy-settlement) — Multi-source billing verification.
+- [EV Fleet Charging](/docs/examples/ev-charging) — Per-session proof envelopes.
+- [Grid Event Audit](/docs/examples/grid-audit) — Regulatory audit trails.

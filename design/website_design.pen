@@ -1,0 +1,3066 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "hMlXk",
+      "x": 18000,
+      "y": 0,
+      "name": "ARCHIVE / Website Audit / Index",
+      "width": 1440,
+      "height": 980,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "gap": 28,
+      "padding": 56,
+      "children": [
+        {
+          "type": "frame",
+          "id": "9tIzf",
+          "name": "coverHeaderA",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "3rrB5",
+              "name": "coverEyebrowA",
+              "content": "JOULEBRIDGE WEBSITE / PENCIL RECONSTRUCTION",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "TodfX",
+              "name": "coverTitleA",
+              "content": "Public website UI mirrored from code for visual audit",
+              "fontFamily": "Manrope",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "10wk9",
+              "name": "coverCopyA",
+              "content": "Goal: reproduce the current site structure page-by-page before changing code, then use the mirror to identify layout, typography, color, and narrative faults.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xTrnM",
+          "name": "coverGridA",
+          "width": "fill_container",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Q4rYm",
+              "name": "leftPanelA",
+              "width": 670,
+              "fill": "#12161D",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZG3eQ",
+                  "name": "leftTitleA",
+                  "content": "Visual system in code",
+                  "fontFamily": "Manrope",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "BOlz8",
+                  "name": "leftBodyA",
+                  "content": "Fonts: Manrope body, IBM Plex Mono utility labels, Space Grotesk wordmark. Core colors: #0A0A0B background, #12161D cards, #4DD7C8 accent, #B6FF6C green, #FFC667 yellow, #FF92DF pink, #FF7B66 red, #EEF2F6 light sections. Layout pattern: dark shell + alternating light sections + monospaced uppercase metadata + corner-dot card language.",
+                  "fontFamily": "Manrope",
+                  "fontSize": 17,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "KOHrX",
+                  "name": "leftStripA",
+                  "width": "fill_container",
+                  "height": 60,
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "bSlYG",
+                      "name": "swatch1A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#0A0A0B"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FunVm",
+                      "name": "swatch2A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#12161D"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "F8O4v",
+                      "name": "swatch3A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#4DD7C8"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JFYmo",
+                      "name": "swatch4A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#B6FF6C"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vC3va",
+                      "name": "swatch5A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#FFC667"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CY55H",
+                      "name": "swatch6A",
+                      "width": 96,
+                      "height": 60,
+                      "fill": "#FF92DF"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "8xgNM",
+                  "name": "tokensNoteA",
+                  "content": "Representative routes to mirror: landing, product hub, bridge-kernel, cloud, hardware, solutions, company, careers, pricing, contact, blog index, blog article, papers, videos, news, docs shell/article, privacy, terms, 404.",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pj030",
+              "name": "rightPanelA",
+              "width": 634,
+              "fill": "#12161D",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HmZjR",
+                  "name": "rightTitleA",
+                  "content": "Audit method",
+                  "fontFamily": "Manrope",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "XAtDy",
+                  "name": "rightBodyA",
+                  "content": "1. Mirror the current route structure and page rhythm in Pencil. 2. Keep the same typography, shell, and section alternation as the code. 3. Mark where the site weakens itself: repeated cards, placeholder pages, narrative over-claim, shell inconsistency, or visual drift. 4. Do not fix code in this pass.",
+                  "fontFamily": "Manrope",
+                  "fontSize": 17,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "HDm3j",
+                  "name": "routeBoardA",
+                  "width": "fill_container",
+                  "fill": "#0F141B",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 18,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cgrSP",
+                      "name": "routeBoardTitleA",
+                      "content": "Route groups",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZoDJu",
+                      "name": "routeBoardTextA",
+                      "content": "Core marketing: /, /product, /solutions, /company, /pricing, /contact\nProduct leaf pages: /product/bridge-kernel, /product/cloud, /product/hardware\nResources: /resources/blog, /resources/blog/[slug], /resources/papers, /resources/video, /resources/news\nDocs: /docs + article template\nLegal/system: /privacy, /terms, /company/careers, 404",
+                      "fontFamily": "Manrope",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "5LlqX",
+      "x": 18000,
+      "y": 1100,
+      "name": "ARCHIVE / Landing Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "JNMRr",
+          "name": "landingNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "gap": 18,
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "vbN4a",
+              "name": "landingNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE   PRODUCT  SOLUTIONS  DOCS  PRICING  COMPANY  RESOURCES   START A PILOT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "51l8i",
+          "name": "landingHeroA",
+          "width": "fill_container",
+          "height": 270,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "zHepa",
+              "name": "landingHeroBadgeA",
+              "fill": "#4DD7C8",
+              "content": "VERIFIED DATA INFRASTRUCTURE FOR ENERGY",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "W0GCX",
+              "name": "landingHeroTitleA",
+              "fill": "#F7F8FA",
+              "content": "Make critical energy records easier to trust.",
+              "fontFamily": "Manrope",
+              "fontSize": 34,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "vxdvQ",
+              "name": "landingHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Dark hero, lattice-cube visual, proof chips, and two CTA buttons. This is the strongest current page and the clearest expression of the brand tone.",
+              "fontFamily": "Manrope",
+              "fontSize": 15,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xe2s4",
+          "name": "landingSectionsA",
+          "width": "fill_container",
+          "height": 556,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "gHUjm",
+              "name": "landingSectionsTextA",
+              "fill": "#101419",
+              "content": "Problem / dark\nSolution / light\nPipeline / dark\nWhy Bridge Kernel / light\nDemo / dark\nBenefits / dark\nUse Cases / dark\nCTA / dark",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 14,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2dPbs",
+      "x": 18480,
+      "y": 1100,
+      "name": "ARCHIVE / Product Hub Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "7ZAIG",
+          "name": "productNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "gap": 18,
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "c6I3a",
+              "name": "productNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / PRODUCT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UE5NO",
+          "name": "productHeroA",
+          "width": "fill_container",
+          "height": 250,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "yO4vS",
+              "name": "productHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Bridge Kernel",
+              "fontFamily": "Manrope",
+              "fontSize": 36,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "hMWak",
+              "name": "productHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Product hub mixes the same shell with a white proof-cycle diagram card. Good contrast, but the hierarchy feels more like a technical brochure than a premium product page.",
+              "fontFamily": "Manrope",
+              "fontSize": 15,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yaf9u",
+          "name": "productBodyA",
+          "width": "fill_container",
+          "height": 576,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "Czzng",
+              "name": "productBodyTextA",
+              "fill": "#101419",
+              "content": "Sections mirrored from code:\nHow It Works / light cards\nProtocol Adapters / dark grid\nProof System / light diagram + code sample\nDeployment / dark cards\nSecurity / light checklist\nOperating View / dark illustration",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CWX8b",
+      "x": 18960,
+      "y": 1100,
+      "name": "ARCHIVE / Solutions Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Q19Qa",
+          "name": "solutionsNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Hroi9",
+              "name": "solutionsNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / SOLUTIONS",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "is71L",
+          "name": "solutionsHeroA",
+          "width": "fill_container",
+          "height": 230,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "iYlLS",
+              "name": "solutionsHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Where stronger telemetry evidence changes the operating outcome",
+              "fontFamily": "Manrope",
+              "fontSize": 31,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "II68z",
+          "name": "solutionsBodyA",
+          "width": "fill_container",
+          "height": 596,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "Ky163",
+              "name": "solutionsBodyTextA",
+              "fill": "#101419",
+              "content": "Pattern from code:\nHero + white proof diagram\nThree alternating solution bands\nEach band = Problem / How JouleBridge Helps / capabilities / docs link\nFinal dark CTA block",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "JK84N",
+      "x": 19440,
+      "y": 1100,
+      "name": "ARCHIVE / Company Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "DqDW8",
+          "name": "companyNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "CX7mj",
+              "name": "companyNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / COMPANY",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Eoh4w",
+          "name": "companyHeroA",
+          "width": "fill_container",
+          "height": 220,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "HSrjp",
+              "name": "companyHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Building the trust layer for energy",
+              "fontFamily": "Manrope",
+              "fontSize": 34,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tmBoM",
+          "name": "companyBodyA",
+          "width": "fill_container",
+          "height": 606,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "nrejP",
+              "name": "companyBodyTextA",
+              "fill": "#101419",
+              "content": "Pattern from code:\nDark company-focus cards\nWhy We Exist narrative\nLight belief cards\nDark team section\nLight timeline\nDark CTA\nThis page has the clearest mission language but the weakest founder/team depth.",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ISkvM",
+      "x": 18000,
+      "y": 2200,
+      "name": "ARCHIVE / Pricing Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "9H9kd",
+          "name": "pricingNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "idbMU",
+              "name": "pricingNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / PRICING",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VJMTh",
+          "name": "pricingHeroA",
+          "width": "fill_container",
+          "height": 190,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "nqYId",
+              "name": "pricingHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Engagement models that match operational reality",
+              "fontFamily": "Manrope",
+              "fontSize": 31,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cM0XK",
+          "name": "pricingBodyA",
+          "width": "fill_container",
+          "height": 636,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "sks23",
+              "name": "pricingBodyTextA",
+              "fill": "#101419",
+              "content": "Pattern from code:\nDark hero\nLight 3-tier pricing grid\nDark FAQ accordion\nStrong structure, but the page avoids real commercial specificity and therefore cannot carry much pricing conviction yet.",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FydMd",
+      "x": 18480,
+      "y": 2200,
+      "name": "ARCHIVE / Contact Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "WrpyD",
+          "name": "contactNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "9aXIB",
+              "name": "contactNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / CONTACT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R7uej",
+          "name": "contactHeroA",
+          "width": "fill_container",
+          "height": 210,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "XmJER",
+              "name": "contactHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Let's talk about your energy settlement",
+              "fontFamily": "Manrope",
+              "fontSize": 32,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HkPXg",
+          "name": "contactBodyA",
+          "width": "fill_container",
+          "height": 616,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "BLJR2",
+              "name": "contactBodyTextA",
+              "fill": "#F7F8FA",
+              "content": "Pattern from code:\nTwo-column dark page\nLeft = long lead form\nRight = contact details card + urgent inquiry card\nFunctionally solid, but the visual treatment feels more utilitarian than high-trust premium.",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QSSZf",
+      "x": 18960,
+      "y": 2200,
+      "name": "ARCHIVE / Resources Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "cNy3D",
+          "name": "blogNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#0B1016",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "g1JBz",
+              "name": "blogNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE / RESOURCES / BLOG",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "16gCJ",
+          "name": "blogHeroA",
+          "width": "fill_container",
+          "height": 180,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "NFOBt",
+              "name": "blogHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Insights",
+              "fontFamily": "Manrope",
+              "fontSize": 36,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pevcw",
+          "name": "blogBodyA",
+          "width": "fill_container",
+          "height": 646,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "rWtv1",
+              "name": "blogBodyTextA",
+              "fill": "#F7F8FA",
+              "content": "Pattern from code:\nBlog index = dark card grid with category color accents\nArticle template = narrow prose page with back link, eyebrow category, metadata, prose styles\nThis surface is cleaner than most secondary pages and benefits from the simpler structure.",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Kp5Cy",
+      "x": 19440,
+      "y": 2200,
+      "name": "ARCHIVE / Docs Summary",
+      "width": 420,
+      "height": 900,
+      "fill": "#F5F7F9",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "p4iYp",
+          "name": "docsNavA",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "#FFFFFF",
+          "padding": [
+            20,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "GHAXV",
+              "name": "docsNavTextA",
+              "fill": "#101419",
+              "content": "JOULEBRIDGE DOCS / BACK TO WEBSITE",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sQmOq",
+          "name": "docsBodyA",
+          "width": "fill_container",
+          "height": 826,
+          "fill": "#F5F7F9",
+          "gap": 12,
+          "padding": 18,
+          "children": [
+            {
+              "type": "frame",
+              "id": "UMGzm",
+              "name": "docsSidebarA",
+              "width": 120,
+              "height": "fill_container",
+              "fill": "#FFFFFF"
+            },
+            {
+              "type": "frame",
+              "id": "mQ9OO",
+              "name": "docsArticleA",
+              "width": 252,
+              "height": "fill_container",
+              "fill": "#FFFFFF",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "i7sbX",
+                  "name": "docsArticleTextA",
+                  "fill": "#101419",
+                  "content": "Fumadocs shell in neutral theme\nLogo + Docs label\nLeft sidebar tree\nRight article pane\nLight-mode docs are structurally clearer, but they break from the premium dark-site personality enough that the brand feels split in two.",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TKtyI",
+      "x": 0,
+      "y": 1960,
+      "name": "FULL / Landing",
+      "width": 1440,
+      "height": 9550,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "AqHQ0",
+          "name": "fullLandingNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "gap": 28,
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "6qCVC",
+              "name": "fullLandingNavLogoA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE",
+              "fontFamily": "Space Grotesk",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "k8VYZ",
+              "name": "fullLandingNavItemsA",
+              "fill": "#F7F8FA",
+              "content": "PRODUCT  SOLUTIONS  DOCS  PRICING  COMPANY  RESOURCES  PILOT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ew6IQ",
+          "name": "fullLandingHeroA",
+          "width": "fill_container",
+          "height": 1100,
+          "fill": "#0A0A0B",
+          "gap": 52,
+          "padding": [
+            92,
+            64
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "AZcAJ",
+              "name": "fullLandingHeroTextA",
+              "width": 620,
+              "height": 840,
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SsSXH",
+                  "name": "heroBadgeC",
+                  "fill": "#4DD7C8",
+                  "content": "VERIFIED DATA INFRASTRUCTURE FOR ENERGY",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "VHg1I",
+                  "name": "heroTitleC",
+                  "fill": "#F7F8FA",
+                  "content": "Make critical\nenergy records\neasier to trust.",
+                  "fontFamily": "Manrope",
+                  "fontSize": 68,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "tPc3t",
+                  "name": "heroCopyC",
+                  "fill": "#96A0AD",
+                  "content": "JouleBridge helps utilities, AMISPs, C&I operators,\nand EV platforms turn raw telemetry into deterministic\nrecords, cryptographic proofs, and audit-ready evidence\nbefore disputes and reconciliation delays spread\nthrough the stack.",
+                  "fontFamily": "Manrope",
+                  "fontSize": 18,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "qoJ7t",
+                  "name": "heroChipsC",
+                  "fill": "#F7F8FA",
+                  "content": "EDGE RUNTIME     PROOF ENGINE     POLICY GATE     OPERATOR REVIEW",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "CDA1w",
+                  "name": "heroButtonsE",
+                  "fill": "#4DD7C8",
+                  "content": "START A PILOT",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "U82vr",
+                  "name": "heroButtonsF",
+                  "fill": "#F7F8FA",
+                  "content": "EXPLORE THE PLATFORM",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "mWkB2",
+                  "name": "heroFactsF",
+                  "fill": "#F7F8FA",
+                  "content": "Current baseline:\ndeterministic runtime, proofs, ledger, policy,\nand controlled sync.\n\nBest fit now:\npilots, audits, and high-trust telemetry workflows\nin energy operations.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Manrope",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VEH8M",
+              "name": "fullLandingHeroVisualA",
+              "width": 650,
+              "height": 820,
+              "fill": "#12161D",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DohaQ",
+                  "name": "heroVisualTitleG",
+                  "fill": "#F7F8FA",
+                  "content": "Trust layer in motion",
+                  "fontFamily": "Manrope",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "K4Jyw",
+                  "name": "heroVisualBoxG",
+                  "width": "fill_container",
+                  "height": 470,
+                  "fill": "#0F141B"
+                },
+                {
+                  "type": "text",
+                  "id": "P6XFg",
+                  "name": "heroVisualNotesG",
+                  "fill": "#96A0AD",
+                  "content": "JouleBridge Hero Visual\n\nA lattice-cube visual sits inside a dark proof shell.\nTwo support cards below it explain Capture and Prove.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Manrope",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "k2Mrk",
+                  "name": "heroSupportCardsE",
+                  "width": "fill_container",
+                  "height": 120,
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "1TK4k",
+                      "name": "heroSupport1E",
+                      "width": 285,
+                      "height": 120,
+                      "fill": "#12161D",
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vsTpP",
+                          "name": "heroSupport1TextE",
+                          "fill": "#F7F8FA",
+                          "content": "CAPTURE\nReceive field telemetry and operational events at the edge.",
+                          "fontFamily": "Manrope",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "6oku9",
+                      "name": "heroSupport2E",
+                      "width": 285,
+                      "height": 120,
+                      "fill": "#12161D",
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MBv8w",
+                          "name": "heroSupport2TextE",
+                          "fill": "#F7F8FA",
+                          "content": "PROVE\nTurn records into reviewable proof before downstream handoff.",
+                          "fontFamily": "Manrope",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PBh6w",
+          "name": "problemSectionH",
+          "width": "fill_container",
+          "height": 1060,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "FPCMK",
+              "name": "eyebrowP",
+              "fill": "#4DD7C8",
+              "content": "THE PROBLEM",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "GJgFN",
+              "name": "problemTitleH",
+              "fill": "#F7F8FA",
+              "content": "Critical energy workflows still rely\non records that are hard to trust.\nThat breaks operations.",
+              "fontFamily": "Manrope",
+              "fontSize": 58,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "w22Lq",
+              "name": "problemBodyH",
+              "fill": "#96A0AD",
+              "content": "The issue is bigger than billing. Once telemetry becomes operationally\nor financially important, teams need deterministic records, audit trails,\nand evidence they can defend.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 18,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "HVO9X",
+              "name": "problemRowA",
+              "width": "fill_container",
+              "height": 560,
+              "gap": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XDnhe",
+                  "name": "problemEntropyA",
+                  "width": 280,
+                  "height": 280,
+                  "fill": "#12161D"
+                },
+                {
+                  "type": "frame",
+                  "id": "Bh2wM",
+                  "name": "problemCardsA",
+                  "width": 900,
+                  "height": 420,
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aZGab",
+                      "name": "problemCard1A",
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "#12161D",
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "3ah3W",
+                          "name": "problemCard1TextA",
+                          "fill": "#FF7B66",
+                          "content": "01  Telemetry changes meaning as it moves\n\nField data passes through gateways, spreadsheets, operators, and settlement teams. By the time it matters, nobody can independently prove the original record.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CqsH1",
+                      "name": "problemCard2A",
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "#12161D",
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sELKd",
+                          "name": "problemCard2TextA",
+                          "fill": "#FF7B66",
+                          "content": "02  Reconciliation takes too long\n\nEnergy operations still spend days or weeks reconciling mismatches across sites, systems, and counterparties. The delay is operationally expensive and commercially risky.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zAY8P",
+                      "name": "problemCard3A",
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "#12161D",
+                      "padding": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M9xx8",
+                          "name": "problemCard3TextA",
+                          "fill": "#FF7B66",
+                          "content": "03  Disputes start with weak evidence\n\nWhen a tariff, session, or operational dispute happens, the conversation often falls back to screenshots and spreadsheets instead of tamper-evident proof.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oA6XX",
+          "name": "solutionSectionH",
+          "width": "fill_container",
+          "height": 1400,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "dzHi0",
+              "name": "eyebrowS",
+              "fill": "#5A6777",
+              "content": "THE SOLUTION",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "zvfml",
+              "name": "solutionTitleH",
+              "fill": "#101419",
+              "content": "Turn raw telemetry into evidence\nthat survives audits, disputes,\nand handoffs.",
+              "fontFamily": "Manrope",
+              "fontSize": 58,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "XPWxf",
+              "name": "solutionBodyH",
+              "fill": "#556273",
+              "content": "JouleBridge starts at the edge. Data is captured close to the source,\nnormalized into deterministic records, wrapped with verification metadata,\nand checked by policy before it persists.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 18,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "oMLgP",
+              "name": "solutionButtonA",
+              "fill": "#101419",
+              "content": "HOW IT WORKS",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "11b01",
+              "name": "solutionFlowA",
+              "width": "fill_container",
+              "height": 340,
+              "fill": "#FFFFFF"
+            },
+            {
+              "type": "frame",
+              "id": "65CKu",
+              "name": "solutionCardsA",
+              "width": "fill_container",
+              "height": 440,
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "3YaRX",
+                  "name": "solutionCard1A",
+                  "width": 400,
+                  "height": 300,
+                  "fill": "#FFFFFF",
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hHA4V",
+                      "name": "solutionCard1TextA",
+                      "fill": "#101419",
+                      "content": "01  DETERMINISTIC CAPTURE\n\nJouleBridge starts at the edge.\nData is captured close to the source\nand normalized into deterministic\nrecords before the evidence\ntrail begins.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "busmc",
+                  "name": "solutionCard2A",
+                  "width": 400,
+                  "height": 320,
+                  "fill": "#FFFFFF",
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "P1FxV",
+                      "name": "solutionCard2TextA",
+                      "fill": "#101419",
+                      "content": "02  VERIFIABLE PROOF\nGENERATION\n\nEvents are canonicalized,\nhashed, signed, and wrapped\nwith verification metadata\nso operators can validate\nwhat happened.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AXCE8",
+                  "name": "solutionCard3A",
+                  "width": 400,
+                  "height": 320,
+                  "fill": "#FFFFFF",
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dzPTN",
+                      "name": "solutionCard3TextA",
+                      "fill": "#101419",
+                      "content": "03  POLICY-GATED\nPERSISTENCE\n\nBefore records are accepted\ninto the ledger, policy rules\ncan reject stale, malformed,\nor risky flows so the trail\nstays cleaner.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SYUQE",
+          "name": "pipelineSectionH",
+          "width": "fill_container",
+          "height": 980,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "GLcNw",
+              "name": "pipelineTitleH",
+              "fill": "#F7F8FA",
+              "content": "The current Bridge Kernel operating flow",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Cf3Eq",
+              "name": "pipelineBodyH",
+              "fill": "#96A0AD",
+              "content": "JouleBridge is strongest when the path from source event\nto reviewable evidence is clear. The current runtime baseline\ncan be understood as a three-step flow rather than a cluster\nof raw terminals.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 18,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "whXZc",
+              "name": "pipelineCardsB",
+              "width": "fill_container",
+              "height": 520,
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "dJQFy",
+                  "name": "pipelineCard1B",
+                  "width": 396,
+                  "height": 520,
+                  "fill": "#12161D",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zBQuW",
+                      "name": "pipelineCard1TitleB",
+                      "fill": "#4DD7C8",
+                      "content": "STEP 01  CAPTURE",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BfaBX",
+                      "name": "pipelineCard1BodyB",
+                      "fill": "#F7F8FA",
+                      "content": "Input\nWebhook, file ingest, scanner input, or baseline adapters\n\nWhat happens\nNormalize records into a deterministic internal shape.\n\nOutput\nStable event object ready for proofing.",
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lx7IE",
+                  "name": "pipelineCard2B",
+                  "width": 396,
+                  "height": 520,
+                  "fill": "#12161D",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "m1qqM",
+                      "name": "pipelineCard2TitleB",
+                      "fill": "#4DD7C8",
+                      "content": "STEP 02  PROVE",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "79UY5",
+                      "name": "pipelineCard2BodyB",
+                      "fill": "#F7F8FA",
+                      "content": "Input\nCanonical event payload plus signing identity\n\nWhat happens\nHash, sign with Ed25519, attach verification metadata.\n\nOutput\nProof envelope ready for review.",
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "u3LpM",
+                  "name": "pipelineCard3B",
+                  "width": 396,
+                  "height": 520,
+                  "fill": "#12161D",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rwBOP",
+                      "name": "pipelineCard3TitleB",
+                      "fill": "#4DD7C8",
+                      "content": "STEP 03  GOVERN",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lJ3af",
+                      "name": "pipelineCard3BodyB",
+                      "fill": "#F7F8FA",
+                      "content": "Input\nProof-backed event plus active policy bundle\n\nWhat happens\nRun policy checks before persistence.\n\nOutput\nVerified records move forward, exceptions hold for review.",
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9lKCR",
+          "name": "platformSectionH",
+          "width": "fill_container",
+          "height": 1040,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "9VJ4A",
+              "name": "platformTitleH",
+              "fill": "#101419",
+              "content": "Built to make high-trust telemetry\noperationally usable.",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "QPU3X",
+              "name": "platformBodyH",
+              "fill": "#556273",
+              "content": "Bridge Kernel is designed to run where the data is born, so verification starts at the operational edge instead of being bolted on later.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 18,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "W02T7",
+              "name": "platformGridB",
+              "width": "fill_container",
+              "height": 520,
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t9wAS",
+                  "name": "platformLeftB",
+                  "width": 760,
+                  "height": 420,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DW7j7",
+                      "name": "platformFeaturesB",
+                      "fill": "#101419",
+                      "content": "Edge-first runtime\nBridge Kernel is designed to run where the data is born.\n\nAdapter-based ingestion\nThe current implementation already supports adapter-driven capture flows.\n\nDeterministic proof pipeline\nRecords are canonicalized, hashed, signed, and paired with verification metadata.\n\nReplay-aware controls\nReplay windows, deduplication, and policy controls help filter bad flows.\n\nLedger and sync baseline\nLocal persistence and controlled sync create a foundation for higher-trust movement.\n\nRoadmap-driven hardening\nCloud control, dashboards, advanced protocol support, and broader commercial surfaces are being layered around the runtime core.",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Manrope",
+                      "fontSize": 22,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Rw7cv",
+                  "name": "platformRightB",
+                  "width": 500,
+                  "height": 460,
+                  "fill": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4IcQz",
+          "name": "footerSectionH",
+          "width": "fill_container",
+          "height": 500,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            64,
+            72
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "fBi4J",
+              "name": "footerTextH",
+              "fill": "#96A0AD",
+              "fontFamily": "Manrope",
+              "fontSize": 16,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "gPFUI",
+              "name": "footerGridE",
+              "width": "fill_container",
+              "height": 220,
+              "gap": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kdcZR",
+                  "name": "footerBrandE",
+                  "width": 420,
+                  "height": 220,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "foFmp",
+                      "name": "footerBrandTextE",
+                      "fill": "#F7F8FA",
+                      "content": "JOULEBRIDGE\n\nJouleBridge builds verification-oriented infrastructure for the energy workflows where audit quality, reconciliation speed, and operational trust matter.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Manrope",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mFXVq",
+                  "name": "footerLinksE",
+                  "width": 800,
+                  "height": 220,
+                  "gap": 36,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9L5Fw",
+                      "name": "footerLinksTextE",
+                      "fill": "#F7F8FA",
+                      "content": "PRODUCT\nBridge Kernel\nPricing\nDocumentation\n\nRESOURCES\nBlog\nPapers\nVideos\nNews\n\nCOMPANY\nAbout\nContact\nCareers\n\nLEGAL\nPrivacy\nTerms",
+                      "lineHeight": 1.65,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3AOqj",
+          "name": "demoSectionC",
+          "width": "fill_container",
+          "height": 700,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "0L0m8",
+              "name": "demoTitleC",
+              "fill": "#F7F8FA",
+              "content": "See the runtime behavior in a concrete operator flow",
+              "fontFamily": "Manrope",
+              "fontSize": 52,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "JHCYq",
+              "name": "demoCopyC",
+              "fill": "#96A0AD",
+              "content": "Step through a representative Bridge Kernel session: runtime startup,\ndevice input, deterministic event handling, proof generation, and\na policy violation caught before it reaches the ledger.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "muuoQ",
+              "name": "demoTerminalC",
+              "width": 1080,
+              "height": 420,
+              "fill": "#12161D",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QyD5A",
+                  "name": "demoHeaderE",
+                  "width": "fill_container",
+                  "height": 46,
+                  "fill": "#171C24",
+                  "gap": 10,
+                  "padding": [
+                    14,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3BLKp",
+                      "name": "demoHeaderTextE",
+                      "fill": "#96A0AD",
+                      "content": "bridge-kernel demo",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aJBdS",
+                  "name": "demoTerminalBodyE",
+                  "width": "fill_container",
+                  "height": 314,
+                  "fill": "#0A0A0B",
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3XYkx",
+                      "name": "demoBodyTextE",
+                      "fill": "#B6FF6C",
+                      "content": "$ bridge-kernel init --adapter webhook --site demo-site\n[OK] Generated Ed25519 keypair\n[OK] Created config\n[OK] Initialized ledger\n\n$ bridge-kernel start\n[INFO] adapter ready\n[INFO] proof signing active\n[INFO] ledger append-only, WAL enabled\n\n-> event #3 | power_kw: 512.7\npolicy [DER-04]: FAILED\nevent quarantined - requires review",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ssisg",
+          "name": "benefitsSectionC",
+          "width": "fill_container",
+          "height": 1040,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "SIQ04",
+              "name": "benefitsTitleC",
+              "fill": "#F7F8FA",
+              "content": "Why a stronger evidence layer matters",
+              "fontFamily": "Manrope",
+              "fontSize": 54,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "FoNFs",
+              "name": "benefitsGridC",
+              "width": "fill_container",
+              "height": 460,
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2LCIW",
+                  "name": "benefitsCol1C",
+                  "width": 410,
+                  "height": 460,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U9NLD",
+                      "name": "benefit1C",
+                      "fill": "#F7F8FA",
+                      "content": "Create a stronger audit trail between field telemetry and the records used by operations, finance, and compliance teams.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FabzN",
+                      "name": "benefit4E",
+                      "fill": "#F7F8FA",
+                      "content": "Raise confidence that unexpected edits, policy violations, and abnormal operating behavior are visible sooner.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Sqyni",
+                  "name": "benefitsCol2C",
+                  "width": 410,
+                  "height": 460,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "racNw",
+                      "name": "benefit2C",
+                      "fill": "#F7F8FA",
+                      "content": "Shorten reconciliation effort by preparing cleaner, proof-oriented evidence before disputes escalate.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kQltJ",
+                      "name": "benefit5E",
+                      "fill": "#F7F8FA",
+                      "content": "Give customer, operator, and utility teams a more defensible record to review when settlement disputes appear.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ahtl5",
+                  "name": "benefitsCol3C",
+                  "width": 410,
+                  "height": 460,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uueYX",
+                      "name": "benefit3C",
+                      "fill": "#F7F8FA",
+                      "content": "Trace events from source capture through proof generation and downstream review with clearer lineage.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nRBej",
+                      "name": "benefit6E",
+                      "fill": "#F7F8FA",
+                      "content": "Use one verification-oriented operating model across sites and asset workflows instead of one-off evidence handling.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Manrope",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TQBRN",
+          "name": "useCasesSectionD",
+          "width": "fill_container",
+          "height": 840,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 72,
+          "children": [
+            {
+              "type": "text",
+              "id": "1xgT3",
+              "name": "useCasesTitleD",
+              "fill": "#F7F8FA",
+              "content": "Built for the workflows where\nweak evidence creates real\noperational risk",
+              "fontFamily": "Manrope",
+              "fontSize": 54,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "J87kz",
+              "name": "useCasesGridD",
+              "width": "fill_container",
+              "height": 360,
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kMz5U",
+                  "name": "useCase1D",
+                  "width": 400,
+                  "height": 360,
+                  "fill": "#12161D",
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oRZww",
+                      "name": "useCase1TextD",
+                      "fill": "#F7F8FA",
+                      "content": "C&I Energy Settlement\n\nOpen-access C&I buyers with multi-source power contracts. Bridge Kernel verifies every unit from generation to billing, eliminating reconciliation disputes.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Manrope",
+                      "fontSize": 26,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MBJIW",
+                  "name": "useCase2D",
+                  "width": 400,
+                  "height": 360,
+                  "fill": "#12161D",
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mREXu",
+                      "name": "useCase2TextD",
+                      "fill": "#F7F8FA",
+                      "content": "EV Fleet Charging\n\nDepot and fleet charging operators with high-frequency sessions. Every charge session is metered, signed, and settled with proof of energy delivered.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Manrope",
+                      "fontSize": 26,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zqHXM",
+                  "name": "useCase3D",
+                  "width": 400,
+                  "height": 360,
+                  "fill": "#12161D",
+                  "padding": 22,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pmYRL",
+                      "name": "useCase3TextD",
+                      "fill": "#F7F8FA",
+                      "content": "Grid Event Audit\n\nReconstruct the precise state of any grid-connected asset at any point in time. Signed event chains provide audit-ready evidence for regulators and counterparties.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Manrope",
+                      "fontSize": 26,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pIbrU",
+          "name": "ctaSectionD",
+          "width": "fill_container",
+          "height": 760,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 80,
+          "children": [
+            {
+              "type": "text",
+              "id": "Of11N",
+              "name": "ctaBadgeD",
+              "fill": "#B6FF6C",
+              "content": "PILOT PROGRAM OPEN",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "Pefev",
+              "name": "ctaTitleD",
+              "fill": "#F7F8FA",
+              "content": "Scope the right pilot before\nyou overbuild the stack",
+              "fontFamily": "Manrope",
+              "fontSize": 54,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "TN6Tj",
+              "name": "ctaCopyD",
+              "fill": "#F7F8FA",
+              "content": "Start with the workflow where weak evidence is already slowing you down.\nJouleBridge pilots are designed to validate deployment shape, proof quality,\nand operating fit before a broader rollout.",
+              "lineHeight": 1.6,
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "0upqR",
+              "name": "ctaMetricsD",
+              "fill": "#F7F8FA",
+              "content": "4   Current adapter baseline\n6   Core runtime layers\n3   Primary pilot workflows\n11  Core modules",
+              "lineHeight": 1.8,
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 18,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "CV2h0",
+              "name": "ctaButtonsD",
+              "fill": "#4DD7C8",
+              "content": "REQUEST A PILOT          READ THE DOCS",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "3GISt",
+      "x": 1500,
+      "y": 1960,
+      "name": "FULL / Product Hub",
+      "width": 1440,
+      "height": 3600,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "yRIzO",
+          "name": "fullProductNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "FAhBt",
+              "name": "fullProductNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  PRODUCT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "8ywPJ",
+          "name": "fullProductHeroA",
+          "width": "fill_container",
+          "height": 620,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "paIcH",
+              "name": "fullProductHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Bridge Kernel",
+              "fontFamily": "Manrope",
+              "fontSize": 64,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "UKnkW",
+              "name": "fullProductHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Hero plus white proof-cycle diagram card, product explanation, and quickstart and architecture CTAs.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GANoW",
+          "name": "fullProductSectionsA",
+          "width": "fill_container",
+          "height": 2580,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "O8tAJ",
+              "name": "fullProductSectionsTextA",
+              "fill": "#101419",
+              "content": "How It Works\nProtocol Adapters\nProof System\nDeployment\nSecurity\nOperating View\nFooter",
+              "fontFamily": "Manrope",
+              "fontSize": 28,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Nwp6n",
+      "x": 3000,
+      "y": 1960,
+      "name": "FULL / Solutions",
+      "width": 1440,
+      "height": 3400,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "HWHPp",
+          "name": "fullSolutionsNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ipYmm",
+              "name": "fullSolutionsNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  SOLUTIONS",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v5O76",
+          "name": "fullSolutionsHeroA",
+          "width": "fill_container",
+          "height": 560,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "I33GQ",
+              "name": "fullSolutionsHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Where stronger telemetry evidence changes the operating outcome",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "8vWTI",
+              "name": "fullSolutionsHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Hero plus proof diagram, then three solution bands for settlement, EV charging, and grid audit.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ylhqQ",
+          "name": "fullSolutionsBandsA",
+          "width": "fill_container",
+          "height": 2754,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "uX3iW",
+              "name": "fullSolutionsBandsTextA",
+              "fill": "#101419",
+              "content": "Energy Settlement\nEV Fleet Charging\nGrid Event Audit\nFinal CTA",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "L4Djd",
+      "x": 4500,
+      "y": 1960,
+      "name": "FULL / Company",
+      "width": 1440,
+      "height": 3500,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "w2qZv",
+          "name": "fullCompanyNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "DUHgV",
+              "name": "fullCompanyNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  COMPANY",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UdaPw",
+          "name": "fullCompanyHeroA",
+          "width": "fill_container",
+          "height": 520,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "dOykQ",
+              "name": "fullCompanyHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Building the trust layer for energy",
+              "fontFamily": "Manrope",
+              "fontSize": 58,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "0TaPO",
+              "name": "fullCompanyHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Dark hero with company-focus cards, then Why We Exist, beliefs, team, timeline, and CTA.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "7gj4G",
+          "name": "fullCompanySectionsA",
+          "width": "fill_container",
+          "height": 2894,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "5q0xC",
+              "name": "fullCompanySectionsTextA",
+              "fill": "#101419",
+              "content": "Why We Exist\nWhat We Believe\nTeam\nTimeline\nFinal CTA",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Kb2sE",
+      "x": 6000,
+      "y": 1960,
+      "name": "FULL / Pricing",
+      "width": 1440,
+      "height": 2800,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "zTgeY",
+          "name": "fullPricingNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "T0Ni2",
+              "name": "fullPricingNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  PRICING",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cWo9w",
+          "name": "fullPricingHeroA",
+          "width": "fill_container",
+          "height": 420,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "UhyB2",
+              "name": "fullPricingHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Engagement models that match operational reality",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "LvcOu",
+              "name": "fullPricingHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Dark hero, light three-tier pricing grid, then dark FAQ accordion.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "w3NAU",
+          "name": "fullPricingSectionsA",
+          "width": "fill_container",
+          "height": 2294,
+          "fill": "#EEF2F6",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "Cj0AY",
+              "name": "fullPricingSectionsTextA",
+              "fill": "#101419",
+              "content": "Discovery tier\nPilot tier\nRollout tier\nFAQ",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "vgtID",
+      "x": 7500,
+      "y": 1960,
+      "name": "FULL / Contact",
+      "width": 1440,
+      "height": 2500,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "hVasI",
+          "name": "fullContactNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "FkuB2",
+              "name": "fullContactNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  CONTACT",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "KuCQw",
+          "name": "fullContactHeroA",
+          "width": "fill_container",
+          "height": 2414,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "fto08",
+              "name": "fullContactHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Let's talk about your energy settlement",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "E9sAX",
+              "name": "fullContactHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Two-column contact surface: lead form on the left, details card on the right, success state, and mail fallback.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "rh95E",
+              "name": "fullContactBodyA",
+              "fill": "#F7F8FA",
+              "content": "Fields in code: name, email, company, role, interest, message, send button, contact email, response time, social links, urgent inquiry card.",
+              "fontFamily": "Manrope",
+              "fontSize": 26,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "aCAkO",
+      "x": 9000,
+      "y": 1960,
+      "name": "FULL / Product / Bridge Kernel",
+      "width": 1440,
+      "height": 3300,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "TdQvU",
+          "name": "fullBridgeKernelNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "usNhA",
+              "name": "fullBridgeKernelNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  PRODUCT  /  BRIDGE KERNEL",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QxdDv",
+          "name": "fullBridgeKernelHeroA",
+          "width": "fill_container",
+          "height": 520,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "FcTBH",
+              "name": "fullBridgeKernelHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "The runtime that makes energy data trustworthy",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5Xtes",
+          "name": "fullBridgeKernelSectionsA",
+          "width": "fill_container",
+          "height": 2694,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "TOP8O",
+              "name": "fullBridgeKernelSectionsTextA",
+              "fill": "#F7F8FA",
+              "content": "Six modules, one pipeline\nTechnical specs\nData integrity visualization\nCLI preview\nCTA",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "H3bQ1",
+      "x": 10500,
+      "y": 1960,
+      "name": "FULL / Product / Cloud",
+      "width": 1440,
+      "height": 2700,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Jb2oP",
+          "name": "fullCloudNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Mosta",
+              "name": "fullCloudNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  PRODUCT  /  CLOUD",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Eazf0",
+          "name": "fullCloudHeroA",
+          "width": "fill_container",
+          "height": 520,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "GLmP8",
+              "name": "fullCloudHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Manage your fleet from one control plane",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OXg05",
+          "name": "fullCloudSectionsA",
+          "width": "fill_container",
+          "height": 2094,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "Krmix",
+              "name": "fullCloudSectionsTextA",
+              "fill": "#F7F8FA",
+              "content": "Coming Q2 2026 badge\nControl plane, not data plane\nPlanned features grid\nWaitlist CTA",
+              "fontFamily": "Manrope",
+              "fontSize": 28,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "SoKpQ",
+      "x": 12000,
+      "y": 1960,
+      "name": "FULL / Product / Hardware",
+      "width": 1440,
+      "height": 2700,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "BjoI9",
+          "name": "fullHardwareNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "piZ9N",
+              "name": "fullHardwareNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  PRODUCT  /  HARDWARE",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2dOzq",
+          "name": "fullHardwareHeroA",
+          "width": "fill_container",
+          "height": 520,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "KfPpH",
+              "name": "fullHardwareHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "From gateway to inverter - proof at the source",
+              "fontFamily": "Manrope",
+              "fontSize": 56,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ikLxu",
+          "name": "fullHardwareSectionsA",
+          "width": "fill_container",
+          "height": 2094,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "2nqNv",
+              "name": "fullHardwareSectionsTextA",
+              "fill": "#F7F8FA",
+              "content": "Hardware targets\nHardware security\nPartnership CTA",
+              "fontFamily": "Manrope",
+              "fontSize": 28,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "aiAZi",
+      "x": 13500,
+      "y": 1960,
+      "name": "FULL / Resources Suite",
+      "width": 1440,
+      "height": 3200,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "TbCHg",
+          "name": "fullResourcesNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "BQYrX",
+              "name": "fullResourcesNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  RESOURCES",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Wm4WG",
+          "name": "fullResourcesHeroA",
+          "width": "fill_container",
+          "height": 520,
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "5cDce",
+              "name": "fullResourcesHeroTextA",
+              "fill": "#F7F8FA",
+              "content": "Blog, papers, videos, news",
+              "fontFamily": "Manrope",
+              "fontSize": 58,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "xh604",
+              "name": "fullResourcesHeroCopyA",
+              "fill": "#96A0AD",
+              "content": "Resources are split into four patterns in code: blog index and article, papers list, video coming-soon page, and news timeline.",
+              "fontFamily": "Manrope",
+              "fontSize": 20,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "8AKHl",
+          "name": "fullResourcesSectionsA",
+          "width": "fill_container",
+          "height": 2594,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "V0uOi",
+              "name": "fullResourcesSectionsTextA",
+              "fill": "#F7F8FA",
+              "content": "Blog index\nBlog article template\nPapers list\nVideo placeholder\nNews timeline",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "DWIQP",
+      "x": 15000,
+      "y": 1960,
+      "name": "FULL / Docs",
+      "width": 1440,
+      "height": 2600,
+      "fill": "#F5F7F9",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "qhzuA",
+          "name": "fullDocsNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#FFFFFF",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "aXnev",
+              "name": "fullDocsNavTextA",
+              "fill": "#101419",
+              "content": "JOULEBRIDGE DOCS  /  BACK TO WEBSITE",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QDLHf",
+          "name": "fullDocsBodyA",
+          "width": "fill_container",
+          "height": 2514,
+          "fill": "#F5F7F9",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "B8yxq",
+              "name": "fullDocsBodyTextA",
+              "fill": "#101419",
+              "content": "Docs shell\nSidebar tree\nArticle template\nSearch API\nLight-mode Fumadocs theme",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "v9lKq",
+      "x": 16500,
+      "y": 1960,
+      "name": "FULL / Careers + Privacy + Terms + 404",
+      "width": 1440,
+      "height": 3000,
+      "fill": "#0A0A0B",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "MqwOJ",
+          "name": "fullSystemNavA",
+          "width": "fill_container",
+          "height": 86,
+          "fill": "#0B1016",
+          "padding": [
+            28,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "rMaDl",
+              "name": "fullSystemNavTextA",
+              "fill": "#F7F8FA",
+              "content": "JOULEBRIDGE  /  SYSTEM PAGES",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UIoOs",
+          "name": "fullSystemBodyA",
+          "width": "fill_container",
+          "height": 2914,
+          "fill": "#12161D",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": 64,
+          "children": [
+            {
+              "type": "text",
+              "id": "Kh7C9",
+              "name": "fullSystemBodyTextA",
+              "fill": "#F7F8FA",
+              "content": "Careers page\nPrivacy policy\nTerms of service\n404 terminal-style page\n\nThese pages are functional but visually much lighter in craft than the landing and product surfaces.",
+              "fontFamily": "Manrope",
+              "fontSize": 30,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

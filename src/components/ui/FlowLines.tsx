@@ -8,6 +8,13 @@ const transition = {
   ease: "linear" as const,
 };
 
+const stageMeta = [
+  { label: "Raw Telemetry", sub: "Edge / File / Webhook", color: "text-[#f97316]" },
+  { label: "Canonical JSON", sub: "Deterministic", color: "text-[#f59e0b]" },
+  { label: "Proof Envelope", sub: "Signed Evidence", color: "text-[#fbbf24]" },
+  { label: "Event Ledger", sub: "Review Ready", color: "text-[#ef4444]" },
+];
+
 export function FlowLines({
   pathLengths,
   className,
@@ -16,111 +23,27 @@ export function FlowLines({
   className?: string;
 }) {
   return (
-    <div className={cn("w-full relative", className)}>
-      {/* Pipeline stage labels */}
-      <div className="absolute top-0 left-0 right-0 flex justify-between px-4 md:px-16 z-10 pointer-events-none">
-        {[
-          { label: "Raw Telemetry", sub: "Edge / File / Webhook", color: "text-jb-pink" },
-          { label: "Canonical JSON", sub: "Deterministic", color: "text-jb-yellow" },
-          { label: "Proof Envelope", sub: "Ed25519 Signed", color: "text-jb-green" },
-          { label: "Event Ledger", sub: "Review Ready", color: "text-jb-accent" },
-        ].map((stage, i) => (
-          <div key={i} className="text-center">
-            <div className={`font-mono text-[10px] md:text-xs uppercase tracking-widest ${stage.color}`}>
+    <div className={cn("relative w-full overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,12,14,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.28)]", className)}>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:140px_140px] opacity-40" />
+
+      <div className="relative z-10 mb-8 flex justify-between gap-3 px-2 md:px-10">
+        {stageMeta.map((stage) => (
+          <div key={stage.label} className="text-center">
+            <div className={`font-mono text-[10px] uppercase tracking-[0.18em] md:text-xs ${stage.color}`}>
               {stage.label}
             </div>
-            <div className="font-mono text-[8px] md:text-[10px] text-jb-text-muted/60 uppercase tracking-wider mt-0.5">
+            <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.16em] text-jb-text-muted/70 md:text-[10px]">
               {stage.sub}
             </div>
           </div>
         ))}
       </div>
 
-      <svg
-        width="1440"
-        height="400"
-        viewBox="0 0 1440 400"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto"
-        preserveAspectRatio="none"
-      >
-        {/* Animated foreground paths */}
-        <motion.path
-          d="M0 300C145.5 300 191 303 269 284C326.5 267 339.5 258 397.5 203C439 168.5 455 166.5 490 160C509.664 156.3 521 140.7 538 141.2C553.591 141.2 562.429 151.7 584.66 159.7C592.042 162.4 600.2 163.2 607.356 160C624.755 152.2 641.446 133.3 657 133.7C673.408 133.7 693.545 156.5 712.903 163.7C718.727 165.9 725.184 165.4 730.902 163C751.726 154.1 764.085 134.1 782 133.7C794.831 133.5 804.103 145.8 822.469 155.5C835.13 162.1 850.214 163.8 862.827 157C875.952 150 889.748 139.7 903.5 140.7C922.677 142.1 935.293 147.5 945.817 152.6C954.234 156.7 963.095 159.8 972.199 162C996.012 167.6 1007.42 171.1 1034 186C1077.5 210.4 1082.5 231.5 1140 266C1206 307 1328.5 299.5 1440 299.5"
-          stroke="#ed77f8"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          style={{ pathLength: pathLengths[0] }}
-          transition={transition}
-        />
-        <motion.path
-          d="M0 224.5C147 224.5 277 224.5 310 210.5C348 200 392.5 180.5 408 172C434 160.5 426 163.2 479 152.2C494 149.7 523 147.4 534.5 149.7C554.5 153.7 555.5 160.2 576 160.7C592 160.7 616 133.7 633 134.2C648.671 134.2 661.31 152 684.774 161.9C692.004 165 700.2 165.7 707.349 162.5C724.886 154.6 741.932 135.3 757.5 135.7C773.864 135.7 791.711 157.6 810.403 164.6C816.218 166.8 822.661 166.2 828.451 164C849.246 155.9 861.599 139.1 879.5 138.7C886.47 138.6 896.865 143 907.429 147.9C930.879 158.7 957.139 156.6 982.951 157C1020.91 157.7 1037.5 167.8 1056.5 174C1102.24 193.6 1116.5 207.7 1180.5 216.2C1257.5 226.5 1279 224 1440 225"
-          stroke="#ffff61"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          style={{ pathLength: pathLengths[1] }}
-          transition={transition}
-        />
-        <motion.path
-          d="M0 151C147.5 151.3 294.5 150.7 380.5 150.7C405.976 151.9 422.849 152.2 436.37 152.1C477.503 151.8 518.631 143.6 559.508 148.2C564.04 148.7 569.162 149.5 575 150.7C588 153.4 616 158.7 627.5 156.4C647.5 152.4 659 136.2 680.5 136.2C700.5 136.2 725 166.2 742 165.7C757.654 165.7 768.77 147.6 791.793 137.6C798.991 134.5 807.16 133.8 814.423 136.7C832.335 144 850.418 161.6 866 161.2C882.791 161.2 902.316 146.8 921.814 142.4C926.856 141.3 932.097 141.7 937.176 142.6C966.993 148.2 970.679 151.3 989.5 151.7C1006.3 152.1 1036.5 150.2 1055.5 150.2C1114.5 150.2 1090.5 150.2 1124 150.2C1177.5 150.2 1178.99 151.4 1241 151.4C1317.5 151.4 1274.5 149.6 1440 150.2"
-          stroke="#85f78f"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          style={{ pathLength: pathLengths[2] }}
-          transition={transition}
-        />
-        <motion.path
-          d="M0 75.5C150.5 75.5 261 75.3 323.5 93.5C351 101.5 387.517 121 423.5 131.5C447.371 138.5 472 140.7 487 144.7C503.786 149.2 504.5 153.8 523 155.7C547 158.2 564.814 138.2 584.5 138.2C604.5 138.2 626 166 643 165.6C658.676 165.6 672.076 148.6 695.751 139C703.017 136 711.231 135.2 718.298 138.6C735.448 146.9 751.454 167 767 166.6C783.364 166.6 801.211 144.7 819.903 137.7C825.718 135.5 832.141 136.1 837.992 138.2C859.178 145.8 873.089 160.4 891 160.7C907.8 161.1 923 141.2 963 143.7C1034.5 143.7 1047.5 129.7 1071 118.5C1122.5 94 1142.23 89.9 1185 83.5C1255.5 73 1294 76 1439.5 76"
-          stroke="#6466f1"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          style={{ pathLength: pathLengths[3] }}
-          transition={transition}
-        />
-
-        {/* Blurred background paths (glow effect) */}
-        <path
-          d="M0 300C145.5 300 191 303 269 284C326.5 267 339.5 258 397.5 203C439 168.5 455 166.5 490 160C509.664 156.3 521 140.7 538 141.2C553.591 141.2 562.429 151.7 584.66 159.7C592.042 162.4 600.2 163.2 607.356 160C624.755 152.2 641.446 133.3 657 133.7C673.408 133.7 693.545 156.5 712.903 163.7C718.727 165.9 725.184 165.4 730.902 163C751.726 154.1 764.085 134.1 782 133.7C794.831 133.5 804.103 145.8 822.469 155.5C835.13 162.1 850.214 163.8 862.827 157C875.952 150 889.748 139.7 903.5 140.7C922.677 142.1 935.293 147.5 945.817 152.6C954.234 156.7 963.095 159.8 972.199 162C996.012 167.6 1007.42 171.1 1034 186C1077.5 210.4 1082.5 231.5 1140 266C1206 307 1328.5 299.5 1440 299.5"
-          stroke="#ed77f8"
-          strokeWidth="2"
-          fill="none"
-          pathLength={1}
-          filter="url(#flowBlur)"
-        />
-        <path
-          d="M0 224.5C147 224.5 277 224.5 310 210.5C348 200 392.5 180.5 408 172C434 160.5 426 163.2 479 152.2C494 149.7 523 147.4 534.5 149.7C554.5 153.7 555.5 160.2 576 160.7C592 160.7 616 133.7 633 134.2C648.671 134.2 661.31 152 684.774 161.9C692.004 165 700.2 165.7 707.349 162.5C724.886 154.6 741.932 135.3 757.5 135.7C773.864 135.7 791.711 157.6 810.403 164.6C816.218 166.8 822.661 166.2 828.451 164C849.246 155.9 861.599 139.1 879.5 138.7C886.47 138.6 896.865 143 907.429 147.9C930.879 158.7 957.139 156.6 982.951 157C1020.91 157.7 1037.5 167.8 1056.5 174C1102.24 193.6 1116.5 207.7 1180.5 216.2C1257.5 226.5 1279 224 1440 225"
-          stroke="#ffff61"
-          strokeWidth="2"
-          fill="none"
-          pathLength={1}
-          filter="url(#flowBlur)"
-        />
-        <path
-          d="M0 151C147.5 151.3 294.5 150.7 380.5 150.7C405.976 151.9 422.849 152.2 436.37 152.1C477.503 151.8 518.631 143.6 559.508 148.2C564.04 148.7 569.162 149.5 575 150.7C588 153.4 616 158.7 627.5 156.4C647.5 152.4 659 136.2 680.5 136.2C700.5 136.2 725 166.2 742 165.7C757.654 165.7 768.77 147.6 791.793 137.6C798.991 134.5 807.16 133.8 814.423 136.7C832.335 144 850.418 161.6 866 161.2C882.791 161.2 902.316 146.8 921.814 142.4C926.856 141.3 932.097 141.7 937.176 142.6C966.993 148.2 970.679 151.3 989.5 151.7C1006.3 152.1 1036.5 150.2 1055.5 150.2C1114.5 150.2 1090.5 150.2 1124 150.2C1177.5 150.2 1178.99 151.4 1241 151.4C1317.5 151.4 1274.5 149.6 1440 150.2"
-          stroke="#85f78f"
-          strokeWidth="2"
-          fill="none"
-          pathLength={1}
-          filter="url(#flowBlur)"
-        />
-        <path
-          d="M0 75.5C150.5 75.5 261 75.3 323.5 93.5C351 101.5 387.517 121 423.5 131.5C447.371 138.5 472 140.7 487 144.7C503.786 149.2 504.5 153.8 523 155.7C547 158.2 564.814 138.2 584.5 138.2C604.5 138.2 626 166 643 165.6C658.676 165.6 672.076 148.6 695.751 139C703.017 136 711.231 135.2 718.298 138.6C735.448 146.9 751.454 167 767 166.6C783.364 166.6 801.211 144.7 819.903 137.7C825.718 135.5 832.141 136.1 837.992 138.2C859.178 145.8 873.089 160.4 891 160.7C907.8 161.1 923 141.2 963 143.7C1034.5 143.7 1047.5 129.7 1071 118.5C1122.5 94 1142.23 89.9 1185 83.5C1255.5 73 1294 76 1439.5 76"
-          stroke="#6466f1"
-          strokeWidth="2"
-          fill="none"
-          pathLength={1}
-          filter="url(#flowBlur)"
-        />
-
-        <defs>
-          <filter id="flowBlur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-          </filter>
-        </defs>
+      <svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className="relative z-10 h-auto w-full" preserveAspectRatio="none">
+        <motion.path d="M0 246C160 246 246 245 340 212C406 188 448 140 528 140C592 140 634 186 714 186C808 186 836 144 922 144C1010 144 1048 220 1140 234C1228 247 1321 246 1440 246" stroke="#f97316" strokeWidth="2.2" fill="none" initial={{ pathLength: 0 }} style={{ pathLength: pathLengths[0] }} transition={transition} />
+        <motion.path d="M0 170C140 170 232 170 342 166C466 162 512 132 624 132C724 132 770 165 876 165C992 165 1040 128 1148 128C1248 128 1324 169 1440 169" stroke="#f59e0b" strokeWidth="2.2" fill="none" initial={{ pathLength: 0 }} style={{ pathLength: pathLengths[1] }} transition={transition} />
+        <motion.path d="M0 108C156 108 262 108 372 108C478 108 548 106 660 106C770 106 818 118 924 118C1034 118 1116 108 1226 108C1318 108 1386 108 1440 108" stroke="#fbbf24" strokeWidth="2.2" fill="none" initial={{ pathLength: 0 }} style={{ pathLength: pathLengths[2] }} transition={transition} />
+        <motion.path d="M0 62C170 62 254 86 336 110C418 136 470 180 556 180C650 180 708 92 818 92C930 92 980 150 1092 150C1230 150 1318 74 1440 74" stroke="#ef4444" strokeWidth="2.2" fill="none" initial={{ pathLength: 0 }} style={{ pathLength: pathLengths[3] }} transition={transition} />
       </svg>
     </div>
   );

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="32" viewBox="0 0 256 32" fill="none">
+  <defs>
+    <linearGradient id="jouleWarm" x1="0" y1="0" x2="94" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCD34D"/>
+      <stop offset="0.34" stop-color="#F59E0B"/>
+      <stop offset="0.7" stop-color="#EA580C"/>
+      <stop offset="1" stop-color="#C2410C"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="23" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="0.4">
+    <tspan fill="url(#jouleWarm)">Joule</tspan>
+    <tspan dx="-0.5" fill="#F4F5F7">Bridge</tspan>
+  </text>
+</svg>

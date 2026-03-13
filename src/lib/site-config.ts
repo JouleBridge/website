@@ -4,7 +4,8 @@ export const siteConfig = {
   description:
     "JouleBridge turns raw energy and device telemetry into deterministic records, cryptographic proofs, and audit-ready evidence for high-trust energy workflows.",
   docsUrl: "https://docs.joulebridge.com",
-  contactEmail: "hello@joulebridge.com",
+  contactEmail: "contact@joulebridge.com",
+  contactPhone: "+91 8050647585",
   social: {
     linkedin: "https://www.linkedin.com/company/joulebridge",
     x: "https://x.com/joulebridge",
@@ -30,7 +31,6 @@ export const siteConfig = {
       { label: "Contact", href: "/contact" },
     ],
     resources: [
-      { label: "Papers", href: "/resources/papers" },
       { label: "Video", href: "/resources/video" },
       { label: "News", href: "/resources/news" },
     ],
@@ -43,7 +43,6 @@ export const siteConfig = {
     ],
     resources: [
       { label: "Blog", href: "/resources/blog" },
-      { label: "Papers", href: "/resources/papers" },
       { label: "Videos", href: "/resources/video" },
       { label: "News", href: "/resources/news" },
     ],

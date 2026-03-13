@@ -33,11 +33,10 @@ const milestones = [
 export function CompanyContent() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center bg-jb-dark overflow-hidden section-lines">
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-jb-accent opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
-        <div className="container mx-auto max-w-7xl px-6 lg:px-8 relative z-10 pt-24">
-          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] gap-10 items-center">
+      <section className="relative flex min-h-[50vh] items-center overflow-hidden bg-jb-dark section-lines">
+        <div className="pointer-events-none absolute top-1/2 right-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-jb-accent opacity-[0.03] blur-[120px]" />
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 pt-24 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
             <div>
               <Eyebrow className="mb-4">Company</Eyebrow>
               <motion.h1
@@ -46,7 +45,11 @@ export function CompanyContent() {
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-5 max-w-3xl"
               >
-                Building the trust layer for energy
+                Building the{" "}
+                <span className="jb-title-gradient jb-title-gradient-cool">
+                  trust layer
+                </span>{" "}
+                for energy
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -60,7 +63,7 @@ export function CompanyContent() {
               </motion.p>
             </div>
             <div className="grid gap-4">
-              <div className="border border-white/10 bg-white/[0.04] p-5">
+              <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-accent">
                   Company Focus
                 </div>
@@ -70,7 +73,7 @@ export function CompanyContent() {
                   <CompanyStat value="03" label="Pilot-driven rollout" />
                 </div>
               </div>
-              <div className="border border-white/10 bg-white/[0.03] p-5">
+              <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,29,33,0.92),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
                   Current Direction
                 </div>
@@ -94,7 +97,6 @@ export function CompanyContent() {
         </div>
       </section>
 
-      {/* The Problem We Saw */}
       <SectionWrapper className="bg-jb-dark">
         <div className="max-w-3xl">
           <Eyebrow className="mb-4">Why We Exist</Eyebrow>
@@ -103,7 +105,7 @@ export function CompanyContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6 text-lg text-jb-white/70 leading-relaxed"
+            className="space-y-6 text-lg leading-relaxed text-jb-white/70"
           >
             <p>
               India&apos;s energy system is becoming more digital, more distributed, and
@@ -116,7 +118,7 @@ export function CompanyContent() {
               manual, dispute handling is slow, and too many workflows depend on logs
               and spreadsheets that are difficult to verify independently.
             </p>
-            <p className="text-white font-medium">
+            <p className="font-medium text-white">
               JouleBridge exists to improve that record. The goal is not just more data,
               but better evidence: deterministic capture, proof generation, policy-gated
               persistence, and clearer handoffs into operational and commercial systems.
@@ -125,11 +127,10 @@ export function CompanyContent() {
         </div>
       </SectionWrapper>
 
-      {/* What We Believe */}
-      <section className="relative z-10 bg-jb-light-gray py-24 text-black md:py-32 section-lines section-lines-light">
+      <section className="relative z-10 bg-jb-dark py-24 section-lines md:py-32">
         <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-          <Eyebrow className="mb-8 text-[#5a6777]">What We Believe</Eyebrow>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Eyebrow className="mb-8">What We Believe</Eyebrow>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {beliefs.map((belief, i) => (
               <motion.div
                 key={i}
@@ -137,19 +138,18 @@ export function CompanyContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="border-t-2 border-jb-accent bg-white p-6 pt-6 shadow-[0_18px_60px_rgba(15,23,35,0.05)]"
+                className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.94),rgba(16,18,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
               >
-                <h3 className="mb-3 text-xl font-semibold text-black">
+                <h3 className="mb-3 text-xl font-semibold text-white">
                   {belief.statement}
                 </h3>
-                <p className="text-black/60 leading-relaxed">{belief.detail}</p>
+                <p className="leading-relaxed text-jb-white/58">{belief.detail}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
       <SectionWrapper className="bg-jb-dark">
         <Eyebrow className="mb-8">Team</Eyebrow>
         <motion.h2
@@ -157,48 +157,51 @@ export function CompanyContent() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-semibold text-white tracking-tight mb-12"
+          className="mb-12 text-3xl font-semibold tracking-tight text-white"
         >
-          Building the first version of JouleBridge
+          Building the{" "}
+          <span className="jb-title-gradient jb-title-gradient-warm">
+            first version
+          </span>{" "}
+          of JouleBridge
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="border border-jb-mid-gray/50 bg-jb-card/50 p-6"
+            className="border border-white/10 bg-[linear-gradient(180deg,rgba(28,31,35,0.92),rgba(15,17,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]"
           >
-            <div className="w-20 h-20 rounded-full bg-jb-accent/20 flex items-center justify-center mb-4">
-              <span className="font-mono text-2xl text-jb-accent font-bold">TT</span>
+            <div className="mb-4 flex h-20 w-20 items-center justify-center border border-white/12 bg-white/[0.04]">
+              <span className="font-mono text-2xl font-bold text-jb-accent">TT</span>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-1">Tarun Trilokesh</h3>
-            <p className="font-mono text-xs text-jb-accent uppercase tracking-widest mb-3">
+            <h3 className="mb-1 text-lg font-semibold text-white">Tarun Trilokesh</h3>
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-jb-accent">
               Founder & CEO
             </p>
-            <p className="text-sm text-jb-white/60 leading-relaxed">
+            <p className="text-sm leading-relaxed text-jb-white/60">
               Building verification-oriented infrastructure for energy systems, with a
               focus on how operational data becomes trusted evidence inside real energy
               workflows.
             </p>
           </motion.div>
 
-          {/* Hiring card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="border border-dashed border-jb-mid-gray/50 bg-jb-card/20 p-6 flex flex-col items-center justify-center text-center"
+            className="flex flex-col items-center justify-center border border-dashed border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.75),rgba(13,15,17,0.9))] p-6 text-center"
           >
-            <div className="w-20 h-20 rounded-full border border-dashed border-jb-mid-gray flex items-center justify-center mb-4">
+            <div className="mb-4 flex h-20 w-20 items-center justify-center border border-dashed border-white/12 bg-black/10">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-jb-text-muted">
                 <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">Join the team</h3>
-            <p className="text-sm text-jb-white/50 mb-4">
+            <h3 className="mb-2 text-lg font-semibold text-white">Join the team</h3>
+            <p className="mb-4 text-sm text-jb-white/50">
               We&apos;re looking for engineers who want to build high-trust infrastructure.
             </p>
             <Button href="/contact" variant="secondary" className="text-sm">
@@ -208,22 +211,23 @@ export function CompanyContent() {
         </div>
       </SectionWrapper>
 
-      {/* Timeline */}
-      <SectionWrapper className="bg-jb-light-gray section-lines-light">
-        <Eyebrow className="mb-8 text-[#5a6777]">Timeline</Eyebrow>
+      <SectionWrapper className="bg-jb-dark section-lines">
+        <Eyebrow className="mb-8">Timeline</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="jb-section-title-light mb-16 max-w-3xl"
+          className="jb-section-title mb-16 max-w-3xl"
         >
-          Our journey so far
+          Our{" "}
+          <span className="jb-title-gradient jb-title-gradient-cool">
+            journey so far
+          </span>
         </motion.h2>
 
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-[11px] top-0 bottom-0 w-[1px] bg-[#cfd8e1]" />
+          <div className="absolute bottom-0 left-[11px] top-0 w-[1px] bg-white/10" />
 
           <div className="space-y-10">
             {milestones.map((milestone, i) => (
@@ -236,16 +240,16 @@ export function CompanyContent() {
                 className="flex gap-6"
               >
                 <div className="relative shrink-0">
-                  <div className="flex h-[23px] w-[23px] items-center justify-center rounded-full border-2 border-jb-accent bg-white">
-                    <div className="w-2 h-2 rounded-full bg-jb-accent" />
+                  <div className="flex h-[23px] w-[23px] items-center justify-center rounded-full border border-jb-accent/50 bg-[#121518]">
+                    <div className="h-2 w-2 rounded-full bg-jb-accent" />
                   </div>
                 </div>
                 <div className="pb-2">
-                  <div className="font-mono text-xs text-jb-accent uppercase tracking-widest mb-1">
+                  <div className="mb-1 font-mono text-xs uppercase tracking-widest text-jb-accent">
                     {milestone.date}
                   </div>
-                  <h3 className="mb-1 text-lg font-semibold text-[#101419]">{milestone.title}</h3>
-                  <p className="text-sm leading-relaxed text-[#556273]">{milestone.desc}</p>
+                  <h3 className="mb-1 text-lg font-semibold text-white">{milestone.title}</h3>
+                  <p className="text-sm leading-relaxed text-jb-white/58">{milestone.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -254,11 +258,15 @@ export function CompanyContent() {
       </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl text-center">
           <h2 className="jb-section-title mb-6">
-            Interested in our mission?
+            Interested in{" "}
+            <span className="jb-title-gradient jb-title-gradient-warm">
+              our mission
+            </span>
+            ?
           </h2>
-          <p className="text-jb-text-muted mb-8">
+          <p className="mb-8 text-jb-text-muted">
             Whether you want to run a pilot, join the team, or learn more about what
             we&apos;re building, we&apos;d love to hear from you.
           </p>

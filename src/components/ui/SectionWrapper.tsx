@@ -19,13 +19,13 @@ export function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "relative py-16 md:py-20",
+        "relative py-16 sm:py-20 md:py-24",
         lines && "section-lines",
         linesLight && "section-lines-light",
         className
       )}
     >
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {children}
       </div>
     </section>

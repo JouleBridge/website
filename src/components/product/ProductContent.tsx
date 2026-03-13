@@ -71,7 +71,9 @@ export function ProductContent() {
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-5"
               >
-                Bridge Kernel
+                <span className="jb-title-gradient jb-title-gradient-cool">
+                  Bridge Kernel
+                </span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -98,8 +100,8 @@ export function ProductContent() {
                 </Button>
               </motion.div>
             </div>
-            <div className="rounded-[28px] border border-[#d8e0e8] bg-white p-5 shadow-[0_24px_80px_rgba(15,23,35,0.08)]">
-              <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#5a6777]">
+            <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(32,36,40,0.96),rgba(17,19,22,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.3)]">
+              <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
                 Proof Lifecycle
               </div>
               <ProofCycleDiagram />
@@ -108,16 +110,19 @@ export function ProductContent() {
         </div>
       </section>
 
-      <SectionWrapper className="bg-jb-light-gray section-lines-light">
-        <Eyebrow className="mb-4 text-[#5a6777]">How It Works</Eyebrow>
+      <SectionWrapper className="bg-jb-dark section-lines">
+        <Eyebrow className="mb-4">How It Works</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="jb-section-title-light mb-8 max-w-3xl"
+          className="jb-section-title mb-8 max-w-3xl"
         >
-          From source telemetry to reviewable evidence
+          From source telemetry to{" "}
+          <span className="jb-title-gradient jb-title-gradient-warm">
+            reviewable evidence
+          </span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -128,15 +133,15 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="rounded-[24px] border border-[#dbe3ea] bg-white p-6 shadow-[0_18px_60px_rgba(15,23,35,0.06)]"
+              className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.94))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_70px_rgba(0,0,0,0.24)]"
             >
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-jb-accent/35 bg-jb-accent/10 font-mono text-sm text-jb-accent">
+                <div className="flex h-9 w-9 items-center justify-center border border-white/14 bg-white/[0.04] font-mono text-sm text-jb-accent">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="text-lg font-semibold text-[#101419]">{step.title}</h3>
+                <h3 className="text-lg font-semibold text-white">{step.title}</h3>
               </div>
-              <p className="text-sm leading-relaxed text-[#556273]">{step.detail}</p>
+              <p className="text-sm leading-relaxed text-jb-white/58">{step.detail}</p>
             </motion.div>
           ))}
         </div>
@@ -151,7 +156,10 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          Adapter baseline and protocol direction
+          Adapter baseline and{" "}
+          <span className="jb-title-gradient jb-title-gradient-cool">
+            protocol direction
+          </span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -162,7 +170,7 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="relative border border-jb-mid-gray/50 bg-jb-card/50 p-5 transition-colors hover:border-jb-accent/30"
+              className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(27,31,35,0.9),rgba(15,17,20,0.95))] p-5 transition-colors hover:border-white/16"
             >
               <div className="mb-1 font-mono text-xs uppercase tracking-widest text-jb-accent">
                 {adapter.protocol}
@@ -174,20 +182,23 @@ export function ProductContent() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-jb-light-gray section-lines-light">
-        <Eyebrow className="mb-4 text-[#5a6777]">Proof System</Eyebrow>
+      <SectionWrapper className="bg-jb-dark section-lines">
+        <Eyebrow className="mb-4">Proof System</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="jb-section-title-light mb-8 max-w-3xl"
+          className="jb-section-title mb-8 max-w-3xl"
         >
-          Proof generation in the current runtime baseline
+          <span className="jb-title-gradient jb-title-gradient-warm">
+            Proof generation
+          </span>{" "}
+          in the current runtime baseline
         </motion.h2>
 
-        <div className="rounded-[28px] border border-[#d8e0e8] bg-white p-5 shadow-[0_20px_60px_rgba(15,23,35,0.06)] md:p-6">
-          <div className="mb-8 max-w-3xl rounded-[22px] border border-[#e0e6ed] bg-[#f7fbff] p-4">
+        <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.96),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_75px_rgba(0,0,0,0.26)] md:p-6">
+          <div className="mb-8 max-w-3xl border border-white/10 bg-black/20 p-4">
             <ProofCycleDiagram />
           </div>
 
@@ -212,22 +223,22 @@ export function ProductContent() {
                 },
               ].map((item) => (
                 <div key={item.step}>
-                  <h3 className="mb-2 font-mono text-sm font-semibold uppercase tracking-[0.15em] text-[#101419]">
+                  <h3 className="mb-2 font-mono text-sm font-semibold uppercase tracking-[0.15em] text-white">
                     {item.step}
                   </h3>
-                  <p className="leading-relaxed text-[#556273]">{item.desc}</p>
+                  <p className="leading-relaxed text-jb-white/58">{item.desc}</p>
                 </div>
               ))}
             </div>
 
-            <div className="overflow-hidden rounded-[24px] border border-[#d8e0e8] bg-[#0f141b]">
-              <div className="flex items-center gap-2 border-b border-[#242b34] px-4 py-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
-                <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
-                <div className="w-2.5 h-2.5 rounded-full bg-jb-green" />
+            <div className="overflow-hidden border border-white/10 bg-[#0d1014]">
+              <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3">
+                <div className="h-2.5 w-2.5 rounded-full bg-jb-red" />
+                <div className="h-2.5 w-2.5 rounded-full bg-jb-yellow" />
+                <div className="h-2.5 w-2.5 rounded-full bg-jb-accent" />
                 <span className="ml-auto font-mono text-[10px] text-jb-text-muted">proof-envelope.json</span>
               </div>
-              <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-jb-green/70">{`{
+              <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-jb-accent/80">{`{
   "event": {
     "current_a": 12.4,
     "power_kw": 3.1,
@@ -263,7 +274,10 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          Deploy where the evidence needs to begin
+          Deploy where the{" "}
+          <span className="jb-title-gradient jb-title-gradient-cool">
+            evidence needs to begin
+          </span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -274,7 +288,7 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="border border-jb-mid-gray/50 bg-jb-card/50 p-6"
+              className="border border-white/10 bg-[linear-gradient(180deg,rgba(28,32,36,0.92),rgba(16,18,20,0.96))] p-6"
             >
               <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.15em] text-white">
                 {opt.title}
@@ -285,16 +299,19 @@ export function ProductContent() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-jb-light-gray section-lines-light">
-        <Eyebrow className="mb-4 text-[#5a6777]">Security</Eyebrow>
+      <SectionWrapper className="bg-jb-dark section-lines">
+        <Eyebrow className="mb-4">Security</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="jb-section-title-light mb-8 max-w-3xl"
+          className="jb-section-title mb-8 max-w-3xl"
         >
-          Security controls that sit inside the runtime itself
+          <span className="jb-title-gradient jb-title-gradient-warm">
+            Security controls
+          </span>{" "}
+          that sit inside the runtime itself
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -307,10 +324,10 @@ export function ProductContent() {
               transition={{ duration: 0.4, delay: i * 0.06 }}
               className="flex items-start gap-3 py-3"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-green">
+              <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-accent">
                 <path d="M13.5 4.5L6 12L2.5 8.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="text-sm leading-relaxed text-[#556273]">{feature}</span>
+              <span className="text-sm leading-relaxed text-jb-white/58">{feature}</span>
             </motion.div>
           ))}
         </div>
@@ -319,19 +336,22 @@ export function ProductContent() {
           <Button href="/docs/operations/security" variant="primary">
             Security Model
           </Button>
-          <Button href="/contact" variant="secondary" className="border-[#cbd5df] text-[#101419] hover:bg-black/[0.03]">
+          <Button href="/contact" variant="secondary">
             Request Security Review
           </Button>
         </div>
       </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark">
-        <div className="rounded-[28px] border border-jb-mid-gray/60 bg-jb-card/35 p-6 md:p-8">
+        <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.92),rgba(14,16,18,0.94))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_80px_rgba(0,0,0,0.24)] md:p-8">
           <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-center">
             <div>
               <Eyebrow className="mb-4">Operating View</Eyebrow>
               <h2 className="jb-section-title mb-4 max-w-3xl">
-                Built for the teams that have to defend what happened
+                Built for the teams that have to{" "}
+                <span className="jb-title-gradient jb-title-gradient-cool">
+                  defend what happened
+                </span>
               </h2>
               <p className="jb-section-copy mb-5">
                 Bridge Kernel is the edge runtime, not the full JouleBridge

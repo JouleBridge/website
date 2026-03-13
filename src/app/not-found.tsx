@@ -12,7 +12,7 @@ export default function NotFound() {
             <div className="flex items-center gap-2 px-4 py-3 border-b border-jb-dark-gray">
               <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
               <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-green" />
+              <div className="w-2.5 h-2.5 rounded-full bg-jb-accent" />
               <span className="ml-auto font-mono text-[10px] text-jb-text-muted">
                 bridge-kernel
               </span>
@@ -27,22 +27,22 @@ export default function NotFound() {
               <div className="text-jb-text-muted/50 mt-4">
                 {"  "}available routes:
               </div>
-              <div className="text-jb-green/70">
+              <div className="text-jb-accent/70">
                 {"    "}/{"         "}home
               </div>
-              <div className="text-jb-green/70">
+              <div className="text-jb-accent/70">
                 {"    "}/product{"  "}bridge kernel
               </div>
-              <div className="text-jb-green/70">
+              <div className="text-jb-accent/70">
                 {"    "}/pricing{"  "}plans
               </div>
-              <div className="text-jb-green/70">
+              <div className="text-jb-accent/70">
                 {"    "}/docs{"     "}documentation
               </div>
-              <div className="text-jb-green/70">
+              <div className="text-jb-accent/70">
                 {"    "}/contact{"  "}get in touch
               </div>
-              <div className="animate-pulse text-jb-green mt-2">_</div>
+              <div className="animate-pulse text-jb-accent mt-2">_</div>
             </div>
           </div>
 

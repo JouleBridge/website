@@ -9,7 +9,11 @@ export function DemoSection() {
     <SectionWrapper className="bg-jb-dark">
       <Eyebrow className="mb-4">See It Run</Eyebrow>
       <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-3 max-w-2xl">
-        See the runtime behavior in a concrete operator flow
+        See the{" "}
+        <span className="jb-title-gradient jb-title-gradient-warm">
+          runtime behavior
+        </span>{" "}
+        in a concrete operator flow
       </h2>
       <p className="text-jb-text-muted max-w-2xl mb-8">
         Step through a representative Bridge Kernel session: runtime startup,

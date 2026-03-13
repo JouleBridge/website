@@ -36,7 +36,7 @@ function DesktopDropdown({
 
   return (
     <div
-      className="relative pb-6 -mb-6"
+      className="relative -mb-6 pb-6"
       onMouseEnter={openMenu}
       onMouseLeave={scheduleClose}
       onFocus={openMenu}
@@ -46,8 +46,8 @@ function DesktopDropdown({
         className={cn(
           "group inline-flex items-center gap-2 border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-200",
           open
-            ? "border-jb-accent/55 text-white"
-            : "text-jb-white/72 hover:border-white/20 hover:text-white"
+            ? "border-white/22 text-white"
+            : "text-jb-white/72 hover:border-white/16 hover:text-white"
         )}
         onClick={() => setOpen((value) => !value)}
       >
@@ -67,22 +67,22 @@ function DesktopDropdown({
 
       <div
         className={cn(
-          "absolute left-1/2 top-full z-50 mt-0 w-[320px] -translate-x-1/2 border border-white/10 bg-[#f5f7fa]/96 p-2 shadow-[0_20px_70px_rgba(6,10,17,0.18)] backdrop-blur-xl transition-all duration-200",
+          "absolute left-1/2 top-full z-50 mt-0 w-[320px] -translate-x-1/2 border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,24,0.98),rgba(10,11,13,0.98))] p-2 shadow-[0_22px_70px_rgba(0,0,0,0.32)] backdrop-blur-xl transition-all duration-200",
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
         )}
       >
-        <div className="border border-[#d9e0e8] bg-white p-2">
+        <div className="border border-white/8 bg-white/[0.03] p-2">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group flex items-center justify-between gap-4 border-b border-[#edf1f5] px-4 py-3 transition-colors last:border-b-0 hover:bg-[#f3f7fb]"
+              className="group flex items-center justify-between gap-4 border-b border-white/6 px-4 py-3 transition-colors last:border-b-0 hover:bg-white/[0.04]"
               onClick={() => setOpen(false)}
             >
-              <div className="text-sm font-medium text-[#101419]">{item.label}</div>
-              <div className="text-[11px] uppercase tracking-[0.16em] text-[#637181] transition-transform duration-200 group-hover:translate-x-0.5">
+              <div className="text-sm font-medium text-white/90">{item.label}</div>
+              <div className="text-[11px] uppercase tracking-[0.16em] text-jb-text-muted transition-transform duration-200 group-hover:translate-x-0.5">
                 View
               </div>
             </Link>
@@ -108,52 +108,31 @@ export function Navbar() {
       className={cn(
         "fixed left-0 right-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#0b1016]/88 border-b border-white/8 backdrop-blur-2xl"
-          : "bg-[#0b1016]/42 border-b border-white/6 backdrop-blur-xl"
+          ? "border-b border-white/8 bg-[#0b0d0f]/90 backdrop-blur-2xl"
+          : "border-b border-white/6 bg-[#0b0d0f]/56 backdrop-blur-xl"
       )}
     >
-      <div className="container mx-auto flex min-h-[76px] max-w-7xl items-center gap-6 px-6 lg:px-8">
+      <div className="container mx-auto flex min-h-[68px] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:min-h-[76px] lg:gap-6 lg:px-8">
         <Link href="/" className="shrink-0">
           <Logo className="text-white" />
         </Link>
 
-        <div className="hidden lg:flex flex-1 justify-center">
+        <div className="hidden flex-1 justify-center lg:flex">
           <div className="flex items-center gap-8 xl:gap-10">
-            <Link
-              href="/product"
-              className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/20 hover:text-white"
-            >
-              Product
-            </Link>
+            <Link href="/product" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Product</Link>
             <DesktopDropdown label="Solutions" items={siteConfig.nav.solutions} />
-            <Link
-              href="/docs"
-              className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/20 hover:text-white"
-            >
-              Docs
-            </Link>
-            <Link
-              href="/pricing"
-              className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/20 hover:text-white"
-            >
-              Pricing
-            </Link>
+            <Link href="/docs" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Docs</Link>
+            <Link href="/pricing" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Pricing</Link>
             <DesktopDropdown label="Company" items={siteConfig.nav.company} />
             <DesktopDropdown label="Resources" items={siteConfig.nav.resources} />
           </div>
         </div>
 
-        <div className="hidden lg:block shrink-0">
-          <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">
-            Start a Pilot
-          </Button>
+        <div className="hidden shrink-0 lg:block">
+          <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">Start a Pilot</Button>
         </div>
 
-        <button
-          className="ml-auto flex flex-col gap-1.5 p-2 lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
+        <button className="ml-auto flex flex-col gap-1.5 p-2 lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
           <span className={cn("block h-[2px] w-6 bg-white transition-transform", mobileOpen && "translate-y-[7px] rotate-45")} />
           <span className={cn("block h-[2px] w-6 bg-white transition-opacity", mobileOpen && "opacity-0")} />
           <span className={cn("block h-[2px] w-6 bg-white transition-transform", mobileOpen && "-translate-y-[7px] -rotate-45")} />
@@ -161,28 +140,26 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-jb-mid-gray/50 bg-jb-dark/98 px-6 py-6 lg:hidden">
+        <div className="max-h-[calc(100svh-68px)] overflow-y-auto border-t border-white/8 bg-jb-dark/98 px-4 py-5 sm:px-6 lg:hidden">
           <div className="space-y-2">
             {siteConfig.nav.main.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block rounded-2xl px-4 py-3 text-sm font-medium uppercase tracking-[0.16em] text-jb-white/84 transition-colors hover:bg-white/5"
+                className="block px-3 py-3 text-sm font-medium uppercase tracking-[0.14em] text-jb-white/84 transition-colors hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="mt-5 rounded-3xl border border-white/8 bg-white/[0.03] p-3">
-            <div className="px-2 pb-2 text-[11px] uppercase tracking-[0.18em] text-jb-text-muted">
-              More links
-            </div>
+          <div className="mt-5 border border-white/8 bg-white/[0.03] p-3">
+            <div className="px-2 pb-2 text-[11px] uppercase tracking-[0.18em] text-jb-text-muted">More links</div>
             {[...siteConfig.nav.solutions, ...siteConfig.nav.company, ...siteConfig.nav.resources].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block rounded-2xl px-4 py-3 text-sm text-jb-white/64 transition-colors hover:bg-white/5 hover:text-white"
+                className="block px-3 py-3 text-sm text-jb-white/64 transition-colors hover:bg-white/5 hover:text-white"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
@@ -190,9 +167,7 @@ export function Navbar() {
             ))}
           </div>
           <div className="pt-5">
-            <Button href="/contact" variant="primary" className="w-full">
-              Start a Pilot
-            </Button>
+            <Button href="/contact" variant="primary" className="w-full">Start a Pilot</Button>
           </div>
         </div>
       )}

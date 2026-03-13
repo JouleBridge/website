@@ -16,13 +16,13 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-jb-accent text-white hover:bg-jb-accent/90 btn-jb-primary",
+    "border border-white/10 bg-[linear-gradient(180deg,rgba(226,229,235,0.22),rgba(164,172,183,0.12))] text-white hover:bg-[linear-gradient(180deg,rgba(226,229,235,0.28),rgba(164,172,183,0.16))] btn-jb-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_18px_45px_rgba(0,0,0,0.24)]",
   secondary:
-    "bg-transparent text-jb-white border border-jb-mid-gray hover:bg-white/5 btn-jb-secondary",
+    "bg-transparent text-jb-white border border-white/12 hover:bg-white/[0.04] btn-jb-secondary",
   white:
-    "bg-transparent text-white border border-white/20 hover:bg-white/5 btn-jb-secondary",
+    "bg-transparent text-white border border-white/18 hover:bg-white/[0.05] btn-jb-secondary",
   tertiary:
-    "bg-transparent text-jb-white hover:text-jb-accent btn-jb-secondary",
+    "bg-transparent text-jb-white/84 hover:text-white btn-jb-secondary",
 };
 
 export function Button({

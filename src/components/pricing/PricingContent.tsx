@@ -99,22 +99,22 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-jb-mid-gray/50">
+    <div className="border-b border-white/8">
       <button
-        className="w-full flex items-center justify-between py-5 text-left"
+        className="flex w-full items-center justify-between py-5 text-left"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-white font-medium pr-4">{q}</span>
+        <span className="pr-4 font-medium text-white">{q}</span>
         <svg
           width="20"
           height="20"
           viewBox="0 0 20 20"
-          className={`text-jb-text-muted shrink-0 transition-transform ${open ? "rotate-45" : ""}`}
+          className={`shrink-0 text-jb-text-muted transition-transform ${open ? "rotate-45" : ""}`}
         >
           <path d="M10 4V16M4 10H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </button>
-      {open && <div className="pb-5 text-jb-text-muted leading-relaxed pr-8">{a}</div>}
+      {open && <div className="pb-5 pr-8 leading-relaxed text-jb-text-muted">{a}</div>}
     </div>
   );
 }
@@ -122,8 +122,8 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export function PricingContent() {
   return (
     <>
-      <section className="relative bg-jb-dark pt-28 pb-12 section-lines">
-        <div className="container mx-auto max-w-7xl px-6 lg:px-8 text-center">
+      <section className="relative bg-jb-dark pb-12 pt-28 section-lines">
+        <div className="container mx-auto max-w-7xl px-6 text-center lg:px-8">
           <Eyebrow className="mb-4">Pricing</Eyebrow>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -131,7 +131,10 @@ export function PricingContent() {
             transition={{ duration: 0.8 }}
             className="jb-section-title mb-5"
           >
-            Engagement models that match operational reality
+            Engagement models that{" "}
+            <span className="jb-title-gradient jb-title-gradient-warm">
+              match operational reality
+            </span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -144,9 +147,9 @@ export function PricingContent() {
         </div>
       </section>
 
-      <section className="relative bg-jb-light-gray pb-16 section-lines section-lines-light">
+      <section className="relative bg-jb-dark pb-16 section-lines">
         <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {tiers.map((tier, i) => (
               <motion.div
                 key={i}
@@ -154,30 +157,32 @@ export function PricingContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className={`relative flex flex-col border p-8 ${
-                  tier.featured ? "border-jb-accent bg-white shadow-[0_20px_60px_rgba(15,23,35,0.08)]" : "border-[#dbe3ea] bg-white"
+                  tier.featured
+                    ? "border-jb-accent/30 bg-[linear-gradient(180deg,rgba(34,39,44,0.96),rgba(17,19,23,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.28)]"
+                    : "border-white/10 bg-[linear-gradient(180deg,rgba(28,31,35,0.92),rgba(15,17,20,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]"
                 }`}
               >
-                {tier.featured && <div className="absolute top-0 left-0 right-0 h-[2px] bg-jb-accent" />}
-                <div className="font-mono text-xs uppercase tracking-[0.2em] text-jb-accent mb-4">{tier.name}</div>
+                {tier.featured && <div className="absolute left-0 right-0 top-0 h-[2px] bg-jb-accent/70" />}
+                <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-jb-accent">{tier.name}</div>
                 <div className="mb-2">
-                  <span className="text-4xl font-semibold text-[#101419]">{tier.price}</span>
-                  {tier.period && <span className="text-jb-text-muted ml-2 text-sm">/ {tier.period}</span>}
+                  <span className="text-4xl font-semibold text-white">{tier.price}</span>
+                  {tier.period && <span className="ml-2 text-sm text-jb-text-muted">/ {tier.period}</span>}
                 </div>
-                <p className="text-sm text-jb-text-muted mb-8">{tier.description}</p>
+                <p className="mb-8 text-sm text-jb-text-muted">{tier.description}</p>
 
-                <div className="space-y-3 mb-8 flex-1">
+                <div className="mb-8 flex-1 space-y-3">
                   {tier.features.map((feature, j) => (
                     <div key={j} className="flex items-start gap-3">
                       {feature.included ? (
-                        <svg width="16" height="16" viewBox="0 0 16 16" className="text-jb-green shrink-0 mt-0.5">
+                        <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-accent">
                           <path d="M13.5 4.5L6 12L2.5 8.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       ) : (
-                        <svg width="16" height="16" viewBox="0 0 16 16" className="text-jb-text-muted/40 shrink-0 mt-0.5">
+                        <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-text-muted/40">
                           <path d="M4 8H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
                       )}
-                      <span className={`text-sm ${feature.included ? "text-[#556273]" : "text-jb-text-muted/40"}`}>{feature.text}</span>
+                      <span className={`text-sm ${feature.included ? "text-jb-white/62" : "text-jb-text-muted/40"}`}>{feature.text}</span>
                     </div>
                   ))}
                 </div>
@@ -185,7 +190,7 @@ export function PricingContent() {
                 <Button
                   href={tier.ctaHref}
                   variant={tier.featured ? "primary" : "secondary"}
-                  className={tier.featured ? "w-full" : "w-full border-[#cbd5df] text-[#101419] hover:bg-black/[0.03]"}
+                  className="w-full"
                 >
                   {tier.cta}
                 </Button>
@@ -198,7 +203,12 @@ export function PricingContent() {
       <section className="relative bg-jb-dark py-24 section-lines">
         <div className="container mx-auto max-w-3xl px-6 lg:px-8">
           <Eyebrow className="mb-8">FAQ</Eyebrow>
-          <h2 className="jb-section-title mb-12 max-w-3xl">Frequently asked questions</h2>
+          <h2 className="jb-section-title mb-12 max-w-3xl">
+            <span className="jb-title-gradient jb-title-gradient-cool">
+              Frequently asked
+            </span>{" "}
+            questions
+          </h2>
           <div>
             {faqs.map((faq, i) => (
               <FAQItem key={i} q={faq.q} a={faq.a} />

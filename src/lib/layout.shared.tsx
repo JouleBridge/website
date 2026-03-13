@@ -15,8 +15,7 @@ export function baseOptions(): BaseLayoutProps {
       ),
     },
     themeSwitch: {
-      enabled: true,
-      mode: "light-dark-system",
+      enabled: false,
     },
     links: [
       {

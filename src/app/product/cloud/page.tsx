@@ -185,7 +185,7 @@ export default function CloudPage() {
                   <span
                     className={`font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border ${
                       feature.status === "In Development"
-                        ? "text-jb-green border-jb-green/30"
+                        ? "text-jb-accent border-jb-accent/30"
                         : "text-jb-text-muted border-jb-mid-gray/50"
                     }`}
                   >

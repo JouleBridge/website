@@ -46,7 +46,7 @@ const news = [
 ];
 
 const tagColors: Record<string, string> = {
-  Announcement: "text-jb-green",
+  Announcement: "text-jb-accent",
   "Product Release": "text-jb-accent",
   Product: "text-jb-accent",
   Milestone: "text-jb-yellow",

@@ -123,7 +123,7 @@ export default function HardwarePage() {
                       <span
                         className={`font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border ${
                           hw.status === "Supported"
-                            ? "text-jb-green border-jb-green/30"
+                            ? "text-jb-accent border-jb-accent/30"
                             : "text-jb-yellow border-jb-yellow/30"
                         }`}
                       >

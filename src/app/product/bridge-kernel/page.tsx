@@ -23,7 +23,7 @@ const modules = [
   {
     name: "Proof Engine",
     desc: "SHA-256 hashing followed by Ed25519 signing with versioned key management. Outputs COSE Sign1 ProofEnvelopes that any counterparty can independently verify.",
-    color: "text-jb-green",
+    color: "text-jb-accent",
   },
   {
     name: "Policy Gate",
@@ -211,7 +211,7 @@ export default function BridgeKernelPage() {
                 size={320}
                 labelLeft="Verified"
                 labelRight="Unverified"
-                className="rounded-lg border border-jb-mid-gray/30 overflow-hidden"
+                className="border border-jb-mid-gray/30 overflow-hidden"
               />
             </motion.div>
           </div>
@@ -240,10 +240,10 @@ export default function BridgeKernelPage() {
             <div className="flex items-center gap-2 px-4 py-3 border-b border-jb-dark-gray">
               <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
               <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-green" />
+              <div className="w-2.5 h-2.5 rounded-full bg-jb-accent" />
               <span className="ml-auto font-mono text-[10px] text-jb-text-muted">terminal</span>
             </div>
-            <pre className="p-6 font-mono text-xs text-jb-green/80 whitespace-pre leading-relaxed">{`$ curl -fsSL https://get.joulebridge.com | sh
+            <pre className="p-6 font-mono text-xs text-jb-accent/80 whitespace-pre leading-relaxed">{`$ curl -fsSL https://get.joulebridge.com | sh
 $ bridge-kernel init --adapter modbus --site my-site
   ✓ Generated Ed25519 keypair (key_id: my-site)
   ✓ Created config at ./bridge-kernel.toml

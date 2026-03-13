@@ -11,42 +11,34 @@ interface TerminalLine {
 
 const script: TerminalLine[] = [
   { text: "$ bridge-kernel init --adapter webhook --site demo-site", type: "command", delay: 0 },
-  { text: "  [OK] Generated Ed25519 keypair (key_id: demo-site)", type: "success", delay: 600 },
-  { text: "  [OK] Created config at ./bridge-kernel.toml", type: "success", delay: 300 },
-  { text: "  [OK] Initialized ledger at ./data/ledger.db", type: "success", delay: 300 },
-  { text: "", type: "output", delay: 400 },
-  { text: "$ bridge-kernel start", type: "command", delay: 500 },
-  { text: "  [INFO] adapter: webhook-drop ready on localhost:8787", type: "info", delay: 800 },
-  { text: "  [INFO] ingesting structured telemetry payload", type: "info", delay: 400 },
-  { text: "  [INFO] proof: Ed25519 signing active (key v1)", type: "info", delay: 300 },
-  { text: "  [INFO] ledger: append-only, WAL enabled", type: "info", delay: 300 },
-  { text: "", type: "output", delay: 600 },
-  { text: "  -> event #1 | power_kw: 47.2 | voltage_v: 231.4", type: "output", delay: 400 },
-  { text: "    hash: 8af3c2b1e9d4f7a2...  sign: OK", type: "success", delay: 250 },
-  { text: "    policy [DER-04]: PASSED  -> ledger append #1", type: "success", delay: 250 },
-  { text: "", type: "output", delay: 800 },
-  { text: "  -> event #2 | power_kw: 48.1 | voltage_v: 230.8", type: "output", delay: 400 },
-  { text: "    hash: c4e7f9a2d1b3e8c5...  sign: OK", type: "success", delay: 250 },
-  { text: "    policy [DER-04]: PASSED  -> ledger append #2", type: "success", delay: 250 },
-  { text: "", type: "output", delay: 800 },
-  { text: "  -> event #3 | power_kw: 512.7 | voltage_v: 229.1", type: "output", delay: 400 },
-  { text: "    hash: f1d2e3c4b5a6f7e8...  sign: OK", type: "success", delay: 250 },
-  { text: "    policy [DER-04]: FAILED (max_power_kw <= 500)", type: "error", delay: 250 },
-  { text: "    event quarantined - requires review", type: "error", delay: 300 },
-  { text: "", type: "output", delay: 600 },
-  { text: "$ bridge-kernel ledger stats", type: "command", delay: 500 },
-  { text: "  events: 2 verified, 1 quarantined", type: "info", delay: 400 },
-  { text: "  proofs: 3 generated, 3 valid", type: "info", delay: 200 },
-  { text: "  peers: 0 synced", type: "info", delay: 200 },
-  { text: "  uptime: 4.2s", type: "info", delay: 200 },
+  { text: "  created signing identity [site-gw-01]", type: "success", delay: 560 },
+  { text: "  wrote config: ./bridge-kernel.toml", type: "success", delay: 220 },
+  { text: "  opened ledger: ./data/ledger.db", type: "success", delay: 220 },
+  { text: "", type: "output", delay: 360 },
+  { text: "$ bridge-kernel start", type: "command", delay: 440 },
+  { text: "  runtime ready on localhost:8787", type: "info", delay: 620 },
+  { text: "  ingesting telemetry stream", type: "info", delay: 260 },
+  { text: "  proof engine online [ed25519]", type: "info", delay: 220 },
+  { text: "", type: "output", delay: 420 },
+  { text: "  event #1  power_kw=47.2  voltage_v=231.4", type: "output", delay: 340 },
+  { text: "  proof digest=8af3c2...  status=accepted", type: "success", delay: 220 },
+  { text: "  policy DER-04 passed  ledger append #1", type: "success", delay: 220 },
+  { text: "", type: "output", delay: 520 },
+  { text: "  event #2  power_kw=512.7  voltage_v=229.1", type: "output", delay: 340 },
+  { text: "  proof digest=f1d2e3...  status=quarantined", type: "error", delay: 220 },
+  { text: "  policy DER-04 failed  operator review required", type: "error", delay: 260 },
+  { text: "", type: "output", delay: 520 },
+  { text: "$ bridge-kernel ledger stats", type: "command", delay: 420 },
+  { text: "  verified=1  quarantined=1  sync=idle", type: "info", delay: 220 },
+  { text: "  uptime=4.2s  queue_depth=0", type: "info", delay: 220 },
 ];
 
 const colorMap: Record<TerminalLine["type"], string> = {
   command: "text-white",
   output: "text-jb-white/50",
-  success: "text-jb-green/80",
-  info: "text-jb-accent/70",
-  error: "text-jb-red/80",
+  success: "text-[#fbbf24]",
+  info: "text-[#f59e0b]",
+  error: "text-[#f97316]",
 };
 
 export function DemoTerminal() {
@@ -69,7 +61,7 @@ export function DemoTerminal() {
         setTimeout(showNext, script[lineIndex].delay);
       }
     };
-    setTimeout(showNext, 500);
+    setTimeout(showNext, 420);
   }, [isInView]);
 
   useEffect(() => {
@@ -86,18 +78,18 @@ export function DemoTerminal() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="border border-jb-mid-gray bg-jb-dark rounded-lg overflow-hidden"
+      className="overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,20,0.98),rgba(9,10,11,0.98))] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_32px_90px_rgba(0,0,0,0.36)]"
     >
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-jb-dark-gray bg-jb-card/50">
-        <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
-        <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
-        <div className="w-2.5 h-2.5 rounded-full bg-jb-green" />
-        <span className="ml-auto font-mono text-[10px] text-jb-text-muted">bridge-kernel demo</span>
+      <div className="flex items-center gap-2 border-b border-white/8 bg-white/[0.03] px-4 py-3">
+        <div className="h-2.5 w-2.5 bg-white/20" />
+        <div className="h-2.5 w-2.5 bg-white/12" />
+        <div className="h-2.5 w-2.5 bg-white/8" />
+        <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-jb-text-muted">bridge-kernel runtime</span>
       </div>
 
       <div
         ref={scrollContainerRef}
-        className="h-[360px] overflow-y-auto p-4 font-mono text-xs leading-relaxed md:h-[400px] md:p-6 md:text-sm"
+        className="h-[360px] overflow-y-auto bg-[radial-gradient(circle_at_top,rgba(210,213,219,0.05),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0))] p-4 font-mono text-xs leading-relaxed md:h-[400px] md:p-6 md:text-sm"
       >
         {script.slice(0, visibleLines).map((line, i) => (
           <div key={i} className={`${colorMap[line.type]} ${line.text === "" ? "h-3" : ""}`}>
@@ -105,7 +97,7 @@ export function DemoTerminal() {
           </div>
         ))}
         {visibleLines < script.length && visibleLines > 0 && (
-          <span className="inline-block w-2 h-4 bg-jb-accent/60 animate-pulse" />
+          <span className="inline-block h-4 w-2 animate-pulse bg-[#f59e0b]" />
         )}
       </div>
     </motion.div>

@@ -29,7 +29,7 @@ export function ProblemSection() {
       <div className="relative z-10">
         <Eyebrow className="mb-4">The Problem</Eyebrow>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-start mb-10">
+        <div className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
           <div>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -38,8 +38,12 @@ export function ProblemSection() {
               transition={{ duration: 0.8 }}
               className="jb-section-title mb-4 max-w-4xl"
             >
-              Critical energy workflows still rely on records that are hard to trust.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-jb-red to-jb-yellow">
+              Critical energy workflows still rely on{" "}
+              <span className="jb-title-gradient jb-title-gradient-cool">
+                records that are hard to trust
+              </span>
+              .{" "}
+              <span className="jb-title-gradient jb-title-gradient-warm">
                 That breaks operations.
               </span>
             </motion.h2>
@@ -73,7 +77,7 @@ export function ProblemSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {problems.map((item, i) => (
             <motion.div
               key={i}

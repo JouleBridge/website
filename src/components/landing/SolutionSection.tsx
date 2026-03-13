@@ -39,57 +39,28 @@ export function SolutionSection() {
 
   return (
     <div ref={sectionRef}>
-      <SectionWrapper className="bg-jb-light-gray" lines={false}>
-        <Eyebrow className="mb-4 text-[#5a6777]">The Solution</Eyebrow>
+      <SectionWrapper className="bg-jb-dark" lines={true}>
+        <Eyebrow className="mb-4 text-jb-accent">The Solution</Eyebrow>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="jb-section-title-light max-w-3xl"
-          >
-            Turn raw telemetry into evidence that survives{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-jb-accent to-jb-green">
-              audits, disputes, and handoffs.
-            </span>
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="jb-section-title max-w-3xl">
+            Turn raw telemetry into{" "}
+            <span className="jb-title-gradient jb-title-gradient-warm">
+              evidence that survives
+            </span>{" "}
+            audits, disputes, and handoffs.
           </motion.h2>
-          <Button
-            href="/product"
-            variant="secondary"
-            className="border-[#cbd5df] text-[#101419] hover:bg-black/[0.03]"
-          >
-            How It Works
-          </Button>
+          <Button href="/product" variant="secondary">How It Works</Button>
         </div>
 
-        {/* Scroll-driven flow lines */}
-        <div className="border border-[#dbe3ea] bg-white px-4 py-6 shadow-[0_18px_60px_rgba(15,23,35,0.06)] md:px-6 md:py-8">
-          <FlowLines pathLengths={[pathLength0, pathLength1, pathLength2, pathLength3]} />
-        </div>
+        <FlowLines pathLengths={[pathLength0, pathLength1, pathLength2, pathLength3]} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {solutions.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative border border-[#dbe3ea] bg-white p-6"
-            >
-              <div className="font-mono text-xs text-jb-green/70 uppercase tracking-widest mb-4">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-[#101419]">
-                {item.title}
-              </h3>
-              <p className="leading-relaxed text-[#556273]">{item.description}</p>
-              <span className="absolute top-[-1px] left-[-1px] w-[2px] h-[2px] bg-jb-green/60" />
-              <span className="absolute top-[-1px] right-[-1px] w-[2px] h-[2px] bg-jb-green/60" />
-              <span className="absolute bottom-[-1px] left-[-1px] w-[2px] h-[2px] bg-jb-green/60" />
-              <span className="absolute bottom-[-1px] right-[-1px] w-[2px] h-[2px] bg-jb-green/60" />
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }} className="relative overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_24px_70px_rgba(0,0,0,0.24)]">
+              <div className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-accent">{String(i + 1).padStart(2, "0")}</div>
+              <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-white">{item.title}</h3>
+              <p className="leading-relaxed text-jb-white/66">{item.description}</p>
             </motion.div>
           ))}
         </div>

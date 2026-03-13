@@ -34,12 +34,15 @@ const steps = [
 export function PipelineSection() {
   return (
     <section className="relative bg-jb-dark py-16 md:py-20 section-lines">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <Eyebrow className="mb-3 text-jb-accent">Pipeline</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
-              The current Bridge Kernel operating flow
+              The current{" "}
+              <span className="jb-title-gradient jb-title-gradient-cool">
+                Bridge Kernel operating flow
+              </span>
             </h2>
             <p className="mt-4 text-jb-text-muted leading-relaxed">
               JouleBridge is strongest when the path from source event to reviewable
@@ -52,7 +55,7 @@ export function PipelineSection() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, i) => (
             <motion.article
               key={step.num}
@@ -60,7 +63,7 @@ export function PipelineSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="jb-panel rounded-[26px] p-6"
+              className="jb-panel p-5 sm:p-6"
             >
               <div className="mb-5 flex items-center justify-between">
                 <div className="font-mono text-xs uppercase tracking-[0.22em] text-jb-accent">
@@ -73,19 +76,19 @@ export function PipelineSection() {
               <p className="mt-3 text-sm leading-relaxed text-jb-white/66">{step.summary}</p>
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-white/6 bg-white/[0.025] p-4">
+                <div className="border border-white/6 bg-white/[0.025] p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-jb-text-muted">
                     Input
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-jb-white/78">{step.input}</p>
                 </div>
-                <div className="rounded-2xl border border-white/6 bg-white/[0.025] p-4">
+                <div className="border border-white/6 bg-white/[0.025] p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-jb-text-muted">
                     What happens
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-jb-white/78">{step.action}</p>
                 </div>
-                <div className="rounded-2xl border border-jb-accent/20 bg-jb-accent/5 p-4">
+                <div className="border border-jb-accent/20 bg-jb-accent/5 p-4">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-jb-accent">
                     Output
                   </div>

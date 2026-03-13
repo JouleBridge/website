@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Building2, Cpu, Factory, FilePenLine } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -10,11 +11,18 @@ export const metadata = {
 };
 
 const categoryColors: Record<string, string> = {
-  Industry: "text-jb-yellow",
-  Product: "text-jb-green",
-  Engineering: "text-jb-accent",
-  Company: "text-jb-pink",
+  Industry: "text-[#f6b44d]",
+  Product: "text-[#7dd3fc]",
+  Engineering: "text-[#86efac]",
+  Company: "text-[#60a5fa]",
 };
+
+const categoryIcons = {
+  Industry: Factory,
+  Product: FilePenLine,
+  Engineering: Cpu,
+  Company: Building2,
+} as const;
 
 export default function BlogPage() {
   const posts = [...blog].sort(
@@ -37,13 +45,15 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => {
               const slug = post.info.path.replace(/\.mdx$/, "");
+              const Icon = categoryIcons[post.category as keyof typeof categoryIcons] ?? FilePenLine;
               return (
               <Link
                 key={slug}
                 href={`/resources/blog/${slug}`}
                 className="border border-jb-mid-gray/50 bg-jb-card/50 p-6 relative group hover:border-jb-accent/30 transition-colors flex flex-col"
               >
-                <div className={`font-mono text-[10px] uppercase tracking-[0.2em] mb-3 ${categoryColors[post.category] || "text-jb-text-muted"}`}>
+                <div className={`mb-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] ${categoryColors[post.category] || "text-jb-text-muted"}`}>
+                  <Icon className="h-4 w-4" />
                   {post.category}
                 </div>
                 <h2 className="text-lg font-semibold text-white mb-3 group-hover:text-jb-accent transition-colors">

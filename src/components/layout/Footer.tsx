@@ -47,8 +47,8 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 export function Footer() {
   return (
     <footer className="relative bg-jb-dark border-t border-jb-mid-gray/50 section-lines">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-12">
+      <div className="container mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
           {/* Logo side */}
           <div className="max-w-md">
             <Link href="/" className="inline-flex">
@@ -59,11 +59,11 @@ export function Footer() {
               workflows where audit quality, reconciliation speed, and operational trust
               matter.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
               {["Bridge Kernel", "Evidence Packs", "Pilot Workflows", "Operator Review"].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-jb-mid-gray/70 bg-jb-card/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-jb-white/55"
+                  className="border border-jb-mid-gray/70 bg-jb-card/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-jb-white/55 sm:text-[11px] sm:tracking-[0.18em]"
                 >
                   {item}
                 </span>
@@ -72,7 +72,7 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <FooterColumn title="Product" links={siteConfig.footer.product} />
             <FooterColumn title="Resources" links={siteConfig.footer.resources} />
             <FooterColumn title="Company" links={siteConfig.footer.company} />
@@ -82,8 +82,8 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-jb-mid-gray/30">
-        <div className="container mx-auto max-w-7xl px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="container mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div className="flex flex-wrap items-center gap-6 text-sm text-jb-white/40">
               <span>Copyright &copy;{new Date().getFullYear()} JouleBridge</span>
               {siteConfig.footer.legal.map((link) => (

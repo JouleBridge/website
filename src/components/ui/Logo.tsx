@@ -1,31 +1,28 @@
-import { Space_Grotesk } from "next/font/google";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["700"],
-});
 
 interface LogoProps {
   className?: string;
   color?: string;
 }
 
-export function Logo({ className, color = "currentColor" }: LogoProps) {
+export function Logo({ className }: LogoProps) {
   return (
     <span
       className={cn(
-        spaceGrotesk.className,
-        "inline-flex items-center leading-none uppercase",
+        "inline-flex items-center leading-none",
         className
       )}
       aria-label="JouleBridge wordmark"
       role="img"
-      style={{ color }}
     >
-      <span className="text-[0.98rem] font-bold tracking-[0.16em] text-current sm:text-[1.04rem]">
-        JouleBridge
-      </span>
+      <Image
+        src="/brand/joulebridge-wordmark.svg"
+        alt="JouleBridge"
+        width={256}
+        height={32}
+        className="h-5 w-auto sm:h-6"
+      />
     </span>
   );
 }

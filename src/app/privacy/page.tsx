@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <h2>How We Use Information</h2>
           <p>We use collected information to provide and improve our services, communicate with you, and ensure security.</p>
           <h2>Contact</h2>
-          <p>For privacy inquiries, contact us at <a href="mailto:hello@joulebridge.com">hello@joulebridge.com</a>.</p>
+          <p>For privacy inquiries, contact us at <a href="mailto:contact@joulebridge.com">contact@joulebridge.com</a>.</p>
         </div>
       </main>
       <Footer />

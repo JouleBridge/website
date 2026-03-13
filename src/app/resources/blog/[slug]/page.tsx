@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Building2, Cpu, Factory, FilePenLine } from "lucide-react";
 import { blog } from "@/lib/source";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -23,11 +24,18 @@ export default async function BlogPostPage(props: {
   const MDX = post.body;
 
   const categoryColors: Record<string, string> = {
-    Industry: "text-jb-yellow",
-    Product: "text-jb-green",
-    Engineering: "text-jb-accent",
-    Company: "text-jb-pink",
+    Industry: "text-[#f6b44d]",
+    Product: "text-[#7dd3fc]",
+    Engineering: "text-[#86efac]",
+    Company: "text-[#60a5fa]",
   };
+  const categoryIcons = {
+    Industry: Factory,
+    Product: FilePenLine,
+    Engineering: Cpu,
+    Company: Building2,
+  } as const;
+  const Icon = categoryIcons[post.category as keyof typeof categoryIcons] ?? FilePenLine;
 
   return (
     <>
@@ -52,7 +60,8 @@ export default async function BlogPostPage(props: {
           </Link>
 
           <Eyebrow className="mb-4">
-            <span className={categoryColors[post.category] || "text-jb-text-muted"}>
+            <span className={`inline-flex items-center gap-2 ${categoryColors[post.category] || "text-jb-text-muted"}`}>
+              <Icon className="h-4 w-4" />
               {post.category}
             </span>
           </Eyebrow>
@@ -67,7 +76,7 @@ export default async function BlogPostPage(props: {
             <span>{post.readTime}</span>
           </div>
 
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:text-jb-white/70 prose-p:leading-relaxed prose-li:text-jb-white/70 prose-strong:text-white prose-a:text-jb-accent prose-a:no-underline hover:prose-a:underline prose-code:text-jb-green prose-pre:bg-jb-card prose-pre:border prose-pre:border-jb-mid-gray/50">
+          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:text-jb-white/78 prose-p:leading-relaxed prose-li:text-jb-white/74 prose-strong:text-white prose-a:text-[#7dd3fc] prose-a:no-underline hover:prose-a:underline prose-code:rounded-none prose-code:border prose-code:border-[#0f3b49] prose-code:bg-[#0b1820] prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[#9be7ff] prose-pre:bg-[#0a1216] prose-pre:text-[#d4f6ff] prose-pre:border prose-pre:border-[#134254]">
             <MDX />
           </div>
         </article>

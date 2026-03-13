@@ -22,7 +22,7 @@ export default function TermsPage() {
           <h2>Intellectual Property</h2>
           <p>All content, software, and materials are owned by JouleBridge or its licensors.</p>
           <h2>Contact</h2>
-          <p>For questions, contact us at <a href="mailto:hello@joulebridge.com">hello@joulebridge.com</a>.</p>
+          <p>For questions, contact us at <a href="mailto:contact@joulebridge.com">contact@joulebridge.com</a>.</p>
         </div>
       </main>
       <Footer />

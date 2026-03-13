@@ -36,6 +36,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "JouleBridge" }],
   creator: "JouleBridge",
+  icons: {
+    icon: "/brand/jb-favicon.svg",
+    shortcut: "/brand/jb-favicon.svg",
+    apple: "/brand/jb-favicon.svg",
+  },
   openGraph: {
     title: "JouleBridge | Verified Data Infrastructure for Energy",
     description:

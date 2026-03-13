@@ -176,6 +176,26 @@ html.lenis {
   background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 }
 
+@media (max-width: 767px) {
+  .landing-grid::before {
+    opacity: 0.14;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(50% - 1px),
+      rgba(255,255,255,0.025) calc(50% - 1px),
+      rgba(255,255,255,0.025) 50%
+    );
+    background-size: 100% 100%;
+    background-position: center top;
+  }
+
+  .section-lines::before,
+  .section-lines::after {
+    display: none;
+  }
+}
+
 .btn-jb {
   position: relative;
 }

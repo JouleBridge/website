@@ -102,10 +102,13 @@ export function Globe({
   const animRef = useRef<number>(0);
   const timeRef = useRef(0);
   const dotsRef = useRef<[number, number, number][]>([]);
+  const visibleRef = useRef(true);
+  const documentVisibleRef = useRef(true);
+  const lastFrameTimeRef = useRef(0);
 
   useEffect(() => {
     const dots: [number, number, number][] = [];
-    const numDots = 1200;
+    const numDots = 640;
     const goldenRatio = (1 + Math.sqrt(5)) / 2;
     for (let i = 0; i < numDots; i++) {
       const theta = (2 * Math.PI * i) / goldenRatio;
@@ -124,7 +127,7 @@ export function Globe({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
     canvas.width = w * dpr;
@@ -265,12 +268,46 @@ export function Globe({
   }, [dotColor, arcColor, markerColor, autoRotateSpeed, connections, markers]);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 },
+    );
+
+    const handleVisibilityChange = () => {
+      documentVisibleRef.current = document.visibilityState === "visible";
+    };
+
+    observer.observe(canvas);
+    handleVisibilityChange();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     const frame = () => {
+      if (!visibleRef.current || !documentVisibleRef.current) {
+        animRef.current = requestAnimationFrame(frame);
+        return;
+      }
+
+      const now = performance.now();
+      if (now - lastFrameTimeRef.current < 1000 / 30) {
+        animRef.current = requestAnimationFrame(frame);
+        return;
+      }
+
+      lastFrameTimeRef.current = now;
       draw();
       animRef.current = requestAnimationFrame(frame);
     };
     animRef.current = requestAnimationFrame(frame);
-    return () => cancelAnimationFrame(animRef.current);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      cancelAnimationFrame(animRef.current);
+    };
   }, [draw]);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {

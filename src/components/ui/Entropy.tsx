@@ -28,7 +28,11 @@ export function Entropy({
     if (!context) return;
     const ctx: CanvasRenderingContext2D = context;
 
-    const dpr = window.devicePixelRatio || 1;
+    let isVisible = true;
+    let isDocumentVisible = document.visibilityState === "visible";
+    let lastFrameTime = 0;
+    const frameInterval = 1000 / 24;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     canvas.width = size * dpr;
     canvas.height = size * dpr;
     canvas.style.width = `${size}px`;
@@ -115,7 +119,7 @@ export function Entropy({
     }
 
     const particles: Particle[] = [];
-    const gridSize = 25;
+    const gridSize = 18;
     const spacing = size / gridSize;
 
     for (let i = 0; i < gridSize; i++) {
@@ -143,10 +147,32 @@ export function Entropy({
     let time = 0;
     let animationId: number;
 
-    function animate() {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.1 },
+    );
+
+    const handleVisibilityChange = () => {
+      isDocumentVisible = document.visibilityState === "visible";
+    };
+
+    function animate(timestamp = 0) {
+      if (!isVisible || !isDocumentVisible) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (timestamp - lastFrameTime < frameInterval) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
+      lastFrameTime = timestamp;
       ctx.clearRect(0, 0, size, size);
 
-      if (time % 30 === 0) {
+      if (time % 45 === 0) {
         updateNeighbors();
       }
 
@@ -191,9 +217,13 @@ export function Entropy({
       animationId = requestAnimationFrame(animate);
     }
 
+    observer.observe(canvas);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     animate();
 
     return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       if (animationId) {
         cancelAnimationFrame(animationId);
       }

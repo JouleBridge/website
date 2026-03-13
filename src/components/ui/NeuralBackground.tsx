@@ -113,13 +113,31 @@ export default function NeuralBackground({
     let height = container.clientHeight;
     let particles: Particle[] = [];
     let animationFrameId = 0;
+    let lastFrameTime = 0;
+    let isVisible = true;
+    let isDocumentVisible = document.visibilityState === "visible";
     const mouse = { x: -1000, y: -1000 };
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const effectiveParticleCount = prefersReducedMotion
+      ? 0
+      : Math.max(
+          72,
+          Math.floor(
+            particleCount *
+              (window.innerWidth < 768 ? 0.35 : 1) *
+              (coarsePointer ? 0.75 : 1),
+          ),
+        );
+    const frameInterval = coarsePointer ? 1000 / 24 : 1000 / 30;
 
     const init = () => {
       width = container.clientWidth;
       height = container.clientHeight;
 
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -127,12 +145,26 @@ export default function NeuralBackground({
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      particles = Array.from({ length: particleCount }, () =>
+      particles = Array.from({ length: effectiveParticleCount }, () =>
         createParticle(width, height),
       );
+
+      ctx.fillStyle = "rgba(0, 0, 0, 1)";
+      ctx.fillRect(0, 0, width, height);
     };
 
-    const animate = () => {
+    const animate = (timestamp: number) => {
+      if (!isVisible || !isDocumentVisible || effectiveParticleCount === 0) {
+        animationFrameId = window.requestAnimationFrame(animate);
+        return;
+      }
+
+      if (timestamp - lastFrameTime < frameInterval) {
+        animationFrameId = window.requestAnimationFrame(animate);
+        return;
+      }
+
+      lastFrameTime = timestamp;
       ctx.globalAlpha = 1;
       ctx.fillStyle = `rgba(0, 0, 0, ${trailOpacity})`;
       ctx.fillRect(0, 0, width, height);
@@ -148,6 +180,7 @@ export default function NeuralBackground({
     const handleResize = () => init();
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (coarsePointer) return;
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
@@ -158,17 +191,37 @@ export default function NeuralBackground({
       mouse.y = -1000;
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 },
+    );
+
+    const handleVisibilityChange = () => {
+      isDocumentVisible = document.visibilityState === "visible";
+    };
+
     init();
-    animate();
+    observer.observe(container);
+    handleVisibilityChange();
+    animationFrameId = window.requestAnimationFrame(animate);
 
     window.addEventListener("resize", handleResize);
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    if (!coarsePointer) {
+      container.addEventListener("mousemove", handleMouseMove);
+      container.addEventListener("mouseleave", handleMouseLeave);
+    }
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (!coarsePointer) {
+        container.removeEventListener("mousemove", handleMouseMove);
+        container.removeEventListener("mouseleave", handleMouseLeave);
+      }
+      observer.disconnect();
       window.cancelAnimationFrame(animationFrameId);
     };
   }, [color, particleCount, speed, trailOpacity]);

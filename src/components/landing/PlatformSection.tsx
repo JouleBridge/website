@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BadgeCheck,
@@ -60,8 +61,29 @@ const features = [
 ];
 
 export function PlatformSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [showHeavyVisuals, setShowHeavyVisuals] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShowHeavyVisuals(true);
+        observer.disconnect();
+      },
+      { rootMargin: "280px 0px", threshold: 0.01 },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative z-10 bg-jb-dark py-20 section-lines md:py-24">
+    <section ref={sectionRef} className="relative z-10 bg-jb-dark py-20 section-lines md:py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
         <Eyebrow className="mb-4 text-jb-accent">Why Bridge Kernel</Eyebrow>
 
@@ -82,13 +104,17 @@ export function PlatformSection() {
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#7dd3fc]">
               Evidence Network View
             </div>
-            <Globe
-              className="mx-auto aspect-square h-auto max-h-[320px] w-full"
-              size={320}
-              dotColor="rgba(125, 211, 252, ALPHA)"
-              arcColor="rgba(96, 165, 250, 0.56)"
-              markerColor="rgba(134, 239, 172, 1)"
-            />
+            {showHeavyVisuals ? (
+              <Globe
+                className="mx-auto aspect-square h-auto max-h-[320px] w-full"
+                size={320}
+                dotColor="rgba(125, 211, 252, ALPHA)"
+                arcColor="rgba(96, 165, 250, 0.56)"
+                markerColor="rgba(134, 239, 172, 1)"
+              />
+            ) : (
+              <div className="mx-auto aspect-square max-h-[320px] w-full border border-white/6 bg-[radial-gradient(circle_at_center,rgba(125,211,252,0.12),transparent_40%),linear-gradient(180deg,rgba(18,20,22,0.92),rgba(11,13,15,0.98))]" />
+            )}
           </div>
         </div>
 
@@ -108,7 +134,11 @@ export function PlatformSection() {
 
         <div className="mt-8">
           <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-jb-text-muted">JouleBridge Platform View</div>
-          <EnergyEvidenceIllustration />
+          {showHeavyVisuals ? (
+            <EnergyEvidenceIllustration />
+          ) : (
+            <div className="h-[420px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))]" />
+          )}
         </div>
       </div>
     </section>

@@ -132,15 +132,41 @@ export function Navbar() {
           <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">Start a Pilot</Button>
         </div>
 
-        <button className="ml-auto flex flex-col gap-1.5 p-2 lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-          <span className={cn("block h-[2px] w-6 bg-white transition-transform", mobileOpen && "translate-y-[7px] rotate-45")} />
-          <span className={cn("block h-[2px] w-6 bg-white transition-opacity", mobileOpen && "opacity-0")} />
-          <span className={cn("block h-[2px] w-6 bg-white transition-transform", mobileOpen && "-translate-y-[7px] -rotate-45")} />
+        <button
+          className="ml-auto flex h-11 w-11 items-center justify-center border border-white/14 bg-black/30 shadow-[0_10px_30px_rgba(0,0,0,0.28)] backdrop-blur-md transition-colors hover:border-white/22 hover:bg-black/44 lg:hidden"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
+        >
+          <span className="flex flex-col gap-1.5">
+            <span
+              className={cn(
+                "block h-[2.5px] w-6 bg-white transition-transform duration-200",
+                mobileOpen && "translate-y-[8px] rotate-45",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-[2.5px] w-6 bg-white/92 transition-opacity duration-200",
+                mobileOpen && "opacity-0",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-[2.5px] w-6 bg-white transition-transform duration-200",
+                mobileOpen && "-translate-y-[8px] -rotate-45",
+              )}
+            />
+          </span>
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="max-h-[calc(100svh-68px)] overflow-y-auto border-t border-white/8 bg-jb-dark/98 px-4 py-5 sm:px-6 lg:hidden">
+        <div
+          id="mobile-navigation"
+          className="max-h-[calc(100svh-68px)] overflow-y-auto border-t border-white/8 bg-jb-dark/98 px-4 py-5 sm:px-6 lg:hidden"
+        >
           <div className="space-y-2">
             {siteConfig.nav.main.map((item) => (
               <Link

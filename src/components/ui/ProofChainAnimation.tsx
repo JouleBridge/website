@@ -26,11 +26,11 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
     const dpr = window.devicePixelRatio || 1;
 
     const stages = [
-      { label: "TELEMETRY", color: "#9ca3af", x: 0.08 },
-      { label: "CANONICAL", color: "#6466f1", x: 0.28 },
-      { label: "SHA-256", color: "#6466f1", x: 0.48 },
-      { label: "Ed25519", color: "#85f78f", x: 0.68 },
-      { label: "VERIFIED", color: "#85f78f", x: 0.88 },
+      { label: "TELEMETRY", color: "#6b7280", x: 0.08 },
+      { label: "CANONICAL", color: "#FFFFFF", x: 0.28 },
+      { label: "SHA-256", color: "#FFFFFF", x: 0.48 },
+      { label: "Ed25519", color: "#D06120", x: 0.68 },
+      { label: "VERIFIED", color: "#FFFFFF", x: 0.88 },
     ];
 
     const init = () => {
@@ -121,7 +121,7 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
       if (progress < 0.3) return;
       const alpha = Math.min((progress - 0.3) / 0.3, 1);
       ctx.font = "9px monospace";
-      ctx.fillStyle = "#6466f1";
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
       ctx.globalAlpha = alpha * 0.4;
       ctx.textAlign = "center";
       ctx.fillText("8af3c2b1e9d4...", x, y - 30);
@@ -135,11 +135,11 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
       const badgeH = 18;
 
       ctx.globalAlpha = alpha * 0.8;
-      ctx.strokeStyle = "#85f78f";
+      ctx.strokeStyle = "#D06120";
       ctx.lineWidth = 1;
       ctx.strokeRect(x - badgeW / 2, y - 38 - badgeH / 2, badgeW, badgeH);
       ctx.font = "8px monospace";
-      ctx.fillStyle = "#85f78f";
+      ctx.fillStyle = "#D06120";
       ctx.textAlign = "center";
       ctx.fillText("SIGNED", x, y - 34);
       ctx.globalAlpha = 1;
@@ -169,8 +169,8 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
         if (p.y < 0 || p.y > height) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
-        ctx.fillStyle = "#6466f1";
-        ctx.globalAlpha = 0.15;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.globalAlpha = 0.08;
         ctx.fill();
       });
       ctx.globalAlpha = 1;
@@ -215,7 +215,7 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
         if (i === 4 && nodeProgress > 0.8) {
           ctx.beginPath();
           ctx.arc(sx, centerY, radius * 2, 0, Math.PI * 2);
-          ctx.fillStyle = "#85f78f";
+          ctx.fillStyle = "#FFFFFF";
           ctx.globalAlpha = (nodeProgress - 0.8) * 0.15;
           ctx.fill();
           ctx.globalAlpha = 1;
@@ -243,7 +243,12 @@ export function ProofChainAnimation({ className }: ProofChainAnimationProps) {
     <div
       ref={containerRef}
       className={className}
-      style={{ width: "100%", height: "100%" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+      }}
     >
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>

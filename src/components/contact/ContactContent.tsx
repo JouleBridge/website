@@ -66,7 +66,7 @@ export function ContactContent() {
                 className="jb-section-title mb-4 max-w-3xl"
               >
                 Let&apos;s talk about your{" "}
-                <span className="jb-title-gradient jb-title-gradient-warm">
+                <span className="jb-title-gradient">
                   energy settlement
                 </span>
               </motion.h1>
@@ -84,15 +84,15 @@ export function ContactContent() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="border border-jb-accent/25 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
+                  className="border border-white/15 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
                 >
-                  <div className="mb-3 font-mono text-sm uppercase tracking-widest text-jb-accent">
+                  <div className="mb-3 font-mono text-sm uppercase tracking-widest text-white/60">
                     Message Sent
                   </div>
                   <p className="text-jb-white/70">
                     Thanks for reaching out. We&apos;ll get back to you within 24 hours.
                     You can also reach us at{" "}
-                    <a href={`mailto:${siteConfig.contactEmail}`} className="text-jb-accent hover:underline">
+                    <a href={`mailto:${siteConfig.contactEmail}`} className="text-white/60 hover:underline">
                       {siteConfig.contactEmail}
                     </a>
                   </p>
@@ -113,7 +113,7 @@ export function ContactContent() {
                       <input
                         name="name"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="Jane Doe"
                       />
                     </div>
@@ -125,7 +125,7 @@ export function ContactContent() {
                         name="email"
                         type="email"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="jane@company.com"
                       />
                     </div>
@@ -139,7 +139,7 @@ export function ContactContent() {
                       <input
                         name="company"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="Acme Energy"
                       />
                     </div>
@@ -149,7 +149,7 @@ export function ContactContent() {
                       </label>
                       <input
                         name="role"
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="VP Operations"
                       />
                     </div>
@@ -162,7 +162,7 @@ export function ContactContent() {
                     <select
                       name="interest"
                       required
-                      className="w-full appearance-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                      className="w-full appearance-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                     >
                       <option value="">Select an option</option>
                       <option value="Pilot program">Pilot program</option>
@@ -182,7 +182,7 @@ export function ContactContent() {
                       name="message"
                       required
                       rows={5}
-                      className="w-full resize-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-jb-accent/45 focus:outline-none"
+                      className="w-full resize-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                       placeholder="Tell us about your energy settlement challenges..."
                     />
                   </div>
@@ -206,7 +206,7 @@ export function ContactContent() {
               className="lg:pt-32"
             >
               <div className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.92),rgba(16,18,21,0.96))] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]">
-                <h2 className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-jb-accent">
+                <h2 className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-white/60">
                   Get in Touch
                 </h2>
 
@@ -216,10 +216,10 @@ export function ContactContent() {
                       Email
                     </div>
                     <div className="flex items-center gap-3">
-                      <Mail className="h-4 w-4 text-[#7dd3fc]" />
+                      <Mail className="h-4 w-4 text-[#D06120]" />
                       <a
                         href={`mailto:${siteConfig.contactEmail}`}
-                        className="text-white transition-colors hover:text-[#7dd3fc]"
+                        className="text-white transition-colors hover:text-[#D06120]"
                       >
                         {siteConfig.contactEmail}
                       </a>
@@ -231,10 +231,10 @@ export function ContactContent() {
                       Phone
                     </div>
                     <div className="flex items-center gap-3">
-                      <Phone className="h-4 w-4 text-[#86efac]" />
+                      <Phone className="h-4 w-4 text-white" />
                       <a
                         href={`tel:${siteConfig.contactPhone.replace(/\s+/g, "")}`}
-                        className="text-white transition-colors hover:text-[#86efac]"
+                        className="text-white transition-colors hover:text-white"
                       >
                         {siteConfig.contactPhone}
                       </a>
@@ -274,10 +274,10 @@ export function ContactContent() {
                   </div>
                 </div>
 
-                <span className="absolute left-[-1px] top-[-1px] h-[2px] w-[2px] bg-jb-accent" />
-                <span className="absolute right-[-1px] top-[-1px] h-[2px] w-[2px] bg-jb-accent" />
-                <span className="absolute bottom-[-1px] left-[-1px] h-[2px] w-[2px] bg-jb-accent" />
-                <span className="absolute bottom-[-1px] right-[-1px] h-[2px] w-[2px] bg-jb-accent" />
+                <span className="absolute left-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/30" />
+                <span className="absolute right-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/30" />
+                <span className="absolute bottom-[-1px] left-[-1px] h-[2px] w-[2px] bg-white/30" />
+                <span className="absolute bottom-[-1px] right-[-1px] h-[2px] w-[2px] bg-white/30" />
               </div>
             </motion.div>
           </div>

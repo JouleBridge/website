@@ -13,64 +13,103 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 const benefits = [
   {
-    text: "Create a stronger audit trail between field telemetry and the records used by operations, finance, and compliance teams.",
-    icon: FileSearch,
-    iconColor: "text-[#fb7185]",
-    glow: "shadow-[0_0_24px_rgba(251,113,133,0.18)]",
-  },
-  {
-    text: "Shorten reconciliation effort by preparing cleaner, proof-oriented evidence before disputes escalate.",
+    title: "3 weeks → 3 days reconciliation",
+    text: "Proof-oriented evidence prepared before disputes escalate. Cleaner records, faster settlement.",
     icon: TimerReset,
-    iconColor: "text-[#7dd3fc]",
-    glow: "shadow-[0_0_24px_rgba(125,211,252,0.18)]",
+    iconColor: "text-white",
+    glow: "shadow-[0_0_24px_rgba(255,255,255,0.12)]",
+    featured: true,
   },
   {
-    text: "Trace events from source capture through proof generation and downstream review with clearer lineage.",
-    icon: GitBranch,
-    iconColor: "text-[#60a5fa]",
-    glow: "shadow-[0_0_24px_rgba(96,165,250,0.18)]",
-  },
-  {
-    text: "Raise confidence that unexpected edits, policy violations, and abnormal operating behavior are visible sooner.",
-    icon: Activity,
-    iconColor: "text-[#f59e0b]",
-    glow: "shadow-[0_0_24px_rgba(245,158,11,0.18)]",
-  },
-  {
-    text: "Give customer, operator, and utility teams a more defensible record to review when settlement disputes appear.",
+    title: "Tamper = broken signature",
+    text: "Every reading signed at the edge with Ed25519. If a record is altered, the cryptographic proof breaks visibly.",
     icon: ShieldCheck,
-    iconColor: "text-[#f472b6]",
-    glow: "shadow-[0_0_24px_rgba(244,114,182,0.18)]",
+    iconColor: "text-white/60",
+    glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
+    featured: false,
   },
   {
-    text: "Use one verification-oriented operating model across sites and asset workflows instead of one-off evidence handling.",
+    title: "Source-to-settlement lineage",
+    text: "Trace every event from field capture through proof generation to downstream review. No gaps in the chain.",
+    icon: GitBranch,
+    iconColor: "text-white/60",
+    glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
+    featured: false,
+  },
+  {
+    title: "One evidence format everywhere",
+    text: "DLMS, OCPP, Modbus, IEC 61850 — all normalized into a single verification-oriented format across sites and protocols.",
     icon: BadgeCheck,
-    iconColor: "text-[#34d399]",
-    glow: "shadow-[0_0_24px_rgba(52,211,153,0.18)]",
+    iconColor: "text-[#D06120]",
+    glow: "shadow-[0_0_24px_rgba(208,97,32,0.18)]",
+    featured: true,
+  },
+  {
+    title: "Anomalies surface fast",
+    text: "Unexpected edits, policy violations, and abnormal operating behavior become visible before they compound.",
+    icon: Activity,
+    iconColor: "text-white",
+    glow: "shadow-[0_0_24px_rgba(255,255,255,0.12)]",
+    featured: false,
+  },
+  {
+    title: "Defensible records for disputes",
+    text: "Customer, operator, and utility teams get a cryptographically verifiable record when settlement disputes appear.",
+    icon: FileSearch,
+    iconColor: "text-white/60",
+    glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
+    featured: false,
   },
 ];
 
 export function BenefitsSection() {
   return (
-    <section className="relative z-10 bg-jb-dark py-20 section-lines md:py-24">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        <Eyebrow className="mb-4">Benefits</Eyebrow>
+    <section className="relative z-10 bg-jb-section-alt py-20 md:py-24">
+      {/* Top hairline */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
-        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="jb-section-title max-w-3xl mb-10">
-          Why a{" "}
-          <span className="jb-title-gradient jb-title-gradient-cool">
-            stronger evidence layer
-          </span>{" "}
-          matters
+      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+        <Eyebrow className="mb-4">Outcomes</Eyebrow>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="jb-section-title max-w-3xl mb-12"
+        >
+          What changes when <span className="text-[#D06120]">evidence</span> is{" "}
+          <span className="text-jb-text-muted">built in, not bolted on</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Bento grid: Row 1 = 2+1, Row 2 = 1+2, Row 3 = 1+1+1 (only 2 items) */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {benefits.map((item, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }} className="border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.24)]">
-              <div className={`mb-4 flex h-12 w-12 items-center justify-center border border-white/10 bg-[linear-gradient(180deg,rgba(25,28,32,0.98),rgba(12,14,16,0.98))] ${item.glow}`}>
-                <item.icon className={`h-5 w-5 ${item.iconColor} stroke-[2.2]`} />
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.06 }}
+              className={`group relative flex flex-col justify-between p-6 transition-colors duration-300 hover:bg-jb-card-hover ${
+                item.featured
+                  ? "md:col-span-2 border-l-[3px] border-l-[#D06120] border border-white/8 bg-jb-section-elevated jb-shadow-card-featured"
+                  : "border border-white/6 bg-jb-card jb-shadow-card"
+              } ${item.featured ? "min-h-[200px]" : "min-h-[180px]"}`}
+            >
+              <div>
+                <div
+                  className={`mb-4 flex h-12 w-12 items-center justify-center border border-white/10 bg-[linear-gradient(180deg,rgba(25,28,32,0.98),rgba(12,14,16,0.98))] ${item.glow}`}
+                >
+                  <item.icon className={`h-5 w-5 ${item.iconColor} stroke-[2.2]`} />
+                </div>
+                <h3 className="mb-2 font-display text-xl font-bold tracking-tight text-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-jb-text-muted">
+                  {item.text}
+                </p>
               </div>
-              <p className="leading-relaxed text-jb-white/70">{item.text}</p>
             </motion.div>
           ))}
         </div>

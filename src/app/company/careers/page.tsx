@@ -49,7 +49,7 @@ export default function CareersPage() {
           </div>
 
           <div className="space-y-6 text-left max-w-xl mx-auto">
-            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-jb-accent">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#D06120]">
               What we value
             </h3>
             <div className="space-y-4">

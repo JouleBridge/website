@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const steps = [
   {
@@ -33,22 +34,34 @@ const steps = [
 
 export function PipelineSection() {
   return (
-    <section className="relative bg-jb-dark py-16 md:py-20 section-lines">
+    <section className="relative bg-jb-section-alt py-16 md:py-20 section-lines">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <Eyebrow className="mb-3 text-jb-accent">Pipeline</Eyebrow>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
-              The current{" "}
-              <span className="jb-title-gradient jb-title-gradient-cool">
-                Bridge Kernel operating flow
+            <Eyebrow className="mb-3 text-white/60">Pipeline</Eyebrow>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="jb-section-title"
+            >
+              How <span className="text-[#D06120]">Bridge Kernel</span>{" "}
+              <span className="text-jb-text-muted">
+                turns raw telemetry into proof
               </span>
-            </h2>
-            <p className="mt-4 text-jb-text-muted leading-relaxed">
-              JouleBridge is strongest when the path from source event to reviewable
-              evidence is clear. The current runtime baseline can be understood as a
-              three-step flow rather than a cluster of raw terminals.
-            </p>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.08 }}
+              className="mt-4 text-jb-text-muted leading-relaxed"
+            >
+              Three deterministic steps — capture, prove, govern — take raw field
+              data and deliver audit-ready evidence before reconciliation delays
+              become disputes.
+            </motion.p>
           </div>
           <Button href="/product" variant="secondary">
             Learn More
@@ -66,10 +79,10 @@ export function PipelineSection() {
               className="jb-panel p-5 sm:p-6"
             >
               <div className="mb-5 flex items-center justify-between">
-                <div className="font-mono text-xs uppercase tracking-[0.22em] text-jb-accent">
+                <div className="font-mono text-xs uppercase tracking-[0.22em] text-white/60">
                   Step {step.num}
                 </div>
-                <div className="h-2.5 w-2.5 rounded-full bg-jb-accent" />
+                <div className="h-2.5 w-2.5 bg-[#D06120] shadow-[0_0_8px_rgba(208,97,32,0.4)]" />
               </div>
 
               <h3 className="text-2xl font-semibold text-white">{step.title}</h3>
@@ -88,8 +101,8 @@ export function PipelineSection() {
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-jb-white/78">{step.action}</p>
                 </div>
-                <div className="border border-jb-accent/20 bg-jb-accent/5 p-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-jb-accent">
+                <div className="border border-[#D06120]/20 bg-[#D06120]/5 p-4">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#D06120]">
                     Output
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-white">{step.output}</p>
@@ -98,6 +111,12 @@ export function PipelineSection() {
             </motion.article>
           ))}
         </div>
+
+        <TextReveal
+          text="Capture. Prove. Govern. Three steps between raw telemetry and audit-ready truth."
+          highlightWords={["capture.", "prove.", "govern."]}
+          className="mt-10"
+        />
       </div>
     </section>
   );

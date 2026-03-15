@@ -25,7 +25,7 @@ export default function VideoPage() {
 
           <div className="border border-dashed border-jb-mid-gray/50 bg-jb-card/20 p-16 text-center">
             <div className="w-16 h-16 rounded-full bg-jb-accent/10 flex items-center justify-center mx-auto mb-6">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-jb-accent">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#D06120]">
                 <polygon points="5,3 19,12 5,21" fill="currentColor" />
               </svg>
             </div>

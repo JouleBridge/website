@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export function IsometricPipeline() {
   const layers = [
-    { label: "INGEST", sublabel: "Protocol Adapters", color: "#6466f1", y: 0 },
-    { label: "PROVE", sublabel: "Cryptographic Signing", color: "#ed77f8", y: 1 },
-    { label: "GATE", sublabel: "Policy Engine", color: "#ffff61", y: 2 },
-    { label: "SETTLE", sublabel: "Immutable Ledger", color: "#85f78f", y: 3 },
+    { label: "INGEST", sublabel: "Protocol Adapters", color: "#FFFFFF", y: 0 },
+    { label: "PROVE", sublabel: "Cryptographic Signing", color: "#D06120", y: 1 },
+    { label: "GATE", sublabel: "Policy Engine", color: "#FFFFFF", y: 2 },
+    { label: "SETTLE", sublabel: "Immutable Ledger", color: "#FFFFFF", y: 3 },
   ];
 
   return (
@@ -156,7 +156,7 @@ export function IsometricPipeline() {
       <div className="flex items-center justify-center gap-6 mt-8 flex-wrap">
         {layers.map((layer) => (
           <div key={layer.label} className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full" style={{ background: layer.color }} />
+            <div className="w-2 h-2" style={{ background: layer.color }} />
             <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest">
               {layer.label}
             </span>

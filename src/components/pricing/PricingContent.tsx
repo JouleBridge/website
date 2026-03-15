@@ -79,15 +79,15 @@ const faqs = [
   },
   {
     q: "Can I deploy Bridge Kernel on-premise?",
-    a: "Yes. The product direction supports edge and on-premise deployment models. The exact rollout model depends on your environment and should be agreed during scoping.",
+    a: "Yes. Bridge Kernel runs on ARM/x86 edge gateways, on-premise Linux/Windows servers, and containerized environments. Deployment model is scoped during discovery.",
   },
   {
     q: "What protocols do you support?",
-    a: "The product roadmap covers multiple energy and telemetry protocols, but support maturity depends on the current implementation and agreed pilot scope. We review protocol fit during discovery rather than over-claiming broad production support on the website.",
+    a: "Bridge Kernel ships with adapters for DLMS/IEC 62056, OCPP 1.6/2.0, Modbus RTU/TCP, and webhook/REST. IEC 61850 is on the roadmap. Protocol fit is confirmed during discovery to ensure adapter coverage matches your deployment.",
   },
   {
     q: "How long does integration take?",
-    a: "That depends on the site, protocol path, and deployment complexity. The right answer is a scoped implementation plan, not a single generic number for every customer.",
+    a: "Typical pilot deployments take 2-4 weeks from scoping to first verified evidence output. Production rollouts depend on site count, protocol mix, and integration depth.",
   },
   {
     q: "How should we engage if we are early in evaluation?",
@@ -132,7 +132,7 @@ export function PricingContent() {
             className="jb-section-title mb-5"
           >
             Engagement models that{" "}
-            <span className="jb-title-gradient jb-title-gradient-warm">
+            <span className="jb-title-gradient">
               match operational reality
             </span>
           </motion.h1>
@@ -153,17 +153,21 @@ export function PricingContent() {
             {tiers.map((tier, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20, filter: "blur(2px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className={`relative flex flex-col border p-8 ${
                   tier.featured
-                    ? "border-jb-accent/30 bg-[linear-gradient(180deg,rgba(34,39,44,0.96),rgba(17,19,23,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.28)]"
-                    : "border-white/10 bg-[linear-gradient(180deg,rgba(28,31,35,0.92),rgba(15,17,20,0.96))] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]"
+                    ? "border-white/12 border-t-[2px] border-t-white/30 bg-gradient-to-b from-[#0f1114] to-[#0c0e10] jb-shadow-card-featured"
+                    : "border-white/8 bg-gradient-to-b from-[#0f1114] to-[#0c0e10] jb-shadow-card"
                 }`}
               >
-                {tier.featured && <div className="absolute left-0 right-0 top-0 h-[2px] bg-jb-accent/70" />}
-                <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-jb-accent">{tier.name}</div>
+                {tier.featured && (
+                  <div className="absolute right-4 top-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/60">
+                    Recommended
+                  </div>
+                )}
+                <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[#D06120]">{tier.name}</div>
                 <div className="mb-2">
                   <span className="text-4xl font-semibold text-white">{tier.price}</span>
                   {tier.period && <span className="ml-2 text-sm text-jb-text-muted">/ {tier.period}</span>}
@@ -174,7 +178,7 @@ export function PricingContent() {
                   {tier.features.map((feature, j) => (
                     <div key={j} className="flex items-start gap-3">
                       {feature.included ? (
-                        <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-accent">
+                        <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-white">
                           <path d="M13.5 4.5L6 12L2.5 8.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       ) : (
@@ -187,13 +191,23 @@ export function PricingContent() {
                   ))}
                 </div>
 
-                <Button
-                  href={tier.ctaHref}
-                  variant={tier.featured ? "primary" : "secondary"}
-                  className="w-full"
-                >
-                  {tier.cta}
-                </Button>
+                {tier.featured ? (
+                  <a
+                    href={tier.ctaHref}
+                    className="btn-jb inline-flex items-center justify-center bg-white px-8 py-3.5 font-mono text-sm font-semibold uppercase tracking-widest text-jb-dark shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-white/90 w-full"
+                  >
+                    {tier.cta}
+                    <span className="btn-corners" />
+                  </a>
+                ) : (
+                  <Button
+                    href={tier.ctaHref}
+                    variant="secondary"
+                    className="w-full"
+                  >
+                    {tier.cta}
+                  </Button>
+                )}
               </motion.div>
             ))}
           </div>
@@ -204,7 +218,7 @@ export function PricingContent() {
         <div className="container mx-auto max-w-3xl px-6 lg:px-8">
           <Eyebrow className="mb-8">FAQ</Eyebrow>
           <h2 className="jb-section-title mb-12 max-w-3xl">
-            <span className="jb-title-gradient jb-title-gradient-cool">
+            <span className="jb-title-gradient">
               Frequently asked
             </span>{" "}
             questions

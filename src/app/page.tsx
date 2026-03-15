@@ -9,6 +9,7 @@ import { BenefitsSection } from "@/components/landing/BenefitsSection";
 import { UseCasesSection } from "@/components/landing/UseCasesSection";
 import { CTASection } from "@/components/landing/CTASection";
 import { DemoSection } from "@/components/landing/DemoSection";
+import { TrustBar } from "@/components/landing/TrustBar";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
         <PlatformSection />
         <DemoSection />
         <BenefitsSection />
+        <TrustBar />
         <UseCasesSection />
         <CTASection />
       </main>

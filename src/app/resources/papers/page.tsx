@@ -19,7 +19,7 @@ export default function PapersPage() {
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Eyebrow className="mb-6">Papers</Eyebrow>
           <h1 className="mb-4 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-            Technical <span className="jb-title-gradient jb-title-gradient-cool">Papers</span>
+            Technical <span className="jb-title-gradient">Papers</span>
           </h1>
           <p className="mb-10 max-w-2xl text-lg text-jb-text-muted">
             Read the paper online first, then download the PDF version with formatted
@@ -33,16 +33,16 @@ export default function PapersPage() {
                 <Link
                   key={paper.slug}
                   href={`/resources/papers/${paper.slug}`}
-                  className="group relative block border border-jb-mid-gray/50 bg-jb-card/50 p-6 transition-colors hover:border-[#7dd3fc]/30 sm:p-8"
+                  className="group relative block border border-jb-mid-gray/50 bg-jb-card/50 p-6 transition-colors hover:border-[#D06120]/30 sm:p-8"
                 >
                   <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
                     <div className="flex-1">
                       <div className="mb-4 flex items-center gap-4">
                         <div className="border border-white/10 bg-black/20 p-3">
-                          <Icon className="h-5 w-5 text-[#7dd3fc]" />
+                          <Icon className="h-5 w-5 text-[#D06120]" />
                         </div>
                         <div className="flex flex-wrap items-center gap-3">
-                          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#7dd3fc]">
+                          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#D06120]">
                             {paper.type}
                           </span>
                           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-jb-text-muted">
@@ -53,7 +53,7 @@ export default function PapersPage() {
                           </span>
                         </div>
                       </div>
-                      <h2 className="mb-2 text-xl font-semibold text-white transition-colors group-hover:text-[#7dd3fc]">
+                      <h2 className="mb-2 text-xl font-semibold text-white transition-colors group-hover:text-[#D06120]">
                         {paper.title}
                       </h2>
                       <p className="max-w-2xl text-sm leading-relaxed text-jb-white/62">
@@ -61,7 +61,7 @@ export default function PapersPage() {
                       </p>
                     </div>
                     <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
-                      <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#7dd3fc]">
+                      <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D06120]">
                         Read Paper
                         <ArrowRight className="h-4 w-4" />
                       </div>
@@ -71,10 +71,10 @@ export default function PapersPage() {
                       </div>
                     </div>
                   </div>
-                  <span className="absolute left-[-1px] top-[-1px] h-[2px] w-[2px] bg-[#7dd3fc]/40" />
-                  <span className="absolute right-[-1px] top-[-1px] h-[2px] w-[2px] bg-[#86efac]/40" />
-                  <span className="absolute bottom-[-1px] left-[-1px] h-[2px] w-[2px] bg-[#60a5fa]/40" />
-                  <span className="absolute bottom-[-1px] right-[-1px] h-[2px] w-[2px] bg-[#f6b44d]/40" />
+                  <span className="absolute left-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/20" />
+                  <span className="absolute right-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/20" />
+                  <span className="absolute bottom-[-1px] left-[-1px] h-[2px] w-[2px] bg-white/20" />
+                  <span className="absolute bottom-[-1px] right-[-1px] h-[2px] w-[2px] bg-white/20" />
                 </Link>
               );
             })}

@@ -10,8 +10,8 @@ export default function NotFound() {
         <div className="container mx-auto max-w-2xl px-6 lg:px-8 text-center">
           <div className="border border-jb-mid-gray bg-jb-card rounded-lg overflow-hidden mb-8 text-left">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-jb-dark-gray">
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+              <div className="w-2.5 h-2.5 rounded-full bg-white/12" />
               <div className="w-2.5 h-2.5 rounded-full bg-jb-accent" />
               <span className="ml-auto font-mono text-[10px] text-jb-text-muted">
                 bridge-kernel
@@ -21,28 +21,28 @@ export default function NotFound() {
               <div className="text-jb-text-muted">
                 {"> "}bridge-kernel route --resolve
               </div>
-              <div className="text-jb-red">
+              <div className="text-white/60">
                 {"  "}ERROR 404: route not found
               </div>
               <div className="text-jb-text-muted/50 mt-4">
                 {"  "}available routes:
               </div>
-              <div className="text-jb-accent/70">
+              <div className="text-[#D06120]/70">
                 {"    "}/{"         "}home
               </div>
-              <div className="text-jb-accent/70">
+              <div className="text-[#D06120]/70">
                 {"    "}/product{"  "}bridge kernel
               </div>
-              <div className="text-jb-accent/70">
+              <div className="text-[#D06120]/70">
                 {"    "}/pricing{"  "}plans
               </div>
-              <div className="text-jb-accent/70">
+              <div className="text-[#D06120]/70">
                 {"    "}/docs{"     "}documentation
               </div>
-              <div className="text-jb-accent/70">
+              <div className="text-[#D06120]/70">
                 {"    "}/contact{"  "}get in touch
               </div>
-              <div className="animate-pulse text-jb-accent mt-2">_</div>
+              <div className="animate-pulse text-[#D06120] mt-2">_</div>
             </div>
           </div>
 

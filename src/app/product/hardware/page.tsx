@@ -53,8 +53,8 @@ export default function HardwarePage() {
             <Eyebrow>Hardware</Eyebrow>
           </div>
 
-          <div className="inline-block border border-jb-accent/40 bg-jb-accent/10 px-3 py-1 mb-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-jb-accent">
+          <div className="inline-block border border-[#D06120]/40 bg-[#D06120]/10 px-3 py-1 mb-6">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#D06120]">
               Roadmap
             </span>
           </div>
@@ -123,8 +123,8 @@ export default function HardwarePage() {
                       <span
                         className={`font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border ${
                           hw.status === "Supported"
-                            ? "text-jb-accent border-jb-accent/30"
-                            : "text-jb-yellow border-jb-yellow/30"
+                            ? "text-[#D06120] border-[#D06120]/30"
+                            : "text-white/80 border-white/12"
                         }`}
                       >
                         {hw.status}
@@ -194,7 +194,7 @@ export default function HardwarePage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="border border-jb-mid-gray/50 bg-jb-card/50 p-6"
               >
-                <h3 className="font-mono text-sm uppercase tracking-widest text-jb-accent mb-3">
+                <h3 className="font-mono text-sm uppercase tracking-widest text-[#D06120] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-sm text-jb-white/60 leading-relaxed">{item.desc}</p>

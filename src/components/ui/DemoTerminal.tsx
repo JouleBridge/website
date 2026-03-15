@@ -36,9 +36,9 @@ const script: TerminalLine[] = [
 const colorMap: Record<TerminalLine["type"], string> = {
   command: "text-white",
   output: "text-jb-white/50",
-  success: "text-[#fbbf24]",
-  info: "text-[#f59e0b]",
-  error: "text-[#f97316]",
+  success: "text-white",
+  info: "text-white/80",
+  error: "text-white/60",
 };
 
 export function DemoTerminal() {
@@ -97,7 +97,7 @@ export function DemoTerminal() {
           </div>
         ))}
         {visibleLines < script.length && visibleLines > 0 && (
-          <span className="inline-block h-4 w-2 animate-pulse bg-[#f59e0b]" />
+          <span className="inline-block h-4 w-2 animate-pulse bg-white" />
         )}
       </div>
     </motion.div>

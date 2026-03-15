@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Entropy } from "@/components/ui/Entropy";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const problems = [
   {
@@ -39,11 +40,11 @@ export function ProblemSection() {
               className="jb-section-title mb-4 max-w-4xl"
             >
               Critical energy workflows still rely on{" "}
-              <span className="jb-title-gradient jb-title-gradient-cool">
+              <span className="jb-title-gradient">
                 records that are hard to trust
               </span>
               .{" "}
-              <span className="jb-title-gradient jb-title-gradient-warm">
+              <span className="jb-title-gradient">
                 That breaks operations.
               </span>
             </motion.h2>
@@ -72,7 +73,7 @@ export function ProblemSection() {
               size={280}
               labelLeft="Evidence"
               labelRight="Ambiguity"
-              className="rounded-lg border border-jb-mid-gray/30 overflow-hidden"
+              className="border border-jb-mid-gray/30 overflow-hidden"
             />
           </motion.div>
         </div>
@@ -87,20 +88,26 @@ export function ProblemSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="border border-jb-mid-gray/50 bg-jb-card/50 p-6 relative"
             >
-              <div className="font-mono text-xs text-jb-red/80 uppercase tracking-widest mb-4">
+              <div className="font-mono text-xs text-white/50 uppercase tracking-widest mb-4">
                 {String(i + 1).padStart(2, "0")}
               </div>
               <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-jb-white mb-3">
                 {item.title}
               </h3>
               <p className="text-jb-white/60 leading-relaxed">{item.description}</p>
-              <span className="absolute top-[-1px] left-[-1px] w-[2px] h-[2px] bg-jb-red/60" />
-              <span className="absolute top-[-1px] right-[-1px] w-[2px] h-[2px] bg-jb-red/60" />
-              <span className="absolute bottom-[-1px] left-[-1px] w-[2px] h-[2px] bg-jb-red/60" />
-              <span className="absolute bottom-[-1px] right-[-1px] w-[2px] h-[2px] bg-jb-red/60" />
+              <span className="absolute top-[-1px] left-[-1px] w-[2px] h-[2px] bg-white/30" />
+              <span className="absolute top-[-1px] right-[-1px] w-[2px] h-[2px] bg-white/30" />
+              <span className="absolute bottom-[-1px] left-[-1px] w-[2px] h-[2px] bg-white/30" />
+              <span className="absolute bottom-[-1px] right-[-1px] w-[2px] h-[2px] bg-white/30" />
             </motion.div>
           ))}
         </div>
+
+        <TextReveal
+          text="Every meter reading, every charge session, every grid event — signed at the edge, verified before it matters."
+          highlightWords={["signed", "verified"]}
+          className="mt-10"
+        />
       </div>
     </SectionWrapper>
   );

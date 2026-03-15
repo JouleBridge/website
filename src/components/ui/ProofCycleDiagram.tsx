@@ -17,20 +17,20 @@ export function ProofCycleDiagram() {
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#555" />
           </marker>
           <linearGradient id="pc-fadeL" x1="340" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#6466f1" />
-            <stop offset="100%" stopColor="#6466f1" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="pc-fadeR" x1="460" y1="0" x2="500" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#6466f1" />
-            <stop offset="100%" stopColor="#6466f1" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="pc-fadeU" x1="0" y1="80" x2="0" y2="40" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#6466f1" />
-            <stop offset="100%" stopColor="#6466f1" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="pc-fadeD" x1="0" y1="200" x2="0" y2="240" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#6466f1" />
-            <stop offset="100%" stopColor="#6466f1" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -54,10 +54,10 @@ export function ProofCycleDiagram() {
         </g>
 
         {/* CANONICALIZE - top center (accent purple filled) */}
-        <rect x="340" y="80" width="120" height="120" fill="#6466f1" rx="2" />
+        <rect x="340" y="80" width="120" height="120" fill="#FFFFFF" rx="2" />
 
         {/* INGEST - bottom left (accent purple filled) */}
-        <rect x="90" y="380" width="120" height="120" fill="#6466f1" rx="2" />
+        <rect x="90" y="380" width="120" height="120" fill="#FFFFFF" rx="2" />
 
         {/* SIGN - bottom center (grid pattern = structured data) */}
         <rect x="340" y="380" width="120" height="120" fill="#141418" stroke="#333" strokeWidth="1" rx="2" />
@@ -69,7 +69,7 @@ export function ProofCycleDiagram() {
         {/* VERIFY - bottom right (circle = complete) */}
         <circle cx="650" cy="440" r="60" fill="#141418" stroke="#333" strokeWidth="1" />
         {/* Checkmark inside verify circle */}
-        <path d="M 625 440 L 640 455 L 675 425" fill="none" stroke="#85f78f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 625 440 L 640 455 L 675 425" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
 
         {/* Corner glow lines on CANONICALIZE box */}
         <g strokeWidth="2">
@@ -86,10 +86,10 @@ export function ProofCycleDiagram() {
         {/* Corner dots */}
         <g fill="#9ca3af">
           {/* CANONICALIZE corners */}
-          <circle cx="340" cy="80" r="3" fill="#6466f1" />
-          <circle cx="460" cy="80" r="3" fill="#6466f1" />
-          <circle cx="340" cy="200" r="3" fill="#6466f1" />
-          <circle cx="460" cy="200" r="3" fill="#6466f1" />
+          <circle cx="340" cy="80" r="3" fill="#FFFFFF" />
+          <circle cx="460" cy="80" r="3" fill="#FFFFFF" />
+          <circle cx="340" cy="200" r="3" fill="#FFFFFF" />
+          <circle cx="460" cy="200" r="3" fill="#FFFFFF" />
 
           {/* INGEST corners */}
           <rect x="87" y="377" width="6" height="6" />
@@ -124,10 +124,10 @@ export function ProofCycleDiagram() {
 
         {/* Labels */}
         <g fontFamily="'Inter', 'IBM Plex Mono', monospace" fontSize="16" fontWeight="600" fill="#e0e0e0" letterSpacing="1" textAnchor="middle">
-          <text x="400" y="60" fill="#6466f1" fontSize="13" letterSpacing="2">CANONICALIZE</text>
-          <text x="150" y="360" fill="#6466f1" fontSize="13" letterSpacing="2">INGEST</text>
+          <text x="400" y="60" fill="#FFFFFF" fontSize="13" letterSpacing="2">CANONICALIZE</text>
+          <text x="150" y="360" fill="#FFFFFF" fontSize="13" letterSpacing="2">INGEST</text>
           <text x="400" y="360" fill="#9ca3af" fontSize="13" letterSpacing="2">SIGN</text>
-          <text x="650" y="360" fill="#85f78f" fontSize="13" letterSpacing="2">VERIFY</text>
+          <text x="650" y="360" fill="#FFFFFF" fontSize="13" letterSpacing="2">VERIFY</text>
         </g>
 
         {/* Sublabels */}
@@ -135,7 +135,7 @@ export function ProofCycleDiagram() {
           <text x="400" y="150" fill="rgba(255,255,255,0.7)">SHA-256 Hash</text>
           <text x="150" y="450" fill="rgba(255,255,255,0.7)">Raw Telemetry</text>
           <text x="400" y="450" fill="#9ca3af">Ed25519 + Proof Metadata</text>
-          <text x="650" y="520" fill="#85f78f">Review Ready</text>
+          <text x="650" y="520" fill="#FFFFFF">Review Ready</text>
         </g>
       </svg>
     </motion.div>

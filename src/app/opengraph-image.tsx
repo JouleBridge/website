@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
-export const alt = "JouleBridge - The Settlement Layer for Energy";
+export const alt = "JouleBridge - Verified Data Infrastructure for Energy";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,8 +17,8 @@ export default function OGImage() {
           justifyContent: "center",
           alignItems: "flex-start",
           padding: "80px",
-          backgroundColor: "#0a0a0b",
-          fontFamily: "Inter, system-ui, sans-serif",
+          backgroundColor: "#070809",
+          fontFamily: "'Chakra Petch', 'Arial Black', system-ui, sans-serif",
         }}
       >
         {/* Top accent line */}
@@ -28,30 +28,31 @@ export default function OGImage() {
             top: 0,
             left: 0,
             right: 0,
-            height: "4px",
-            background: "linear-gradient(90deg, #6466f1, #85f78f, #6466f1)",
+            height: "3px",
+            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
           }}
         />
 
-        {/* Corner dots */}
-        <div style={{ position: "absolute", top: "24px", left: "24px", width: "4px", height: "4px", backgroundColor: "#6466f1", borderRadius: "1px" }} />
-        <div style={{ position: "absolute", top: "24px", right: "24px", width: "4px", height: "4px", backgroundColor: "#6466f1", borderRadius: "1px" }} />
-        <div style={{ position: "absolute", bottom: "24px", left: "24px", width: "4px", height: "4px", backgroundColor: "#6466f1", borderRadius: "1px" }} />
-        <div style={{ position: "absolute", bottom: "24px", right: "24px", width: "4px", height: "4px", backgroundColor: "#6466f1", borderRadius: "1px" }} />
+        {/* Signal dot top-left */}
+        <div style={{ position: "absolute", top: "28px", left: "28px", width: "8px", height: "8px", backgroundColor: "#D06120", boxShadow: "0 0 12px rgba(208,97,32,0.5)" }} />
 
-        {/* Eyebrow */}
+        {/* Corner dots */}
+        <div style={{ position: "absolute", top: "28px", right: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
+        <div style={{ position: "absolute", bottom: "28px", left: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
+        <div style={{ position: "absolute", bottom: "28px", right: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
+
+        {/* Wordmark */}
         <div
           style={{
-            fontSize: "14px",
-            fontWeight: 600,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#6466f1",
-            marginBottom: "24px",
-            fontFamily: "monospace",
+            display: "flex",
+            fontSize: "28px",
+            fontWeight: 700,
+            letterSpacing: "-0.5px",
+            marginBottom: "32px",
           }}
         >
-          JouleBridge
+          <span style={{ color: "#D06120" }}>Joule</span>
+          <span style={{ color: "#FFFFFF" }}>Bridge</span>
         </div>
 
         {/* Title */}
@@ -59,55 +60,57 @@ export default function OGImage() {
           style={{
             fontSize: "64px",
             fontWeight: 700,
-            color: "#fafafa",
-            lineHeight: 1.1,
+            color: "#FFFFFF",
+            lineHeight: 1.08,
             marginBottom: "24px",
             maxWidth: "900px",
+            letterSpacing: "-1px",
           }}
         >
-          The settlement layer for energy
+          Verified data infrastructure for energy
         </div>
 
         {/* Subtitle */}
         <div
           style={{
-            fontSize: "24px",
-            color: "#9ca3af",
+            fontSize: "22px",
+            color: "rgba(255,255,255,0.5)",
             lineHeight: 1.5,
-            maxWidth: "800px",
+            maxWidth: "700px",
           }}
         >
-          Cryptographically signed, settlement-ready evidence for every energy transaction.
+          Bridge Kernel signs every meter reading at the edge and delivers audit-ready evidence before disputes start.
         </div>
 
         {/* Bottom bar */}
         <div
           style={{
             position: "absolute",
-            bottom: "60px",
+            bottom: "48px",
             left: "80px",
             display: "flex",
             alignItems: "center",
-            gap: "24px",
+            gap: "20px",
           }}
         >
+          <div style={{ width: "6px", height: "6px", backgroundColor: "#D06120", boxShadow: "0 0 8px rgba(208,97,32,0.4)" }} />
           <div
             style={{
-              fontSize: "13px",
+              fontSize: "12px",
               fontFamily: "monospace",
-              color: "#85f78f",
-              letterSpacing: "0.15em",
+              color: "rgba(255,255,255,0.6)",
+              letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
           >
-            Bridge Kernel 2.0 Live
+            Pilot Program Open
           </div>
-          <div style={{ width: "1px", height: "16px", backgroundColor: "#323233" }} />
+          <div style={{ width: "1px", height: "14px", backgroundColor: "rgba(255,255,255,0.15)" }} />
           <div
             style={{
-              fontSize: "13px",
+              fontSize: "12px",
               fontFamily: "monospace",
-              color: "#9ca3af",
+              color: "rgba(255,255,255,0.35)",
               letterSpacing: "0.1em",
             }}
           >

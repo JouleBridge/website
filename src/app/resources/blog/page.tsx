@@ -12,9 +12,9 @@ export const metadata = {
 
 const categoryColors: Record<string, string> = {
   Industry: "text-[#f6b44d]",
-  Product: "text-[#7dd3fc]",
-  Engineering: "text-[#86efac]",
-  Company: "text-[#60a5fa]",
+  Product: "text-[#D06120]",
+  Engineering: "text-white/60",
+  Company: "text-white",
 };
 
 const categoryIcons = {
@@ -50,13 +50,13 @@ export default function BlogPage() {
               <Link
                 key={slug}
                 href={`/resources/blog/${slug}`}
-                className="border border-jb-mid-gray/50 bg-jb-card/50 p-6 relative group hover:border-jb-accent/30 transition-colors flex flex-col"
+                className="border border-jb-mid-gray/50 bg-jb-card/50 p-6 relative group hover:border-[#D06120]/30 transition-colors flex flex-col"
               >
                 <div className={`mb-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] ${categoryColors[post.category] || "text-jb-text-muted"}`}>
                   <Icon className="h-4 w-4" />
                   {post.category}
                 </div>
-                <h2 className="text-lg font-semibold text-white mb-3 group-hover:text-jb-accent transition-colors">
+                <h2 className="text-lg font-semibold text-white mb-3 group-hover:text-[#D06120] transition-colors">
                   {post.title}
                 </h2>
                 <p className="text-sm text-jb-white/50 leading-relaxed mb-4 flex-1">

@@ -25,9 +25,9 @@ export default async function BlogPostPage(props: {
 
   const categoryColors: Record<string, string> = {
     Industry: "text-[#f6b44d]",
-    Product: "text-[#7dd3fc]",
-    Engineering: "text-[#86efac]",
-    Company: "text-[#60a5fa]",
+    Product: "text-[#D06120]",
+    Engineering: "text-white/60",
+    Company: "text-white",
   };
   const categoryIcons = {
     Industry: Factory,
@@ -44,7 +44,7 @@ export default async function BlogPostPage(props: {
         <article className="container mx-auto max-w-3xl px-6 lg:px-8">
           <Link
             href="/resources/blog"
-            className="inline-flex items-center gap-2 font-mono text-xs text-jb-text-muted uppercase tracking-widest mb-8 hover:text-jb-accent transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs text-jb-text-muted uppercase tracking-widest mb-8 hover:text-[#D06120] transition-colors"
           >
             <svg width="12" height="12" viewBox="0 0 12 12">
               <path
@@ -76,7 +76,7 @@ export default async function BlogPostPage(props: {
             <span>{post.readTime}</span>
           </div>
 
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:text-jb-white/78 prose-p:leading-relaxed prose-li:text-jb-white/74 prose-strong:text-white prose-a:text-[#7dd3fc] prose-a:no-underline hover:prose-a:underline prose-code:rounded-none prose-code:border prose-code:border-[#0f3b49] prose-code:bg-[#0b1820] prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[#9be7ff] prose-pre:bg-[#0a1216] prose-pre:text-[#d4f6ff] prose-pre:border prose-pre:border-[#134254]">
+          <div className="prose prose-invert prose-lg max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:text-jb-white/78 prose-p:leading-relaxed prose-li:text-jb-white/74 prose-strong:text-white prose-a:text-[#D06120] prose-a:no-underline hover:prose-a:underline prose-code:rounded-none prose-code:border prose-code:border-white/10 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-white/80 prose-pre:bg-black/30 prose-pre:text-white/80 prose-pre:border prose-pre:border-white/10">
             <MDX />
           </div>
         </article>

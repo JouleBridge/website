@@ -52,7 +52,7 @@ export function Footer() {
           {/* Logo side */}
           <div className="max-w-md">
             <Link href="/" className="inline-flex">
-              <Logo color="white" className="h-8 w-auto" />
+              <Logo className="text-2xl" />
             </Link>
             <p className="mt-6 text-sm leading-relaxed text-jb-white/65">
               JouleBridge builds verification-oriented infrastructure for the energy

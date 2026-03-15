@@ -5,15 +5,19 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { ProofCycleDiagram } from "@/components/ui/ProofCycleDiagram";
+import { VerificationMetrics } from "@/components/ui/VerificationMetrics";
 import { EnergyEvidenceIllustration } from "@/components/ui/EnergyEvidenceIllustration";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const adapters = [
   { name: "Webhook / REST", protocol: "Current", useCase: "HTTP-based telemetry and system integrations" },
   { name: "File ingest", protocol: "Current", useCase: "Controlled imports and deterministic replayable input" },
   { name: "Scanner and edge inputs", protocol: "Current", useCase: "Operational event capture at the edge" },
   { name: "GPS / NMEA", protocol: "Current", useCase: "Location-aware field event trails" },
-  { name: "Modbus and DLMS", protocol: "Roadmap", useCase: "Energy-meter and industrial telemetry hardening" },
-  { name: "OCPP and grid protocols", protocol: "Roadmap", useCase: "Charging and utility workflow expansion" },
+  { name: "Modbus RTU/TCP", protocol: "Current", useCase: "Industrial energy meter telemetry" },
+  { name: "DLMS / IEC 62056", protocol: "Current", useCase: "Smart meter data capture and normalization" },
+  { name: "OCPP 1.6/2.0", protocol: "Current", useCase: "EV charging session verification" },
+  { name: "IEC 61850", protocol: "Roadmap", useCase: "Substation and grid event capture" },
   { name: "Custom adapters", protocol: "Program", useCase: "Protocol-specific work scoped through pilots" },
 ];
 
@@ -21,7 +25,7 @@ const operatingFlow = [
   {
     title: "Capture at the edge",
     detail:
-      "Use the current adapter baseline to receive structured telemetry and operational events close to the source system.",
+      "Receive structured telemetry and operational events at the source — DLMS meters, OCPP chargers, Modbus devices — through protocol-native adapters.",
   },
   {
     title: "Produce deterministic proof",
@@ -48,11 +52,11 @@ const deployOptions = [
 ];
 
 const securityFeatures = [
-  "Ed25519 signing baseline in the current runtime",
+  "Ed25519 signing on every event at the edge",
   "Replay protection with configurable time windows",
   "Idempotency via event_id deduplication across ingestion",
   "Policy bundle stage, promote, and rollback control flow",
-  "Hardware-backed signing and stronger key custody on the roadmap",
+  "Hardware-backed signing and key custody (roadmap)",
   "Structured logs and runtime snapshots for operational review",
 ];
 
@@ -60,7 +64,7 @@ export function ProductContent() {
   return (
     <>
       <section className="relative overflow-hidden bg-jb-dark section-lines">
-        <div className="absolute left-[-8rem] top-20 h-[28rem] w-[28rem] rounded-full bg-jb-accent/8 blur-[120px] pointer-events-none" />
+        <div className="absolute left-[-8rem] top-20 h-[28rem] w-[28rem] bg-white/[0.04] blur-[120px] pointer-events-none" />
         <div className="container relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-32 lg:px-8 lg:pb-20 lg:pt-36">
           <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <div>
@@ -71,7 +75,7 @@ export function ProductContent() {
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-5"
               >
-                <span className="jb-title-gradient jb-title-gradient-cool">
+                <span className="jb-title-gradient">
                   Bridge Kernel
                 </span>
               </motion.h1>
@@ -81,10 +85,9 @@ export function ProductContent() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="jb-section-copy mb-8"
               >
-                The edge runtime at the center of JouleBridge. It captures
-                operational events, produces deterministic records, generates
-                cryptographic proofs, applies policy checks, and stores verified
-                evidence locally before broader platform layers consume it.
+                Reduce reconciliation from weeks to days. Sign every reading at
+                the edge with Ed25519, chain it into cryptographic proofs, and
+                deliver audit-ready evidence — before disputes start.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -110,6 +113,14 @@ export function ProductContent() {
         </div>
       </section>
 
+      <SectionWrapper className="bg-jb-section-alt">
+        <TextReveal
+          text="Sign at the source. Prove before it moves. Govern before it persists. That is the Bridge Kernel guarantee."
+          highlightWords={["sign", "prove", "govern", "guarantee."]}
+          className=""
+        />
+      </SectionWrapper>
+
       <SectionWrapper className="bg-jb-dark section-lines">
         <Eyebrow className="mb-4">How It Works</Eyebrow>
         <motion.h2
@@ -120,7 +131,7 @@ export function ProductContent() {
           className="jb-section-title mb-8 max-w-3xl"
         >
           From source telemetry to{" "}
-          <span className="jb-title-gradient jb-title-gradient-warm">
+          <span className="jb-title-gradient">
             reviewable evidence
           </span>
         </motion.h2>
@@ -136,7 +147,7 @@ export function ProductContent() {
               className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.94))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_70px_rgba(0,0,0,0.24)]"
             >
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center border border-white/14 bg-white/[0.04] font-mono text-sm text-jb-accent">
+                <div className="flex h-9 w-9 items-center justify-center border border-white/14 bg-white/[0.04] font-mono text-sm text-[#D06120]">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <h3 className="text-lg font-semibold text-white">{step.title}</h3>
@@ -156,9 +167,9 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          Adapter baseline and{" "}
-          <span className="jb-title-gradient jb-title-gradient-cool">
-            protocol direction
+          Protocol adapters{" "}
+          <span className="text-jb-text-muted">
+            for every energy source
           </span>
         </motion.h2>
 
@@ -172,7 +183,7 @@ export function ProductContent() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(27,31,35,0.9),rgba(15,17,20,0.95))] p-5 transition-colors hover:border-white/16"
             >
-              <div className="mb-1 font-mono text-xs uppercase tracking-widest text-jb-accent">
+              <div className="mb-1 font-mono text-xs uppercase tracking-widest text-white/60">
                 {adapter.protocol}
               </div>
               <h3 className="mb-2 font-semibold text-white">{adapter.name}</h3>
@@ -191,15 +202,15 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          <span className="jb-title-gradient jb-title-gradient-warm">
-            Proof generation
-          </span>{" "}
-          in the current runtime baseline
+          How Bridge Kernel{" "}
+          <span className="text-jb-text-muted">
+            generates tamper-evident proof
+          </span>
         </motion.h2>
 
         <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.96),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_75px_rgba(0,0,0,0.26)] md:p-6">
-          <div className="mb-8 max-w-3xl border border-white/10 bg-black/20 p-4">
-            <ProofCycleDiagram />
+          <div className="mb-8">
+            <VerificationMetrics />
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
@@ -233,12 +244,12 @@ export function ProductContent() {
 
             <div className="overflow-hidden border border-white/10 bg-[#0d1014]">
               <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3">
-                <div className="h-2.5 w-2.5 rounded-full bg-jb-red" />
-                <div className="h-2.5 w-2.5 rounded-full bg-jb-yellow" />
-                <div className="h-2.5 w-2.5 rounded-full bg-jb-accent" />
+                <div className="h-2.5 w-2.5 bg-white/10" />
+                <div className="h-2.5 w-2.5 bg-white/6" />
+                <div className="h-2.5 w-2.5 bg-[#D06120]" />
                 <span className="ml-auto font-mono text-[10px] text-jb-text-muted">proof-envelope.json</span>
               </div>
-              <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-jb-accent/80">{`{
+              <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-white/70">{`{
   "event": {
     "current_a": 12.4,
     "power_kw": 3.1,
@@ -275,7 +286,7 @@ export function ProductContent() {
           className="jb-section-title mb-8 max-w-3xl"
         >
           Deploy where the{" "}
-          <span className="jb-title-gradient jb-title-gradient-cool">
+          <span className="jb-title-gradient">
             evidence needs to begin
           </span>
         </motion.h2>
@@ -308,7 +319,7 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          <span className="jb-title-gradient jb-title-gradient-warm">
+          <span className="jb-title-gradient">
             Security controls
           </span>{" "}
           that sit inside the runtime itself
@@ -324,7 +335,7 @@ export function ProductContent() {
               transition={{ duration: 0.4, delay: i * 0.06 }}
               className="flex items-start gap-3 py-3"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-jb-accent">
+              <svg width="16" height="16" viewBox="0 0 16 16" className="mt-0.5 shrink-0 text-white">
                 <path d="M13.5 4.5L6 12L2.5 8.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span className="text-sm leading-relaxed text-jb-white/58">{feature}</span>
@@ -349,20 +360,19 @@ export function ProductContent() {
               <Eyebrow className="mb-4">Operating View</Eyebrow>
               <h2 className="jb-section-title mb-4 max-w-3xl">
                 Built for the teams that have to{" "}
-                <span className="jb-title-gradient jb-title-gradient-cool">
+                <span className="jb-title-gradient">
                   defend what happened
                 </span>
               </h2>
               <p className="jb-section-copy mb-5">
-                Bridge Kernel is the edge runtime, not the full JouleBridge
-                platform. Its job is to produce a cleaner record where telemetry
-                first becomes operationally meaningful.
+                Bridge Kernel is the edge runtime — it signs, verifies, and
+                governs telemetry where the data is born. Cloud control,
+                dashboards, and settlement layers build on top.
               </p>
               <p className="jb-section-copy">
-                Cloud control, dashboards, certification, and settlement layers
-                can sit above this runtime later. This page reflects the current
-                runtime baseline and the roadmap direction documented in the
-                JouleBridge brain.
+                The result: operators, auditors, and counterparties get a
+                cryptographically verifiable record of what happened — not a
+                spreadsheet someone assembled after the fact.
               </p>
             </div>
             <EnergyEvidenceIllustration />

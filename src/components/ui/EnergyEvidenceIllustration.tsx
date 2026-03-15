@@ -21,7 +21,7 @@ export function EnergyEvidenceIllustration({
 
       <div className="relative z-10 mb-5 flex flex-wrap items-start justify-between gap-4 border-b border-white/8 pb-4">
         <div>
-          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#f6b44d]">
+          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/80">
             Bridge Kernel Architecture
           </div>
           <div className="mt-2 text-lg font-semibold tracking-[-0.03em] text-white md:text-xl">
@@ -51,41 +51,41 @@ export function EnergyEvidenceIllustration({
             to { stroke-dashoffset: 0; }
           }
 
-          @keyframes r-src { 0%, 3.2% {stroke:#f97316} 3.3%, 6.6% {stroke:#f59e0b} 6.7%, 100% {stroke:#f97316} }
-          @keyframes t-src { 0%, 3.2% {fill:#f4f5f7} 3.3%, 6.6% {fill:#fbbf24} 6.7%, 100% {fill:#f4f5f7} }
+          @keyframes r-src { 0%, 3.2% {stroke:#9ca3ad} 3.3%, 6.6% {stroke:#d2d5db} 6.7%, 100% {stroke:#9ca3ad} }
+          @keyframes t-src { 0%, 3.2% {fill:#f4f5f7} 3.3%, 6.6% {fill:#d2d5db} 6.7%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-gw { 0%, 6.5% {stroke:#7c8091} 6.6%, 13.3% {stroke:#f59e0b} 13.4%, 100% {stroke:#7c8091} }
-          @keyframes t-gw { 0%, 6.5% {fill:#f4f5f7} 6.6%, 13.3% {fill:#fbbf24} 13.4%, 100% {fill:#f4f5f7} }
+          @keyframes r-gw { 0%, 6.5% {stroke:#7c8091} 6.6%, 13.3% {stroke:#d2d5db} 13.4%, 100% {stroke:#7c8091} }
+          @keyframes t-gw { 0%, 6.5% {fill:#f4f5f7} 6.6%, 13.3% {fill:#d2d5db} 13.4%, 100% {fill:#f4f5f7} }
 
-          @keyframes t-ing-txt { 0%, 13.2% {fill:#aab0bf} 13.3%, 20% {fill:#fbbf24} 20.1%, 100% {fill:#aab0bf} }
-          @keyframes t-mesh { 0%, 36.5% {fill:#aab0bf} 36.6%, 43.3% {fill:#f97316} 43.4%, 100% {fill:#aab0bf} }
+          @keyframes t-ing-txt { 0%, 13.2% {fill:#aab0bf} 13.3%, 20% {fill:#f4f5f7} 20.1%, 100% {fill:#aab0bf} }
+          @keyframes t-mesh { 0%, 36.5% {fill:#aab0bf} 36.6%, 43.3% {fill:#d2d5db} 43.4%, 100% {fill:#aab0bf} }
 
-          @keyframes r-ing { 0%, 19.9% {stroke:#7c8091} 20%, 30% {stroke:#f59e0b} 30.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#f59e0b} 66.7%, 100% {stroke:#7c8091} }
-          @keyframes t-ing { 0%, 19.9% {fill:#f4f5f7} 20%, 30% {fill:#fbbf24} 30.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#fbbf24} 66.7%, 100% {fill:#f4f5f7} }
+          @keyframes r-ing { 0%, 19.9% {stroke:#7c8091} 20%, 30% {stroke:#d2d5db} 30.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#d2d5db} 66.7%, 100% {stroke:#7c8091} }
+          @keyframes t-ing { 0%, 19.9% {fill:#f4f5f7} 20%, 30% {fill:#d2d5db} 30.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#d2d5db} 66.7%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-norm { 0%, 19.9% {stroke:#7c8091} 20%, 22.5% {stroke:#f59e0b} 22.6%, 24.9% {stroke:#7c8091} 25%, 30% {stroke:#f59e0b} 30.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#f59e0b} 66.7%, 100% {stroke:#7c8091} }
-          @keyframes t-norm { 0%, 19.9% {fill:#f4f5f7} 20%, 22.5% {fill:#fbbf24} 22.6%, 24.9% {fill:#f4f5f7} 25%, 30% {fill:#fbbf24} 30.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#fbbf24} 66.7%, 100% {fill:#f4f5f7} }
+          @keyframes r-norm { 0%, 19.9% {stroke:#7c8091} 20%, 22.5% {stroke:#d2d5db} 22.6%, 24.9% {stroke:#7c8091} 25%, 30% {stroke:#d2d5db} 30.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#d2d5db} 66.7%, 100% {stroke:#7c8091} }
+          @keyframes t-norm { 0%, 19.9% {fill:#f4f5f7} 20%, 22.5% {fill:#d2d5db} 22.6%, 24.9% {fill:#f4f5f7} 25%, 30% {fill:#d2d5db} 30.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#d2d5db} 66.7%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-prove { 0%, 19.9% {stroke:#7c8091} 20%, 25% {stroke:#ef4444} 25.1%, 29.9% {stroke:#7c8091} 30%, 35% {stroke:#ef4444} 35.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#ef4444} 66.7%, 100% {stroke:#7c8091} }
-          @keyframes t-prove { 0%, 19.9% {fill:#f4f5f7} 20%, 25% {fill:#f97316} 25.1%, 29.9% {fill:#f4f5f7} 30%, 35% {fill:#f97316} 35.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#f97316} 66.7%, 100% {fill:#f4f5f7} }
+          @keyframes r-prove { 0%, 19.9% {stroke:#7c8091} 20%, 25% {stroke:#b0b8c4} 25.1%, 29.9% {stroke:#7c8091} 30%, 35% {stroke:#b0b8c4} 35.1%, 59.9% {stroke:#7c8091} 60%, 66.6% {stroke:#b0b8c4} 66.7%, 100% {stroke:#7c8091} }
+          @keyframes t-prove { 0%, 19.9% {fill:#f4f5f7} 20%, 25% {fill:#d2d5db} 25.1%, 29.9% {fill:#f4f5f7} 30%, 35% {fill:#d2d5db} 35.1%, 59.9% {fill:#f4f5f7} 60%, 66.6% {fill:#d2d5db} 66.7%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-sync { 0%, 43.2% {stroke:#7c8091} 43.3%, 50% {stroke:#f59e0b} 50.1%, 100% {stroke:#7c8091} }
-          @keyframes t-sync { 0%, 43.2% {fill:#f4f5f7} 43.3%, 50% {fill:#fbbf24} 50.1%, 100% {fill:#f4f5f7} }
+          @keyframes r-sync { 0%, 43.2% {stroke:#7c8091} 43.3%, 50% {stroke:#d2d5db} 50.1%, 100% {stroke:#7c8091} }
+          @keyframes t-sync { 0%, 43.2% {fill:#f4f5f7} 43.3%, 50% {fill:#d2d5db} 50.1%, 100% {fill:#f4f5f7} }
 
           @keyframes r-ledger {
-            0%, 43.2% {stroke:#f97316; stroke-width:1.2px; fill:#2b1708}
-            43.3%, 48% {stroke:#ef4444; stroke-width:3px; fill:#3f170a}
-            48.1%, 53.2% {stroke:#f97316; stroke-width:1.2px; fill:#2b1708}
-            53.3%, 63.3% {stroke:#ef4444; stroke-width:3px; fill:#3f170a}
-            63.4%, 100% {stroke:#f97316; stroke-width:1.2px; fill:#2b1708}
+            0%, 43.2% {stroke:#9ca3ad; stroke-width:1.2px; fill:#141820}
+            43.3%, 48% {stroke:#f4f5f7; stroke-width:3px; fill:#1c2028}
+            48.1%, 53.2% {stroke:#9ca3ad; stroke-width:1.2px; fill:#141820}
+            53.3%, 63.3% {stroke:#f4f5f7; stroke-width:3px; fill:#1c2028}
+            63.4%, 100% {stroke:#9ca3ad; stroke-width:1.2px; fill:#141820}
           }
-          @keyframes t-ledger { 0%, 43.2% {fill:#f4f5f7} 43.3%, 48% {fill:#fbbf24} 48.1%, 53.2% {fill:#f4f5f7} 53.3%, 63.3% {fill:#fbbf24} 63.4%, 100% {fill:#f4f5f7} }
+          @keyframes t-ledger { 0%, 43.2% {fill:#f4f5f7} 43.3%, 48% {fill:#d2d5db} 48.1%, 53.2% {fill:#f4f5f7} 53.3%, 63.3% {fill:#d2d5db} 63.4%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-recon { 0%, 43.2% {stroke:#7c8091} 43.3%, 48% {stroke:#f97316} 48.1%, 53.2% {stroke:#7c8091} 53.3%, 63.3% {stroke:#f97316} 63.4%, 100% {stroke:#7c8091} }
-          @keyframes t-recon { 0%, 43.2% {fill:#f4f5f7} 43.3%, 48% {fill:#fbbf24} 48.1%, 53.2% {fill:#f4f5f7} 53.3%, 63.3% {fill:#fbbf24} 63.4%, 100% {fill:#f4f5f7} }
+          @keyframes r-recon { 0%, 43.2% {stroke:#7c8091} 43.3%, 48% {stroke:#d2d5db} 48.1%, 53.2% {stroke:#7c8091} 53.3%, 63.3% {stroke:#d2d5db} 63.4%, 100% {stroke:#7c8091} }
+          @keyframes t-recon { 0%, 43.2% {fill:#f4f5f7} 43.3%, 48% {fill:#d2d5db} 48.1%, 53.2% {fill:#f4f5f7} 53.3%, 63.3% {fill:#d2d5db} 63.4%, 100% {fill:#f4f5f7} }
 
-          @keyframes r-settle { 0%, 43.2% {stroke:#7c8091} 43.3%, 53.3% {stroke:#ef4444} 53.4%, 100% {stroke:#7c8091} }
-          @keyframes t-settle { 0%, 43.2% {fill:#f4f5f7} 43.3%, 53.3% {fill:#f97316} 53.4%, 100% {fill:#f4f5f7} }
+          @keyframes r-settle { 0%, 43.2% {stroke:#7c8091} 43.3%, 53.3% {stroke:#b0b8c4} 53.4%, 100% {stroke:#7c8091} }
+          @keyframes t-settle { 0%, 43.2% {fill:#f4f5f7} 43.3%, 53.3% {fill:#d2d5db} 53.4%, 100% {fill:#f4f5f7} }
 
           .r-src { animation: r-src 12s infinite; } .t-src { animation: t-src 12s infinite; }
           .r-gw { animation: r-gw 12s infinite; } .t-gw { animation: t-gw 12s infinite; }
@@ -113,17 +113,17 @@ export function EnergyEvidenceIllustration({
         </defs>
 
         <g opacity="0.14">
-          <line x1="0" y1="0" x2="280" y2="560" stroke="#f59e0b" strokeWidth=".6" strokeDasharray="3 14">
+          <line x1="0" y1="0" x2="280" y2="560" stroke="#d2d5db" strokeWidth=".6" strokeDasharray="3 14">
             <animate attributeName="stroke-dashoffset" from="0" to="-34" dur="6s" repeatCount="indefinite" />
           </line>
-          <line x1="400" y1="0" x2="680" y2="560" stroke="#f97316" strokeWidth=".6" strokeDasharray="3 14">
+          <line x1="400" y1="0" x2="680" y2="560" stroke="#9ca3ad" strokeWidth=".6" strokeDasharray="3 14">
             <animate attributeName="stroke-dashoffset" from="0" to="-34" dur="5.5s" repeatCount="indefinite" />
           </line>
         </g>
 
         <rect x="50" y="20" width="900" height="210" stroke="#6d7385" strokeWidth="1.5" strokeDasharray="5 4" fill="none" />
-        <rect x="50" y="240" width="900" height="140" fill="#f59e0b" fillOpacity=".14" />
-        <rect x="50" y="390" width="900" height="140" fill="#f97316" fillOpacity=".1" />
+        <rect x="50" y="240" width="900" height="140" fill="#d2d5db" fillOpacity=".08" />
+        <rect x="50" y="390" width="900" height="140" fill="#9ca3ad" fillOpacity=".06" />
 
         <g className="flowing-line" stroke="#7c8091" strokeWidth="1.2" markerEnd="url(#a)">
           <path d="M180,196 V300" /> <path d="M250,196 V300" /> <path d="M320,196 V300" />
@@ -136,27 +136,27 @@ export function EnergyEvidenceIllustration({
           <path d="M500,196 V245 M500,280 V300" />
         </g>
 
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="1;1;0;0" keyTimes="0; 0.066; 0.067; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M250,114 V145" keyPoints="0;1;1" keyTimes="0; 0.066; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M180,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M250,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M320,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M500,196 V245 M500,280 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f59e0b" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#d2d5db" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.199; 0.200; 0.250; 0.251; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M350,325 H395" keyPoints="0;0;1;1" keyTimes="0; 0.200; 0.250; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
@@ -164,19 +164,19 @@ export function EnergyEvidenceIllustration({
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.249; 0.250; 0.300; 0.301; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M600,325 H645" keyPoints="0;0;1;1" keyTimes="0; 0.250; 0.300; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f97316" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#9ca3ad" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M240,350 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f97316" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#9ca3ad" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M490,350 V395 M490,430 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#f97316" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#9ca3ad" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M740,350 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#fbbf24" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#f4f5f7" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M750,300 V196" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
@@ -188,33 +188,33 @@ export function EnergyEvidenceIllustration({
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.482; 0.483; 0.533; 0.534; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M400,485 H355" keyPoints="0;0;1;1" keyTimes="0; 0.483; 0.533; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#fbbf24" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#f4f5f7" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M260,460 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#fbbf24" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#f4f5f7" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M510,460 V430 M510,395 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#fbbf24" filter="url(#gB)" opacity="0">
+        <circle r="4" fill="#f4f5f7" filter="url(#gB)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M760,460 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
 
         <g fontFamily="'IBM Plex Mono', monospace" fontSize="11" fontWeight="600">
-          <rect x="145" y="248" width="70" height="32" fill="#24160c" />
+          <rect x="145" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="180" y="260" textAnchor="middle">OCPP</text>
           <text className="t-ing-txt" x="180" y="274" textAnchor="middle">INGESTION</text>
 
-          <rect x="215" y="248" width="70" height="32" fill="#24160c" />
+          <rect x="215" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="250" y="260" textAnchor="middle">MODBUS</text>
           <text className="t-ing-txt" x="250" y="274" textAnchor="middle">INGESTION</text>
 
-          <rect x="285" y="248" width="70" height="32" fill="#24160c" />
+          <rect x="285" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="320" y="260" textAnchor="middle">REST API</text>
           <text className="t-ing-txt" x="320" y="274" textAnchor="middle">INGESTION</text>
 
-          <rect x="710" y="248" width="80" height="32" fill="#24160c" />
+          <rect x="710" y="248" width="80" height="32" fill="#141820" />
           <text className="t-mesh" x="750" y="260" textAnchor="middle">MESH, P2P,</text>
           <text className="t-mesh" x="750" y="274" textAnchor="middle">WEBHOOKS</text>
         </g>
@@ -222,17 +222,17 @@ export function EnergyEvidenceIllustration({
         <text x="500" y="45" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="16" fontWeight="700" letterSpacing="2" fill="#e8ebf3">
           EXISTING ENERGY INFRASTRUCTURE
         </text>
-        <text x="500" y="265" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#fbbf24">
+        <text x="500" y="265" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#f4f5f7">
           BRIDGE KERNEL PIPELINE
         </text>
-        <text x="500" y="415" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#f97316">
+        <text x="500" y="415" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#9ca3ad">
           BRIDGE KERNEL SETTLEMENT
         </text>
 
         <g fontFamily="'IBM Plex Mono', monospace" fontWeight="600">
-          <rect className="r-src" x="158" y="60" width="200" height="46" fill="#2b1708" stroke="#f97316" strokeWidth="0.8" />
-          <rect className="r-src" x="154" y="64" width="200" height="46" fill="#2b1708" stroke="#f97316" strokeWidth="0.8" />
-          <rect className="r-src" x="150" y="68" width="200" height="46" fill="#2b1708" strokeWidth="1.5" />
+          <rect className="r-src" x="158" y="60" width="200" height="46" fill="#141820" stroke="#9ca3ad" strokeWidth="0.8" />
+          <rect className="r-src" x="154" y="64" width="200" height="46" fill="#141820" stroke="#9ca3ad" strokeWidth="0.8" />
+          <rect className="r-src" x="150" y="68" width="200" height="46" fill="#141820" strokeWidth="1.5" />
           <text className="t-src" x="250" y="96" textAnchor="middle" fontSize="15">ENERGY SOURCE(S)</text>
 
           <rect className="r-gw" x="150" y="150" width="200" height="46" fill="#11141a" strokeWidth="1.2" />
@@ -253,7 +253,7 @@ export function EnergyEvidenceIllustration({
           <rect className="r-prove" x="650" y="300" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
           <text className="t-prove" x="750" y="330" textAnchor="middle" fontSize="16">PROVE</text>
 
-          <rect className="r-ledger" x="150" y="460" width="200" height="50" fill="#2b1708" />
+          <rect className="r-ledger" x="150" y="460" width="200" height="50" fill="#141820" />
           <text className="t-ledger" x="250" y="490" textAnchor="middle" fontSize="16">LEDGER</text>
 
           <rect className="r-recon" x="400" y="460" width="200" height="50" fill="#11141a" strokeWidth="1.2" />

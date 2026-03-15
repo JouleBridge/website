@@ -8,22 +8,23 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { Entropy } from "@/components/ui/Entropy";
+import { TypewriterCode } from "@/components/ui/TypewriterCode";
 
 const modules = [
   {
     name: "Adapter Layer",
     desc: "Protocol-specific ingestion modules that normalize raw telemetry into a canonical event format. Supports Modbus, SunSpec, OCPP, DNP3, IEEE 2030.5, IEC 61850, and custom webhooks.",
-    color: "text-jb-yellow",
+    color: "text-white/80",
   },
   {
     name: "Canonicalizer",
     desc: "Deterministic JSON normalization — sorted keys, stripped whitespace, UTF-8 encoding. Ensures identical payloads always produce identical hashes regardless of source format.",
-    color: "text-jb-accent",
+    color: "text-[#D06120]",
   },
   {
     name: "Proof Engine",
     desc: "SHA-256 hashing followed by Ed25519 signing with versioned key management. Outputs COSE Sign1 ProofEnvelopes that any counterparty can independently verify.",
-    color: "text-jb-accent",
+    color: "text-[#D06120]",
   },
   {
     name: "Policy Gate",
@@ -33,12 +34,12 @@ const modules = [
   {
     name: "Event Ledger",
     desc: "Append-only, hash-chained SQLite storage with WAL mode for concurrent reads. Events are immutable once written — no updates, no deletes, no tampering.",
-    color: "text-jb-yellow",
+    color: "text-white/80",
   },
   {
     name: "Sync Engine",
     desc: "Peer-to-peer replication using Merkle tree comparison. Nodes discover and reconcile divergent event chains without a central coordinator.",
-    color: "text-jb-accent",
+    color: "text-[#D06120]",
   },
 ];
 
@@ -235,26 +236,33 @@ export default function BridgeKernelPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="border border-jb-mid-gray bg-jb-dark rounded-lg overflow-hidden max-w-3xl"
+            className="border border-white/10 bg-jb-dark overflow-hidden max-w-3xl"
           >
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-jb-dark-gray">
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-red" />
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-yellow" />
-              <div className="w-2.5 h-2.5 rounded-full bg-jb-accent" />
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/8">
+              <div className="w-2.5 h-2.5 bg-[#D06120]" />
+              <div className="w-2.5 h-2.5 bg-white/10" />
+              <div className="w-2.5 h-2.5 bg-white/6" />
               <span className="ml-auto font-mono text-[10px] text-jb-text-muted">terminal</span>
             </div>
-            <pre className="p-6 font-mono text-xs text-jb-accent/80 whitespace-pre leading-relaxed">{`$ curl -fsSL https://get.joulebridge.com | sh
-$ bridge-kernel init --adapter modbus --site my-site
-  ✓ Generated Ed25519 keypair (key_id: my-site)
-  ✓ Created config at ./bridge-kernel.toml
-  ✓ Initialized ledger at ./data/ledger.db
-
-$ bridge-kernel start
-  [INFO] adapter: modbus connected (192.168.1.100:502)
-  [INFO] ingesting registers [40001:40020] every 5s
-  [INFO] proof: Ed25519 signing active (key v1)
-  [INFO] ledger: append-only mode, WAL enabled
-  [INFO] ready — settlement evidence pipeline running`}</pre>
+            <TypewriterCode
+              lines={[
+                "$ curl -fsSL https://get.joulebridge.com | sh",
+                "$ bridge-kernel init --adapter modbus --site my-site",
+                "  ✓ Generated Ed25519 keypair (key_id: my-site)",
+                "  ✓ Created config at ./bridge-kernel.toml",
+                "  ✓ Initialized ledger at ./data/ledger.db",
+                "",
+                "$ bridge-kernel start",
+                "  [INFO] adapter: modbus connected (192.168.1.100:502)",
+                "  [INFO] ingesting registers [40001:40020] every 5s",
+                "  [INFO] proof: Ed25519 signing active (key v1)",
+                "  [INFO] ledger: append-only mode, WAL enabled",
+                "  [INFO] ready — settlement evidence pipeline running",
+              ]}
+              typingSpeed={25}
+              lineDelay={250}
+              className="border-0 bg-transparent"
+            />
           </motion.div>
         </SectionWrapper>
 

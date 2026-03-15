@@ -93,7 +93,7 @@ function drawParticle(
 
 export default function NeuralBackground({
   className,
-  color = "#f59e0b",
+  color = "#d2d5db",
   trailOpacity = 0.12,
   particleCount = 520,
   speed = 1,

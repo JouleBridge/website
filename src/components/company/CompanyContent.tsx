@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const beliefs = [
   {
@@ -23,18 +24,18 @@ const beliefs = [
 const milestones = [
   { date: "Aug 2025", title: "JouleBridge founded", desc: "Company incorporated with a mission to build settlement trust rails for energy." },
   { date: "Sep 2025", title: "Bridge Kernel v0.1", desc: "Foundation layer complete: config, identity, HAL, CLI framework." },
-  { date: "Nov 2025", title: "Runtime baseline completed", desc: "Proof signing, policy enforcement, local ledger, sync baseline, and observability foundations were put in place." },
-  { date: "Jan 2026", title: "Documentation system built", desc: "Technical docs and product explanation material were expanded into a searchable documentation site." },
-  { date: "Mar 2026", title: "Company stack scaffolded", desc: "JouleBridge was reorganized into product boundaries for edge, cloud, console, certification, analytics, and settlement." },
-  { date: "Q2 2026", title: "Protocol hardening phase", desc: "Focus shifts to closing the gap between the current runtime baseline and the production energy protocol roadmap." },
-  { date: "Q3 2026", title: "Pilot-readiness program", desc: "The next goal is strong pilot execution with clearer deployment, evidence, and operating workflows." },
+  { date: "Nov 2025", title: "Runtime core complete", desc: "Ed25519 proof signing, policy enforcement, local ledger, sync, and observability — the verification pipeline works end to end." },
+  { date: "Jan 2026", title: "Documentation launched", desc: "Searchable technical docs covering architecture, deployment, and integration guides." },
+  { date: "Mar 2026", title: "Product stack organized", desc: "Six product boundaries defined: Edge, Cloud, Console, Certification, Analytics, and Settlement." },
+  { date: "Q2 2026", title: "Protocol hardening", desc: "DLMS, OCPP, Modbus, and IEC 61850 adapters move from tested to production-hardened. IES PoC scoping begins." },
+  { date: "Q3 2026", title: "Pilot program launch", desc: "First operator pilots with full deployment, evidence, and operating workflows. India Energy Stack PoC targeted for July 2026." },
 ];
 
 export function CompanyContent() {
   return (
     <>
       <section className="relative flex min-h-[50vh] items-center overflow-hidden bg-jb-dark section-lines">
-        <div className="pointer-events-none absolute top-1/2 right-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-jb-accent opacity-[0.03] blur-[120px]" />
+        <div className="pointer-events-none absolute top-1/2 right-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-white opacity-[0.03] blur-[120px]" />
         <div className="container relative z-10 mx-auto max-w-7xl px-6 pt-24 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
             <div>
@@ -46,7 +47,7 @@ export function CompanyContent() {
                 className="jb-section-title mb-5 max-w-3xl"
               >
                 Building the{" "}
-                <span className="jb-title-gradient jb-title-gradient-cool">
+                <span className="jb-title-gradient">
                   trust layer
                 </span>{" "}
                 for energy
@@ -64,7 +65,7 @@ export function CompanyContent() {
             </div>
             <div className="grid gap-4">
               <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
-                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-accent">
+                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/60">
                   Company Focus
                 </div>
                 <div className="grid grid-cols-3 gap-3">
@@ -96,6 +97,14 @@ export function CompanyContent() {
           </div>
         </div>
       </section>
+
+      <SectionWrapper className="bg-jb-section-alt">
+        <TextReveal
+          text="India is deploying 250 million smart meters. The $15 billion settlement gap will not close without cryptographic proof at the edge."
+          highlightWords={["250", "million", "$15", "billion", "cryptographic", "proof"]}
+          className=""
+        />
+      </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark">
         <div className="max-w-3xl">
@@ -160,7 +169,7 @@ export function CompanyContent() {
           className="mb-12 text-3xl font-semibold tracking-tight text-white"
         >
           Building the{" "}
-          <span className="jb-title-gradient jb-title-gradient-warm">
+          <span className="jb-title-gradient">
             first version
           </span>{" "}
           of JouleBridge
@@ -175,16 +184,18 @@ export function CompanyContent() {
             className="border border-white/10 bg-[linear-gradient(180deg,rgba(28,31,35,0.92),rgba(15,17,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]"
           >
             <div className="mb-4 flex h-20 w-20 items-center justify-center border border-white/12 bg-white/[0.04]">
-              <span className="font-mono text-2xl font-bold text-jb-accent">TT</span>
+              <span className="font-mono text-2xl font-bold text-white/60">TT</span>
             </div>
             <h3 className="mb-1 text-lg font-semibold text-white">Tarun Trilokesh</h3>
-            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-jb-accent">
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-white/60">
               Founder & CEO
             </p>
             <p className="text-sm leading-relaxed text-jb-white/60">
-              Building verification-oriented infrastructure for energy systems, with a
-              focus on how operational data becomes trusted evidence inside real energy
-              workflows.
+              India loses $15B annually to AT&C losses — not because of theft alone, but
+              because the evidence trail between meters and settlement is broken. Tarun
+              founded JouleBridge to fix the infrastructure gap: sign every reading at
+              the edge, chain it into cryptographic proof, and give operators records
+              they can actually defend.
             </p>
           </motion.div>
 
@@ -221,7 +232,7 @@ export function CompanyContent() {
           className="jb-section-title mb-16 max-w-3xl"
         >
           Our{" "}
-          <span className="jb-title-gradient jb-title-gradient-cool">
+          <span className="jb-title-gradient">
             journey so far
           </span>
         </motion.h2>
@@ -240,12 +251,12 @@ export function CompanyContent() {
                 className="flex gap-6"
               >
                 <div className="relative shrink-0">
-                  <div className="flex h-[23px] w-[23px] items-center justify-center rounded-full border border-jb-accent/50 bg-[#121518]">
-                    <div className="h-2 w-2 rounded-full bg-jb-accent" />
+                  <div className="flex h-[23px] w-[23px] items-center justify-center border border-[#D06120]/50 bg-[#121518]">
+                    <div className="h-2 w-2 bg-[#D06120]" />
                   </div>
                 </div>
                 <div className="pb-2">
-                  <div className="mb-1 font-mono text-xs uppercase tracking-widest text-jb-accent">
+                  <div className="mb-1 font-mono text-xs uppercase tracking-widest text-[#D06120]">
                     {milestone.date}
                   </div>
                   <h3 className="mb-1 text-lg font-semibold text-white">{milestone.title}</h3>
@@ -261,7 +272,7 @@ export function CompanyContent() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="jb-section-title mb-6">
             Interested in{" "}
-            <span className="jb-title-gradient jb-title-gradient-warm">
+            <span className="jb-title-gradient">
               our mission
             </span>
             ?
@@ -291,7 +302,7 @@ function CompanyStat({ value, label }: { value: string; label: string }) {
 function CompanySignal({ title, text }: { title: string; text: string }) {
   return (
     <div className="border border-white/8 bg-black/10 p-4">
-      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-jb-accent">{title}</div>
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">{title}</div>
       <div className="mt-2 text-sm leading-7 text-jb-white/68">{text}</div>
     </div>
   );

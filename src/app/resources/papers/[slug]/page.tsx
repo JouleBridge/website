@@ -25,7 +25,7 @@ export default async function PaperDetailPage(props: {
         <article className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/resources/papers"
-            className="mb-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-jb-text-muted transition-colors hover:text-[#7dd3fc]"
+            className="mb-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-jb-text-muted transition-colors hover:text-[#D06120]"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Papers
@@ -33,14 +33,14 @@ export default async function PaperDetailPage(props: {
 
           <div className="mb-6 flex items-center gap-4">
             <div className="border border-white/10 bg-black/20 p-3">
-              <Icon className="h-5 w-5 text-[#7dd3fc]" />
+              <Icon className="h-5 w-5 text-[#D06120]" />
             </div>
-            <Eyebrow className="text-[#7dd3fc]">{paper.type}</Eyebrow>
+            <Eyebrow className="text-[#D06120]">{paper.type}</Eyebrow>
           </div>
 
           <h1 className="mb-4 text-3xl font-semibold tracking-tight text-white md:text-5xl">
             {leadingTitle}{" "}
-            <span className="jb-title-gradient jb-title-gradient-cool">{highlightedWord}</span>
+            <span className="jb-title-gradient">{highlightedWord}</span>
           </h1>
 
           <p className="mb-8 max-w-3xl text-lg leading-relaxed text-jb-white/72">
@@ -56,7 +56,7 @@ export default async function PaperDetailPage(props: {
             <a
               href={paper.downloadHref}
               download
-              className="inline-flex items-center gap-2 border border-white/10 bg-black/20 px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[#7dd3fc] transition-colors hover:border-[#7dd3fc]/30"
+              className="inline-flex items-center gap-2 border border-white/10 bg-black/20 px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[#D06120] transition-colors hover:border-[#D06120]/30"
             >
               Download PDF
               <Download className="h-4 w-4" />
@@ -75,13 +75,13 @@ export default async function PaperDetailPage(props: {
             {paper.sections.map((section, index) => (
               <section key={section.heading} className="border-t border-white/8 pt-8">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#86efac]">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">
                     Section {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="h-px flex-1 bg-white/8" />
                 </div>
                 <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white">
-                  <span className="jb-title-gradient jb-title-gradient-warm">{section.heading}</span>
+                  <span className="jb-title-gradient">{section.heading}</span>
                 </h2>
                 <div className="space-y-4">
                   {section.body.map((paragraph) => (

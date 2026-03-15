@@ -5,27 +5,28 @@ import Link from "next/link";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
-import { ProofCycleDiagram } from "@/components/ui/ProofCycleDiagram";
+import { DataFlowVisualization } from "@/components/ui/DataFlowVisualization";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 const solutions = [
   {
     id: "energy-settlement",
     eyebrow: "Solution 01",
     title: "C&I Energy Settlement",
-    color: "bg-jb-yellow",
-    accentBorder: "border-jb-yellow/24",
+    color: "bg-white/10",
+    accentBorder: "border-white/12",
     problem:
-      "Open-access C&I buyers juggle multiple contracts, sites, and counterparties. When the evidence trail is weak, reconciliation takes too long and confidence falls apart.",
+      "India's open-access C&I buyers juggle multi-DISCOM billing, complex tariff structures, and multiple counterparties across sites. Reconciliation takes weeks and $15B in AT&C losses pile up annually because the evidence trail is weak.",
     solution:
-      "JouleBridge creates a stronger operational record for the data settlement teams depend on, reducing ambiguity before it turns into commercial friction.",
+      "Bridge Kernel signs every meter reading at the edge, normalizes across DLMS and Modbus protocols, and delivers audit-ready evidence packs — cutting reconciliation from weeks to days.",
     capabilities: [
-      "Deterministic event records",
-      "Proof-oriented telemetry workflow",
-      "Clearer handoff between field and finance teams",
-      "Stronger audit and evidence posture",
-      "Pilot-friendly deployment model",
+      "Edge-signed deterministic event records",
+      "Multi-DISCOM billing reconciliation",
+      "Indian tariff complexity handled natively",
+      "Proof-oriented handoff between field and finance teams",
+      "IES (India Energy Stack) alignment — PoC July 2026",
     ],
-    outcome: "Build a stronger settlement record and cut down the time spent defending what happened.",
+    outcome: "Cut reconciliation time from 3 weeks to 3 days with cryptographically verifiable settlement records.",
     docsLink: "/docs/examples/energy-settlement",
   },
   {
@@ -35,17 +36,17 @@ const solutions = [
     color: "bg-jb-pink",
     accentBorder: "border-jb-pink/24",
     problem:
-      "Fleet and depot charging workflows create dense session data and frequent exceptions. Weak telemetry handling makes audits, billing, and operational diagnosis harder than they should be.",
+      "India has 29,000+ public chargers and growing. CPO/eMSP reconciliation across OCPP roaming sessions creates dense session data, frequent exceptions, and billing disputes that erode operator margins.",
     solution:
-      "The EV workflow is a strong fit for verified telemetry because session data, operating events, and settlement records all depend on a clean evidence chain.",
+      "Bridge Kernel meters every charge session via OCPP 1.6/2.0, signs it at the charger, and chains session records into settlement-ready evidence — so CPO-eMSP disputes resolve with cryptographic proof, not spreadsheets.",
     capabilities: [
-      "Session-level telemetry structure",
-      "Evidence-first operational record",
-      "Better dispute handling support",
-      "Clearer operational investigation trail",
-      "Pilotable deployment path",
+      "OCPP 1.6/2.0 native adapter",
+      "Session-level cryptographic signing",
+      "CPO/eMSP roaming reconciliation",
+      "Evidence packs for billing disputes",
+      "Fleet depot and public charger support",
     ],
-    outcome: "Create a more defensible operating and settlement trail for fleet charging workflows.",
+    outcome: "Every charge session metered, signed, and settled with cryptographic proof of energy delivered.",
     docsLink: "/docs/examples/ev-charging",
   },
   {
@@ -53,19 +54,19 @@ const solutions = [
     eyebrow: "Solution 03",
     title: "Grid Event Audit",
     color: "bg-jb-accent",
-    accentBorder: "border-jb-accent/24",
+    accentBorder: "border-[#D06120]/24",
     problem:
-      "When operators or regulators need to reconstruct what happened, mutable logs and fragmented records make investigations slow and difficult to trust.",
+      "CERC and state regulators demand reconstructable event histories for AT&C loss audits. Mutable logs and fragmented records make investigations slow, expensive, and impossible to defend.",
     solution:
-      "A deterministic event trail makes grid and asset investigations much easier to reconstruct and explain when counterparties or regulators ask hard questions.",
+      "Bridge Kernel creates a deterministic, tamper-evident event trail across IEC 61850 and Modbus sources — giving regulators and counterparties a cryptographically verifiable reconstruction of any grid event at any point in time.",
     capabilities: [
-      "Event-history reconstruction support",
-      "Stronger audit posture",
-      "Clearer incident timelines",
-      "Evidence-pack oriented outputs",
-      "Operational trust for investigations",
+      "CERC and state regulator audit compliance",
+      "IEC 61850 and Modbus RTU/TCP support",
+      "Tamper-evident event-history reconstruction",
+      "AT&C loss audit evidence packs",
+      "BIS standards alignment",
     ],
-    outcome: "Reduce ambiguity in investigations by keeping a cleaner and more verifiable event history.",
+    outcome: "Reconstruct the precise state of any grid-connected asset with signed event chains that regulators can independently verify.",
     docsLink: "/docs/examples/grid-audit",
   },
 ];
@@ -83,7 +84,7 @@ export function SolutionsContent() {
               transition={{ duration: 0.8 }}
               className="jb-section-title mb-6 max-w-3xl"
             >
-              Where stronger telemetry evidence changes the operating outcome
+              Verified evidence for the workflows where trust breaks down
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -91,18 +92,26 @@ export function SolutionsContent() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="jb-section-copy"
             >
-              JouleBridge is aimed at the workflows where operators need stronger
-              evidence, cleaner audits, and less ambiguity between field events and
-              business decisions.
+              Bridge Kernel signs every reading at the edge, chains it into
+              cryptographic proofs, and delivers audit-ready evidence — for energy
+              settlement, EV charging, and grid audit in the Indian market.
             </motion.p>
           </div>
           <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.28)]">
             <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
               Solution Evidence Pattern
             </div>
-            <ProofCycleDiagram />
+            <DataFlowVisualization />
           </div>
         </div>
+      </SectionWrapper>
+
+      <SectionWrapper className="bg-jb-section-alt">
+        <TextReveal
+          text="From meter to settlement. From charger to invoice. From grid event to audit record. Bridge Kernel makes every handoff provable."
+          highlightWords={["provable."]}
+          className=""
+        />
       </SectionWrapper>
 
       {solutions.map((sol) => (
@@ -150,7 +159,7 @@ export function SolutionsContent() {
               <p className="flex-1 font-medium text-white">{sol.outcome}</p>
               <Link
                 href={sol.docsLink}
-                className="shrink-0 font-mono text-xs uppercase tracking-widest text-jb-accent transition-colors hover:text-white"
+                className="shrink-0 font-mono text-xs uppercase tracking-widest text-[#D06120] transition-colors hover:text-white"
               >
                 View walkthrough &rarr;
               </Link>

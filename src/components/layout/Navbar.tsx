@@ -114,7 +114,7 @@ export function Navbar() {
     >
       <div className="container mx-auto flex min-h-[68px] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:min-h-[76px] lg:gap-6 lg:px-8">
         <Link href="/" className="shrink-0">
-          <Logo className="text-white" />
+          <Logo className="text-2xl" />
         </Link>
 
         <div className="hidden flex-1 justify-center lg:flex">

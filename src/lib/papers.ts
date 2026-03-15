@@ -32,7 +32,7 @@ export const papers: PaperMeta[] = [
     type: "Architecture Paper",
     pages: "3 pages",
     downloadHref: "/papers/bridge-kernel-technical-architecture.pdf",
-    accent: "from-[#7dd3fc] via-[#60a5fa] to-[#86efac]",
+    accent: "from-white/40 via-white/20 to-white/10",
     icon: Network,
     summary: [
       "Bridge Kernel is the edge runtime inside JouleBridge. It exists to create stronger source evidence before telemetry becomes settlement, compliance, or operationally significant data.",
@@ -104,7 +104,7 @@ export const papers: PaperMeta[] = [
     type: "Whitepaper",
     pages: "2 pages",
     downloadHref: "/papers/energy-settlement-verification-whitepaper.pdf",
-    accent: "from-[#86efac] via-[#7dd3fc] to-[#60a5fa]",
+    accent: "from-white/40 via-white/20 to-white/10",
     icon: FileStack,
     summary: [
       "Energy settlement is becoming harder because the operating environment is becoming more distributed, more software-mediated, and more transaction-heavy.",
@@ -169,7 +169,7 @@ export const papers: PaperMeta[] = [
     type: "Specification",
     pages: "2 pages",
     downloadHref: "/papers/proof-system-specification.pdf",
-    accent: "from-[#60a5fa] via-[#7dd3fc] to-[#86efac]",
+    accent: "from-white/40 via-white/20 to-white/10",
     icon: ShieldCheck,
     summary: [
       "This paper describes the current proof model in practical engineering terms, including the deterministic shaping rules that make later verification possible.",

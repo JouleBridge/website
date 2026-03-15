@@ -59,8 +59,8 @@ export default function CloudPage() {
             <Eyebrow>Cloud</Eyebrow>
           </div>
 
-          <div className="inline-block border border-jb-yellow/40 bg-jb-yellow/10 px-3 py-1 mb-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-jb-yellow">
+          <div className="inline-block border border-white/16 bg-white/6 px-3 py-1 mb-6">
+            <span className="font-mono text-xs uppercase tracking-widest text-white/80">
               Coming Q2 2026
             </span>
           </div>
@@ -144,7 +144,7 @@ export default function CloudPage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="relative border border-jb-mid-gray bg-jb-dark p-6"
               >
-                <h3 className="font-mono text-sm uppercase tracking-widest text-jb-accent mb-3">
+                <h3 className="font-mono text-sm uppercase tracking-widest text-[#D06120] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-sm text-jb-white/60 leading-relaxed">{item.desc}</p>
@@ -185,7 +185,7 @@ export default function CloudPage() {
                   <span
                     className={`font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border ${
                       feature.status === "In Development"
-                        ? "text-jb-accent border-jb-accent/30"
+                        ? "text-[#D06120] border-[#D06120]/30"
                         : "text-jb-text-muted border-jb-mid-gray/50"
                     }`}
                   >

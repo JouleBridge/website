@@ -44,7 +44,7 @@ export function ArchitectureFlowSVG() {
             to { stroke-dashoffset: 0; }
           }
           .arch-circuit path {
-            stroke: #85f78f;
+            stroke: #FFFFFF;
             stroke-width: 1.5;
             fill: none;
             stroke-dasharray: 6 6;
@@ -52,41 +52,41 @@ export function ArchitectureFlowSVG() {
           }
 
           /* 12s synchronized color pulses - JouleBridge tokens */
-          @keyframes ar-src { 0%, 3.2% {stroke:#ed77f8} 3.3%, 6.6% {stroke:#6466f1} 6.7%, 100% {stroke:#ed77f8} }
-          @keyframes at-src { 0%, 3.2% {fill:#a0a0a0} 3.3%, 6.6% {fill:#6466f1} 6.7%, 100% {fill:#a0a0a0} }
+          @keyframes ar-src { 0%, 3.2% {stroke:#D06120} 3.3%, 6.6% {stroke:#FFFFFF} 6.7%, 100% {stroke:#D06120} }
+          @keyframes at-src { 0%, 3.2% {fill:#a0a0a0} 3.3%, 6.6% {fill:#FFFFFF} 6.7%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-gw { 0%, 6.5% {stroke:#444} 6.6%, 13.3% {stroke:#6466f1} 13.4%, 100% {stroke:#444} }
-          @keyframes at-gw { 0%, 6.5% {fill:#a0a0a0} 6.6%, 13.3% {fill:#6466f1} 13.4%, 100% {fill:#a0a0a0} }
+          @keyframes ar-gw { 0%, 6.5% {stroke:#444} 6.6%, 13.3% {stroke:#FFFFFF} 13.4%, 100% {stroke:#444} }
+          @keyframes at-gw { 0%, 6.5% {fill:#a0a0a0} 6.6%, 13.3% {fill:#FFFFFF} 13.4%, 100% {fill:#a0a0a0} }
 
-          @keyframes at-ing-txt { 0%, 13.2% {fill:#666} 13.3%, 20% {fill:#6466f1} 20.1%, 100% {fill:#666} }
-          @keyframes at-mesh { 0%, 36.5% {fill:#666} 36.6%, 43.3% {fill:#6466f1} 43.4%, 100% {fill:#666} }
+          @keyframes at-ing-txt { 0%, 13.2% {fill:#666} 13.3%, 20% {fill:#FFFFFF} 20.1%, 100% {fill:#666} }
+          @keyframes at-mesh { 0%, 36.5% {fill:#666} 36.6%, 43.3% {fill:#FFFFFF} 43.4%, 100% {fill:#666} }
 
-          @keyframes ar-ing { 0%, 19.9% {stroke:#444} 20%, 30% {stroke:#6466f1} 30.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#6466f1} 66.7%, 100% {stroke:#444} }
-          @keyframes at-ing { 0%, 19.9% {fill:#a0a0a0} 20%, 30% {fill:#6466f1} 30.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#6466f1} 66.7%, 100% {fill:#a0a0a0} }
+          @keyframes ar-ing { 0%, 19.9% {stroke:#444} 20%, 30% {stroke:#FFFFFF} 30.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#FFFFFF} 66.7%, 100% {stroke:#444} }
+          @keyframes at-ing { 0%, 19.9% {fill:#a0a0a0} 20%, 30% {fill:#FFFFFF} 30.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#FFFFFF} 66.7%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-norm { 0%, 19.9% {stroke:#444} 20%, 22.5% {stroke:#6466f1} 22.6%, 24.9% {stroke:#444} 25%, 30% {stroke:#6466f1} 30.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#6466f1} 66.7%, 100% {stroke:#444} }
-          @keyframes at-norm { 0%, 19.9% {fill:#a0a0a0} 20%, 22.5% {fill:#6466f1} 22.6%, 24.9% {fill:#a0a0a0} 25%, 30% {fill:#6466f1} 30.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#6466f1} 66.7%, 100% {fill:#a0a0a0} }
+          @keyframes ar-norm { 0%, 19.9% {stroke:#444} 20%, 22.5% {stroke:#FFFFFF} 22.6%, 24.9% {stroke:#444} 25%, 30% {stroke:#FFFFFF} 30.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#FFFFFF} 66.7%, 100% {stroke:#444} }
+          @keyframes at-norm { 0%, 19.9% {fill:#a0a0a0} 20%, 22.5% {fill:#FFFFFF} 22.6%, 24.9% {fill:#a0a0a0} 25%, 30% {fill:#FFFFFF} 30.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#FFFFFF} 66.7%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-prove { 0%, 19.9% {stroke:#444} 20%, 25% {stroke:#6466f1} 25.1%, 29.9% {stroke:#444} 30%, 35% {stroke:#6466f1} 35.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#6466f1} 66.7%, 100% {stroke:#444} }
-          @keyframes at-prove { 0%, 19.9% {fill:#a0a0a0} 20%, 25% {fill:#6466f1} 25.1%, 29.9% {fill:#a0a0a0} 30%, 35% {fill:#6466f1} 35.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#6466f1} 66.7%, 100% {fill:#a0a0a0} }
+          @keyframes ar-prove { 0%, 19.9% {stroke:#444} 20%, 25% {stroke:#FFFFFF} 25.1%, 29.9% {stroke:#444} 30%, 35% {stroke:#FFFFFF} 35.1%, 59.9% {stroke:#444} 60%, 66.6% {stroke:#FFFFFF} 66.7%, 100% {stroke:#444} }
+          @keyframes at-prove { 0%, 19.9% {fill:#a0a0a0} 20%, 25% {fill:#FFFFFF} 25.1%, 29.9% {fill:#a0a0a0} 30%, 35% {fill:#FFFFFF} 35.1%, 59.9% {fill:#a0a0a0} 60%, 66.6% {fill:#FFFFFF} 66.7%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-sync { 0%, 43.2% {stroke:#444} 43.3%, 50% {stroke:#6466f1} 50.1%, 100% {stroke:#444} }
-          @keyframes at-sync { 0%, 43.2% {fill:#a0a0a0} 43.3%, 50% {fill:#6466f1} 50.1%, 100% {fill:#a0a0a0} }
+          @keyframes ar-sync { 0%, 43.2% {stroke:#444} 43.3%, 50% {stroke:#FFFFFF} 50.1%, 100% {stroke:#444} }
+          @keyframes at-sync { 0%, 43.2% {fill:#a0a0a0} 43.3%, 50% {fill:#FFFFFF} 50.1%, 100% {fill:#a0a0a0} }
 
           @keyframes ar-ledger {
-            0%, 43.2% {stroke:#ed77f8; stroke-width:1.2px; fill:#1a0a1e}
-            43.3%, 48% {stroke:#85f78f; stroke-width:3px; fill:#0a1a0e}
-            48.1%, 53.2% {stroke:#ed77f8; stroke-width:1.2px; fill:#1a0a1e}
-            53.3%, 63.3% {stroke:#85f78f; stroke-width:3px; fill:#0a1a0e}
-            63.4%, 100% {stroke:#ed77f8; stroke-width:1.2px; fill:#1a0a1e}
+            0%, 43.2% {stroke:#D06120; stroke-width:1.2px; fill:#111}
+            43.3%, 48% {stroke:#FFFFFF; stroke-width:3px; fill:#1a1a1a}
+            48.1%, 53.2% {stroke:#D06120; stroke-width:1.2px; fill:#111}
+            53.3%, 63.3% {stroke:#FFFFFF; stroke-width:3px; fill:#1a1a1a}
+            63.4%, 100% {stroke:#D06120; stroke-width:1.2px; fill:#111}
           }
-          @keyframes at-ledger { 0%, 43.2% {fill:#a0a0a0} 43.3%, 48% {fill:#85f78f} 48.1%, 53.2% {fill:#a0a0a0} 53.3%, 63.3% {fill:#85f78f} 63.4%, 100% {fill:#a0a0a0} }
+          @keyframes at-ledger { 0%, 43.2% {fill:#a0a0a0} 43.3%, 48% {fill:#FFFFFF} 48.1%, 53.2% {fill:#a0a0a0} 53.3%, 63.3% {fill:#FFFFFF} 63.4%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-recon { 0%, 43.2% {stroke:#444} 43.3%, 48% {stroke:#ed77f8} 48.1%, 53.2% {stroke:#444} 53.3%, 63.3% {stroke:#ed77f8} 63.4%, 100% {stroke:#444} }
-          @keyframes at-recon { 0%, 43.2% {fill:#a0a0a0} 43.3%, 48% {fill:#ed77f8} 48.1%, 53.2% {fill:#a0a0a0} 53.3%, 63.3% {fill:#ed77f8} 63.4%, 100% {fill:#a0a0a0} }
+          @keyframes ar-recon { 0%, 43.2% {stroke:#444} 43.3%, 48% {stroke:#D06120} 48.1%, 53.2% {stroke:#444} 53.3%, 63.3% {stroke:#D06120} 63.4%, 100% {stroke:#444} }
+          @keyframes at-recon { 0%, 43.2% {fill:#a0a0a0} 43.3%, 48% {fill:#D06120} 48.1%, 53.2% {fill:#a0a0a0} 53.3%, 63.3% {fill:#D06120} 63.4%, 100% {fill:#a0a0a0} }
 
-          @keyframes ar-settle { 0%, 43.2% {stroke:#444} 43.3%, 53.3% {stroke:#85f78f} 53.4%, 100% {stroke:#444} }
-          @keyframes at-settle { 0%, 43.2% {fill:#a0a0a0} 43.3%, 53.3% {fill:#85f78f} 53.4%, 100% {fill:#a0a0a0} }
+          @keyframes ar-settle { 0%, 43.2% {stroke:#444} 43.3%, 53.3% {stroke:#FFFFFF} 53.4%, 100% {stroke:#444} }
+          @keyframes at-settle { 0%, 43.2% {fill:#a0a0a0} 43.3%, 53.3% {fill:#FFFFFF} 53.4%, 100% {fill:#a0a0a0} }
 
           .ar-src { animation: ar-src 12s infinite; } .at-src { animation: at-src 12s infinite; }
           .ar-gw { animation: ar-gw 12s infinite; } .at-gw { animation: at-gw 12s infinite; }
@@ -102,13 +102,13 @@ export function ArchitectureFlowSVG() {
 
         {/* Background diagonal lines */}
         <g opacity="0.06">
-          <line x1="-60" y1="-60" x2="350" y2="680" stroke="#85f78f" strokeWidth=".6" strokeDasharray="3 14">
+          <line x1="-60" y1="-60" x2="350" y2="680" stroke="#FFFFFF" strokeWidth=".6" strokeDasharray="3 14">
             <animate attributeName="stroke-dashoffset" from="0" to="-34" dur="6s" repeatCount="indefinite" />
           </line>
-          <line x1="300" y1="-60" x2="750" y2="680" stroke="#85f78f" strokeWidth=".6" strokeDasharray="3 14">
+          <line x1="300" y1="-60" x2="750" y2="680" stroke="#FFFFFF" strokeWidth=".6" strokeDasharray="3 14">
             <animate attributeName="stroke-dashoffset" from="0" to="-34" dur="5.5s" repeatCount="indefinite" />
           </line>
-          <line x1="700" y1="-60" x2="1100" y2="680" stroke="#85f78f" strokeWidth=".6" strokeDasharray="3 14">
+          <line x1="700" y1="-60" x2="1100" y2="680" stroke="#FFFFFF" strokeWidth=".6" strokeDasharray="3 14">
             <animate attributeName="stroke-dashoffset" from="0" to="-34" dur="4.8s" repeatCount="indefinite" />
           </line>
         </g>
@@ -133,8 +133,8 @@ export function ArchitectureFlowSVG() {
 
         {/* Layer backgrounds */}
         <rect x="50" y="20" width="900" height="210" stroke="#333" strokeWidth="1.5" strokeDasharray="5 4" fill="none" />
-        <rect x="50" y="240" width="900" height="140" fill="#6466f1" fillOpacity=".08" />
-        <rect x="50" y="390" width="900" height="140" fill="#6466f1" fillOpacity=".04" />
+        <rect x="50" y="240" width="900" height="140" fill="#FFFFFF" fillOpacity=".08" />
+        <rect x="50" y="390" width="900" height="140" fill="#FFFFFF" fillOpacity=".04" />
 
         {/* Flowing connection lines */}
         <g className="arch-flowing-line" stroke="#555" strokeWidth="1.2" markerEnd="url(#arch-arrow)">
@@ -157,69 +157,69 @@ export function ArchitectureFlowSVG() {
         </g>
 
         {/* Animated traveling dots */}
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="1;1;0;0" keyTimes="0; 0.066; 0.067; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M250,114 V145" keyPoints="0;1;1" keyTimes="0; 0.066; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M180,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M250,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M320,196 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.065; 0.066; 0.200; 0.201; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M500,196 V245 M500,280 V300" keyPoints="0;0;1;1" keyTimes="0; 0.066; 0.200; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.199; 0.200; 0.250; 0.251; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M350,325 H395" keyPoints="0;0;1;1" keyTimes="0; 0.200; 0.250; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.249; 0.250; 0.300; 0.301; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M600,325 H645" keyPoints="0;0;1;1" keyTimes="0; 0.250; 0.300; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
         {/* Settlement dots - pink/green */}
-        <circle r="4" fill="#ed77f8" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#D06120" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M240,350 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#ed77f8" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#D06120" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M490,350 V395 M490,430 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#ed77f8" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#D06120" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M740,350 V455" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.299; 0.300; 0.433; 0.434; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M750,300 V196" keyPoints="0;0;1;1" keyTimes="0; 0.300; 0.433; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#85f78f" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.432; 0.433; 0.483; 0.484; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M650,485 H605" keyPoints="0;0;1;1" keyTimes="0; 0.433; 0.483; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#85f78f" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.482; 0.483; 0.533; 0.534; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M400,485 H355" keyPoints="0;0;1;1" keyTimes="0; 0.483; 0.533; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
         {/* Return flow dots */}
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M260,460 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M510,460 V430 M510,395 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
-        <circle r="4" fill="#6466f1" filter="url(#arch-glow)" opacity="0">
+        <circle r="4" fill="#FFFFFF" filter="url(#arch-glow)" opacity="0">
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0; 0.532; 0.533; 0.666; 0.667; 1" dur="12s" repeatCount="indefinite" />
           <animateMotion path="M760,460 V355" keyPoints="0;0;1;1" keyTimes="0; 0.533; 0.666; 1" calcMode="linear" dur="12s" repeatCount="indefinite" />
         </circle>
@@ -245,15 +245,15 @@ export function ArchitectureFlowSVG() {
 
         {/* Section titles */}
         <text x="500" y="45" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="16" fontWeight="700" letterSpacing="2" fill="#9ca3af">DEVICE TELEMETRY</text>
-        <text x="500" y="265" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#6466f1">BRIDGE KERNEL PIPELINE</text>
-        <text x="500" y="415" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#85f78f">BRIDGE KERNEL SETTLEMENT</text>
+        <text x="500" y="265" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">BRIDGE KERNEL PIPELINE</text>
+        <text x="500" y="415" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">BRIDGE KERNEL SETTLEMENT</text>
 
         {/* Boxes */}
         <g fontFamily="'Inter', monospace" fontWeight="600">
           {/* Energy Sources - stacked */}
-          <rect className="ar-src" x="158" y="60" width="200" height="46" fill="#1a0a1e" stroke="#ed77f8" strokeWidth="0.8" />
-          <rect className="ar-src" x="154" y="64" width="200" height="46" fill="#1a0a1e" stroke="#ed77f8" strokeWidth="0.8" />
-          <rect className="ar-src" x="150" y="68" width="200" height="46" fill="#1a0a1e" strokeWidth="1.5" />
+          <rect className="ar-src" x="158" y="60" width="200" height="46" fill="#111" stroke="#D06120" strokeWidth="0.8" />
+          <rect className="ar-src" x="154" y="64" width="200" height="46" fill="#111" stroke="#D06120" strokeWidth="0.8" />
+          <rect className="ar-src" x="150" y="68" width="200" height="46" fill="#111" strokeWidth="1.5" />
           <text className="at-src" x="250" y="96" textAnchor="middle" fontSize="15">ENERGY DEVICES</text>
 
           {/* Top row */}
@@ -277,7 +277,7 @@ export function ArchitectureFlowSVG() {
           <text className="at-prove" x="750" y="330" textAnchor="middle" fontSize="16">PROVE</text>
 
           {/* Settlement row */}
-          <rect className="ar-ledger" x="150" y="460" width="200" height="50" fill="#1a0a1e" />
+          <rect className="ar-ledger" x="150" y="460" width="200" height="50" fill="#111" />
           <text className="at-ledger" x="250" y="490" textAnchor="middle" fontSize="16">LEDGER</text>
 
           <rect className="ar-recon" x="400" y="460" width="200" height="50" fill="#111" strokeWidth="1.2" />

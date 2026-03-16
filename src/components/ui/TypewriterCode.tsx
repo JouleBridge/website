@@ -26,23 +26,11 @@ export function TypewriterCode({
   const [completedLines, setCompletedLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentChars, setCurrentChars] = useState(0);
-  const [started, setStarted] = useState(false);
-  const [done, setDone] = useState(false);
-
-  // Kick off typing when scrolled into view
-  useEffect(() => {
-    if (isInView && !started) {
-      setStarted(true);
-    }
-  }, [isInView, started]);
+  const started = isInView;
+  const done = currentLineIndex >= lines.length;
 
   useEffect(() => {
     if (!started || done) return;
-
-    if (currentLineIndex >= lines.length) {
-      setDone(true);
-      return;
-    }
 
     const currentLine = lines[currentLineIndex];
 

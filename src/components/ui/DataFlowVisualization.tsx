@@ -112,11 +112,14 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
   const lastTimeRef = useRef<number>(0);
   const nextIdRef = useRef(0);
   const spawnTimerRef = useRef(0);
+  const resetPacketsRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isInView) {
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
-      setPackets([]);
+      frameRef.current = null;
+      lastTimeRef.current = 0;
+      spawnTimerRef.current = 0;
       return;
     }
 
@@ -160,12 +163,23 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
       frameRef.current = requestAnimationFrame(tick);
     }
 
-    lastTimeRef.current = performance.now();
-    frameRef.current = requestAnimationFrame(tick);
+    resetPacketsRef.current = requestAnimationFrame(() => {
+      nextIdRef.current = 0;
+      setPackets([]);
+      lastTimeRef.current = performance.now();
+      frameRef.current = requestAnimationFrame(tick);
+    });
+
     return () => {
+      if (resetPacketsRef.current !== null) {
+        cancelAnimationFrame(resetPacketsRef.current);
+        resetPacketsRef.current = null;
+      }
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     };
   }, [isInView]);
+
+  const renderedPackets = isInView ? packets : [];
 
   // Map packet progress (0–1) to SVG x position along the three-segment track:
   //   0–0.5  → stage 0 centre to stage 1 centre
@@ -302,7 +316,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
           />
 
           {/* ── Animated packets ── */}
-          {packets.map((p) => (
+          {renderedPackets.map((p) => (
             <PacketDot
               key={p.id}
               x={packetX(p.progress)}

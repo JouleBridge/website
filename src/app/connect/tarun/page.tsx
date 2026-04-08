@@ -37,7 +37,7 @@ const contactLinks = [
   },
   {
     title: "Phone",
-    href: "tel:+918050647585",
+    href: "https://wa.me/918050647585",
     detail: "+91 80506 47585",
     icon: "phone",
   },
@@ -107,12 +107,12 @@ export default function TarunConnectPage() {
             </div>
 
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-jb-text-muted">
-                JouleBridge
-              </p>
               <h1 className="mt-3 font-display text-[clamp(2.5rem,9vw,4.8rem)] leading-[0.96] tracking-[-0.05em] text-white">
                 Tarun <span className="text-[#D06120]">Trilokesh</span>
               </h1>
+              <p className="mt-3 text-sm font-mono uppercase tracking-[0.2em] text-white/72">
+                CEO & Founder
+              </p>
               <p className="mt-3 text-sm font-mono uppercase tracking-[0.2em] text-jb-white/58">
                 Verified Data Infrastructure For Energy
               </p>

@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
   Globe,
   Linkedin,
+  Mail,
   MessageCircleMore,
   QrCode,
 } from "lucide-react";
@@ -45,6 +46,13 @@ const socialLinks = [
     accent: "Network and company context",
   },
   {
+    title: "Email",
+    href: "mailto:tarun.trilokesh@joulebridge.in",
+    detail: "tarun.trilokesh@joulebridge.in",
+    icon: "email",
+    accent: "Send an email",
+  },
+  {
     title: "Website",
     href: "https://www.joulebridge.in/",
     detail: "joulebridge.in",
@@ -56,7 +64,7 @@ const socialLinks = [
 export const metadata: Metadata = {
   title: "Tarun Trilokesh",
   description:
-    "Direct business-card page for Tarun Trilokesh at JouleBridge with WhatsApp, X, LinkedIn, website, and a QR surface for sharing.",
+    "Direct business-card page for Tarun Trilokesh at JouleBridge with WhatsApp, email, X, LinkedIn, website, and a QR surface for sharing.",
   robots: {
     index: false,
     follow: false,
@@ -73,7 +81,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tarun Trilokesh | JouleBridge",
     description:
-      "Scan once and reach Tarun Trilokesh across WhatsApp, X, LinkedIn, and the JouleBridge website.",
+      "Scan once and reach Tarun Trilokesh across WhatsApp, email, X, LinkedIn, and the JouleBridge website.",
     url: pageUrl,
     type: "website",
   },
@@ -81,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Tarun Trilokesh | JouleBridge",
     description:
-      "Direct business-card page for Tarun Trilokesh with a self-serve QR and business links.",
+      "Direct business-card page for Tarun Trilokesh with a self-serve QR, email, and business links.",
   },
 };
 
@@ -131,6 +139,7 @@ export default function TarunConnectPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex h-11 w-11 items-center justify-center border border-white/10 bg-[#0d1012] text-[#D06120]">
                         {item.icon === "whatsapp" && <MessageCircleMore className="h-5 w-5" />}
+                        {item.icon === "email" && <Mail className="h-5 w-5" />}
                         {item.icon === "x" && <XIcon />}
                         {item.icon === "linkedin" && <Linkedin className="h-5 w-5" />}
                         {item.icon === "website" && <Globe className="h-5 w-5" />}

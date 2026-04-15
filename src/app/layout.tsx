@@ -5,23 +5,6 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 
-const themeBootScript = `
-  (function () {
-    try {
-      var key = "jb-theme";
-      var stored = window.localStorage.getItem(key);
-      var theme = stored === "light" || stored === "dark"
-        ? stored
-        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme;
-    } catch (error) {
-      document.documentElement.dataset.theme = "dark";
-      document.documentElement.style.colorScheme = "dark";
-    }
-  })();
-`;
-
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-jb-sans",
@@ -95,11 +78,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
       className={`${manrope.variable} ${plexMono.variable} ${chakraPetch.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

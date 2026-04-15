@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/cn";
 
@@ -128,12 +127,10 @@ export function Navbar() {
         </div>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <ThemeToggle />
           <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">Scope a Pilot</Button>
         </div>
 
         <div className="ml-auto flex items-center gap-3 lg:hidden">
-          <ThemeToggle />
           <button
             className="jb-icon-button flex h-11 w-11 items-center justify-center transition-colors hover:border-white/22 hover:bg-black/44"
             onClick={() => setMobileOpen(!mobileOpen)}

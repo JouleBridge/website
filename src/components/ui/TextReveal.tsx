@@ -23,7 +23,7 @@ export function TextReveal({
 
   return (
     <div ref={containerRef} className={cn("py-16 md:py-20", className)}>
-      <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-snug tracking-tight flex flex-wrap max-w-4xl">
+      <p className="flex max-w-4xl flex-wrap font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl md:text-3xl lg:text-4xl">
         {words.map((word, i) => {
           const isHighlight = highlightSet.has(word.toLowerCase());
           return (

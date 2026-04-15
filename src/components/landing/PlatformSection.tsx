@@ -18,46 +18,46 @@ import { ParallaxCard } from "@/components/ui/ParallaxCards";
 
 const features = [
   {
-    title: "Edge-first runtime",
+    title: "Asset Agent at the edge",
     icon: Orbit,
     accent: "text-white/60",
     description:
-      "Bridge Kernel is designed to run where the data is born, so verification starts at the operational edge instead of being bolted on later.",
+      "The edge runtime talks to real equipment, keeps the site picture current, and enforces the local operating boundary close to the hardware.",
   },
   {
-    title: "Adapter-based ingestion",
+    title: "Mixed-vendor adapter layer",
     icon: ScanSearch,
     accent: "text-white/60",
     description:
-      "Adapter-driven capture flows support DLMS, OCPP, Modbus, and IEC 61850 out of the box, with energy-specific protocol hardening built into the product core.",
+      "OCPP, Modbus, DLMS, SunSpec, CAN, IEC 62056, IEC 61850, and more - normalized into one operating model instead of scattered vendor tools.",
   },
   {
-    title: "Deterministic proof pipeline",
+    title: "Site Router local control",
     icon: ShieldCheck,
     accent: "text-white/60",
     description:
-      "Records are canonicalized, hashed, signed, and paired with verification metadata so the same event can be checked consistently later.",
+      "Policy, constraints, and forecast outputs converge into feasible actions the site can execute locally and explain later.",
   },
   {
-    title: "Replay-aware controls",
+    title: "Signed evidence chain",
     icon: BadgeCheck,
     accent: "text-white",
     description:
-      "Replay windows, deduplication, and policy controls help filter bad or duplicate events before they contaminate the operational trail.",
+      "Reads, commands, measurements, and exports are captured in one review-ready record. Audit does not start from scratch after the event.",
   },
   {
-    title: "Ledger and sync baseline",
+    title: "On-device forecasting and anomaly flags",
     icon: DatabaseZap,
-    accent: "text-white/60",
+    accent: "text-white",
     description:
-      "Local persistence and controlled sync flows ensure evidence integrity from edge to cloud, creating a foundation for higher-trust data movement.",
+      "Forecasting and anomaly detection run close to the telemetry so the site can act in time and preserve the model context for later review.",
   },
   {
-    title: "Roadmap-driven hardening",
+    title: "Multi-site review surface",
     icon: Network,
     accent: "text-white/60",
     description:
-      "Cloud control, dashboards, advanced protocol support, and commercial APIs layer around a strict runtime core — every addition inherits the same verification guarantees.",
+      "Cloud review surfaces help teams compare sites, share policy, and export records without taking local execution away from the site boundary.",
   },
 ];
 
@@ -84,26 +84,37 @@ export function PlatformSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative z-10 bg-jb-dark py-20 section-lines md:py-24">
+    <section
+      ref={sectionRef}
+      className="relative z-10 bg-jb-dark py-20 section-lines md:py-24"
+    >
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        <Eyebrow className="mb-4 text-white/60">Why Bridge Kernel</Eyebrow>
+        <Eyebrow className="mb-4 text-white/60">Platform</Eyebrow>
 
         <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
           <div>
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="jb-section-title max-w-3xl">
-              Built to make{" "}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="jb-section-title max-w-3xl"
+            >
+              The operating layer for{" "}
               <span className="jb-title-gradient">
-                high-trust telemetry
-              </span>{" "}
-              operationally usable.
+                mixed-vendor energy sites
+              </span>
+              .
             </motion.h2>
             <div className="mt-5">
-              <Button href="/product" variant="secondary">Product Details</Button>
+              <Button href="/product" variant="secondary">
+                Platform Details
+              </Button>
             </div>
           </div>
           <div className="mx-auto w-full max-w-[360px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_18px_60px_rgba(0,0,0,0.24)]">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
-              Evidence Network View
+              Multi-Site View
             </div>
             {showHeavyVisuals ? (
               <Globe
@@ -121,22 +132,34 @@ export function PlatformSection() {
 
         <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((item, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}>
-              <ParallaxCard className="border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.24)] h-full">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.08 }}
+            >
+              <ParallaxCard className="h-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.24)]">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="border border-white/10 bg-black/20 p-2.5">
                     <item.icon className={`h-4 w-4 ${item.accent}`} />
                   </div>
-                  <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-white">{item.title}</h3>
+                  <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-white">
+                    {item.title}
+                  </h3>
                 </div>
-                <p className="leading-relaxed text-jb-white/66">{item.description}</p>
+                <p className="leading-relaxed text-jb-white/66">
+                  {item.description}
+                </p>
               </ParallaxCard>
             </motion.div>
           ))}
         </div>
 
         <div className="mt-8">
-          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-jb-text-muted">JouleBridge Platform View</div>
+          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-jb-text-muted">
+            Runtime Topology
+          </div>
           {showHeavyVisuals ? (
             <EnergyEvidenceIllustration />
           ) : (

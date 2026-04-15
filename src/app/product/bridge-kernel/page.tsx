@@ -13,45 +13,45 @@ import { TypewriterCode } from "@/components/ui/TypewriterCode";
 const modules = [
   {
     name: "Adapter Layer",
-    desc: "Protocol-specific ingestion modules that normalize raw telemetry into a canonical event format. Supports Modbus, SunSpec, OCPP, DNP3, IEEE 2030.5, IEC 61850, and custom webhooks.",
+    desc: "Protocol-specific modules that normalize charger, ESS, solar, meter, and site-system inputs into one runtime model.",
     color: "text-white/80",
   },
   {
-    name: "Canonicalizer",
-    desc: "Deterministic JSON normalization — sorted keys, stripped whitespace, UTF-8 encoding. Ensures identical payloads always produce identical hashes regardless of source format.",
+    name: "State Builder",
+    desc: "Deterministic shaping of local site state so routing and proof generation start from a stable operating picture.",
     color: "text-[#D06120]",
   },
   {
-    name: "Proof Engine",
-    desc: "SHA-256 hashing followed by Ed25519 signing with versioned key management. Outputs COSE Sign1 ProofEnvelopes that any counterparty can independently verify.",
+    name: "Command Path",
+    desc: "Local reservation, dispatch, acknowledgement, and exception handling for assets that have to keep moving when the site is under pressure.",
     color: "text-[#D06120]",
   },
   {
     name: "Policy Gate",
-    desc: "Evaluates events against signed policy rule bundles before persistence. Supports threshold checks, rate limits, schema validation, and custom predicate expressions.",
+    desc: "Evaluates active policy and safety envelopes before commands are allowed to move deeper into the site runtime.",
     color: "text-jb-pink",
   },
   {
-    name: "Event Ledger",
-    desc: "Append-only, hash-chained SQLite storage with WAL mode for concurrent reads. Events are immutable once written — no updates, no deletes, no tampering.",
+    name: "Proof Writer",
+    desc: "Seals intent, execution, and measured outcome into a signed record that later support and counterparties can review.",
     color: "text-white/80",
   },
   {
-    name: "Sync Engine",
-    desc: "Peer-to-peer replication using Merkle tree comparison. Nodes discover and reconcile divergent event chains without a central coordinator.",
+    name: "Local Store",
+    desc: "Keeps the site record close to the operating boundary before proofs are exported or synchronized upward.",
     color: "text-[#D06120]",
   },
 ];
 
 const specs = [
-  { label: "Language", value: "Rust (no unsafe)" },
-  { label: "Binary Size", value: "~8 MB" },
-  { label: "Memory", value: "~32 MB typical" },
-  { label: "Proof Latency", value: "<50 ms" },
-  { label: "Storage Backend", value: "SQLite (WAL)" },
-  { label: "Signing", value: "Ed25519 (COSE Sign1)" },
-  { label: "Platforms", value: "Linux, macOS, ARM64" },
-  { label: "Config", value: "TOML + env vars" },
+  { label: "Role", value: "Asset Agent" },
+  { label: "Language", value: "Rust" },
+  { label: "Execution", value: "Local-first" },
+  { label: "Proof", value: "Ed25519 signed" },
+  { label: "Deployment", value: "Industrial gateway" },
+  { label: "State", value: "Deterministic" },
+  { label: "Control", value: "Policy-gated" },
+  { label: "Upgrade path", value: "Secure element" },
 ];
 
 export default function BridgeKernelPage() {
@@ -59,26 +59,25 @@ export default function BridgeKernelPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
         <SectionWrapper className="bg-jb-dark pt-32 md:pt-40 pb-10 md:pb-14">
           <div className="flex items-center gap-3 mb-6">
             <Link
               href="/product"
               className="font-mono text-xs uppercase tracking-widest text-jb-text-muted hover:text-white transition-colors"
             >
-              Product
+              Platform
             </Link>
             <span className="text-jb-text-muted">/</span>
-            <Eyebrow>Bridge Kernel</Eyebrow>
+            <Eyebrow>Asset Agent Runtime</Eyebrow>
           </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-semibold text-white tracking-tight max-w-3xl mb-6"
+            className="text-3xl md:text-4xl font-semibold text-white tracking-tight max-w-3xl mb-6"
           >
-            The runtime that makes energy data trustworthy
+            The edge runtime that keeps the site honest
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -86,10 +85,9 @@ export default function BridgeKernelPage() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="text-lg text-jb-white/60 max-w-2xl leading-relaxed mb-8"
           >
-            Bridge Kernel is a single-binary Rust runtime that ingests raw device
-            telemetry, generates cryptographic proofs, evaluates policy rules, and
-            persists verified events to an immutable ledger. Deploy it on any Linux
-            device — from ARM gateways to cloud VMs.
+            This runtime sits closest to the equipment. It reads asset state,
+            participates in local control, and produces signed operational records
+            that feed the wider JouleBridge stack.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,7 +104,6 @@ export default function BridgeKernelPage() {
           </motion.div>
         </SectionWrapper>
 
-        {/* Module Breakdown */}
         <SectionWrapper className="bg-jb-card">
           <Eyebrow className="mb-4">Architecture</Eyebrow>
           <motion.h2
@@ -116,7 +113,7 @@ export default function BridgeKernelPage() {
             transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-10"
           >
-            Six modules, one pipeline
+            Six modules, one local control path
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -142,7 +139,6 @@ export default function BridgeKernelPage() {
           </div>
         </SectionWrapper>
 
-        {/* Technical Specs */}
         <SectionWrapper className="bg-jb-dark">
           <Eyebrow className="mb-4">Specifications</Eyebrow>
           <motion.h2
@@ -152,7 +148,7 @@ export default function BridgeKernelPage() {
             transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-8"
           >
-            Built for constrained environments
+            Built for constrained, real-world sites
           </motion.h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -174,11 +170,10 @@ export default function BridgeKernelPage() {
           </div>
         </SectionWrapper>
 
-        {/* Data Integrity Visualization */}
         <SectionWrapper className="bg-jb-dark">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center">
             <div>
-              <Eyebrow className="mb-4">Data Integrity</Eyebrow>
+              <Eyebrow className="mb-4">Operating Boundary</Eyebrow>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -186,7 +181,7 @@ export default function BridgeKernelPage() {
                 transition={{ duration: 0.6 }}
                 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4"
               >
-                Order from chaos
+                Order from site complexity
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
@@ -195,10 +190,9 @@ export default function BridgeKernelPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-jb-white/60 leading-relaxed max-w-lg"
               >
-                Without cryptographic verification, energy data degrades into
-                noise — unverifiable, disputable, and impossible to audit. Bridge
-                Kernel maintains deterministic order across every event, keeping
-                your settlement data structured and provable.
+                Without a neutral edge runtime, the site turns into disconnected
+                control islands. The Asset Agent keeps the local record and the local
+                execution path disciplined enough for the wider stack to trust.
               </motion.p>
             </div>
             <motion.div
@@ -210,17 +204,16 @@ export default function BridgeKernelPage() {
             >
               <Entropy
                 size={320}
-                labelLeft="Verified"
-                labelRight="Unverified"
+                labelLeft="Coordinated"
+                labelRight="Fragmented"
                 className="border border-jb-mid-gray/30 overflow-hidden"
               />
             </motion.div>
           </div>
         </SectionWrapper>
 
-        {/* CLI Preview */}
         <SectionWrapper className="bg-jb-card">
-          <Eyebrow className="mb-4">Developer Experience</Eyebrow>
+          <Eyebrow className="mb-4">Operator Experience</Eyebrow>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,7 +221,7 @@ export default function BridgeKernelPage() {
             transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-8"
           >
-            One binary. One config file. Done.
+            One binary. One site boundary. Clear proof path.
           </motion.h2>
 
           <motion.div
@@ -246,18 +239,15 @@ export default function BridgeKernelPage() {
             </div>
             <TypewriterCode
               lines={[
-                "$ curl -fsSL https://get.joulebridge.com | sh",
-                "$ bridge-kernel init --adapter modbus --site my-site",
-                "  ✓ Generated Ed25519 keypair (key_id: my-site)",
-                "  ✓ Created config at ./bridge-kernel.toml",
-                "  ✓ Initialized ledger at ./data/ledger.db",
-                "",
-                "$ bridge-kernel start",
-                "  [INFO] adapter: modbus connected (192.168.1.100:502)",
-                "  [INFO] ingesting registers [40001:40020] every 5s",
-                "  [INFO] proof: Ed25519 signing active (key v1)",
-                "  [INFO] ledger: append-only mode, WAL enabled",
-                "  [INFO] ready — settlement evidence pipeline running",
+                "$ jb-ctl provision --token site-plant-07",
+                "  ✓ Asset Agent enrolled",
+                "  ✓ Local keystore initialized",
+                "$ asset-agent start --profile pilot",
+                "  [INFO] adapter: ocpp connected",
+                "  [INFO] adapter: modbus ESS online",
+                "  [INFO] site-router link established",
+                "  [INFO] proof: signing active",
+                "  [INFO] runtime ready - site boundary live",
               ]}
               typingSpeed={25}
               lineDelay={250}
@@ -266,22 +256,21 @@ export default function BridgeKernelPage() {
           </motion.div>
         </SectionWrapper>
 
-        {/* CTA */}
         <SectionWrapper className="bg-jb-dark">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4">
-              Try Bridge Kernel today
+              Want to pressure-test the runtime on a real site?
             </h2>
             <p className="text-jb-white/60 mb-8">
-              Get running in under 5 minutes with our quickstart guide, or talk
-              to us about a production pilot.
+              We can scope the edge runtime, partner hardware path, and proof
+              expectations around a real pilot instead of a generic platform demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button href="/docs/get-started/quickstart" variant="primary">
-                Quick Start
-              </Button>
-              <Button href="/contact" variant="tertiary">
+              <Button href="/contact" variant="primary">
                 Start a Pilot
+              </Button>
+              <Button href="/product" variant="tertiary">
+                Back to Platform
               </Button>
             </div>
           </div>

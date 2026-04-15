@@ -1,76 +1,16 @@
 ---
 title: Glossary
-description: Key terms used throughout Bridge Kernel documentation.
+description: Key terms used throughout the JouleBridge docs.
 ---
 
 # Glossary
 
-## A
+**Asset Agent** - the edge runtime closest to the equipment.
 
-**AdapterEvent** — The normalized event structure produced by an input adapter. Contains sector, event type, source, payload, timestamp, and dedupe key.
+**Site Router** - the local coordination surface that turns policy and constraints into feasible actions.
 
-**Allowed future skew** — The maximum number of seconds an event timestamp can be ahead of the current time before it's rejected. Prevents accepting events with future-dated timestamps.
+**Portfolio Orchestrator** - the cloud coordination surface for policy distribution, proof ingest, and multi-site visibility.
 
-## B
+**Proof Chain** - the signed record path that links intent, execution, and measured outcome.
 
-**Bridge Kernel** — The deterministic, tamper-evident event ledger runtime built by JouleBridge. Ingests telemetry, generates cryptographic proofs, evaluates policy, and persists to an immutable ledger.
-
-## C
-
-**Canonical JSON** — A deterministic JSON serialization: sorted keys, no whitespace, UTF-8 encoding. Ensures identical bytes for identical data across nodes.
-
-**COSE Sign1** — CBOR Object Signing and Encryption, Single Signer structure. The envelope format used for Bridge Kernel proofs.
-
-## D
-
-**Dedupe key** — A source-derived idempotency key on each event. If a duplicate dedupe key is seen within the replay window, the event is silently dropped.
-
-**DID (Decentralized Identifier)** — Node identity format: `did:joulebridge:<key-id>`. Used for peer identification and audit trails.
-
-## E
-
-**Ed25519** — The elliptic curve digital signature algorithm used by Bridge Kernel for event signing. Provides fast, compact, and secure signatures.
-
-**EventEnvelope** — The normalized event before signing, produced by the adapter and runtime normalization path.
-
-## F
-
-**Fail closed** — A policy configuration where events are denied by default if the policy engine cannot evaluate them. Recommended for production.
-
-## H
-
-**HAL (Hardware Abstraction Layer)** — Abstracts the signing provider. `SoftwareHal` uses a JSON keystore; `TpmHal` uses a hardware TPM for tamper-proof signing.
-
-**HMAC-SHA256** — The keyed hash algorithm used to sign policy bundles, preventing unauthorized policy changes.
-
-## L
-
-**Ledger** — The append-only SQLite database where verified ProofEnvelopes are persisted. Immutable once written.
-
-## P
-
-**Policy bundle** — A versioned, signed set of allow/deny rules that the policy engine evaluates before persisting events.
-
-**ProofEnvelope** — The signed output of the proof pipeline. Contains the original event, cryptographic hash, Ed25519 signature, key metadata, and proof parameters.
-
-## R
-
-**Replay protection** — Rejects events with timestamps outside the configured replay window. Prevents stale or replayed events from being signed and persisted.
-
-**Replay window** — The time duration (in seconds) during which an event timestamp is considered valid. Default: 600 seconds (10 minutes).
-
-## S
-
-**SHA-256** — The hash algorithm used to compute payload digests. The hash is computed over canonical JSON bytes.
-
-**Supervisor** — The component that manages the policy bundle lifecycle: stage, promote, and rollback.
-
-**SyncEngine** — The P2P synchronization component that publishes unsynced events to peers and imports verified peer events.
-
-## T
-
-**TPM (Trusted Platform Module)** — A hardware security module for tamper-proof key storage and signing operations. Supported via `TpmHal`.
-
-## W
-
-**Watermark** — A cursor tracking the last confirmed sync position per peer. Used to resume synchronization efficiently.
+**DepotOS** - the first commercial application of the JouleBridge platform for EV fleet depots.

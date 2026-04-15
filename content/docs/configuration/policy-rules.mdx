@@ -1,99 +1,14 @@
 ---
 title: Policy Rules
-description: Write, sign, and deploy policy bundles that control which events reach the ledger.
+description: Define policy bundles that constrain local behavior and proof handling.
 ---
 
 # Policy Rules
 
-The policy engine is the last gate before an event is persisted to the ledger. It evaluates each event against a signed rule bundle and decides allow or deny.
+Policy bundles should answer:
 
-## Policy bundle structure
+- what actions are allowed
+- what must be denied by default
+- what exceptions are visible to operators
 
-```json
-{
-  "version": "2026-03-01",
-  "default_action": "deny",
-  "rules": [
-    {
-      "name": "allow-meter-readings",
-      "action": "allow",
-      "sector": "power",
-      "event_type": "meter_reading",
-      "source": "gateway-a"
-    },
-    {
-      "name": "deny-oversize",
-      "action": "deny",
-      "max_payload_bytes": 65536
-    }
-  ]
-}
-```
-
-## Rule fields
-
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Human-readable rule identifier |
-| `action` | Yes | `allow` or `deny` |
-| `sector` | No | Match events with this sector (e.g., `power`, `ev`, `grid`) |
-| `event_type` | No | Match events with this type (e.g., `meter_reading`, `session_end`) |
-| `source` | No | Match events from this source identity |
-| `max_payload_bytes` | No | Reject events with payloads larger than this |
-
-## Evaluation order
-
-1. Rules are evaluated in array order.
-2. First matching rule wins.
-3. If no rule matches, `default_action` is applied.
-
-## Signing policy bundles
-
-Policy bundles must be HMAC-SHA256 signed before they can be staged:
-
-```bash
-bridge-node ctl policy-sign \
-  --bundle-file policy/active/policy.bundle.json \
-  --config bridge.yaml
-```
-
-Output: `Signature: 5e26f3...`
-
-## Supervisor lifecycle
-
-### 1. Stage
-
-```bash
-bridge-node ctl supervisor-stage \
-  --bundle-file policy/active/policy.bundle.json \
-  --signature-hex 5e26f3... \
-  --config bridge.yaml
-```
-
-Validates the signature and places the bundle in the staging directory.
-
-### 2. Promote
-
-```bash
-bridge-node ctl supervisor-promote \
-  --staged-path policy/staged/policy-1772149000123.bundle.json \
-  --config bridge.yaml
-```
-
-Moves the staged bundle to active. The previous active bundle is archived to history.
-
-### 3. Rollback
-
-```bash
-bridge-node ctl supervisor-rollback --config bridge.yaml
-```
-
-Restores the last known good bundle from history.
-
-## Best practices
-
-- Always use `default_action: deny` in production — explicit allow is safer.
-- Keep source targeting narrow for critical settlement events.
-- Version bundles with immutable, auditable labels (date or hash-based).
-- Always stage before promote. Always test rollback.
-- Monitor policy denial spikes after promotion — diff the new bundle against the previous one if denials increase.
+In pilot deployments, policy should be conservative enough to protect the site and clear enough to explain why a decision was accepted or rejected.

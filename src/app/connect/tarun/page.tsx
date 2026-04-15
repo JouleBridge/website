@@ -114,7 +114,7 @@ export default function TarunConnectPage() {
                 CEO & Founder
               </p>
               <p className="mt-3 text-sm font-mono uppercase tracking-[0.2em] text-jb-white/58">
-                Verified Data Infrastructure For Energy
+                Distributed Energy Coordination Runtime
               </p>
             </div>
 

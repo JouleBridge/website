@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
-export const alt = "JouleBridge - Verified Data Infrastructure for Energy";
+export const alt = "JouleBridge - The runtime for distributed energy";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,6 @@ export default function OGImage() {
           fontFamily: "'Chakra Petch', 'Arial Black', system-ui, sans-serif",
         }}
       >
-        {/* Top accent line */}
         <div
           style={{
             position: "absolute",
@@ -29,19 +28,54 @@ export default function OGImage() {
             left: 0,
             right: 0,
             height: "3px",
-            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
           }}
         />
 
-        {/* Signal dot top-left */}
-        <div style={{ position: "absolute", top: "28px", left: "28px", width: "8px", height: "8px", backgroundColor: "#D06120", boxShadow: "0 0 12px rgba(208,97,32,0.5)" }} />
+        <div
+          style={{
+            position: "absolute",
+            top: "28px",
+            left: "28px",
+            width: "8px",
+            height: "8px",
+            backgroundColor: "#D06120",
+            boxShadow: "0 0 12px rgba(208,97,32,0.5)",
+          }}
+        />
 
-        {/* Corner dots */}
-        <div style={{ position: "absolute", top: "28px", right: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
-        <div style={{ position: "absolute", bottom: "28px", left: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
-        <div style={{ position: "absolute", bottom: "28px", right: "28px", width: "4px", height: "4px", backgroundColor: "rgba(255,255,255,0.3)" }} />
+        <div
+          style={{
+            position: "absolute",
+            top: "28px",
+            right: "28px",
+            width: "4px",
+            height: "4px",
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "28px",
+            left: "28px",
+            width: "4px",
+            height: "4px",
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "28px",
+            right: "28px",
+            width: "4px",
+            height: "4px",
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        />
 
-        {/* Wordmark */}
         <div
           style={{
             display: "flex",
@@ -55,7 +89,6 @@ export default function OGImage() {
           <span style={{ color: "#FFFFFF" }}>Bridge</span>
         </div>
 
-        {/* Title */}
         <div
           style={{
             fontSize: "64px",
@@ -67,10 +100,9 @@ export default function OGImage() {
             letterSpacing: "-1px",
           }}
         >
-          Verified data infrastructure for energy
+          The runtime for distributed energy
         </div>
 
-        {/* Subtitle */}
         <div
           style={{
             fontSize: "22px",
@@ -79,10 +111,10 @@ export default function OGImage() {
             maxWidth: "700px",
           }}
         >
-          Bridge Kernel signs every meter reading at the edge and delivers audit-ready evidence before disputes start.
+          Control mixed-vendor energy assets on-site. Keep operating when the
+          cloud fails. Produce audit-ready records for every important decision.
         </div>
 
-        {/* Bottom bar */}
         <div
           style={{
             position: "absolute",
@@ -93,7 +125,14 @@ export default function OGImage() {
             gap: "20px",
           }}
         >
-          <div style={{ width: "6px", height: "6px", backgroundColor: "#D06120", boxShadow: "0 0 8px rgba(208,97,32,0.4)" }} />
+          <div
+            style={{
+              width: "6px",
+              height: "6px",
+              backgroundColor: "#D06120",
+              boxShadow: "0 0 8px rgba(208,97,32,0.4)",
+            }}
+          />
           <div
             style={{
               fontSize: "12px",
@@ -103,9 +142,15 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            Pilot Program Open
+            Pilot Program | One Site
           </div>
-          <div style={{ width: "1px", height: "14px", backgroundColor: "rgba(255,255,255,0.15)" }} />
+          <div
+            style={{
+              width: "1px",
+              height: "14px",
+              backgroundColor: "rgba(255,255,255,0.15)",
+            }}
+          />
           <div
             style={{
               fontSize: "12px",
@@ -119,6 +164,6 @@ export default function OGImage() {
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

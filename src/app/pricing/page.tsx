@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { PricingContent } from "@/components/pricing/PricingContent";
 
 export const metadata = {
-  title: "Pricing | JouleBridge",
-  description: "Start with a free 12-week pilot. Scale when you see results.",
+  title: "Pilot Program | JouleBridge",
+  description: "Discovery, pilot, and rollout - how a JouleBridge deployment actually works.",
 };
 
 export default function PricingPage() {

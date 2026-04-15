@@ -8,7 +8,7 @@ import { papers } from "@/lib/papers";
 export const metadata = {
   title: "Papers | JouleBridge",
   description:
-    "Technical papers and downloadable PDFs on Bridge Kernel architecture, proof systems, and energy settlement verification.",
+    "Technical papers and downloadable PDFs on Bridge Kernel architecture, the proof chain, on-device ML, and the C&I production wedge.",
 };
 
 export default function PapersPage() {
@@ -18,12 +18,11 @@ export default function PapersPage() {
       <main className="min-h-screen bg-jb-dark pb-16 pt-28 section-lines">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Eyebrow className="mb-6">Papers</Eyebrow>
-          <h1 className="mb-4 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+          <h1 className="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
             Technical <span className="jb-title-gradient">Papers</span>
           </h1>
           <p className="mb-10 max-w-2xl text-lg text-jb-text-muted">
-            Read the paper online first, then download the PDF version with formatted
-            branding and printable structure.
+            Read the paper online first, then download the PDF version for architecture reviews, pilot conversations, and technical diligence.
           </p>
 
           <div className="space-y-6">

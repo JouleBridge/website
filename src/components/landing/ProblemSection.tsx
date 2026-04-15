@@ -8,19 +8,19 @@ import { TextReveal } from "@/components/ui/TextReveal";
 
 const problems = [
   {
-    title: "Telemetry changes meaning as it moves",
+    title: "Mixed hardware, fragmented control.",
     description:
-      "Field data passes through gateways, spreadsheets, operators, and settlement teams. By the time it matters, nobody can independently prove the original record.",
+      "Meters, inverters, storage, solar, chargers, and flexible loads arrive from different vendors with different interfaces. The site ends up operating through disconnected tools instead of one control model.",
   },
   {
-    title: "Reconciliation takes too long",
+    title: "Cloud-only control breaks at the wrong time.",
     description:
-      "Energy operations still spend days or weeks reconciling mismatches across sites, systems, and counterparties. The delay is operationally expensive and commercially risky.",
+      "Tariff windows close quickly. Batteries need a decision. Chargers need a command. If the site depends on a delayed or unavailable cloud path, the control stack fails when timing matters most.",
   },
   {
-    title: "Disputes start with weak evidence",
+    title: "Most audit trails are reconstructed later.",
     description:
-      "When a tariff, session, or operational dispute happens, the conversation often falls back to screenshots and spreadsheets instead of tamper-evident proof.",
+      "When operations, finance, or compliance asks what happened, the answer is often a spreadsheet, screenshots, and a best-effort explanation stitched together after the site already moved on.",
   },
 ];
 
@@ -39,14 +39,11 @@ export function ProblemSection() {
               transition={{ duration: 0.8 }}
               className="jb-section-title mb-4 max-w-4xl"
             >
-              Critical energy workflows still rely on{" "}
+              Most distributed energy sites still operate through{" "}
               <span className="jb-title-gradient">
-                records that are hard to trust
-              </span>
-              .{" "}
-              <span className="jb-title-gradient">
-                That breaks operations.
-              </span>
+                disconnected vendor systems, delayed cloud control,
+              </span>{" "}
+              and weak audit trails.
             </motion.h2>
 
             <motion.p
@@ -56,12 +53,13 @@ export function ProblemSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="jb-section-copy"
             >
-              The issue is bigger than billing. Once telemetry becomes operationally or financially important,
-              teams need deterministic records, audit trails, and evidence they can defend.
+              The problem is not just visibility. The problem is operating a
+              real site under tariff pressure, hardware constraints, and mixed
+              control surfaces while still being able to explain what happened
+              later.
             </motion.p>
           </div>
 
-          {/* Entropy visualization — order degrading into chaos */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -73,7 +71,7 @@ export function ProblemSection() {
               size={280}
               labelLeft="Evidence"
               labelRight="Ambiguity"
-              className="border border-jb-mid-gray/30 overflow-hidden"
+              className="overflow-hidden border border-jb-mid-gray/30"
             />
           </motion.div>
         </div>
@@ -86,26 +84,26 @@ export function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="border border-jb-mid-gray/50 bg-jb-card/50 p-6 relative"
+              className="relative border border-jb-mid-gray/50 bg-jb-card/50 p-6"
             >
-              <div className="font-mono text-xs text-white/50 uppercase tracking-widest mb-4">
+              <div className="mb-4 font-mono text-xs uppercase tracking-widest text-white/50">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-jb-white mb-3">
+              <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-jb-white">
                 {item.title}
               </h3>
-              <p className="text-jb-white/60 leading-relaxed">{item.description}</p>
-              <span className="absolute top-[-1px] left-[-1px] w-[2px] h-[2px] bg-white/30" />
-              <span className="absolute top-[-1px] right-[-1px] w-[2px] h-[2px] bg-white/30" />
-              <span className="absolute bottom-[-1px] left-[-1px] w-[2px] h-[2px] bg-white/30" />
-              <span className="absolute bottom-[-1px] right-[-1px] w-[2px] h-[2px] bg-white/30" />
+              <p className="leading-relaxed text-jb-white/60">{item.description}</p>
+              <span className="absolute left-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/30" />
+              <span className="absolute right-[-1px] top-[-1px] h-[2px] w-[2px] bg-white/30" />
+              <span className="absolute bottom-[-1px] left-[-1px] h-[2px] w-[2px] bg-white/30" />
+              <span className="absolute bottom-[-1px] right-[-1px] h-[2px] w-[2px] bg-white/30" />
             </motion.div>
           ))}
         </div>
 
         <TextReveal
-          text="Every meter reading, every charge session, every grid event — signed at the edge, verified before it matters."
-          highlightWords={["signed", "verified"]}
+          text="Local control when timing matters. Evidence attached when questions come later."
+          highlightWords={["Local", "Evidence", "later."]}
           className="mt-10"
         />
       </div>

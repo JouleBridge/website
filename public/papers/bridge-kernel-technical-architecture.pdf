@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Count 3 /Kids [6 0 R 8 0 R 10 0 R] >>
+<< /Type /Pages /Count 2 /Kids [6 0 R 8 0 R] >>
 endobj
 3 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 5 0 obj
-<< /Length 3866 >>
+<< /Length 3433 >>
 stream
 q
 0.18 0.2 0.224 RG
@@ -41,7 +41,7 @@ ET
 BT
 /F2 23 Tf
 52 760 Td
-(Bridge Kernel Technical Architecture) Tj
+(JouleBridge Runtime Architecture) Tj
 ET
 0.49 0.827 0.988 rg
 BT
@@ -59,165 +59,153 @@ ET
 BT
 /F1 11.5 Tf
 52 686 Td
-(Bridge Kernel is the edge runtime inside JouleBridge. Its purpose is not to) Tj
+(JouleBridge is the runtime, proof, and coordination layer for distributed energy) Tj
 ET
 BT
 /F1 11.5 Tf
 52 669 Td
-(present telemetry attractively, but to improve the trust quality of the earliest) Tj
+(sites. The system is designed so control decisions stay close to the assets while) Tj
 ET
 BT
 /F1 11.5 Tf
 52 652 Td
-(record in the chain. This paper explains the runtime architecture as an evidence) Tj
-ET
-BT
-/F1 11.5 Tf
-52 635 Td
-(system: how events are captured, shaped, signed, policy-checked, persisted, and) Tj
-ET
-BT
-/F1 11.5 Tf
-52 618 Td
-(prepared for downstream review.) Tj
+(the resulting actions remain reviewable later by another team.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
+52 627 Td
+(This paper explains the runtime architecture as an operating system for real) Tj
+ET
+BT
+/F1 11.5 Tf
+52 610 Td
+(sites: how the Asset Agent, Site Router, Portfolio Orchestrator, and Console) Tj
+ET
+BT
+/F1 11.5 Tf
 52 593 Td
-(The architecture should be read as trust infrastructure. Each stage exists because) Tj
+(divide responsibilities without collapsing local execution into a cloud-only) Tj
 ET
 BT
 /F1 11.5 Tf
 52 576 Td
-(weak source records create reconciliation drag, audit friction, and investigation) Tj
-ET
-BT
-/F1 11.5 Tf
-52 559 Td
-(cost. A stronger architecture therefore starts before dashboards, reports, and) Tj
-ET
-BT
-/F1 11.5 Tf
-52 542 Td
-(analytics. It starts at the moment a record becomes operationally important.) Tj
+(product story.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 511 Td
+52 545 Td
 (1. SYSTEM OBJECTIVE) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
+52 523 Td
+(The architecture is built around one durable question: how should a mixed-vendor) Tj
+ET
+BT
+/F1 11.5 Tf
+52 506 Td
+(site coordinate chargers, batteries, solar, flexible loads, and meters while still) Tj
+ET
+BT
+/F1 11.5 Tf
 52 489 Td
-(Bridge Kernel is designed around a narrow systems question: what is the earliest) Tj
-ET
-BT
-/F1 11.5 Tf
-52 472 Td
-(defensible record that can be created when telemetry enters an energy workflow?) Tj
-ET
-BT
-/F1 11.5 Tf
-52 455 Td
-(Many operating stacks answer this question too late. They collect raw events in) Tj
-ET
-BT
-/F1 11.5 Tf
-52 438 Td
-(one system, transform them in another, export them into spreadsheets, and only) Tj
-ET
-BT
-/F1 11.5 Tf
-52 421 Td
-(then try to reconstruct what really happened.) Tj
+(leaving behind a record that others can trust later?) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 396 Td
-(That delayed trust model creates commercial and operational problems. By the time) Tj
+52 464 Td
+(That question pushes the design toward local control, explicit trust boundaries,) Tj
 ET
 BT
 /F1 11.5 Tf
-52 379 Td
-(the record is examined, its transformation path is fragmented. Operators, finance) Tj
+52 447 Td
+(and proof attached to the operating path rather than reporting layered on after) Tj
 ET
 BT
 /F1 11.5 Tf
-52 362 Td
-(teams, auditors, and counterparties are left interpreting artifacts rather than) Tj
-ET
-BT
-/F1 11.5 Tf
-52 345 Td
-(verifying source evidence. Bridge Kernel moves the trust boundary closer to the) Tj
-ET
-BT
-/F1 11.5 Tf
-52 328 Td
-(originating event.) Tj
+52 430 Td
+(the fact.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 297 Td
-(2. RUNTIME BOUNDARIES) Tj
+52 399 Td
+(2. RUNTIME SPLIT) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 275 Td
-(The runtime sits in the evidence path rather than in the presentation path. Its) Tj
+52 377 Td
+(The Asset Agent sits close to the equipment and adapter layer. The Site Router) Tj
 ET
 BT
 /F1 11.5 Tf
-52 258 Td
-(responsibilities are local and explicit: receive events, canonicalize them) Tj
+52 360 Td
+(converts policy, limits, and site state into feasible local actions. The Portfolio) Tj
 ET
 BT
 /F1 11.5 Tf
-52 241 Td
-(deterministically, generate proofs, apply policy, and store verified output. It is) Tj
+52 343 Td
+(Orchestrator distributes bundles, receives proofs, and gives the fleet view. The) Tj
 ET
 BT
 /F1 11.5 Tf
-52 224 Td
-(not intended to replace every cloud service, control plane, or interface layer in) Tj
-ET
-BT
-/F1 11.5 Tf
-52 207 Td
-(the wider JouleBridge roadmap.) Tj
+52 326 Td
+(Console presents the operator surface.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 182 Td
-(This boundary matters because trust layers fail when they absorb too many) Tj
+52 301 Td
+(Each runtime has a narrow job. None of them should pretend to be the whole) Tj
 ET
 BT
 /F1 11.5 Tf
-52 165 Td
-(unrelated responsibilities. By separating source evidence generation from) Tj
-ET
-BT
-/F1 11.5 Tf
-52 148 Td
-(orchestration, visualization, and analytics, the system remains easier to reason) Tj
-ET
-BT
-/F1 11.5 Tf
-52 131 Td
-(about and easier to defend.) Tj
+52 284 Td
+(platform on its own.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 100 Td
-(3. ADAPTER-DRIVEN CAPTURE) Tj
+52 253 Td
+(3. LOCAL-FIRST COORDINATION) Tj
+ET
+0.957 0.961 0.969 rg
+BT
+/F1 11.5 Tf
+52 231 Td
+(JouleBridge keeps the coordination loop at the site because cloud latency, tunnel) Tj
+ET
+BT
+/F1 11.5 Tf
+52 214 Td
+(fragility, and vendor heterogeneity all get worse when local autonomy is removed.) Tj
+ET
+BT
+/F1 11.5 Tf
+52 197 Td
+(The system should keep dispatch running even when upstream connectivity is) Tj
+ET
+BT
+/F1 11.5 Tf
+52 180 Td
+(degraded.) Tj
+ET
+0.957 0.961 0.969 rg
+BT
+/F1 11.5 Tf
+52 155 Td
+(Local execution is therefore a product requirement, not an optimization detail.) Tj
+ET
+0.525 0.937 0.675 rg
+BT
+/F2 12 Tf
+52 124 Td
+(4. ADAPTER AND POLICY BOUNDARIES) Tj
 ET
 q
 0.18 0.2 0.224 RG
@@ -241,7 +229,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
 endobj
 7 0 obj
-<< /Length 4083 >>
+<< /Length 2567 >>
 stream
 q
 0.18 0.2 0.224 RG
@@ -270,182 +258,121 @@ ET
 BT
 /F1 11.5 Tf
 52 760 Td
-(Bridge Kernel uses adapters to ingest telemetry and operational events from) Tj
+(Adapters translate mixed-vendor equipment into a stable internal shape. Policy) Tj
 ET
 BT
 /F1 11.5 Tf
 52 743 Td
-(heterogeneous environments. The current baseline includes webhook, file, scanner,) Tj
+(then evaluates whether the requested action is feasible, safe, and worth routing.) Tj
 ET
 BT
 /F1 11.5 Tf
 52 726 Td
-(and adjacent input models, with protocol hardening around energy-specific paths) Tj
+(This boundary matters because weak adapter behavior or vague policy handling) Tj
 ET
 BT
 /F1 11.5 Tf
 52 709 Td
-(continuing as the runtime matures.) Tj
+(quickly contaminates later operations.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
 52 684 Td
-(Adapter design is not a trivial integration detail. It is the first trust) Tj
+(A site runtime only becomes trustworthy when ingress and policy decisions are) Tj
 ET
 BT
 /F1 11.5 Tf
 52 667 Td
-(boundary. If source events are captured inconsistently, every later stage inherits) Tj
-ET
-BT
-/F1 11.5 Tf
-52 650 Td
-(ambiguity. Adapters therefore normalize ingress behavior, preserve relevant) Tj
-ET
-BT
-/F1 11.5 Tf
-52 633 Td
-(metadata, and prepare the event for deterministic shaping.) Tj
+(legible.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 602 Td
-(4. DETERMINISTIC RECORD CONSTRUCTION) Tj
+52 636 Td
+(5. PROOF CHAIN) Tj
 ET
 0.957 0.961 0.969 rg
+BT
+/F1 11.5 Tf
+52 614 Td
+(JouleBridge attaches proof to the operating path. Intent, dispatch,) Tj
+ET
+BT
+/F1 11.5 Tf
+52 597 Td
+(acknowledgement, measurement, and outcome are shaped into a record that can be) Tj
+ET
 BT
 /F1 11.5 Tf
 52 580 Td
-(Once an event enters the runtime, it is transformed into a deterministic) Tj
-ET
-BT
-/F1 11.5 Tf
-52 563 Td
-(representation. Equivalent events must produce equivalent canonical bytes. This) Tj
-ET
-BT
-/F1 11.5 Tf
-52 546 Td
-(rule is foundational because cryptographic proof only becomes meaningful when the) Tj
-ET
-BT
-/F1 11.5 Tf
-52 529 Td
-(underlying representation is stable across operating environments.) Tj
+(verified later without informal reconstruction.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 504 Td
-(Deterministic construction reduces a hidden category of failure. Teams often) Tj
+52 555 Td
+(The goal is practical defensibility. Another team should be able to answer what) Tj
 ET
 BT
 /F1 11.5 Tf
-52 487 Td
-(assume they disagree about business facts when in reality they disagree about) Tj
-ET
-BT
-/F1 11.5 Tf
-52 470 Td
-(formatting, transformation order, or hidden transport artifacts. A stable) Tj
-ET
-BT
-/F1 11.5 Tf
-52 453 Td
-(canonical form removes much of that noise before proof generation begins.) Tj
+52 538 Td
+(the site believed, what it did, and what happened next.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 422 Td
-(5. PROOF GENERATION) Tj
+52 507 Td
+(6. DEPLOYMENT POSTURE) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 400 Td
-(The canonical event is hashed with SHA-256 and signed with Ed25519. The resulting) Tj
+52 485 Td
+(The preferred deployment model is partner hardware first. The commercial target is) Tj
 ET
 BT
 /F1 11.5 Tf
-52 383 Td
-(envelope carries the event, digest, signature, key metadata, and verification) Tj
+52 468 Td
+(a repeatable install path on real site infrastructure before broader platform) Tj
 ET
 BT
 /F1 11.5 Tf
-52 366 Td
-(context required for later inspection. The proof object is therefore more than a) Tj
-ET
-BT
-/F1 11.5 Tf
-52 349 Td
-(signed blob; it is a transportable evidence unit.) Tj
+52 451 Td
+(claims are made.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 324 Td
-(This design enables independent review. A downstream verifier does not need access) Tj
+52 426 Td
+(That is why DepotOS starts with EV fleet depots rather than trying to tell every) Tj
 ET
 BT
 /F1 11.5 Tf
-52 307 Td
-(to the runtime internals or the private key environment. It only needs the event,) Tj
-ET
-BT
-/F1 11.5 Tf
-52 290 Td
-(the public verification path, and the declared algorithms. That property is) Tj
-ET
-BT
-/F1 11.5 Tf
-52 273 Td
-(central to how JouleBridge positions trust.) Tj
+52 409 Td
+(distributed-energy story at once.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 242 Td
-(6. POLICY BEFORE PERSISTENCE) Tj
+52 378 Td
+(CONCLUSION) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 220 Td
-(Policy execution occurs before the verified record enters the accepted persistence) Tj
+52 356 Td
+(JouleBridge should be read as a site runtime with a proof chain, not as a) Tj
 ET
 BT
 /F1 11.5 Tf
-52 203 Td
-(path. This ordering is deliberate. Weak systems often accept everything first and) Tj
+52 339 Td
+(dashboard wrapper. Stronger local coordination and a cleaner operational record) Tj
 ET
 BT
 /F1 11.5 Tf
-52 186 Td
-(sort exceptions later, which allows malformed, stale, or out-of-policy events to) Tj
-ET
-BT
-/F1 11.5 Tf
-52 169 Td
-(contaminate later reporting and reconciliation.) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 144 Td
-(Bridge Kernel instead treats policy as a gateway. Records that fail policy can be) Tj
-ET
-BT
-/F1 11.5 Tf
-52 127 Td
-(quarantined, inspected, and reviewed without silently degrading the evidence) Tj
-ET
-BT
-/F1 11.5 Tf
-52 110 Td
-(trail. This makes exception handling explicit instead of implicit.) Tj
+52 322 Td
+(make the later cloud view more credible and easier to operate.) Tj
 ET
 q
 0.18 0.2 0.224 RG
@@ -468,154 +395,19 @@ endobj
 8 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
 endobj
-9 0 obj
-<< /Length 2086 >>
-stream
-q
-0.18 0.2 0.224 RG
-0.8 w
-52 798 m 543 798 l S
-Q
-0.961 0.62 0.043 rg
-BT
-/F2 14 Tf
-52 812 Td
-(JOULE) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F2 14 Tf
-101 812 Td
-(BRIDGE) Tj
-ET
-0.659 0.69 0.749 rg
-BT
-/F1 9 Tf
-415 812 Td
-(ARCHITECTURE PAPER) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 760 Td
-(7. PERSISTENCE AND CONTROLLED SYNC) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 738 Td
-(Verified records are persisted locally first. This keeps the primary evidence) Tj
-ET
-BT
-/F1 11.5 Tf
-52 721 Td
-(trail close to the operating environment where disputes and investigations usually) Tj
-ET
-BT
-/F1 11.5 Tf
-52 704 Td
-(begin. Controlled sync then allows records to move into broader product surfaces) Tj
-ET
-BT
-/F1 11.5 Tf
-52 687 Td
-(without losing their trust origin.) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 662 Td
-(The architecture is therefore compatible with edge-first and sovereignty-sensitive) Tj
-ET
-BT
-/F1 11.5 Tf
-52 645 Td
-(deployments. It does not assume that cloud centralization is the right first move) Tj
-ET
-BT
-/F1 11.5 Tf
-52 628 Td
-(for every evidence workflow.) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 597 Td
-(8. DEPLOYMENT POSTURE AND CONCLUSION) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 575 Td
-(Bridge Kernel is suitable for gateways, on-premise hosts, and carefully controlled) Tj
-ET
-BT
-/F1 11.5 Tf
-52 558 Td
-(cloud-adjacent environments. The deployment recommendation should follow the trust) Tj
-ET
-BT
-/F1 11.5 Tf
-52 541 Td
-(boundary first: where is the earliest point at which a defensible record can be) Tj
-ET
-BT
-/F1 11.5 Tf
-52 524 Td
-(created and retained?) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 499 Td
-(The architectural thesis is simple and durable. Improve the source record first.) Tj
-ET
-BT
-/F1 11.5 Tf
-52 482 Td
-(Once the evidence base is stronger, later layers such as dashboards, analytics,) Tj
-ET
-BT
-/F1 11.5 Tf
-52 465 Td
-(certification, and settlement tools become more credible and easier to operate.) Tj
-ET
-q
-0.18 0.2 0.224 RG
-0.8 w
-52 36 m 543 36 l S
-Q
-0.659 0.69 0.749 rg
-BT
-/F1 9 Tf
-52 20 Td
-(joulebridge.com) Tj
-ET
-BT
-/F1 9 Tf
-513 20 Td
-(Page 3) Tj
-ET
-endstream
-endobj
-10 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
-endobj
 xref
-0 11
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000128 00000 n 
-0000000198 00000 n 
-0000000273 00000 n 
-0000004191 00000 n 
-0000004327 00000 n 
-0000008462 00000 n 
-0000008598 00000 n 
-0000010736 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000000266 00000 n 
+0000003751 00000 n 
+0000003887 00000 n 
+0000006506 00000 n 
 trailer
-<< /Size 11 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-10873
+6642
 %%EOF

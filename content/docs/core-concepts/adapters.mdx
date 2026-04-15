@@ -1,80 +1,25 @@
 ---
 title: Adapters
-description: Input adapter types and YAML setup examples.
+description: How JouleBridge connects mixed-vendor assets and normalizes them into one runtime model.
 ---
 
-# Input Adapters
+# Adapters
 
-Adapters normalize source-specific input into a common `AdapterEvent` shape.
+Adapters are where vendor-specific behavior first becomes site-readable.
 
-## AdapterEvent structure
+## Current shape
 
-- `sector`: operational domain (`power`, `ev`, `storage`, `grid`).
-- `event_type`: event semantic (`meter_reading`, `session_end`, `dispatch`).
-- `source`: stable source identity (device id, gateway id, pipeline id).
-- `payload`: source data after adapter normalization.
-- `timestamp`: source event time (UTC recommended).
-- `dedupe_key`: source-derived idempotency key.
+The platform is designed to normalize inputs from surfaces such as:
 
-## Adapter catalog
+- OCPP
+- Modbus
+- CAN
+- SunSpec
+- DLMS
+- REST or webhook integrations
 
-### MockAdapter
+## Why adapters matter
 
-Synthetic events for tests and demos.
+Without a strong adapter layer, the site remains a collection of disconnected device stories.
 
-```yaml
-- type: mock
-  enabled: true
-  interval_ms: 500
-```
-
-### JsonlFileAdapter
-
-Reads newline-delimited JSON events from files.
-
-```yaml
-- type: jsonl-file
-  path: ./input/events.jsonl
-  tail: true
-```
-
-### GpsNmeaAdapter
-
-Parses NMEA `$GPRMC` lines into normalized events.
-
-```yaml
-- type: gps-nmea
-  path: ./input/gps.nmea
-```
-
-### ScannerFileAdapter
-
-Reads barcode or QR scanner output files.
-
-```yaml
-- type: scanner-file
-  path: ./input/scanner.txt
-```
-
-### WebhookDropAdapter
-
-Watches a directory for webhook payload files.
-
-```yaml
-- type: webhook-drop
-  inbound_dir: ./drop/inbound
-  archive_dir: ./drop/archive
-```
-
-## Production adapter guidance
-
-- Keep `source` stable per device/system for consistent policy targeting.
-- Set `dedupe_key` whenever upstream can retry delivery.
-- Use strict source timestamp normalization (UTC) before runtime replay checks.
-- Split adapters by trust boundary when mixing internal and partner sources.
-
-## Troubleshooting
-
-- Rejected replay spikes: validate source clock and timestamp parsing.
-- Policy denials: inspect `sector`/`event_type` mapping consistency.
-- Duplicate drops: verify `dedupe_key` collisions in adapter transformation logic.
+The adapter boundary is therefore not just connectivity. It is the first trust and coordination boundary.

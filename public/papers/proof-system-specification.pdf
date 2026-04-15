@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 5 0 obj
-<< /Length 3645 >>
+<< /Length 3450 >>
 stream
 q
 0.18 0.2 0.224 RG
@@ -41,7 +41,7 @@ ET
 BT
 /F2 23 Tf
 52 760 Td
-(Proof System Specification) Tj
+(Proof Chain Specification) Tj
 ET
 0.49 0.827 0.988 rg
 BT
@@ -59,159 +59,155 @@ ET
 BT
 /F1 11.5 Tf
 52 686 Td
-(This paper defines the current Bridge Kernel proof model in practical) Tj
+(This paper defines the current JouleBridge proof-chain model in practical) Tj
 ET
 BT
 /F1 11.5 Tf
 52 669 Td
-(implementation terms. It focuses on deterministic record construction, digest) Tj
+(implementation terms. It focuses on record shaping, digest formation, signature) Tj
 ET
 BT
 /F1 11.5 Tf
 52 652 Td
-(formation, signature generation, envelope structure, and verification procedure.) Tj
+(context, envelope structure, and later verification.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
 52 627 Td
-(The aim is clarity rather than novelty. A proof model should be easy to inspect,) Tj
+(The objective is clarity. A proof system should be simple enough to inspect,) Tj
 ET
 BT
 /F1 11.5 Tf
 52 610 Td
-(easy to implement consistently, and easy to verify independently.) Tj
+(consistent enough to implement, and strict enough to reject ambiguous records.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
 52 579 Td
-(1. CANONICALIZATION RULES) Tj
+(1. RECORD SHAPE) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
 52 557 Td
-(Equivalent events must produce equivalent canonical bytes. Canonicalization) Tj
+(The public proof model is concerned with intent, dispatch, acknowledgement,) Tj
 ET
 BT
 /F1 11.5 Tf
 52 540 Td
-(therefore specifies key ordering, insignificant whitespace removal, and UTF-8) Tj
+(measured outcome, and the metadata needed to verify the record later. Equivalent) Tj
 ET
 BT
 /F1 11.5 Tf
 52 523 Td
-(string normalization. These rules are not optional formatting preferences. They) Tj
-ET
-BT
-/F1 11.5 Tf
-52 506 Td
-(are preconditions for stable hashing and verification.) Tj
+(events should produce equivalent canonical bytes.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 481 Td
-(Any implementation variance at this stage undermines every later proof claim,) Tj
+52 498 Td
+(That rule is foundational because cryptographic output only matters when the) Tj
 ET
 BT
 /F1 11.5 Tf
-52 464 Td
-(because the signature only protects the digest that the runtime actually created.) Tj
+52 481 Td
+(underlying representation is stable.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 433 Td
-(2. DIGEST FORMATION) Tj
+52 450 Td
+(2. DIGEST AND SIGNATURE) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
+52 428 Td
+(The canonical byte stream is hashed and then signed with explicit key metadata and) Tj
+ET
+BT
+/F1 11.5 Tf
 52 411 Td
-(The canonical byte stream is hashed with SHA-256. The digest serves as the compact) Tj
+(context. Verification should never depend on unstated assumptions about which key,) Tj
 ET
 BT
 /F1 11.5 Tf
 52 394 Td
-(integrity reference used for later validation and signature generation.) Tj
+(mode, or environment produced the signature.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
 52 369 Td
-(Digest formation must be deterministic and algorithm-labeled. A verifier should be) Tj
+(Clear signature context keeps the proof chain legible under rotation and support) Tj
 ET
 BT
 /F1 11.5 Tf
 52 352 Td
-(able to reproduce the digest from the envelope payload and confirm that the) Tj
-ET
-BT
-/F1 11.5 Tf
-52 335 Td
-(declared algorithm matches the observed output.) Tj
+(operations.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 304 Td
-(3. SIGNATURE GENERATION) Tj
+52 321 Td
+(3. ENVELOPE REQUIREMENTS) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
+52 299 Td
+(A proof envelope should carry enough information that another team can re-run) Tj
+ET
+BT
+/F1 11.5 Tf
 52 282 Td
-(Bridge Kernel signs the digest with Ed25519. The signing material includes not) Tj
+(verification without hidden runtime state. The envelope is therefore a portable) Tj
 ET
 BT
 /F1 11.5 Tf
 52 265 Td
-(only the private key operation but also explicit signature context, key) Tj
-ET
-BT
-/F1 11.5 Tf
-52 248 Td
-(identifier, and key version metadata so verification can reject mismatched usage) Tj
-ET
-BT
-/F1 11.5 Tf
-52 231 Td
-(paths.) Tj
+(operating artifact, not just a blob attached for compliance theater.) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 206 Td
-(This keeps the proof system legible under key rotation and prevents cross-context) Tj
+52 240 Td
+(That matters because the proof is most valuable when it leaves the machine that) Tj
 ET
 BT
 /F1 11.5 Tf
-52 189 Td
-(ambiguity.) Tj
+52 223 Td
+(produced it.) Tj
 ET
 0.525 0.937 0.675 rg
 BT
 /F2 12 Tf
-52 158 Td
-(4. ENVELOPE STRUCTURE) Tj
+52 192 Td
+(4. VERIFICATION GOAL) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
+52 170 Td
+(Verification should allow another operator, partner, or customer to answer what) Tj
+ET
+BT
+/F1 11.5 Tf
+52 153 Td
+(the site believed, what it did, and what actually happened without relying on) Tj
+ET
+BT
+/F1 11.5 Tf
 52 136 Td
-(A proof envelope contains the original event, digest, signature, signer metadata,) Tj
+(informal reconstruction.) Tj
 ET
+0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 119 Td
-(timestamp, and algorithm descriptors. The envelope should be self-describing) Tj
-ET
-BT
-/F1 11.5 Tf
-52 102 Td
-(enough that verification does not require hidden runtime state.) Tj
+52 111 Td
+(The system should reduce ambiguity, not just add cryptographic decoration.) Tj
 ET
 q
 0.18 0.2 0.224 RG
@@ -235,7 +231,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
 endobj
 7 0 obj
-<< /Length 3144 >>
+<< /Length 748 >>
 stream
 q
 0.18 0.2 0.224 RG
@@ -260,157 +256,27 @@ BT
 415 812 Td
 (SPECIFICATION) Tj
 ET
-0.957 0.961 0.969 rg
+0.525 0.937 0.675 rg
 BT
-/F1 11.5 Tf
+/F2 12 Tf
 52 760 Td
-(That requirement is critical for downstream audit and evidence exchange. A proof) Tj
-ET
-BT
-/F1 11.5 Tf
-52 743 Td
-(object that depends heavily on external context becomes more fragile at the moment) Tj
-ET
-BT
-/F1 11.5 Tf
-52 726 Td
-(it is needed most.) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 695 Td
-(5. VERIFICATION PROCEDURE) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 673 Td
-(Verification reconstructs canonical bytes from the event payload, recomputes the) Tj
-ET
-BT
-/F1 11.5 Tf
-52 656 Td
-(digest, checks declared algorithm and context expectations, and validates the) Tj
-ET
-BT
-/F1 11.5 Tf
-52 639 Td
-(Ed25519 signature with the referenced public key.) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 614 Td
-(The procedure is all-or-nothing. A proof is not partially valid because some) Tj
-ET
-BT
-/F1 11.5 Tf
-52 597 Td
-(metadata aligns. The payload, digest, context, and signature must all resolve) Tj
-ET
-BT
-/F1 11.5 Tf
-52 580 Td
-(consistently.) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 549 Td
-(6. FAILURE CONDITIONS) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 527 Td
-(Validation fails when the payload hash diverges from the recomputed digest, when) Tj
-ET
-BT
-/F1 11.5 Tf
-52 510 Td
-(the signature is invalid, when the context does not match, or when the expected) Tj
-ET
-BT
-/F1 11.5 Tf
-52 493 Td
-(verification key path cannot be satisfied.) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 468 Td
-(These failure conditions should be explicit in implementation outputs so operators) Tj
-ET
-BT
-/F1 11.5 Tf
-52 451 Td
-(can distinguish malformed records from policy exceptions and environmental) Tj
-ET
-BT
-/F1 11.5 Tf
-52 434 Td
-(failures.) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 403 Td
-(7. KEY CUSTODY MODELS) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 381 Td
-(The proof model supports software and hardware-backed custody. A TPM-backed) Tj
-ET
-BT
-/F1 11.5 Tf
-52 364 Td
-(operation strengthens key protection but does not change the logical structure of) Tj
-ET
-BT
-/F1 11.5 Tf
-52 347 Td
-(the envelope or the downstream verification path.) Tj
-ET
-0.957 0.961 0.969 rg
-BT
-/F1 11.5 Tf
-52 322 Td
-(This allows custody improvements without destabilizing the broader evidence) Tj
-ET
-BT
-/F1 11.5 Tf
-52 305 Td
-(ecosystem built on the proof format.) Tj
-ET
-0.525 0.937 0.675 rg
-BT
-/F2 12 Tf
-52 274 Td
 (CONCLUSION) Tj
 ET
 0.957 0.961 0.969 rg
 BT
 /F1 11.5 Tf
-52 252 Td
-(The specification is intentionally conservative: deterministic event bytes, stable) Tj
+52 738 Td
+(The proof chain is intentionally conservative: deterministic inputs, explicit) Tj
 ET
 BT
 /F1 11.5 Tf
-52 235 Td
-(digest, explicit signature context, clear metadata, and independently verifiable) Tj
+52 721 Td
+(context, stable signatures, and independently reviewable output. Those properties) Tj
 ET
 BT
 /F1 11.5 Tf
-52 218 Td
-(output. These characteristics matter more than complexity or fashionable) Tj
-ET
-BT
-/F1 11.5 Tf
-52 201 Td
-(cryptographic packaging.) Tj
+52 704 Td
+(matter more than novelty.) Tj
 ET
 q
 0.18 0.2 0.224 RG
@@ -441,11 +307,11 @@ xref
 0000000121 00000 n 
 0000000191 00000 n 
 0000000266 00000 n 
-0000003963 00000 n 
-0000004099 00000 n 
-0000007295 00000 n 
+0000003768 00000 n 
+0000003904 00000 n 
+0000004703 00000 n 
 trailer
 << /Size 9 /Root 1 0 R >>
 startxref
-7431
+4839
 %%EOF

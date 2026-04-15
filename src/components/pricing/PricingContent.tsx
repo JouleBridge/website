@@ -8,62 +8,65 @@ import { Button } from "@/components/ui/Button";
 const tiers = [
   {
     name: "Discovery",
-    price: "Contact us",
-    period: "",
-    description: "A technical and commercial scoping engagement for teams that need to map the workflow before a pilot.",
+    price: "Fixed fee",
+    period: "1-2 weeks",
+    description:
+      "A working session on the site, hardware mix, protocol access, tariff reality, and evidence expectations. Produces a scoped proposal and a go or no-go.",
     featured: false,
     features: [
-      { text: "Workflow and data-path review", included: true },
-      { text: "Architecture fit assessment", included: true },
-      { text: "Pilot scope definition", included: true },
-      { text: "Protocol and deployment review", included: true },
-      { text: "Commercial proposal", included: true },
-      { text: "Production rollout", included: false },
-      { text: "Dedicated implementation support", included: false },
-      { text: "Multi-site program governance", included: false },
-      { text: "Custom operating model", included: false },
+      { text: "Site and hardware topology review", included: true },
+      { text: "Protocol and mixed-vendor integration assessment", included: true },
+      { text: "Tariff, DISCOM, and evidence requirement scoping", included: true },
+      { text: "Pilot KPI and operating boundary definition", included: true },
+      { text: "Commercial proposal and go or no-go", included: true },
+      { text: "Live site deployment", included: false },
+      { text: "Weekly operating reviews", included: false },
+      { text: "On-device forecasting in production", included: false },
+      { text: "Multi-site rollout planning", included: false },
     ],
-    cta: "Talk to Us",
+    cta: "Start Discovery",
     ctaHref: "/contact",
   },
   {
     name: "Pilot",
-    price: "Contact us",
-    period: "",
-    description: "A guided pilot for proving trusted telemetry, operational evidence, and workflow fit in a real deployment.",
+    price: "Pilot fee",
+    period: "one site | 12 weeks",
+    description:
+      "A production deployment on one site. Bridge Kernel runs monitoring, local control, forecast-aware dispatch, and audit-ready evidence from end to end.",
     featured: true,
     features: [
-      { text: "Single workflow or site pilot", included: true },
-      { text: "Edge deployment and configuration", included: true },
-      { text: "Evidence and verification outputs", included: true },
-      { text: "Weekly review cadence", included: true },
-      { text: "Pilot KPI definition", included: true },
+      { text: "Single-site production deployment", included: true },
+      { text: "Partner-hardware or gateway setup", included: true },
+      { text: "Monitoring, control, and evidence chain live", included: true },
+      { text: "Forecasting and anomaly detection on-site", included: true },
+      { text: "Weekly operating review cadence", included: true },
+      { text: "Signed evidence pack at close", included: true },
       { text: "Multi-site rollout", included: false },
-      { text: "Custom platform features", included: false },
-      { text: "Long-term SLA", included: false },
-      { text: "Enterprise governance", included: false },
+      { text: "Central review surfaces", included: false },
+      { text: "Expanded annual program", included: false },
     ],
-    cta: "Start a Pilot",
+    cta: "Scope a Pilot",
     ctaHref: "/contact",
   },
   {
     name: "Rollout",
-    price: "Custom",
-    period: "",
-    description: "Production rollout for operators who need broader deployment, stronger controls, and long-term operating support.",
+    price: "Annual platform",
+    period: "+ per-endpoint",
+    description:
+      "Post-pilot production contract. Annual platform commit plus per-endpoint runtime fees, central review surfaces, premium modules, and repeatable rollout support.",
     featured: false,
     features: [
-      { text: "Production deployment plan", included: true },
-      { text: "Extended support model", included: true },
-      { text: "Operational runbooks and governance", included: true },
-      { text: "Custom integration planning", included: true },
-      { text: "Security and rollout review", included: true },
-      { text: "Dedicated support + SLA", included: true },
+      { text: "Repeatable install motion", included: true },
+      { text: "Extended support and runbooks", included: true },
+      { text: "On-device forecasting across deployed sites", included: true },
+      { text: "Central review and policy distribution", included: true },
+      { text: "Security and upgrade review", included: true },
+      { text: "Dedicated support and SLA", included: true },
       { text: "Multi-site program support", included: true },
-      { text: "Commercial rollout structure", included: true },
+      { text: "Annual platform plus per-endpoint pricing", included: true },
       { text: "Roadmap alignment workshops", included: true },
     ],
-    cta: "Contact Sales",
+    cta: "Plan a Rollout",
     ctaHref: "/contact",
   },
 ];
@@ -71,27 +74,31 @@ const tiers = [
 const faqs = [
   {
     q: "Do you publish fixed prices on the website?",
-    a: "Not yet. JouleBridge engagements depend on workflow complexity, site conditions, deployment model, and the level of implementation support required. We scope and price based on the real operating problem rather than a generic SaaS tier.",
+    a: "No. Every site has a different hardware mix, protocol list, tariff reality, and evidence requirement. We scope against the actual deployment and share numbers after discovery.",
   },
   {
     q: "What does a pilot include?",
-    a: "A pilot usually includes workflow scoping, configuration, deployment planning, evidence outputs, review cadence, and a closeout recommendation for whether the system should expand into a larger rollout.",
+    a: "Twelve weeks on one production site. Bridge Kernel runs monitoring, local control, forecast-aware dispatch, anomaly detection, weekly operating reviews, and a signed evidence pack at close.",
   },
   {
-    q: "Can I deploy Bridge Kernel on-premise?",
-    a: "Yes. Bridge Kernel runs on ARM/x86 edge gateways, on-premise Linux/Windows servers, and containerized environments. Deployment model is scoped during discovery.",
+    q: "What kinds of sites fit best?",
+    a: "Best fit today: open-access industrial sites and EV depots with mixed hardware, hard operating constraints, and a need for stronger local control plus audit-ready records.",
   },
   {
-    q: "What protocols do you support?",
-    a: "Bridge Kernel ships with adapters for DLMS/IEC 62056, OCPP 1.6/2.0, Modbus RTU/TCP, and webhook/REST. IEC 61850 is on the roadmap. Protocol fit is confirmed during discovery to ensure adapter coverage matches your deployment.",
+    q: "Can Bridge Kernel run on existing hardware?",
+    a: "Yes. Bridge Kernel lands on partner industrial gateways and Jetson-class edge boxes. No rip-and-replace is required for the first pilot.",
   },
   {
-    q: "How long does integration take?",
-    a: "Typical pilot deployments take 2-4 weeks from scoping to first verified evidence output. Production rollouts depend on site count, protocol mix, and integration depth.",
+    q: "How long does a deployment take?",
+    a: "Twelve weeks from kickoff to a signed evidence pack on one production site, assuming partner hardware and protocol access are ready on day one.",
   },
   {
-    q: "How should we engage if we are early in evaluation?",
-    a: "Start with discovery. If the workflow and technical fit are strong, we can structure a pilot and then a broader rollout without pretending that every customer starts in the same place.",
+    q: "What does the on-device intelligence actually do?",
+    a: "Forecasting, anomaly detection, and dispatch support run on-site, not in a cloud-only loop. Each prediction is attached to the evidence record with model version and input context.",
+  },
+  {
+    q: "How should we engage if we are still evaluating?",
+    a: "Start with Discovery. One working session, one scoped proposal, and a clear go or no-go within two weeks.",
   },
 ];
 
@@ -124,17 +131,15 @@ export function PricingContent() {
     <>
       <section className="relative bg-jb-dark pb-12 pt-28 section-lines">
         <div className="container mx-auto max-w-7xl px-6 text-center lg:px-8">
-          <Eyebrow className="mb-4">Pricing</Eyebrow>
+          <Eyebrow className="mb-4">Pilot Program</Eyebrow>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="jb-section-title mb-5"
           >
-            Engagement models that{" "}
-            <span className="jb-title-gradient">
-              match operational reality
-            </span>
+            How a JouleBridge pilot{" "}
+            <span className="jb-title-gradient">actually works</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -142,7 +147,9 @@ export function PricingContent() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="jb-section-copy mx-auto"
           >
-            Start with scoped discovery. Move into a pilot when the workflow is clear. Expand into rollout when the evidence model proves itself.
+            Discovery first. One production pilot next. Expand only when the site
+            outcome and evidence model justify it. No open-ended monthly
+            subscription before the operating result is clear.
           </motion.p>
         </div>
       </section>
@@ -152,7 +159,7 @@ export function PricingContent() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {tiers.map((tier, i) => (
               <motion.div
-                key={i}
+                key={tier.name}
                 initial={{ opacity: 0, y: 20, filter: "blur(2px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -192,19 +199,11 @@ export function PricingContent() {
                 </div>
 
                 {tier.featured ? (
-                  <a
-                    href={tier.ctaHref}
-                    className="btn-jb inline-flex items-center justify-center bg-white px-8 py-3.5 font-mono text-sm font-semibold uppercase tracking-widest text-jb-dark shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-300 hover:bg-white/90 w-full"
-                  >
+                  <Button href={tier.ctaHref} variant="primary" className="w-full">
                     {tier.cta}
-                    <span className="btn-corners" />
-                  </a>
+                  </Button>
                 ) : (
-                  <Button
-                    href={tier.ctaHref}
-                    variant="secondary"
-                    className="w-full"
-                  >
+                  <Button href={tier.ctaHref} variant="secondary" className="w-full">
                     {tier.cta}
                   </Button>
                 )}
@@ -218,9 +217,7 @@ export function PricingContent() {
         <div className="container mx-auto max-w-3xl px-6 lg:px-8">
           <Eyebrow className="mb-8">FAQ</Eyebrow>
           <h2 className="jb-section-title mb-12 max-w-3xl">
-            <span className="jb-title-gradient">
-              Frequently asked
-            </span>{" "}
+            <span className="jb-title-gradient">Frequently asked</span>{" "}
             questions
           </h2>
           <div>

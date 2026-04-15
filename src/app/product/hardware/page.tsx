@@ -11,27 +11,27 @@ import { Button } from "@/components/ui/Button";
 const hardwareTargets = [
   {
     title: "Industrial Edge Gateways",
-    desc: "ARM64 or x86 gateways with RS-485, Ethernet, and optional cellular. Bridge Kernel runs as a systemd service with watchdog integration.",
-    specs: ["ARM Cortex-A72+", "512 MB RAM min", "RS-485 / Ethernet", "DIN rail mount"],
+    desc: "Primary deployment shape for early pilots. These gateways host the runtime next to chargers, ESS, inverters, and metering hardware already present at the site.",
+    specs: ["ARM64 or x86", "Field I/O", "Ethernet / RS-485", "Systemd deployment"],
+    status: "Primary",
+  },
+  {
+    title: "Partner hardware kits",
+    desc: "Reference hardware paths used to make site installs repeatable before any first-party appliance exists.",
+    specs: ["Pilot-ready BOM", "Install runbook", "Recovery path", "Supportable footprint"],
+    status: "Current",
+  },
+  {
+    title: "Embedded control boards",
+    desc: "Useful when the deployment has to stay compact and local, especially for constrained edge control environments.",
+    specs: ["Linux SBC", "eMMC or SSD", "Serial and CAN", "Low power draw"],
     status: "Supported",
   },
   {
-    title: "Embedded Linux SBCs",
-    desc: "Single-board computers like Raspberry Pi 4/5 or BeagleBone for development, prototyping, and small-site deployments.",
-    specs: ["ARM64 Linux", "1 GB RAM recommended", "USB / GPIO I/O", "SD or eMMC storage"],
-    status: "Supported",
-  },
-  {
-    title: "Ruggedized Field Units",
-    desc: "IP65-rated enclosures with integrated compute, power supply, and I/O for harsh outdoor environments. Partner hardware program launching H2 2026.",
-    specs: ["IP65 enclosure", "Wide temp range", "PoE or solar input", "Tamper-evident seals"],
-    status: "H2 2026",
-  },
-  {
-    title: "Smart Inverter Integration",
-    desc: "Direct integration with next-generation smart inverters that embed Bridge Kernel signing at the firmware level. Co-development partnerships in progress.",
-    specs: ["Firmware-level signing", "SunSpec native", "Zero-hop proof", "OEM partnerships"],
-    status: "2027",
+    title: "Secure-element path",
+    desc: "A later hardening step that moves key custody into dedicated secure hardware once the early pilot path is already working.",
+    specs: ["ATECC608B", "TPM option", "Provider abstraction", "Pilot gate"],
+    status: "Next",
   },
 ];
 
@@ -40,14 +40,13 @@ export default function HardwarePage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
         <SectionWrapper className="bg-jb-dark pt-32 md:pt-40 pb-10 md:pb-14">
           <div className="flex items-center gap-3 mb-6">
             <Link
               href="/product"
               className="font-mono text-xs uppercase tracking-widest text-jb-text-muted hover:text-white transition-colors"
             >
-              Product
+              Platform
             </Link>
             <span className="text-jb-text-muted">/</span>
             <Eyebrow>Hardware</Eyebrow>
@@ -55,7 +54,7 @@ export default function HardwarePage() {
 
           <div className="inline-block border border-[#D06120]/40 bg-[#D06120]/10 px-3 py-1 mb-6">
             <span className="font-mono text-xs uppercase tracking-widest text-[#D06120]">
-              Roadmap
+              Partner hardware first
             </span>
           </div>
 
@@ -63,9 +62,9 @@ export default function HardwarePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-semibold text-white tracking-tight max-w-3xl mb-6"
+            className="text-3xl md:text-4xl font-semibold text-white tracking-tight max-w-3xl mb-6"
           >
-            From gateway to inverter — proof at the source
+            Real deployments on hardware the site can actually use
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,10 +72,9 @@ export default function HardwarePage() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="text-lg text-jb-white/60 max-w-2xl leading-relaxed mb-8"
           >
-            Bridge Kernel already runs on standard industrial gateways and Linux
-            SBCs. Our hardware roadmap extends cryptographic proof deeper into
-            the energy stack — from ruggedized field units to firmware-level
-            signing in smart inverters.
+            JouleBridge is not a hardware company. The goal is to land the runtime on
+            partner gateways and control hardware that already fit the site, then
+            harden the install path into something supportable and repeatable.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -85,15 +83,14 @@ export default function HardwarePage() {
             className="flex flex-col sm:flex-row gap-4"
           >
             <Button href="/contact" variant="primary">
-              Partner With Us
+              Discuss Hardware Fit
             </Button>
             <Button href="/product/bridge-kernel" variant="tertiary">
-              Bridge Kernel Specs
+              Runtime Specs
             </Button>
           </motion.div>
         </SectionWrapper>
 
-        {/* Hardware Targets */}
         <SectionWrapper className="bg-jb-card">
           <Eyebrow className="mb-4">Hardware Targets</Eyebrow>
           <motion.h2
@@ -103,7 +100,7 @@ export default function HardwarePage() {
             transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-10"
           >
-            Every form factor, one runtime
+            One runtime, several deployment shapes
           </motion.h2>
 
           <div className="space-y-6">
@@ -122,7 +119,7 @@ export default function HardwarePage() {
                       <h3 className="text-lg font-semibold text-white">{hw.title}</h3>
                       <span
                         className={`font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 border ${
-                          hw.status === "Supported"
+                          hw.status === "Primary" || hw.status === "Current" || hw.status === "Supported"
                             ? "text-[#D06120] border-[#D06120]/30"
                             : "text-white/80 border-white/12"
                         }`}
@@ -155,7 +152,6 @@ export default function HardwarePage() {
           </div>
         </SectionWrapper>
 
-        {/* Security Hardware */}
         <SectionWrapper className="bg-jb-dark">
           <Eyebrow className="mb-4">Hardware Security</Eyebrow>
           <motion.h2
@@ -165,7 +161,7 @@ export default function HardwarePage() {
             transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-6"
           >
-            Hardware-backed key storage
+            Key custody evolves with the pilot path
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -174,17 +170,16 @@ export default function HardwarePage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-jb-white/60 max-w-3xl leading-relaxed mb-8"
           >
-            Bridge Kernel supports TPM 2.0 and Secure Element modules for
-            hardware-backed Ed25519 key storage. Private keys never leave the
-            secure enclave — signing operations are performed on-chip, making key
-            extraction physically impossible.
+            Early pilots can use the software provider path when the install motion
+            matters most. Later stages move signing into TPMs or secure elements
+            without changing the higher-level proof model.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "TPM 2.0", desc: "Industry-standard trusted platform module. Keys generated and stored on-chip. Supported on most industrial gateways." },
-              { title: "Secure Element", desc: "Dedicated crypto co-processor (e.g., ATECC608B). Ideal for space-constrained embedded deployments." },
-              { title: "Software Fallback", desc: "File-based key storage with OS-level permissions. Suitable for development and trusted environments." },
+              { title: "Software provider", desc: "Fastest path for early pilots where deployment speed and supportability matter most." },
+              { title: "TPM 2.0", desc: "Useful on industrial gateways that already expose a hardware root for key protection." },
+              { title: "Secure element", desc: "The tighter custody path for later pilot stages once the repeatable install motion is already proven." },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -203,23 +198,21 @@ export default function HardwarePage() {
           </div>
         </SectionWrapper>
 
-        {/* CTA */}
         <SectionWrapper className="bg-jb-card">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight mb-4">
-              Hardware partnership program
+              Need to validate hardware fit before a pilot?
             </h2>
             <p className="text-jb-white/60 mb-8">
-              We work with gateway manufacturers, inverter OEMs, and system
-              integrators to bring cryptographic proof closer to the energy
-              source. Get in touch to explore a partnership.
+              We can scope the right gateway path, the runtime footprint, and the
+              secure-key posture around the actual site you want to deploy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button href="/contact" variant="primary">
-                Partner With Us
+                Scope Hardware Fit
               </Button>
               <Button href="/product" variant="tertiary">
-                Back to Product
+                Back to Platform
               </Button>
             </div>
           </div>

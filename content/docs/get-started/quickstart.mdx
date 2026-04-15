@@ -1,68 +1,51 @@
 ---
 title: Quick Start
-description: Build and run your first Bridge Kernel node in minutes.
+description: Bring up a first JouleBridge runtime path on a local or pilot environment.
 ---
 
 # Quick Start
 
-This guide gets you from clone to first signed ledger event quickly.
+This quick start is about validating the runtime path, not finishing a production rollout.
 
-## Prerequisites
+## 1. Prepare the environment
 
-- Rust toolchain (`rustup`, `cargo`)
-- Git
+- Linux host or partner gateway
+- network access to at least one target asset or simulator
+- deployment config for the intended site profile
 
-## 1. Clone the Bridge Kernel repo
+## 2. Provision the runtime
 
-```bash
-git clone https://github.com/joulebridge/bridge-kernel.git
-cd bridge-kernel
-```
+Use the provisioning flow for the target site identity and policy bundle.
 
-## 2. Create local config
+The exact command surface may change as the pilot tooling hardens, but the intent stays the same:
 
-```bash
-cp bridge.example.yaml bridge.yaml
-```
+- enroll the site
+- pull the active config and policy
+- initialize local runtime state
 
-## 3. Build release binary
+## 3. Start the local services
 
-```bash
-cargo build --release
-```
+Bring up the site-facing services needed for the deployment:
 
-## 4. Run one ingest cycle with mock adapter
+- Asset Agent
+- Site Router
+- any local proof export or sync companion used in the current pilot path
 
-```bash
-./target/release/bridge-node ctl run-once --config bridge.yaml
-```
+## 4. Validate one real signal path
 
-## 5. Check runtime status
+Confirm that one meaningful asset path works end to end:
 
-```bash
-./target/release/bridge-node ctl status --config bridge.yaml
-```
+- read site state
+- issue or simulate one safe local action
+- confirm acknowledgement or measured result
+- export the resulting proof record
 
-## 6. Inspect ledger summary
+## 5. Confirm repeatability
 
-```bash
-./target/release/bridge-node ctl ledger --config bridge.yaml
-```
+The quick start is complete only when another operator can repeat the same path without tribal knowledge.
 
-## 7. View metrics snapshot
+After that, move to:
 
-```bash
-./target/release/bridge-node ctl metrics --config bridge.yaml
-```
-
-## What success looks like
-
-- Ingest counters increase.
-- Ledger event count is non-zero.
-- Runtime health is `ok` or explains degradation reasons.
-
-## Next
-
-- Read [Architecture](/docs/core-concepts/architecture)
-- Tune [Configuration](/docs/configuration/general)
-- Review [Security](/docs/operations/security)
+- [Architecture](/docs/core-concepts/architecture)
+- [Security](/docs/operations/security)
+- [Deployment](/docs/operations/deployment)

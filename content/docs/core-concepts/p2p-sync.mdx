@@ -1,51 +1,20 @@
 ---
 title: P2P Sync
-description: Peer sync protocol and convergence workflow.
+description: Controlled movement of proofs and runtime state between local and upstream surfaces.
 ---
 
-# Peer-to-Peer Sync
+# P2P Sync
 
-`SyncEngine` lets nodes exchange signed events without a central coordinator.
+Proofs often need to move without moving the whole trust boundary.
 
-## File-based protocol
+## What sync is for
 
-Each peer pair uses:
+- exporting local records upward
+- reconciling proof history across surfaces
+- preserving site autonomy while still supporting portfolio review
 
-- `outbound_dir`
-- `inbound_dir`
+## What sync is not for
 
-In production, these directories are usually mounted from shared transport or exchange channels.
+It is not permission to treat the cloud as the only source of truth.
 
-## SyncBatchFile structure
-
-A batch file includes:
-
-- sender metadata (`node_id`, cursor)
-- list of proof envelopes
-- watermark or cursor metadata for resume
-
-## Publish flow
-
-1. Query unsynced ledger events.
-2. Build deterministic sync batch.
-3. Write sync batch file to peer inbound path.
-4. Mark publish attempt in runtime metrics.
-
-## Receive flow
-
-1. Read inbound batch file.
-2. Verify each event signature.
-3. Re-apply replay and dedupe checks.
-4. Append new events to ledger.
-5. Advance peer watermark on success.
-
-## Peer state tracking
-
-Watermarks are stored so each peer can resume from last confirmed sync position.
-
-## Operational guidance
-
-- Keep peer clocks synchronized to reduce replay false positives.
-- Monitor `sync_published` vs `sync_received` drift.
-- Alert when watermark staleness exceeds SLA.
-- Rotate stuck inbound files to quarantine for manual inspection.
+The site should still remain understandable and supportable on its own.

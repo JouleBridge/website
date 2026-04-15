@@ -25,20 +25,24 @@ const chakraPetch = Chakra_Petch({
 export const metadata: Metadata = {
   metadataBase: new URL("https://joulebridge.com"),
   title: {
-    default: "JouleBridge | Verified Data Infrastructure for Energy",
+    default: "JouleBridge | The runtime for distributed energy",
     template: "%s | JouleBridge",
   },
   description:
-    "JouleBridge turns operational energy telemetry into deterministic records, cryptographic proofs, and stronger audit trails for settlement, compliance, and infrastructure operations.",
+    "JouleBridge helps industrial sites and EV depots coordinate mixed-vendor energy assets on-site, keep control local, and produce audit-ready records for dispatch and review.",
   keywords: [
-    "energy telemetry verification",
-    "energy evidence infrastructure",
-    "energy settlement",
-    "cryptographic proof",
+    "distributed energy runtime",
+    "edge ML for energy",
+    "mixed-vendor site control",
+    "open-access industrial energy software",
+    "local-first DERMS",
+    "audit-ready energy operations",
+    "signed proof records",
+    "asset agent",
+    "site router",
+    "multi-site energy operations",
     "bridge kernel",
-    "tamper-evident ledger",
-    "Ed25519",
-    "energy audit trail",
+    "forecast-aware dispatch",
   ],
   authors: [{ name: "JouleBridge" }],
   creator: "JouleBridge",
@@ -48,18 +52,18 @@ export const metadata: Metadata = {
     apple: "/brand/jb-favicon.svg",
   },
   openGraph: {
-    title: "JouleBridge | Verified Data Infrastructure for Energy",
+    title: "JouleBridge | The runtime for distributed energy",
     description:
-      "JouleBridge turns operational energy telemetry into deterministic records, cryptographic proofs, and stronger audit trails for settlement, compliance, and infrastructure operations.",
+      "Control mixed-vendor energy assets on-site, keep operating when the cloud fails, and produce audit-ready records for every important decision.",
     type: "website",
     siteName: "JouleBridge",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "JouleBridge | Verified Data Infrastructure for Energy",
+    title: "JouleBridge | The runtime for distributed energy",
     description:
-      "JouleBridge turns operational energy telemetry into deterministic records, cryptographic proofs, and stronger audit trails for settlement, compliance, and infrastructure operations.",
+      "Control mixed-vendor energy assets on-site, keep operating when the cloud fails, and produce audit-ready records for every important decision.",
   },
   alternates: {
     canonical: "/",
@@ -72,7 +76,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${plexMono.variable} ${chakraPetch.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${plexMono.variable} ${chakraPetch.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           type="application/ld+json"
@@ -84,7 +92,7 @@ export default function RootLayout({
                 name: "JouleBridge",
                 url: "https://joulebridge.com",
                 description:
-                  "Verification infrastructure for energy — turning operational telemetry into deterministic records, cryptographic proofs, and stronger audit trails.",
+                  "An on-site runtime for distributed energy operations that helps industrial sites and EV depots coordinate mixed-vendor assets, keep control local, and maintain audit-ready records.",
               },
               {
                 "@context": "https://schema.org",
@@ -102,7 +110,7 @@ export default function RootLayout({
                 "@type": "Product",
                 name: "Bridge Kernel",
                 description:
-                  "Deterministic verification kernel that transforms raw energy telemetry into cryptographically signed, tamper-evident records for settlement and compliance.",
+                  "An on-site runtime for mixed-vendor energy sites. Bridge Kernel supports local control, on-device forecasting and anomaly detection, and audit-ready records for dispatch and review.",
                 brand: {
                   "@type": "Organization",
                   name: "JouleBridge",
@@ -112,7 +120,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex flex-col min-h-screen font-sans antialiased">
+      <body className="flex min-h-screen flex-col font-sans antialiased">
         <RootProvider>
           <LenisProvider>{children}</LenisProvider>
         </RootProvider>

@@ -10,25 +10,25 @@ interface TerminalLine {
 }
 
 const script: TerminalLine[] = [
-  { text: "$ bridge-kernel init --adapter webhook --site demo-site", type: "command", delay: 0 },
+  { text: "$ jb-ctl provision --token demo-site", type: "command", delay: 0 },
   { text: "  created signing identity [site-gw-01]", type: "success", delay: 560 },
-  { text: "  wrote config: ./bridge-kernel.toml", type: "success", delay: 220 },
-  { text: "  opened ledger: ./data/ledger.db", type: "success", delay: 220 },
+  { text: "  wrote config: ./site-runtime.toml", type: "success", delay: 220 },
+  { text: "  opened proof store: ./data/proofs.db", type: "success", delay: 220 },
   { text: "", type: "output", delay: 360 },
-  { text: "$ bridge-kernel start", type: "command", delay: 440 },
+  { text: "$ asset-agent start", type: "command", delay: 440 },
   { text: "  runtime ready on localhost:8787", type: "info", delay: 620 },
-  { text: "  ingesting telemetry stream", type: "info", delay: 260 },
-  { text: "  proof engine online [ed25519]", type: "info", delay: 220 },
+  { text: "  ingesting charger + meter streams", type: "info", delay: 260 },
+  { text: "  proof chain online [ed25519]", type: "info", delay: 220 },
   { text: "", type: "output", delay: 420 },
-  { text: "  event #1  power_kw=47.2  voltage_v=231.4", type: "output", delay: 340 },
+  { text: "  event #1  charger_kw=47.2  meter_kw=49.1", type: "output", delay: 340 },
   { text: "  proof digest=8af3c2...  status=accepted", type: "success", delay: 220 },
-  { text: "  policy DER-04 passed  ledger append #1", type: "success", delay: 220 },
+  { text: "  safety envelope passed  proof append #1", type: "success", delay: 220 },
   { text: "", type: "output", delay: 520 },
-  { text: "  event #2  power_kw=512.7  voltage_v=229.1", type: "output", delay: 340 },
+  { text: "  event #2  charger_kw=512.7  meter_kw=229.1", type: "output", delay: 340 },
   { text: "  proof digest=f1d2e3...  status=quarantined", type: "error", delay: 220 },
-  { text: "  policy DER-04 failed  operator review required", type: "error", delay: 260 },
+  { text: "  safety envelope failed  operator review required", type: "error", delay: 260 },
   { text: "", type: "output", delay: 520 },
-  { text: "$ bridge-kernel ledger stats", type: "command", delay: 420 },
+  { text: "$ jb-ctl proof stats", type: "command", delay: 420 },
   { text: "  verified=1  quarantined=1  sync=idle", type: "info", delay: 220 },
   { text: "  uptime=4.2s  queue_depth=0", type: "info", delay: 220 },
 ];
@@ -84,7 +84,7 @@ export function DemoTerminal() {
         <div className="h-2.5 w-2.5 bg-white/20" />
         <div className="h-2.5 w-2.5 bg-white/12" />
         <div className="h-2.5 w-2.5 bg-white/8" />
-        <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-jb-text-muted">bridge-kernel runtime</span>
+        <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-jb-text-muted">joulebridge runtime</span>
       </div>
 
       <div

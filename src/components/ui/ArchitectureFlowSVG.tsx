@@ -227,26 +227,26 @@ export function ArchitectureFlowSVG() {
         {/* Ingestion labels */}
         <g fontFamily="'Inter', monospace" fontSize="11" fontWeight="600">
           <rect x="145" y="248" width="70" height="32" fill="#1a1a2e" />
-          <text className="at-ing-txt" x="180" y="260" textAnchor="middle">WEBHOOK</text>
+          <text className="at-ing-txt" x="180" y="260" textAnchor="middle">OCPP</text>
           <text className="at-ing-txt" x="180" y="274" textAnchor="middle">ADAPTER</text>
 
           <rect x="215" y="248" width="70" height="32" fill="#1a1a2e" />
-          <text className="at-ing-txt" x="250" y="260" textAnchor="middle">FILE</text>
-          <text className="at-ing-txt" x="250" y="274" textAnchor="middle">INGEST</text>
+          <text className="at-ing-txt" x="250" y="260" textAnchor="middle">MODBUS</text>
+          <text className="at-ing-txt" x="250" y="274" textAnchor="middle">ADAPTER</text>
 
           <rect x="285" y="248" width="70" height="32" fill="#1a1a2e" />
-          <text className="at-ing-txt" x="320" y="260" textAnchor="middle">SCANNER</text>
-          <text className="at-ing-txt" x="320" y="274" textAnchor="middle">INPUT</text>
+          <text className="at-ing-txt" x="320" y="260" textAnchor="middle">CAN</text>
+          <text className="at-ing-txt" x="320" y="274" textAnchor="middle">SIGNAL</text>
 
           <rect x="710" y="248" width="80" height="32" fill="#1a1a2e" />
-          <text className="at-mesh" x="750" y="260" textAnchor="middle">P2P MESH</text>
+          <text className="at-mesh" x="750" y="260" textAnchor="middle">POLICY</text>
           <text className="at-mesh" x="750" y="274" textAnchor="middle">SYNC</text>
         </g>
 
         {/* Section titles */}
-        <text x="500" y="45" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="16" fontWeight="700" letterSpacing="2" fill="#9ca3af">DEVICE TELEMETRY</text>
-        <text x="500" y="265" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">BRIDGE KERNEL PIPELINE</text>
-        <text x="500" y="415" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">BRIDGE KERNEL SETTLEMENT</text>
+        <text x="500" y="45" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="16" fontWeight="700" letterSpacing="2" fill="#9ca3af">SITE SIGNALS</text>
+        <text x="500" y="265" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">JOULEBRIDGE PIPELINE</text>
+        <text x="500" y="415" textAnchor="middle" fontFamily="'Inter', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#FFFFFF">PROOF + REVIEW</text>
 
         {/* Boxes */}
         <g fontFamily="'Inter', monospace" fontWeight="600">
@@ -254,37 +254,37 @@ export function ArchitectureFlowSVG() {
           <rect className="ar-src" x="158" y="60" width="200" height="46" fill="#111" stroke="#D06120" strokeWidth="0.8" />
           <rect className="ar-src" x="154" y="64" width="200" height="46" fill="#111" stroke="#D06120" strokeWidth="0.8" />
           <rect className="ar-src" x="150" y="68" width="200" height="46" fill="#111" strokeWidth="1.5" />
-          <text className="at-src" x="250" y="96" textAnchor="middle" fontSize="15">ENERGY DEVICES</text>
+          <text className="at-src" x="250" y="96" textAnchor="middle" fontSize="15">SITE ASSETS</text>
 
           {/* Top row */}
           <rect className="ar-gw" x="150" y="150" width="200" height="46" fill="#111" strokeWidth="1.2" />
-          <text className="at-gw" x="250" y="178" textAnchor="middle" fontSize="15">PROTOCOL ADAPTERS</text>
+          <text className="at-gw" x="250" y="178" textAnchor="middle" fontSize="15">ASSET AGENT</text>
 
           <rect className="ar-gw" x="400" y="150" width="200" height="46" fill="#111" strokeWidth="1.2" />
-          <text className="at-gw" x="500" y="178" textAnchor="middle" fontSize="15">POLICY ENGINE</text>
+          <text className="at-gw" x="500" y="178" textAnchor="middle" fontSize="15">SITE ROUTER</text>
 
           <rect className="ar-sync" x="650" y="150" width="200" height="46" fill="#111" strokeWidth="1.2" />
-          <text className="at-sync" x="750" y="178" textAnchor="middle" fontSize="15">PEER SYNC</text>
+          <text className="at-sync" x="750" y="178" textAnchor="middle" fontSize="15">CLOUD SYNC</text>
 
           {/* Pipeline row */}
           <rect className="ar-ing" x="150" y="300" width="200" height="50" fill="#111" strokeWidth="1.2" />
-          <text className="at-ing" x="250" y="330" textAnchor="middle" fontSize="16">INGEST</text>
+          <text className="at-ing" x="250" y="330" textAnchor="middle" fontSize="16">OBSERVE</text>
 
           <rect className="ar-norm" x="400" y="300" width="200" height="50" fill="#111" strokeWidth="1.2" />
-          <text className="at-norm" x="500" y="330" textAnchor="middle" fontSize="16">CANONICALIZE</text>
+          <text className="at-norm" x="500" y="330" textAnchor="middle" fontSize="16">ROUTE</text>
 
           <rect className="ar-prove" x="650" y="300" width="200" height="50" fill="#111" strokeWidth="1.2" />
           <text className="at-prove" x="750" y="330" textAnchor="middle" fontSize="16">PROVE</text>
 
           {/* Settlement row */}
           <rect className="ar-ledger" x="150" y="460" width="200" height="50" fill="#111" />
-          <text className="at-ledger" x="250" y="490" textAnchor="middle" fontSize="16">LEDGER</text>
+          <text className="at-ledger" x="250" y="490" textAnchor="middle" fontSize="16">RECORD</text>
 
           <rect className="ar-recon" x="400" y="460" width="200" height="50" fill="#111" strokeWidth="1.2" />
-          <text className="at-recon" x="500" y="490" textAnchor="middle" fontSize="16">RECONCILE</text>
+          <text className="at-recon" x="500" y="490" textAnchor="middle" fontSize="16">REVIEW</text>
 
           <rect className="ar-settle" x="650" y="460" width="200" height="50" fill="#111" strokeWidth="1.2" />
-          <text className="at-settle" x="750" y="490" textAnchor="middle" fontSize="16">SETTLE</text>
+          <text className="at-settle" x="750" y="490" textAnchor="middle" fontSize="16">EXPORT</text>
         </g>
       </svg>
     </div>

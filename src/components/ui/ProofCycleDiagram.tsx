@@ -125,7 +125,7 @@ export function ProofCycleDiagram() {
         {/* Labels */}
         <g fontFamily="'Inter', 'IBM Plex Mono', monospace" fontSize="16" fontWeight="600" fill="#e0e0e0" letterSpacing="1" textAnchor="middle">
           <text x="400" y="60" fill="#FFFFFF" fontSize="13" letterSpacing="2">CANONICALIZE</text>
-          <text x="150" y="360" fill="#FFFFFF" fontSize="13" letterSpacing="2">INGEST</text>
+          <text x="150" y="360" fill="#FFFFFF" fontSize="13" letterSpacing="2">OBSERVE</text>
           <text x="400" y="360" fill="#9ca3af" fontSize="13" letterSpacing="2">SIGN</text>
           <text x="650" y="360" fill="#FFFFFF" fontSize="13" letterSpacing="2">VERIFY</text>
         </g>
@@ -133,7 +133,7 @@ export function ProofCycleDiagram() {
         {/* Sublabels */}
         <g fontFamily="'Inter', monospace" fontSize="10" fill="#666" textAnchor="middle" letterSpacing="1">
           <text x="400" y="150" fill="rgba(255,255,255,0.7)">SHA-256 Hash</text>
-          <text x="150" y="450" fill="rgba(255,255,255,0.7)">Raw Telemetry</text>
+          <text x="150" y="450" fill="rgba(255,255,255,0.7)">Site Signals</text>
           <text x="400" y="450" fill="#9ca3af">Ed25519 + Proof Metadata</text>
           <text x="650" y="520" fill="#FFFFFF">Review Ready</text>
         </g>

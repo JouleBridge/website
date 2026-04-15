@@ -33,6 +33,7 @@ export function ContactContent() {
           return;
         }
       } catch {
+        // Fall through to mailto fallback.
       }
     }
 
@@ -65,10 +66,8 @@ export function ContactContent() {
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-4 max-w-3xl"
               >
-                Let&apos;s talk about your{" "}
-                <span className="jb-title-gradient">
-                  energy settlement
-                </span>
+                Tell us about the{" "}
+                <span className="jb-title-gradient">site, hardware mix, and control problem</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -76,8 +75,9 @@ export function ContactContent() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="jb-section-copy mb-10"
               >
-                Whether you&apos;re ready for a pilot or just exploring, we&apos;d love to hear
-                about your challenges.
+                We work best with industrial sites and EV depots that need better
+                local control, mixed-vendor integration, and audit-ready operating
+                records.
               </motion.p>
 
               {status === "success" ? (
@@ -90,7 +90,7 @@ export function ContactContent() {
                     Message Sent
                   </div>
                   <p className="text-jb-white/70">
-                    Thanks for reaching out. We&apos;ll get back to you within 24 hours.
+                    Thanks for reaching out. We&apos;ll reply as quickly as possible.
                     You can also reach us at{" "}
                     <a href={`mailto:${siteConfig.contactEmail}`} className="text-white/60 hover:underline">
                       {siteConfig.contactEmail}
@@ -150,7 +150,7 @@ export function ContactContent() {
                       <input
                         name="role"
                         className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
-                        placeholder="VP Operations"
+                        placeholder="Head of Operations"
                       />
                     </div>
                   </div>
@@ -165,12 +165,12 @@ export function ContactContent() {
                       className="w-full appearance-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
                     >
                       <option value="">Select an option</option>
-                      <option value="Pilot program">Pilot program</option>
-                      <option value="Enterprise pricing">Enterprise pricing</option>
-                      <option value="Partnership">Partnership</option>
-                      <option value="Technical question">Technical question</option>
-                      <option value="Joining the team">Joining the team</option>
-                      <option value="Other">Other</option>
+                      <option value="Industrial site pilot">Industrial site pilot</option>
+                      <option value="EV depot pilot">EV depot pilot</option>
+                      <option value="Mixed-vendor integration review">Mixed-vendor integration review</option>
+                      <option value="Security or audit review">Security or audit review</option>
+                      <option value="Technical evaluation">Technical evaluation</option>
+                      <option value="Partnership discussion">Partnership discussion</option>
                     </select>
                   </div>
 
@@ -183,7 +183,7 @@ export function ContactContent() {
                       required
                       rows={5}
                       className="w-full resize-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
-                      placeholder="Tell us about your energy settlement challenges..."
+                      placeholder="Tell us about the site, the hardware mix, the protocols in scope, and the operating result you need."
                     />
                   </div>
 
@@ -192,7 +192,7 @@ export function ContactContent() {
                     disabled={status === "submitting"}
                     className="btn-jb btn-jb-primary relative inline-flex items-center justify-center gap-2 px-8 py-3 font-mono text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 disabled:opacity-50"
                   >
-                    {status === "submitting" ? "Sending..." : "Send Message"}
+                    {status === "submitting" ? "Sending..." : "Send Request"}
                     <span className="btn-corners" />
                   </button>
                 </motion.form>
@@ -238,6 +238,18 @@ export function ContactContent() {
                       >
                         {siteConfig.contactPhone}
                       </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="mb-3 font-mono text-xs uppercase tracking-widest text-jb-text-muted">
+                      Best for
+                    </div>
+                    <div className="space-y-2 text-sm text-jb-white/64">
+                      <p>Industrial site pilots</p>
+                      <p>EV depot pilots</p>
+                      <p>Mixed-vendor integration reviews</p>
+                      <p>Technical and audit evaluations</p>
                     </div>
                   </div>
 

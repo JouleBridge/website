@@ -3,9 +3,9 @@ import { Footer } from "@/components/layout/Footer";
 import { ProductContent } from "@/components/product/ProductContent";
 
 export const metadata = {
-  title: "Bridge Kernel | JouleBridge",
+  title: "Platform | JouleBridge",
   description:
-    "A deterministic, tamper-evident event ledger runtime. Ingests energy telemetry, generates cryptographic proofs, evaluates policy rules, and persists to an immutable ledger.",
+    "The JouleBridge platform coordinates mixed-vendor energy assets through an edge runtime, local site control, cloud review surfaces, and audit-ready records.",
 };
 
 export default function ProductPage() {

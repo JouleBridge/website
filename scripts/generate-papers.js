@@ -26,201 +26,151 @@ const COLORS = {
 const papers = [
   {
     slug: "bridge-kernel-technical-architecture",
-    title: "Bridge Kernel Technical Architecture",
+    title: "JouleBridge Runtime Architecture",
     type: "Architecture Paper",
     sections: [
       {
         heading: "Abstract",
         paragraphs: [
-          "Bridge Kernel is the edge runtime inside JouleBridge. Its purpose is not to present telemetry attractively, but to improve the trust quality of the earliest record in the chain. This paper explains the runtime architecture as an evidence system: how events are captured, shaped, signed, policy-checked, persisted, and prepared for downstream review.",
-          "The architecture should be read as trust infrastructure. Each stage exists because weak source records create reconciliation drag, audit friction, and investigation cost. A stronger architecture therefore starts before dashboards, reports, and analytics. It starts at the moment a record becomes operationally important.",
+          "JouleBridge is the runtime, proof, and coordination layer for distributed energy sites. The system is designed so control decisions stay close to the assets while the resulting actions remain reviewable later by another team.",
+          "This paper explains the runtime architecture as an operating system for real sites: how the Asset Agent, Site Router, Portfolio Orchestrator, and Console divide responsibilities without collapsing local execution into a cloud-only product story.",
         ],
       },
       {
         heading: "1. System Objective",
         paragraphs: [
-          "Bridge Kernel is designed around a narrow systems question: what is the earliest defensible record that can be created when telemetry enters an energy workflow? Many operating stacks answer this question too late. They collect raw events in one system, transform them in another, export them into spreadsheets, and only then try to reconstruct what really happened.",
-          "That delayed trust model creates commercial and operational problems. By the time the record is examined, its transformation path is fragmented. Operators, finance teams, auditors, and counterparties are left interpreting artifacts rather than verifying source evidence. Bridge Kernel moves the trust boundary closer to the originating event.",
+          "The architecture is built around one durable question: how should a mixed-vendor site coordinate chargers, batteries, solar, flexible loads, and meters while still leaving behind a record that others can trust later?",
+          "That question pushes the design toward local control, explicit trust boundaries, and proof attached to the operating path rather than reporting layered on after the fact.",
         ],
       },
       {
-        heading: "2. Runtime Boundaries",
+        heading: "2. Runtime Split",
         paragraphs: [
-          "The runtime sits in the evidence path rather than in the presentation path. Its responsibilities are local and explicit: receive events, canonicalize them deterministically, generate proofs, apply policy, and store verified output. It is not intended to replace every cloud service, control plane, or interface layer in the wider JouleBridge roadmap.",
-          "This boundary matters because trust layers fail when they absorb too many unrelated responsibilities. By separating source evidence generation from orchestration, visualization, and analytics, the system remains easier to reason about and easier to defend.",
+          "The Asset Agent sits close to the equipment and adapter layer. The Site Router converts policy, limits, and site state into feasible local actions. The Portfolio Orchestrator distributes bundles, receives proofs, and gives the fleet view. The Console presents the operator surface.",
+          "Each runtime has a narrow job. None of them should pretend to be the whole platform on its own.",
         ],
       },
       {
-        heading: "3. Adapter-Driven Capture",
+        heading: "3. Local-First Coordination",
         paragraphs: [
-          "Bridge Kernel uses adapters to ingest telemetry and operational events from heterogeneous environments. The current baseline includes webhook, file, scanner, and adjacent input models, with protocol hardening around energy-specific paths continuing as the runtime matures.",
-          "Adapter design is not a trivial integration detail. It is the first trust boundary. If source events are captured inconsistently, every later stage inherits ambiguity. Adapters therefore normalize ingress behavior, preserve relevant metadata, and prepare the event for deterministic shaping.",
+          "JouleBridge keeps the coordination loop at the site because cloud latency, tunnel fragility, and vendor heterogeneity all get worse when local autonomy is removed. The system should keep dispatch running even when upstream connectivity is degraded.",
+          "Local execution is therefore a product requirement, not an optimization detail.",
         ],
       },
       {
-        heading: "4. Deterministic Record Construction",
+        heading: "4. Adapter and Policy Boundaries",
         paragraphs: [
-          "Once an event enters the runtime, it is transformed into a deterministic representation. Equivalent events must produce equivalent canonical bytes. This rule is foundational because cryptographic proof only becomes meaningful when the underlying representation is stable across operating environments.",
-          "Deterministic construction reduces a hidden category of failure. Teams often assume they disagree about business facts when in reality they disagree about formatting, transformation order, or hidden transport artifacts. A stable canonical form removes much of that noise before proof generation begins.",
+          "Adapters translate mixed-vendor equipment into a stable internal shape. Policy then evaluates whether the requested action is feasible, safe, and worth routing. This boundary matters because weak adapter behavior or vague policy handling quickly contaminates later operations.",
+          "A site runtime only becomes trustworthy when ingress and policy decisions are legible.",
         ],
       },
       {
-        heading: "5. Proof Generation",
+        heading: "5. Proof Chain",
         paragraphs: [
-          "The canonical event is hashed with SHA-256 and signed with Ed25519. The resulting envelope carries the event, digest, signature, key metadata, and verification context required for later inspection. The proof object is therefore more than a signed blob; it is a transportable evidence unit.",
-          "This design enables independent review. A downstream verifier does not need access to the runtime internals or the private key environment. It only needs the event, the public verification path, and the declared algorithms. That property is central to how JouleBridge positions trust.",
+          "JouleBridge attaches proof to the operating path. Intent, dispatch, acknowledgement, measurement, and outcome are shaped into a record that can be verified later without informal reconstruction.",
+          "The goal is practical defensibility. Another team should be able to answer what the site believed, what it did, and what happened next.",
         ],
       },
       {
-        heading: "6. Policy Before Persistence",
+        heading: "6. Deployment Posture",
         paragraphs: [
-          "Policy execution occurs before the verified record enters the accepted persistence path. This ordering is deliberate. Weak systems often accept everything first and sort exceptions later, which allows malformed, stale, or out-of-policy events to contaminate later reporting and reconciliation.",
-          "Bridge Kernel instead treats policy as a gateway. Records that fail policy can be quarantined, inspected, and reviewed without silently degrading the evidence trail. This makes exception handling explicit instead of implicit.",
+          "The preferred deployment model is partner hardware first. The commercial target is a repeatable install path on real site infrastructure before broader platform claims are made.",
+          "That is why DepotOS starts with EV fleet depots rather than trying to tell every distributed-energy story at once.",
         ],
       },
       {
-        heading: "7. Persistence and Controlled Sync",
+        heading: "Conclusion",
         paragraphs: [
-          "Verified records are persisted locally first. This keeps the primary evidence trail close to the operating environment where disputes and investigations usually begin. Controlled sync then allows records to move into broader product surfaces without losing their trust origin.",
-          "The architecture is therefore compatible with edge-first and sovereignty-sensitive deployments. It does not assume that cloud centralization is the right first move for every evidence workflow.",
-        ],
-      },
-      {
-        heading: "8. Deployment Posture and Conclusion",
-        paragraphs: [
-          "Bridge Kernel is suitable for gateways, on-premise hosts, and carefully controlled cloud-adjacent environments. The deployment recommendation should follow the trust boundary first: where is the earliest point at which a defensible record can be created and retained?",
-          "The architectural thesis is simple and durable. Improve the source record first. Once the evidence base is stronger, later layers such as dashboards, analytics, certification, and settlement tools become more credible and easier to operate.",
+          "JouleBridge should be read as a site runtime with a proof chain, not as a dashboard wrapper. Stronger local coordination and a cleaner operational record make the later cloud view more credible and easier to operate.",
         ],
       },
     ],
   },
   {
     slug: "energy-settlement-verification-whitepaper",
-    title: "Energy Settlement Verification: A New Approach",
-    type: "Whitepaper",
+    title: "DepotOS Pilot Deployment Brief",
+    type: "Deployment Brief",
     sections: [
       {
         heading: "Executive Summary",
         paragraphs: [
-          "Energy settlement is increasingly constrained by evidence quality rather than by raw data availability. As operating environments become more distributed and software-mediated, the number of records that matter rises faster than the number of records that can be independently defended.",
-          "This whitepaper argues that verification-oriented infrastructure should be treated as an operating capability. Better evidence reduces reconciliation friction, shortens investigation time, and improves counterparties' confidence in the settlement trail.",
+          "DepotOS is the first commercial wedge for the JouleBridge platform. The aim is not to present a generic smart-site narrative. The aim is to solve an urgent operating problem where mixed-vendor coordination matters every day.",
+          "EV fleet depots satisfy that requirement because departure times, constrained power, charger heterogeneity, and commercial uptime pressure all collide in one environment.",
         ],
       },
       {
-        heading: "1. Why the Problem Is Getting Worse",
+        heading: "1. Why Depots First",
         paragraphs: [
-          "Open access, EV charging, DER participation, flexible tariff structures, and multi-party operational models all multiply the number of events that later feed settlement. The system is becoming more digital and more distributed at the same time.",
-          "That means the cost of ambiguity compounds. Every mismatch now touches more systems, more operators, and more counterparties. Records that once seemed acceptable under manual operating conditions become much more expensive when scaled across modern transaction flows.",
+          "A first wedge should be painful, sellable, and repeatable. Fleet depots are painful because missed charging windows disrupt real operations. They are sellable because the business case is immediate. They are repeatable because the coordination pattern appears across many sites.",
+          "That makes depots a stronger first surface than trying to position JouleBridge as the answer to every distributed-energy workflow at once.",
         ],
       },
       {
-        heading: "2. The Limits of Traditional Evidence",
+        heading: "2. What the Pilot Proves",
         paragraphs: [
-          "Institutional trust is useful but incomplete. In many cases the underlying evidence still depends on exports, screenshots, mutable logs, and post-facto reasoning. These artifacts can support an explanation, but they rarely support independent verification.",
-          "As a result, settlement disputes are often less about a missing number and more about a weak confidence boundary. Teams are not simply asking what happened. They are asking whether the record itself can be trusted.",
+          "A proper depot pilot proves three things: the runtime can coordinate mixed-vendor assets locally, the proof chain can explain what happened later, and the installation path is repeatable on real hardware.",
+          "Those are the right proof points for expanding from a single site into a broader portfolio motion.",
         ],
       },
       {
-        heading: "3. Verification-Oriented Infrastructure",
+        heading: "3. Commercial Motion",
         paragraphs: [
-          "A verification-oriented design creates trust earlier. The event is shaped deterministically, hashed, signed, checked against policy, and retained with enough metadata for later inspection. This transforms the evidence problem from a retrospective exercise into a runtime responsibility.",
-          "The goal is not to eliminate all disputes. It is to reduce unnecessary ambiguity and to ensure that when a dispute does occur, the review begins from a stronger factual base.",
-        ],
-      },
-      {
-        heading: "4. Operational and Commercial Benefits",
-        paragraphs: [
-          "Faster reconciliation matters directly to working relationships, cycle time, and internal coordination. A stronger record can reduce the amount of time spent aligning operations, finance, and external parties around the same event history.",
-          "Audit quality improves as well. Investigations become shorter when the evidence path is explicit, and regulatory or customer-facing reviews become easier when records are portable and verifiable.",
-        ],
-      },
-      {
-        heading: "5. Pilot Strategy",
-        paragraphs: [
-          "The right rollout path is not broad replacement. It is pilot-led improvement. Select one workflow with recurring evidence failure, instrument the source record with deterministic proof-backed capture, and compare the resulting investigation and reconciliation quality to the current state.",
-          "This approach reduces adoption risk while giving the organization a concrete operating benchmark for whether verification should expand further.",
-        ],
-      },
-      {
-        heading: "6. JouleBridge Positioning",
-        paragraphs: [
-          "JouleBridge should be understood as trust infrastructure for energy workflows. The immediate value is not an abstract security posture or a generic interface layer. The value is stronger source evidence that later systems can rely on.",
-          "That positioning makes the company relevant wherever settlement confidence depends on cleaner records, faster review, and more defensible operating history.",
+          "The commercial sequence is discovery, paid pilot, then annual runtime expansion after the site proves itself. That sequence keeps the company honest because the platform has to work in the field before it gets sold as a broader operating layer.",
+          "A pilot should therefore be scoped tightly, measured clearly, and tied to the day-to-day depot problem rather than abstract innovation language.",
         ],
       },
       {
         heading: "Conclusion",
         paragraphs: [
-          "Energy systems do not simply need more data. They need records that are easier to trust under real commercial pressure. Verification infrastructure addresses that requirement directly by improving the source record before ambiguity compounds downstream.",
+          "DepotOS matters because it gives JouleBridge one credible starting point. If the runtime can keep a real depot coordinated and provable, the platform story becomes much easier to defend elsewhere.",
         ],
       },
     ],
   },
   {
     slug: "proof-system-specification",
-    title: "Proof System Specification",
+    title: "Proof Chain Specification",
     type: "Specification",
     sections: [
       {
         heading: "Overview",
         paragraphs: [
-          "This paper defines the current Bridge Kernel proof model in practical implementation terms. It focuses on deterministic record construction, digest formation, signature generation, envelope structure, and verification procedure.",
-          "The aim is clarity rather than novelty. A proof model should be easy to inspect, easy to implement consistently, and easy to verify independently.",
+          "This paper defines the current JouleBridge proof-chain model in practical implementation terms. It focuses on record shaping, digest formation, signature context, envelope structure, and later verification.",
+          "The objective is clarity. A proof system should be simple enough to inspect, consistent enough to implement, and strict enough to reject ambiguous records.",
         ],
       },
       {
-        heading: "1. Canonicalization Rules",
+        heading: "1. Record Shape",
         paragraphs: [
-          "Equivalent events must produce equivalent canonical bytes. Canonicalization therefore specifies key ordering, insignificant whitespace removal, and UTF-8 string normalization. These rules are not optional formatting preferences. They are preconditions for stable hashing and verification.",
-          "Any implementation variance at this stage undermines every later proof claim, because the signature only protects the digest that the runtime actually created.",
+          "The public proof model is concerned with intent, dispatch, acknowledgement, measured outcome, and the metadata needed to verify the record later. Equivalent events should produce equivalent canonical bytes.",
+          "That rule is foundational because cryptographic output only matters when the underlying representation is stable.",
         ],
       },
       {
-        heading: "2. Digest Formation",
+        heading: "2. Digest and Signature",
         paragraphs: [
-          "The canonical byte stream is hashed with SHA-256. The digest serves as the compact integrity reference used for later validation and signature generation.",
-          "Digest formation must be deterministic and algorithm-labeled. A verifier should be able to reproduce the digest from the envelope payload and confirm that the declared algorithm matches the observed output.",
+          "The canonical byte stream is hashed and then signed with explicit key metadata and context. Verification should never depend on unstated assumptions about which key, mode, or environment produced the signature.",
+          "Clear signature context keeps the proof chain legible under rotation and support operations.",
         ],
       },
       {
-        heading: "3. Signature Generation",
+        heading: "3. Envelope Requirements",
         paragraphs: [
-          "Bridge Kernel signs the digest with Ed25519. The signing material includes not only the private key operation but also explicit signature context, key identifier, and key version metadata so verification can reject mismatched usage paths.",
-          "This keeps the proof system legible under key rotation and prevents cross-context ambiguity.",
+          "A proof envelope should carry enough information that another team can re-run verification without hidden runtime state. The envelope is therefore a portable operating artifact, not just a blob attached for compliance theater.",
+          "That matters because the proof is most valuable when it leaves the machine that produced it.",
         ],
       },
       {
-        heading: "4. Envelope Structure",
+        heading: "4. Verification Goal",
         paragraphs: [
-          "A proof envelope contains the original event, digest, signature, signer metadata, timestamp, and algorithm descriptors. The envelope should be self-describing enough that verification does not require hidden runtime state.",
-          "That requirement is critical for downstream audit and evidence exchange. A proof object that depends heavily on external context becomes more fragile at the moment it is needed most.",
-        ],
-      },
-      {
-        heading: "5. Verification Procedure",
-        paragraphs: [
-          "Verification reconstructs canonical bytes from the event payload, recomputes the digest, checks declared algorithm and context expectations, and validates the Ed25519 signature with the referenced public key.",
-          "The procedure is all-or-nothing. A proof is not partially valid because some metadata aligns. The payload, digest, context, and signature must all resolve consistently.",
-        ],
-      },
-      {
-        heading: "6. Failure Conditions",
-        paragraphs: [
-          "Validation fails when the payload hash diverges from the recomputed digest, when the signature is invalid, when the context does not match, or when the expected verification key path cannot be satisfied.",
-          "These failure conditions should be explicit in implementation outputs so operators can distinguish malformed records from policy exceptions and environmental failures.",
-        ],
-      },
-      {
-        heading: "7. Key Custody Models",
-        paragraphs: [
-          "The proof model supports software and hardware-backed custody. A TPM-backed operation strengthens key protection but does not change the logical structure of the envelope or the downstream verification path.",
-          "This allows custody improvements without destabilizing the broader evidence ecosystem built on the proof format.",
+          "Verification should allow another operator, partner, or customer to answer what the site believed, what it did, and what actually happened without relying on informal reconstruction.",
+          "The system should reduce ambiguity, not just add cryptographic decoration.",
         ],
       },
       {
         heading: "Conclusion",
         paragraphs: [
-          "The specification is intentionally conservative: deterministic event bytes, stable digest, explicit signature context, clear metadata, and independently verifiable output. These characteristics matter more than complexity or fashionable cryptographic packaging.",
+          "The proof chain is intentionally conservative: deterministic inputs, explicit context, stable signatures, and independently reviewable output. Those properties matter more than novelty.",
         ],
       },
     ],

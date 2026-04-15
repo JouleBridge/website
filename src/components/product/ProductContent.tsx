@@ -10,74 +10,73 @@ import { EnergyEvidenceIllustration } from "@/components/ui/EnergyEvidenceIllust
 import { TextReveal } from "@/components/ui/TextReveal";
 
 const adapters = [
-  { name: "Webhook / REST", protocol: "Current", useCase: "HTTP-based telemetry and system integrations" },
-  { name: "File ingest", protocol: "Current", useCase: "Controlled imports and deterministic replayable input" },
-  { name: "Scanner and edge inputs", protocol: "Current", useCase: "Operational event capture at the edge" },
-  { name: "GPS / NMEA", protocol: "Current", useCase: "Location-aware field event trails" },
-  { name: "Modbus RTU/TCP", protocol: "Current", useCase: "Industrial energy meter telemetry" },
-  { name: "DLMS / IEC 62056", protocol: "Current", useCase: "Smart meter data capture and normalization" },
-  { name: "OCPP 1.6/2.0", protocol: "Current", useCase: "EV charging session verification" },
-  { name: "IEC 61850", protocol: "Roadmap", useCase: "Substation and grid event capture" },
-  { name: "Custom adapters", protocol: "Program", useCase: "Protocol-specific work scoped through pilots" },
+  { name: "OCPP 1.6/2.0", protocol: "Current", useCase: "Charger reservations, status, and dispatch acknowledgements" },
+  { name: "Modbus RTU/TCP", protocol: "Current", useCase: "Industrial storage, solar, metering, and gateway telemetry" },
+  { name: "SunSpec", protocol: "Current", useCase: "Inverter and DER integration across partner hardware" },
+  { name: "CAN / J1939", protocol: "Current", useCase: "Vehicle, battery, and industrial control surfaces" },
+  { name: "DLMS / IEC 62056", protocol: "Current", useCase: "Metering and utility-adjacent evidence inputs" },
+  { name: "IEC 61850", protocol: "Current", useCase: "Substation and utility-grade protection and control surfaces" },
+  { name: "Webhook / REST", protocol: "Current", useCase: "Operational schedules, partner integrations, and cloud-side triggers" },
+  { name: "Custom site adapters", protocol: "Program", useCase: "Pilot-scoped interfaces for partner hardware and local control systems" },
+  { name: "Future protocol lanes", protocol: "Roadmap", useCase: "Expansion only when a signed deployment path requires it" },
 ];
 
 const operatingFlow = [
   {
-    title: "Capture at the edge",
+    title: "Observe the site",
     detail:
-      "Receive structured telemetry and operational events at the source — DLMS meters, OCPP chargers, Modbus devices — through protocol-native adapters.",
+      "Read meters, inverters, storage, solar, chargers, and flexible loads close to the equipment so the runtime sees the real site, not a delayed shadow of it.",
   },
   {
-    title: "Produce deterministic proof",
+    title: "Control locally",
     detail:
-      "Canonicalize the record, hash it, sign it with Ed25519, and attach the metadata required for later independent review.",
+      "Turn policy, safety constraints, tariff windows, and on-site forecasts into feasible dispatch actions inside the site boundary, even when upstream connectivity is unstable.",
   },
   {
-    title: "Apply policy before persistence",
+    title: "Review centrally",
     detail:
-      "Run policy checks before records hit the ledger so stale, malformed, or risky events are quarantined instead of silently accepted.",
+      "Distribute policy, collect signed site state, and expose multi-site visibility without taking over local execution or breaking the trust boundary.",
   },
   {
-    title: "Store and prepare evidence",
+    title: "Prove every decision",
     detail:
-      "Persist verified records locally first, then use controlled sync and evidence-pack flows for broader operational use.",
+      "Attach a signed record to every read, command, measurement, and prediction so later reviews run on evidence instead of reconstruction.",
   },
 ];
 
 const deployOptions = [
-  { title: "Edge Gateway", desc: "ARM or x86 gateway close to the data source for edge-first verification." },
-  { title: "On-Premise Server", desc: "Linux or Windows host inside an operator-controlled environment." },
-  { title: "Containerized Runtime", desc: "Container-based deployment where local operational controls already exist." },
-  { title: "Cloud-Adjacent Instance", desc: "Useful for controlled integrations, demos, and platform-adjacent workflows." },
+  { title: "Industrial Gateway", desc: "Primary target for open-access industrial and EV depot sites with mixed-vendor hardware." },
+  { title: "Reference Site Kit", desc: "Controlled deployment shape for pilot replication and support runbooks." },
+  { title: "On-Prem Linux Host", desc: "Useful when local compute already exists inside a site operations environment." },
+  { title: "Cloud Coordination Plane", desc: "For policy distribution, evidence ingest, and multi-site review after the first site is live." },
 ];
 
 const securityFeatures = [
-  "Ed25519 signing on every event at the edge",
-  "Replay protection with configurable time windows",
-  "Idempotency via event_id deduplication across ingestion",
-  "Policy bundle stage, promote, and rollback control flow",
-  "Hardware-backed signing and key custody (roadmap)",
-  "Structured logs and runtime snapshots for operational review",
+  "Ed25519 signing across every layer that records a meaningful action",
+  "On-device predictions attached to the dispatches they inform",
+  "Replay-aware verification and monotonic bundle checks",
+  "Policy stage, promote, and rollback control flow",
+  "Separate identities across edge, site, and cloud runtimes",
+  "Encrypted runtime state for software-key-provider pilots",
+  "Secure-element upgrade path for later pilot stages",
 ];
 
 export function ProductContent() {
   return (
     <>
       <section className="relative overflow-hidden bg-jb-dark section-lines">
-        <div className="absolute left-[-8rem] top-20 h-[28rem] w-[28rem] bg-white/[0.04] blur-[120px] pointer-events-none" />
+        <div className="pointer-events-none absolute left-[-8rem] top-20 h-[28rem] w-[28rem] bg-white/[0.04] blur-[120px]" />
         <div className="container relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-32 lg:px-8 lg:pb-20 lg:pt-36">
           <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <div>
-              <Eyebrow className="mb-6">Product</Eyebrow>
+              <Eyebrow className="mb-6">Platform</Eyebrow>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-5"
               >
-                <span className="jb-title-gradient">
-                  Bridge Kernel
-                </span>
+                <span className="jb-title-gradient">JouleBridge Platform</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -85,9 +84,10 @@ export function ProductContent() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="jb-section-copy mb-8"
               >
-                Reduce reconciliation from weeks to days. Sign every reading at
-                the edge with Ed25519, chain it into cryptographic proofs, and
-                deliver audit-ready evidence — before disputes start.
+                Bridge Kernel combines an Asset Agent at the edge, a Site Router
+                for local control and on-site forecasting, central coordination
+                surfaces for policy and review, and evidence outputs that explain
+                what happened after the fact.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -96,16 +96,16 @@ export function ProductContent() {
                 className="flex flex-col gap-4 sm:flex-row"
               >
                 <Button href="/docs/get-started/quickstart" variant="primary">
-                  Quick Start
+                  Read the Docs
                 </Button>
-                <Button href="/docs/core-concepts/architecture" variant="white">
-                  Architecture
+                <Button href="/contact" variant="white">
+                  Discuss a Pilot
                 </Button>
               </motion.div>
             </div>
             <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(32,36,40,0.96),rgba(17,19,22,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.3)]">
               <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
-                Proof Lifecycle
+                Evidence Lifecycle
               </div>
               <ProofCycleDiagram />
             </div>
@@ -115,8 +115,8 @@ export function ProductContent() {
 
       <SectionWrapper className="bg-jb-section-alt">
         <TextReveal
-          text="Sign at the source. Prove before it moves. Govern before it persists. That is the Bridge Kernel guarantee."
-          highlightWords={["sign", "prove", "govern", "guarantee."]}
+          text="Keep control local. Keep records attached. Keep central review useful without taking over the site boundary."
+          highlightWords={["local.", "records", "site"]}
           className=""
         />
       </SectionWrapper>
@@ -130,10 +130,8 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          From source telemetry to{" "}
-          <span className="jb-title-gradient">
-            reviewable evidence
-          </span>
+          From site state to{" "}
+          <span className="jb-title-gradient">one signed evidence chain</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -159,7 +157,7 @@ export function ProductContent() {
       </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark">
-        <Eyebrow className="mb-4">Protocol Adapters</Eyebrow>
+        <Eyebrow className="mb-4">Adapter Surface</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,10 +165,8 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          Protocol adapters{" "}
-          <span className="text-jb-text-muted">
-            for every energy source
-          </span>
+          Mixed-vendor inputs{" "}
+          <span className="text-jb-text-muted">normalized into one runtime model</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -194,7 +190,7 @@ export function ProductContent() {
       </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark section-lines">
-        <Eyebrow className="mb-4">Proof System</Eyebrow>
+        <Eyebrow className="mb-4">Evidence Chain</Eyebrow>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -203,9 +199,7 @@ export function ProductContent() {
           className="jb-section-title mb-8 max-w-3xl"
         >
           How Bridge Kernel{" "}
-          <span className="text-jb-text-muted">
-            generates tamper-evident proof
-          </span>
+          <span className="text-jb-text-muted">turns monitoring, control, and forecasting into one signed chain</span>
         </motion.h2>
 
         <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.96),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_75px_rgba(0,0,0,0.26)] md:p-6">
@@ -217,20 +211,20 @@ export function ProductContent() {
             <div className="space-y-6">
               {[
                 {
-                  step: "1. Canonicalize",
-                  desc: "Sort keys, normalize text, and produce a deterministic representation of the event payload.",
+                  step: "1. Observe",
+                  desc: "Read site state, constraints, tariff windows, and incoming intent in a deterministic representation the runtime can act on consistently.",
                 },
                 {
-                  step: "2. Hash",
-                  desc: "Compute a SHA-256 digest so later systems can identify whether the content changed.",
+                  step: "2. Predict",
+                  desc: "Run forecasting and anomaly detection on-site. Model version and inputs stay attached so the prediction can be reviewed alongside the dispatch.",
                 },
                 {
-                  step: "3. Sign",
-                  desc: "Use Ed25519 to attach identity and integrity metadata to the digest.",
+                  step: "3. Control",
+                  desc: "Route intent through local policy and safety checks. Issue commands, collect acknowledgements, and record the measured site response.",
                 },
                 {
-                  step: "4. Envelope",
-                  desc: "Wrap the event, signature, and verification metadata into a proof object that downstream systems can inspect.",
+                  step: "4. Sign",
+                  desc: "Wrap intent, prediction, execution, and measurements into one Ed25519-signed record downstream systems can verify independently.",
                 },
               ].map((item) => (
                 <div key={item.step}>
@@ -247,27 +241,31 @@ export function ProductContent() {
                 <div className="h-2.5 w-2.5 bg-white/10" />
                 <div className="h-2.5 w-2.5 bg-white/6" />
                 <div className="h-2.5 w-2.5 bg-[#D06120]" />
-                <span className="ml-auto font-mono text-[10px] text-jb-text-muted">proof-envelope.json</span>
+                <span className="ml-auto font-mono text-[10px] text-jb-text-muted">execution-proof.json</span>
               </div>
               <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-white/70">{`{
-  "event": {
-    "current_a": 12.4,
-    "power_kw": 3.1,
-    "voltage_v": 230.5
+  "site_id": "plant-07",
+  "asset_id": "feeder-bus-07",
+  "forecast": {
+    "horizon_min": 15,
+    "peak_kw": 612,
+    "model_version": "bk-ml-fcast-0.4.2"
   },
-  "key_id": "site-gw-01",
-  "key_version": 3,
-  "signature_context": "bridge-kernel-v1",
-  "signatures": [
-    {
-      "algorithm": "Ed25519",
-      "value": "b7e2f1c3d8a9..."
-    }
-  ],
+  "dispatch_intent": {
+    "target_kw": 480,
+    "window_s": 900
+  },
+  "command_ack": {
+    "accepted": true,
+    "accepted_at": "2026-04-14T10:15:00Z"
+  },
+  "measurement": {
+    "power_kw": 478.6,
+    "soc_delta_pct": -3.1
+  },
   "proof_metadata": {
     "hash_algorithm": "SHA-256",
-    "digest": "8af3c2b1e9d4f7a2...",
-    "timestamp": "2026-03-07T10:15:00Z",
+    "signature_algorithm": "Ed25519",
     "verified": true
   }
 }`}</pre>
@@ -286,9 +284,7 @@ export function ProductContent() {
           className="jb-section-title mb-8 max-w-3xl"
         >
           Deploy where the{" "}
-          <span className="jb-title-gradient">
-            evidence needs to begin
-          </span>
+          <span className="jb-title-gradient">site boundary needs to hold</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -319,9 +315,7 @@ export function ProductContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-8 max-w-3xl"
         >
-          <span className="jb-title-gradient">
-            Security controls
-          </span>{" "}
+          <span className="jb-title-gradient">Security controls</span>{" "}
           that sit inside the runtime itself
         </motion.h2>
 
@@ -360,19 +354,18 @@ export function ProductContent() {
               <Eyebrow className="mb-4">Operating View</Eyebrow>
               <h2 className="jb-section-title mb-4 max-w-3xl">
                 Built for the teams that have to{" "}
-                <span className="jb-title-gradient">
-                  defend what happened
-                </span>
+                <span className="jb-title-gradient">explain what happened</span>
               </h2>
               <p className="jb-section-copy mb-5">
-                Bridge Kernel is the edge runtime — it signs, verifies, and
-                governs telemetry where the data is born. Cloud control,
-                dashboards, and settlement layers build on top.
+                The Asset Agent and Site Router keep monitoring, control, and
+                on-site forecasting local. Central coordination distributes policy,
+                ingests signed records, and gives operators a clear review surface
+                across deployed sites.
               </p>
               <p className="jb-section-copy">
-                The result: operators, auditors, and counterparties get a
-                cryptographically verifiable record of what happened — not a
-                spreadsheet someone assembled after the fact.
+                The result: operators, counterparties, and regulators get a
+                verifiable record of what the site saw, what it predicted, what it
+                did, and where the outcome diverged.
               </p>
             </div>
             <EnergyEvidenceIllustration />

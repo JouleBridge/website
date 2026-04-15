@@ -13,48 +13,48 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 const benefits = [
   {
-    title: "3 weeks → 3 days reconciliation",
-    text: "Proof-oriented evidence prepared before disputes escalate. Cleaner records, faster settlement.",
+    title: "The link drops. The site keeps running.",
+    text: "Local control stays close to the hardware, so the site can still respond inside safety and policy limits when remote systems are delayed or unavailable.",
     icon: TimerReset,
     iconColor: "text-white",
     glow: "shadow-[0_0_24px_rgba(255,255,255,0.12)]",
     featured: true,
   },
   {
-    title: "Tamper = broken signature",
-    text: "Every reading signed at the edge with Ed25519. If a record is altered, the cryptographic proof breaks visibly.",
+    title: "One operating view across mixed hardware",
+    text: "Meters, inverters, storage, solar, chargers, and flexible loads move through one operating model instead of six disconnected tools.",
     icon: ShieldCheck,
     iconColor: "text-white/60",
     glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
     featured: false,
   },
   {
-    title: "Source-to-settlement lineage",
-    text: "Trace every event from field capture through proof generation to downstream review. No gaps in the chain.",
+    title: "Every important action is reviewable",
+    text: "Commands, measurements, anomaly flags, and exports inherit the same record so teams can review what happened without reconstructing the event.",
     icon: GitBranch,
     iconColor: "text-white/60",
     glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
     featured: false,
   },
   {
-    title: "One evidence format everywhere",
-    text: "DLMS, OCPP, Modbus, IEC 61850 — all normalized into a single verification-oriented format across sites and protocols.",
+    title: "Forecasting helps before the tariff window closes",
+    text: "On-device forecasts and anomaly signals arrive close enough to the site to support real decisions, not just next-day dashboards.",
     icon: BadgeCheck,
     iconColor: "text-[#D06120]",
     glow: "shadow-[0_0_24px_rgba(208,97,32,0.18)]",
     featured: true,
   },
   {
-    title: "Anomalies surface fast",
-    text: "Unexpected edits, policy violations, and abnormal operating behavior become visible before they compound.",
+    title: "Anomalies surface before they become incidents",
+    text: "Theft, drift, thermal issues, and control mismatches can be flagged while there is still time to act at the site boundary.",
     icon: Activity,
     iconColor: "text-white",
     glow: "shadow-[0_0_24px_rgba(255,255,255,0.12)]",
     featured: false,
   },
   {
-    title: "Defensible records for disputes",
-    text: "Customer, operator, and utility teams get a cryptographically verifiable record when settlement disputes appear.",
+    title: "Finance and compliance get audit-ready records",
+    text: "Teams downstream receive a signed operating record they can inspect, share, and export instead of a report assembled after the fact.",
     icon: FileSearch,
     iconColor: "text-white/60",
     glow: "shadow-[0_0_24px_rgba(255,255,255,0.08)]",
@@ -65,8 +65,7 @@ const benefits = [
 export function BenefitsSection() {
   return (
     <section className="relative z-10 bg-jb-section-alt py-20 md:py-24">
-      {/* Top hairline */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
         <Eyebrow className="mb-4">Outcomes</Eyebrow>
@@ -76,13 +75,13 @@ export function BenefitsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="jb-section-title max-w-3xl mb-12"
+          className="jb-section-title mb-12 max-w-3xl"
         >
-          What changes when <span className="text-[#D06120]">evidence</span> is{" "}
-          <span className="text-jb-text-muted">built in, not bolted on</span>
+          What changes when{" "}
+          <span className="text-[#D06120]">local control, mixed-vendor coordination,</span>{" "}
+          <span className="text-jb-text-muted">and review-ready records share one layer</span>
         </motion.h2>
 
-        {/* Bento grid: Row 1 = 2+1, Row 2 = 1+2, Row 3 = 1+1+1 (only 2 items) */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {benefits.map((item, i) => (
             <motion.div
@@ -91,11 +90,11 @@ export function BenefitsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className={`group relative flex flex-col justify-between p-6 transition-colors duration-300 hover:bg-jb-card-hover ${
+              className={`group relative flex min-h-[180px] flex-col justify-between p-6 transition-colors duration-300 hover:bg-jb-card-hover ${
                 item.featured
-                  ? "md:col-span-2 border-l-[3px] border-l-[#D06120] border border-white/8 bg-jb-section-elevated jb-shadow-card-featured"
-                  : "border border-white/6 bg-jb-card jb-shadow-card"
-              } ${item.featured ? "min-h-[200px]" : "min-h-[180px]"}`}
+                  ? "jb-shadow-card-featured border border-white/8 border-l-[3px] border-l-[#D06120] bg-jb-section-elevated md:col-span-2"
+                  : "jb-shadow-card border border-white/6 bg-jb-card"
+              } ${item.featured ? "min-h-[200px]" : ""}`}
             >
               <div>
                 <div

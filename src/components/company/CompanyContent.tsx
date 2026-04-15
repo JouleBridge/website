@@ -8,34 +8,55 @@ import { TextReveal } from "@/components/ui/TextReveal";
 
 const beliefs = [
   {
-    statement: "Settlement should be provable, not presumed",
-    detail: "Every energy transaction deserves cryptographic evidence that both parties can independently verify.",
+    statement: "Local safety beats remote intent",
+    detail:
+      "Control software for physical sites has to stay safe and useful even when the cloud is late, wrong, or offline.",
   },
   {
-    statement: "Trust infrastructure should be invisible",
-    detail: "Verification should be embedded in the data pipeline, not bolted on as an afterthought.",
+    statement: "Evidence is part of operations",
+    detail:
+      "The record has to stay attached to the decision path itself, not reconstructed after the site has already moved on.",
   },
   {
-    statement: "The edge is the source of truth",
-    detail: "Signing and verification must happen where the physical measurement occurs, not in a remote cloud.",
+    statement: "Mixed-vendor sites need neutral software",
+    detail:
+      "As sites add more assets, it becomes riskier to let one vendor boundary define the whole operating model.",
   },
 ];
 
 const milestones = [
-  { date: "Aug 2025", title: "JouleBridge founded", desc: "Company incorporated with a mission to build settlement trust rails for energy." },
-  { date: "Sep 2025", title: "Bridge Kernel v0.1", desc: "Foundation layer complete: config, identity, HAL, CLI framework." },
-  { date: "Nov 2025", title: "Runtime core complete", desc: "Ed25519 proof signing, policy enforcement, local ledger, sync, and observability — the verification pipeline works end to end." },
-  { date: "Jan 2026", title: "Documentation launched", desc: "Searchable technical docs covering architecture, deployment, and integration guides." },
-  { date: "Mar 2026", title: "Product stack organized", desc: "Six product boundaries defined: Edge, Cloud, Console, Certification, Analytics, and Settlement." },
-  { date: "Q2 2026", title: "Protocol hardening", desc: "DLMS, OCPP, Modbus, and IEC 61850 adapters move from tested to production-hardened. IES PoC scoping begins." },
-  { date: "Q3 2026", title: "Pilot program launch", desc: "First operator pilots with full deployment, evidence, and operating workflows. India Energy Stack PoC targeted for July 2026." },
+  {
+    date: "2025",
+    title: "JouleBridge founded",
+    desc: "The company starts with a simple thesis: real energy sites need better local control and better evidence, not another disconnected dashboard.",
+  },
+  {
+    date: "Late 2025",
+    title: "Runtime foundation built",
+    desc: "Identity, configuration, local execution primitives, and operator surfaces are established for the first serious deployment path.",
+  },
+  {
+    date: "Early 2026",
+    title: "Evidence chain working end to end",
+    desc: "Signing, policy, persistence, sync, and observability come together into one operating path.",
+  },
+  {
+    date: "2026",
+    title: "Commercial wedge clarified",
+    desc: "The go-to-market motion narrows around open-access industrial sites and EV depots with mixed hardware and real operating constraints.",
+  },
+  {
+    date: "Now",
+    title: "Pilot deployments and rollout readiness",
+    desc: "The focus is hardening the runtime, proving one production site at a time, and making the rollout motion repeatable.",
+  },
 ];
 
 export function CompanyContent() {
   return (
     <>
       <section className="relative flex min-h-[50vh] items-center overflow-hidden bg-jb-dark section-lines">
-        <div className="pointer-events-none absolute top-1/2 right-1/4 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-white opacity-[0.03] blur-[120px]" />
+        <div className="pointer-events-none absolute right-1/4 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-white opacity-[0.03] blur-[120px]" />
         <div className="container relative z-10 mx-auto max-w-7xl px-6 pt-24 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
             <div>
@@ -46,11 +67,8 @@ export function CompanyContent() {
                 transition={{ duration: 0.8 }}
                 className="jb-section-title mb-5 max-w-3xl"
               >
-                Building the{" "}
-                <span className="jb-title-gradient">
-                  trust layer
-                </span>{" "}
-                for energy
+                JouleBridge builds software for{" "}
+                <span className="jb-title-gradient">high-stakes energy operations</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -58,9 +76,10 @@ export function CompanyContent() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="jb-section-copy max-w-2xl"
               >
-                JouleBridge is building verification-oriented infrastructure for the
-                energy workflows where weak records create operational, financial, and
-                compliance risk.
+                We are building Bridge Kernel, an on-site runtime for distributed
+                energy systems. The focus is straightforward: help real sites run
+                mixed hardware safely, respond locally, and keep audit-ready records
+                of important actions.
               </motion.p>
             </div>
             <div className="grid gap-4">
@@ -69,9 +88,9 @@ export function CompanyContent() {
                   Company Focus
                 </div>
                 <div className="grid grid-cols-3 gap-3">
-                  <CompanyStat value="01" label="Trust layer" />
-                  <CompanyStat value="02" label="Edge-first proof" />
-                  <CompanyStat value="03" label="Pilot-driven rollout" />
+                  <CompanyStat value="2025" label="Founded in India" />
+                  <CompanyStat value="Pilot" label="Current stage" />
+                  <CompanyStat value="Mixed" label="Hardware reality" />
                 </div>
               </div>
               <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,29,33,0.92),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
@@ -81,15 +100,15 @@ export function CompanyContent() {
                 <div className="space-y-3">
                   <CompanySignal
                     title="Runtime hardening"
-                    text="Move Bridge Kernel from baseline capability toward production protocol readiness."
+                    text="Turn the edge and site runtimes into a repeatable, supportable deployment path."
                   />
                   <CompanySignal
-                    title="Pilot execution"
-                    text="Turn evidence, deployment, and operating workflows into repeatable customer programs."
+                    title="Production pilots"
+                    text="Prove local control, mixed-vendor integration, and audit-ready records on one real site at a time."
                   />
                   <CompanySignal
-                    title="Platform expansion"
-                    text="Layer cloud control, console, certification, analytics, and settlement surfaces above the runtime."
+                    title="Repeatable rollout"
+                    text="Build the install motion, evidence outputs, and support runbooks required for multi-site expansion."
                   />
                 </div>
               </div>
@@ -100,8 +119,8 @@ export function CompanyContent() {
 
       <SectionWrapper className="bg-jb-section-alt">
         <TextReveal
-          text="India is deploying 250 million smart meters. The $15 billion settlement gap will not close without cryptographic proof at the edge."
-          highlightWords={["250", "million", "$15", "billion", "cryptographic", "proof"]}
+          text="The hard part is not collecting more telemetry. The hard part is operating one real site locally and explaining what happened later."
+          highlightWords={["real", "locally", "later."]}
           className=""
         />
       </SectionWrapper>
@@ -117,20 +136,21 @@ export function CompanyContent() {
             className="space-y-6 text-lg leading-relaxed text-jb-white/70"
           >
             <p>
-              India&apos;s energy system is becoming more digital, more distributed, and
-              more transaction-heavy. Open access, DERs, batteries, EV charging, and
-              new operating models all increase the number of places where weak records
-              can create real commercial friction.
+              Distributed energy stopped being a single-device problem years ago.
+              Serious sites now run meters, inverters, storage, solar, chargers,
+              and flexible loads from multiple vendors under real tariff and
+              operating constraints.
             </p>
             <p>
-              But the operational record is still often fragmented. Reconciliation is
-              manual, dispute handling is slow, and too many workflows depend on logs
-              and spreadsheets that are difficult to verify independently.
+              Most software still treats that as a reporting problem or a cloud API
+              problem. The real problem is harder: the site has to make safe
+              decisions locally, and someone has to explain those decisions later
+              with records that actually hold up.
             </p>
             <p className="font-medium text-white">
-              JouleBridge exists to improve that record. The goal is not just more data,
-              but better evidence: deterministic capture, proof generation, policy-gated
-              persistence, and clearer handoffs into operational and commercial systems.
+              JouleBridge exists to make that operating model legible. Local
+              control, on-site intelligence, and audit-ready evidence belong in one
+              runtime.
             </p>
           </motion.div>
         </div>
@@ -142,16 +162,14 @@ export function CompanyContent() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {beliefs.map((belief, i) => (
               <motion.div
-                key={i}
+                key={belief.statement}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.94),rgba(16,18,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
               >
-                <h3 className="mb-3 text-xl font-semibold text-white">
-                  {belief.statement}
-                </h3>
+                <h3 className="mb-3 text-xl font-semibold text-white">{belief.statement}</h3>
                 <p className="leading-relaxed text-jb-white/58">{belief.detail}</p>
               </motion.div>
             ))}
@@ -168,11 +186,8 @@ export function CompanyContent() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-3xl font-semibold tracking-tight text-white"
         >
-          Building the{" "}
-          <span className="jb-title-gradient">
-            first version
-          </span>{" "}
-          of JouleBridge
+          Building the runtime{" "}
+          <span className="jb-title-gradient">real sites can trust</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -191,11 +206,10 @@ export function CompanyContent() {
               Founder & CEO
             </p>
             <p className="text-sm leading-relaxed text-jb-white/60">
-              India loses $15B annually to AT&C losses — not because of theft alone, but
-              because the evidence trail between meters and settlement is broken. Tarun
-              founded JouleBridge to fix the infrastructure gap: sign every reading at
-              the edge, chain it into cryptographic proof, and give operators records
-              they can actually defend.
+              Tarun founded JouleBridge after working on industrial and
+              controls-adjacent systems. The company started from an operations
+              problem: energy sites need better local control and better evidence,
+              not another disconnected dashboard.
             </p>
           </motion.div>
 
@@ -211,12 +225,13 @@ export function CompanyContent() {
                 <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             </div>
-            <h3 className="mb-2 text-lg font-semibold text-white">Join the team</h3>
+            <h3 className="mb-2 text-lg font-semibold text-white">Current stage</h3>
             <p className="mb-4 text-sm text-jb-white/50">
-              We&apos;re looking for engineers who want to build high-trust infrastructure.
+              JouleBridge is focused on design partners, pilot deployments, and the
+              support model required for repeatable rollout.
             </p>
             <Button href="/contact" variant="secondary" className="text-sm">
-              Get in Touch
+              Scope a Pilot
             </Button>
           </motion.div>
         </div>
@@ -231,10 +246,8 @@ export function CompanyContent() {
           transition={{ duration: 0.6 }}
           className="jb-section-title mb-16 max-w-3xl"
         >
-          Our{" "}
-          <span className="jb-title-gradient">
-            journey so far
-          </span>
+          What we are{" "}
+          <span className="jb-title-gradient">building now</span>
         </motion.h2>
 
         <div className="relative">
@@ -243,7 +256,7 @@ export function CompanyContent() {
           <div className="space-y-10">
             {milestones.map((milestone, i) => (
               <motion.div
-                key={i}
+                key={milestone.title}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -271,18 +284,16 @@ export function CompanyContent() {
       <SectionWrapper className="bg-jb-dark">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="jb-section-title mb-6">
-            Interested in{" "}
-            <span className="jb-title-gradient">
-              our mission
-            </span>
+            Need to{" "}
+            <span className="jb-title-gradient">pressure-test a real site problem</span>
             ?
           </h2>
           <p className="mb-8 text-jb-text-muted">
-            Whether you want to run a pilot, join the team, or learn more about what
-            we&apos;re building, we&apos;d love to hear from you.
+            If you are evaluating a pilot, a mixed-vendor integration path, or an
+            evidence requirement for a live site, we should talk.
           </p>
           <Button href="/contact" variant="primary">
-            Get in Touch
+            Scope a Pilot
           </Button>
         </div>
       </SectionWrapper>

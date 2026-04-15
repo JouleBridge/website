@@ -1,23 +1,33 @@
 ---
-title: Getting Started
-description: Everything you need to start using Bridge Kernel — from first install to your first signed ledger event.
+title: Get Started
+description: Start using the JouleBridge runtime on a real site deployment path.
 ---
 
-# Getting Started
+# Get Started
 
-Bridge Kernel is a deterministic, tamper-evident event ledger runtime for energy settlement. These guides take you from zero to a running node with signed, policy-gated events in your local ledger.
+These guides focus on the first serious deployment motion for JouleBridge: bring the runtime onto a real site, validate the local control path, and confirm that the proof chain is useful after the site acts.
 
-## What you'll need
+## What you are starting
 
-- **Rust toolchain** — `rustup` and `cargo` (stable channel)
-- **Git** — to clone the Bridge Kernel repository
-- **~10 minutes** — for build, configure, and first run
+You are not starting a generic SaaS product.
 
-## Guides
+You are starting a local-first control and proof stack:
 
-- **[Quick Start](/docs/get-started/quickstart)** — Clone, build, and run your first signed ledger event in minutes.
-- **[Beginner Guide](/docs/get-started/beginner-guide)** — A slower walkthrough that explains each step and what's happening under the hood.
+- Asset Agent near the equipment
+- Site Router for local coordination
+- Portfolio Orchestrator for policy and proof ingest when needed
 
-## Next steps
+## Recommended order
 
-Once you have a running node, explore the [Core Concepts](/docs/core-concepts) to understand the architecture, proof system, and policy engine that power Bridge Kernel.
+1. Read the [Beginner Guide](/docs/get-started/beginner-guide).
+2. Follow the [Quick Start](/docs/get-started/quickstart).
+3. Review the [Architecture](/docs/core-concepts/architecture) and [Security](/docs/operations/security) pages before pilot deployment.
+
+## What success looks like
+
+A successful first setup means:
+
+- the runtime is deployed on the intended site hardware path
+- at least one real asset interface is connected
+- the local runtime can seal a signed proof record
+- the deployment can be repeated without guesswork

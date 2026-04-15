@@ -1,107 +1,14 @@
 ---
 title: Troubleshooting
-description: Common issues, diagnostic commands, and resolution steps for Bridge Kernel.
+description: Troubleshooting guidance for site runtime, proof export, and deployment issues.
 ---
 
 # Troubleshooting
 
-Common issues you may encounter when running Bridge Kernel, with diagnostic steps and resolutions.
+When a deployment fails, start with three questions:
 
-## Diagnostic commands
+1. Did the site runtime observe the expected state?
+2. Did local coordination reject or accept the action?
+3. Did the proof path seal and export the resulting record?
 
-Run these first to understand the current state:
-
-```bash
-# Check runtime health and status
-bridge-node ctl status --config bridge.yaml
-
-# View current metrics
-bridge-node ctl metrics --config bridge.yaml
-
-# Check ledger state
-bridge-node ctl ledger --config bridge.yaml
-
-# List unsynced events
-bridge-node ctl ledger --unsynced --limit 20 --config bridge.yaml
-```
-
-## Common issues
-
-### High replay rejection rate
-
-**Symptoms:** `ingest_rejected_replay` counter increasing rapidly.
-
-**Causes:**
-- Source device clock drift exceeding `allowed_future_skew_seconds`
-- Network delays causing events to arrive outside the replay window
-- Timestamp parsing errors in adapter normalization
-
-**Resolution:**
-1. Check source device clock synchronization (NTP).
-2. Increase `replay_window_seconds` if transport delays are expected.
-3. Inspect adapter timestamp parsing — ensure UTC normalization.
-
-### Policy denial spikes after promotion
-
-**Symptoms:** `ingest_rejected_policy` spikes after a policy bundle promotion.
-
-**Resolution:**
-1. Diff the new policy bundle against the previous active bundle.
-2. Check if new rules inadvertently deny expected event types or sources.
-3. Rollback if critical events are being blocked:
-   ```bash
-   bridge-node ctl supervisor-rollback --config bridge.yaml
-   ```
-
-### Ledger not growing
-
-**Symptoms:** `bridge-node ctl ledger` shows event count unchanged.
-
-**Causes:**
-- All events rejected by replay or policy checks
-- Adapter not producing events (disabled or misconfigured)
-- Ledger database path is read-only
-
-**Resolution:**
-1. Check metrics for `ingest_attempted` — if zero, the adapter isn't running.
-2. Check `ingest_rejected_replay` and `ingest_rejected_policy` counts.
-3. Verify `BRIDGE_LEDGER_PATH` or `store.ledger_path` is writable.
-
-### Peer sync lag
-
-**Symptoms:** `sync_published` and `sync_received` imbalanced, watermark staleness.
-
-**Resolution:**
-1. Verify inbound/outbound directory paths are correctly mounted.
-2. Check file permissions on peer sync directories.
-3. Inspect stuck files in inbound directory — move to quarantine for manual review.
-4. Verify peer node is running and healthy.
-
-### Runtime status: degraded
-
-**Symptoms:** `bridge-node ctl status` shows `degraded` with reasons.
-
-**Degradation reasons and fixes:**
-
-| Reason | Fix |
-|--------|-----|
-| `queue_depth_high` | Check adapter throughput and storage latency. Reduce adapter poll frequency or increase processing capacity. |
-| `policy_denies_detected` | Review active policy bundle. Check if legitimate events match deny rules. |
-| `replay_rejections_detected` | Check source clocks and replay window settings. |
-
-### Key rotation issues
-
-**Symptoms:** Signature verification failures after key rotation.
-
-**Resolution:**
-1. Verify `key_id` and `key_version` in ProofEnvelopes match the current keystore.
-2. Ensure peers have received updated key metadata.
-3. Old signatures remain valid — they carry their own `key_version` for audit.
-
-## Getting help
-
-If these steps don't resolve your issue:
-
-- Check the [FAQ](/docs/reference/faq)
-- Email support: hello@joulebridge.com
-- Include `bridge-node ctl status` and `bridge-node ctl metrics` output in your report.
+Troubleshooting should preserve evidence instead of wiping it away.

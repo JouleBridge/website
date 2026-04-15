@@ -4,7 +4,8 @@ import { ContactContent } from "@/components/contact/ContactContent";
 
 export const metadata = {
   title: "Contact | JouleBridge",
-  description: "Contact JouleBridge for pilots, deployment, enterprise onboarding, and partnership.",
+  description:
+    "Contact JouleBridge about industrial-site pilots, EV depot pilots, mixed-vendor integration reviews, and technical evaluations.",
 };
 
 export default function ContactPage() {

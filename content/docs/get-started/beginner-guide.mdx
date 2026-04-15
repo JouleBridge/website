@@ -1,49 +1,48 @@
 ---
 title: Beginner Guide
-description: Beginner-friendly explanation of how Bridge Kernel works.
+description: A plain-language explanation of how the JouleBridge runtime works.
 ---
 
-# Bridge Kernel for Beginners
+# Beginner Guide
 
-If this is your first time working with the system, start here.
+## The simple version
 
-## What is Bridge Kernel?
+JouleBridge helps a site do three things:
 
-Bridge Kernel is a verification layer for energy events.
+1. understand what assets and limits exist right now
+2. make local decisions safely
+3. leave behind a signed record of what happened
 
-When an event arrives (meter read, charger session update, telemetry payload), Bridge Kernel:
+## Why that matters
 
-1. Validates timing and replay window.
-2. Signs the event with cryptographic identity.
-3. Applies allow/deny policy rules.
-4. Stores allowed records in a tamper-evident ledger.
-5. Synchronizes valid proofs with peers.
-6. Emits metrics and health signals.
+Distributed energy sites are hard to operate because chargers, batteries, solar, meters, and local constraints do not arrive as one clean system.
 
-## Module map (simple)
+Even when a cloud tool exists, the site still needs a local runtime that can:
 
-1. **`config`**: system settings and limits.
-2. **`identity`**: key lifecycle and DID identity.
-3. **`hal`**: software vs TPM signing provider.
-4. **`proof`**: canonicalize, hash, sign, verify.
-5. **`sense`**: collect and normalize adapter events.
-6. **`runtime`**: orchestrate checks and persistence.
-7. **`store`**: append-only ledger + sync state.
-8. **`p2p`**: peer event exchange.
-9. **`policy`**: allow/deny enforcement before storage.
-10. **`supervisor`**: signed policy stage/promote/rollback.
-11. **`observability`**: metrics, logs, degraded reasons.
+- keep operating if connectivity degrades
+- respect site-specific limits
+- explain actions later to operators, support, finance, or counterparties
 
-## Event journey
+## The runtime split
 
-`input -> replay check -> proof -> policy -> store -> sync -> observability`
+### Asset Agent
 
-## Memory shortcut
+Runs near the equipment and the local interfaces.
 
-- `sense` gets events
-- `proof` secures events
-- `policy` filters events
-- `store` saves events
-- `p2p` shares events
-- `observability` monitors health
-- `supervisor` controls safe policy rollout
+### Site Router
+
+Turns policy, constraints, and intent into feasible local actions.
+
+### Portfolio Orchestrator
+
+Distributes policy, receives proofs, and helps operators understand many sites at once.
+
+### Console
+
+Exposes the operator and support view.
+
+## The first commercial wedge
+
+The first place this matters commercially is EV fleet depots. That product surface is called DepotOS.
+
+The broader platform story stays the same, but the first repeatable deployment path starts there.

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export function IsometricPipeline() {
   const layers = [
-    { label: "INGEST", sublabel: "Protocol Adapters", color: "#FFFFFF", y: 0 },
-    { label: "PROVE", sublabel: "Cryptographic Signing", color: "#D06120", y: 1 },
-    { label: "GATE", sublabel: "Policy Engine", color: "#FFFFFF", y: 2 },
-    { label: "SETTLE", sublabel: "Immutable Ledger", color: "#FFFFFF", y: 3 },
+    { label: "OBSERVE", sublabel: "Asset Agent", color: "#FFFFFF", y: 0 },
+    { label: "ROUTE", sublabel: "Site Router", color: "#D06120", y: 1 },
+    { label: "PROVE", sublabel: "Proof Chain", color: "#FFFFFF", y: 2 },
+    { label: "REVIEW", sublabel: "Cloud Review", color: "#FFFFFF", y: 3 },
   ];
 
   return (

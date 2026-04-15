@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
   title: "Videos | JouleBridge",
-  description: "Product demos, technical walkthroughs, and deployment guides from JouleBridge.",
+  description: "Product demos, technical walkthroughs, and deployment guides for Bridge Kernel — the runtime for distributed energy.",
 };
 
 export default function VideoPage() {
@@ -16,11 +16,11 @@ export default function VideoPage() {
       <main className="min-h-screen pt-28 pb-16 bg-jb-dark section-lines">
         <div className="container mx-auto max-w-7xl px-6 lg:px-8">
           <Eyebrow className="mb-6">Videos</Eyebrow>
-          <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">
             Video Library
           </h1>
           <p className="text-lg text-jb-text-muted max-w-xl mb-10">
-            Product demos, technical walkthroughs, and deployment guides.
+            Runtime demos, proof-chain walkthroughs, and deployment guides.
           </p>
 
           <div className="border border-dashed border-jb-mid-gray/50 bg-jb-card/20 p-16 text-center">
@@ -33,8 +33,7 @@ export default function VideoPage() {
               Video content coming soon
             </h2>
             <p className="text-jb-text-muted mb-8 max-w-md mx-auto">
-              Subscribe to our YouTube channel for product demos, deployment walkthroughs,
-              and technical deep dives.
+              Subscribe for Bridge Kernel demos, on-device ML walkthroughs, and mixed-vendor site deployment explainers.
             </p>
             <Button href={siteConfig.social.youtube} variant="primary" external>
               Subscribe on YouTube

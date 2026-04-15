@@ -1,15 +1,17 @@
 ---
 title: Configuration
-description: Configure Bridge Kernel — general settings, adapter connections, policy rules, and runtime environment.
+description: Configure the JouleBridge runtime for real site deployments.
 ---
 
 # Configuration
 
-Bridge Kernel uses a single YAML configuration file (`bridge.yaml`) as the primary source of truth, with environment variable overrides for deployment flexibility.
+Configuration exists to make the site runtime predictable, repeatable, and safe to operate.
 
-## Guides
+The main areas are:
 
-- **[General Configuration](/docs/configuration/general)** — Core settings: node identity, signing keys, ledger paths, rate limits, and replay windows.
-- **[Adapter Setup](/docs/configuration/adapter-setup)** — Connect to devices and data sources: Modbus registers, OCPP endpoints, SunSpec devices, and webhook URLs.
-- **[Policy Rules](/docs/configuration/policy-rules)** — Write allow/deny rules, sign policy bundles with HMAC, and manage the stage/promote/rollback lifecycle.
-- **[Environment](/docs/configuration/environment)** — Environment variables, runtime flags, and profile-based configuration for dev/staging/production.
+- site identity
+- adapter definitions
+- policy bundles
+- environment overlays
+
+Read the linked pages before running a pilot deployment.

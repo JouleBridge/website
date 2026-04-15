@@ -14,12 +14,12 @@ export default function NotFound() {
               <div className="w-2.5 h-2.5 rounded-full bg-white/12" />
               <div className="w-2.5 h-2.5 rounded-full bg-jb-accent" />
               <span className="ml-auto font-mono text-[10px] text-jb-text-muted">
-                bridge-kernel
+                joulebridge
               </span>
             </div>
             <div className="p-6 font-mono text-sm space-y-2">
               <div className="text-jb-text-muted">
-                {"> "}bridge-kernel route --resolve
+                {"> "}jb route --resolve
               </div>
               <div className="text-white/60">
                 {"  "}ERROR 404: route not found
@@ -31,10 +31,13 @@ export default function NotFound() {
                 {"    "}/{"         "}home
               </div>
               <div className="text-[#D06120]/70">
-                {"    "}/product{"  "}bridge kernel
+                {"    "}/product{"  "}platform
               </div>
               <div className="text-[#D06120]/70">
-                {"    "}/pricing{"  "}plans
+                {"    "}/solutions{"  "}applications
+              </div>
+              <div className="text-[#D06120]/70">
+                {"    "}/pricing{"  "}pilot model
               </div>
               <div className="text-[#D06120]/70">
                 {"    "}/docs{"     "}documentation

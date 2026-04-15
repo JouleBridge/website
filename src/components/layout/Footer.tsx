@@ -55,12 +55,13 @@ export function Footer() {
               <Logo className="text-2xl" />
             </Link>
             <p className="mt-6 text-sm leading-relaxed text-jb-white/65">
-              JouleBridge builds verification-oriented infrastructure for the energy
-              workflows where audit quality, reconciliation speed, and operational trust
-              matter.
+              JouleBridge builds Bridge Kernel, an on-site runtime for distributed
+              energy operations. Coordinate mixed-vendor assets locally, keep
+              control at the site boundary, and produce audit-ready records for
+              dispatch and review.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
-              {["Bridge Kernel", "Evidence Packs", "Pilot Workflows", "Operator Review"].map((item) => (
+              {["Asset Agent", "Site Router", "Local Control", "Audit-Ready Records"].map((item) => (
                 <span
                   key={item}
                   className="border border-jb-mid-gray/70 bg-jb-card/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-jb-white/55 sm:text-[11px] sm:tracking-[0.18em]"
@@ -73,7 +74,7 @@ export function Footer() {
 
           {/* Links */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-            <FooterColumn title="Product" links={siteConfig.footer.product} />
+            <FooterColumn title="Platform" links={siteConfig.footer.product} />
             <FooterColumn title="Resources" links={siteConfig.footer.resources} />
             <FooterColumn title="Company" links={siteConfig.footer.company} />
           </div>

@@ -19,22 +19,22 @@ interface Packet {
 
 const STAGES = [
   {
-    id: "capture",
-    label: "CAPTURE",
-    sub: "Raw Telemetry",
-    desc: "Edge / File / Webhook",
+    id: "observe",
+    label: "OBSERVE",
+    sub: "Site Signals",
+    desc: "Asset Agent",
+  },
+  {
+    id: "route",
+    label: "ROUTE",
+    sub: "Feasible Intent",
+    desc: "Site Router",
   },
   {
     id: "prove",
     label: "PROVE",
-    sub: "Canonical Proof",
-    desc: "SHA-256 + Ed25519",
-  },
-  {
-    id: "govern",
-    label: "GOVERN",
-    sub: "Audit Ledger",
-    desc: "Review Ready",
+    sub: "Verified Record",
+    desc: "Proof Chain",
   },
 ] as const;
 
@@ -87,7 +87,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
     }),
   };
 
-  // Track path entrance progress (0→1) per connector segment
+  // Track path entrance progress (0 to 1) per connector segment
   const seg0 = useMotionValue(0);
   const seg1 = useMotionValue(0);
 
@@ -181,9 +181,9 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
 
   const renderedPackets = isInView ? packets : [];
 
-  // Map packet progress (0–1) to SVG x position along the three-segment track:
-  //   0–0.5  → stage 0 centre to stage 1 centre
-  //   0.5–1  → stage 1 centre to stage 2 centre
+  // Map packet progress (0 to 1) to SVG x position along the three-segment track:
+  //   0-0.5  from stage 0 centre to stage 1 centre
+  //   0.5-1  from stage 1 centre to stage 2 centre
   function packetX(progress: number): number {
     if (progress <= 0.5) {
       return lerp(STAGE_X[0], STAGE_X[1], progress / 0.5);
@@ -243,7 +243,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
           viewBox="0 0 720 216"
           width="100%"
           className="overflow-visible"
-          aria-label="Data flow: Capture → Prove → Govern"
+          aria-label="Data flow: Observe, Route, Prove"
         >
           {/* ── Connector tracks ── */}
           {/* Background static track lines */}
@@ -468,7 +468,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
       {/* Footer row */}
       <div className="relative z-10 flex items-center justify-between border-t border-white/8 px-5 py-2">
         <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">
-          joulebridge proof pipeline
+          joulebridge runtime flow
         </span>
         <span className="font-mono text-[9px] tracking-[0.15em] text-white/25">
           v2

@@ -1,123 +1,21 @@
 ---
-title: Introducing Bridge Kernel 2.0
-description: Bridge Kernel 2.0 ships with full observability, policy supervisor lifecycle, and P2P ledger sync. Here's what's new and why it matters for production deployments.
+title: Hardening the JouleBridge runtime for real deployments
+description: A summary of the runtime hardening work required before the first repeatable pilot motion.
 category: Product
 date: "2026-03-01"
-readTime: 5 min
+readTime: 4 min
 author: Tarun Trilokesh
 ---
 
-# Introducing Bridge Kernel 2.0
+# Hardening the JouleBridge runtime for real deployments
 
-Bridge Kernel 2.0 is the production-ready release of our tamper-evident event ledger runtime. This release completes the seven-phase development plan with 26 passing tests across all modules.
+The important milestone is not a version number. It is whether the runtime can survive a real site deployment and still leave behind a clear proof path.
 
-Here's what's new and why each capability matters for real-world energy settlement.
+The hardening work has focused on:
 
-## Full observability stack
+- observability
+- policy lifecycle
+- proof handling
+- deployment repeatability
 
-Production systems need visibility. Bridge Kernel 2.0 introduces a comprehensive observability layer:
-
-**RuntimeMetricsSnapshot** tracks every important counter:
-- `ingest_attempted` / `ingest_accepted` — throughput and acceptance rate
-- `ingest_rejected_replay` / `ingest_rejected_policy` — rejection reasons
-- `sync_published` / `sync_received` — peer sync health
-- `queue_peak` — backpressure monitoring
-
-**RuntimeHealthSnapshot** provides real-time status with degradation reasons:
-```
-Kernel Status:
-  Node ID: bridge-prod-site-a
-  Environment: production
-  Status: degraded
-  Reasons: [queue_depth_high, replay_rejections_detected]
-```
-
-When something goes wrong, you know immediately — and you know why.
-
-**Structured event logs** in JSONL format integrate with any log aggregation system. Every signing operation, policy decision, and sync event is recorded with precise timestamps.
-
-## Policy supervisor lifecycle
-
-Policy changes in production are risky. A misconfigured deny rule can block legitimate meter readings. An overly permissive allow rule can let bad data into the ledger.
-
-Bridge Kernel 2.0 introduces a supervised policy lifecycle:
-
-1. **Sign** — Policy bundles are HMAC-SHA256 signed. Unsigned policies are rejected.
-2. **Stage** — New bundles are validated and placed in staging. They don't affect production traffic.
-3. **Promote** — Staged bundles are promoted to active. The previous bundle is archived.
-4. **Rollback** — If something goes wrong, restore the last known good bundle instantly.
-
-```bash
-# Sign the bundle
-bridge-node ctl policy-sign --bundle-file policy.bundle.json
-
-# Stage it
-bridge-node ctl supervisor-stage --bundle-file policy.bundle.json --signature-hex 5e26f3...
-
-# Promote when ready
-bridge-node ctl supervisor-promote --staged-path policy/staged/policy-172714.bundle.json
-
-# Rollback if needed
-bridge-node ctl supervisor-rollback
-```
-
-This is the same stage/promote/rollback pattern used in database migrations and feature flag systems. Applied to policy, it means you never lose the ability to undo a change.
-
-## P2P ledger sync
-
-Bridge Kernel nodes can now synchronize signed events with peer nodes using a file-based protocol:
-
-- **Publish** unsynced events to peer inbound directories
-- **Receive** and verify incoming events from peers
-- **Track** watermarks for resumable, incremental sync
-- **Verify** every received event before appending to local ledger
-
-The protocol is transport-agnostic. Sync files can move over local networks, mounted shares, or even USB drives for air-gapped environments. What matters is that every event is independently verified at the receiving end.
-
-## What else shipped
-
-**Replay protection** with configurable windows (default 10 minutes) and allowed future skew. Events outside the window are rejected before signing.
-
-**Idempotency** via `event_id` deduplication. Duplicate events from adapter retries are silently dropped.
-
-**HAL abstraction** separates signing logic from key storage. Software keys for development, TPM-backed keys for production. Same proof pipeline, different trust anchors.
-
-**CLI completeness** — every operation is accessible through `bridge-node ctl`:
-- `status`, `keys`, `ingest`, `run-once`
-- `ledger`, `sync`, `metrics`
-- `policy-sign`, `supervisor-stage`, `supervisor-promote`, `supervisor-rollback`
-
-## Test coverage
-
-26 tests pass across all modules:
-
-- Config validation and environment enforcement
-- Key generation, rotation, and DID identity
-- Canonical JSON construction and deterministic hashing
-- Ed25519 signing and verification
-- Policy evaluation and default action fallback
-- Ledger append and query operations
-- Sync batch creation and receipt verification
-- Observability metric accumulation
-- Supervisor stage, promote, and rollback workflows
-
-## What's next
-
-Bridge Kernel 2.0 is the foundation. Coming in Q2-Q3 2026:
-
-- **Cloud control plane** — centralized management for distributed Bridge Kernel deployments
-- **Authenticated P2P transport** — mutual TLS for peer communication
-- **Hardware gateway prototype** — purpose-built ARM gateway with integrated Bridge Kernel
-- **Additional protocol adapters** — native Modbus, SunSpec, and OCPP implementations
-
-## Get started
-
-Bridge Kernel 2.0 is available now:
-
-- [Quick Start guide](/docs/get-started/quickstart) — running in minutes
-- [Architecture overview](/docs/core-concepts/architecture) — understand the design
-- [Request a pilot](/contact) — free 12-week pilot program
-
----
-
-*Bridge Kernel 2.0 represents seven phases of development focused on one goal: making energy settlement provable. Every meter read verified. Every transaction signed. Every dispute resolved before it starts.*
+That is the baseline for a credible pilot motion.

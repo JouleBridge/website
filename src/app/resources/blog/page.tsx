@@ -7,7 +7,7 @@ import { blog } from "@/lib/source";
 
 export const metadata = {
   title: "Blog | JouleBridge",
-  description: "Engineering, product, and industry insights from the JouleBridge team.",
+  description: "Engineering, product, and deployment perspectives from the JouleBridge team.",
 };
 
 const categoryColors: Record<string, string> = {
@@ -35,11 +35,11 @@ export default function BlogPage() {
       <main className="min-h-screen pt-28 pb-16 bg-jb-dark section-lines">
         <div className="container mx-auto max-w-7xl px-6 lg:px-8">
           <Eyebrow className="mb-6">Blog</Eyebrow>
-          <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">
             Insights
           </h1>
           <p className="text-lg text-jb-text-muted max-w-xl mb-10">
-            Engineering, product, and industry perspectives on energy settlement verification.
+            Engineering, product, and field perspectives on the runtime for distributed energy.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

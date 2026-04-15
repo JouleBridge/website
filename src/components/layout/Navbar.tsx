@@ -119,17 +119,17 @@ export function Navbar() {
 
         <div className="hidden flex-1 justify-center lg:flex">
           <div className="flex items-center gap-8 xl:gap-10">
-            <Link href="/product" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Product</Link>
-            <DesktopDropdown label="Solutions" items={siteConfig.nav.solutions} />
+            <Link href="/product" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Platform</Link>
+            <DesktopDropdown label="Applications" items={siteConfig.nav.solutions} />
             <Link href="/docs" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Docs</Link>
-            <Link href="/pricing" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Pricing</Link>
+            <Link href="/pricing" className="border-b border-transparent px-1 py-6 text-[11px] font-medium uppercase tracking-[0.18em] text-jb-white/72 transition-colors hover:border-white/16 hover:text-white">Pilot Program</Link>
             <DesktopDropdown label="Company" items={siteConfig.nav.company} />
             <DesktopDropdown label="Resources" items={siteConfig.nav.resources} />
           </div>
         </div>
 
         <div className="hidden shrink-0 lg:block">
-          <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">Start a Pilot</Button>
+          <Button href="/contact" variant="tertiary" className="px-5 text-[11px] tracking-[0.18em]">Scope a Pilot</Button>
         </div>
 
         <button
@@ -193,7 +193,7 @@ export function Navbar() {
             ))}
           </div>
           <div className="pt-5">
-            <Button href="/contact" variant="primary" className="w-full">Start a Pilot</Button>
+            <Button href="/contact" variant="primary" className="w-full">Scope a Pilot</Button>
           </div>
         </div>
       )}

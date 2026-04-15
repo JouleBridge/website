@@ -11,62 +11,62 @@ import { TextReveal } from "@/components/ui/TextReveal";
 const solutions = [
   {
     id: "energy-settlement",
-    eyebrow: "Solution 01",
-    title: "C&I Energy Settlement",
-    color: "bg-white/10",
-    accentBorder: "border-white/12",
+    eyebrow: "Application 01",
+    title: "Open-access industrial sites",
+    color: "bg-jb-accent",
+    accentBorder: "border-[#D06120]/24",
     problem:
-      "India's open-access C&I buyers juggle multi-DISCOM billing, complex tariff structures, and multiple counterparties across sites. Reconciliation takes weeks and $15B in AT&C losses pile up annually because the evidence trail is weak.",
+      "Factories, process plants, and data centers buying power on open access face tariff windows that close in minutes, reconciliation that takes weeks, and on-site storage, solar, and flexible loads that rarely talk to each other.",
     solution:
-      "Bridge Kernel signs every meter reading at the edge, normalizes across DLMS and Modbus protocols, and delivers audit-ready evidence packs — cutting reconciliation from weeks to days.",
+      "Bridge Kernel runs monitoring, forecast-aware dispatch, and anomaly detection locally at the site boundary. Every read, command, measurement, and prediction is attached to one evidence chain that operations, finance, and compliance can review.",
     capabilities: [
-      "Edge-signed deterministic event records",
-      "Multi-DISCOM billing reconciliation",
-      "Indian tariff complexity handled natively",
-      "Proof-oriented handoff between field and finance teams",
-      "IES (India Energy Stack) alignment — PoC July 2026",
+      "Local coordination across storage, solar, loads, and metering",
+      "Forecast-aware dispatch for tariff windows and peak shaving",
+      "On-device anomaly detection on meters, inverters, and batteries",
+      "Audit-ready records for reconciliation and review",
+      "Repeatable rollout once the first site is live",
     ],
-    outcome: "Cut reconciliation time from 3 weeks to 3 days with cryptographically verifiable settlement records.",
+    outcome: "Best fit today for tariff-sensitive industrial sites with mixed hardware.",
     docsLink: "/docs/examples/energy-settlement",
   },
   {
     id: "ev-charging",
-    eyebrow: "Solution 02",
-    title: "EV Fleet Charging",
+    eyebrow: "Application 02",
+    title: "EV fleet depots",
     color: "bg-jb-pink",
     accentBorder: "border-jb-pink/24",
     problem:
-      "India has 29,000+ public chargers and growing. CPO/eMSP reconciliation across OCPP roaming sessions creates dense session data, frequent exceptions, and billing disputes that erode operator margins.",
+      "Fleet depots must charge vehicles against real departure windows, site power limits, and mixed-vendor hardware. Cloud-only coordination fails when connectivity is weak, and post-facto reporting does not help the next morning's departures.",
     solution:
-      "Bridge Kernel meters every charge session via OCPP 1.6/2.0, signs it at the charger, and chains session records into settlement-ready evidence — so CPO-eMSP disputes resolve with cryptographic proof, not spreadsheets.",
+      "Bridge Kernel runs the dispatch loop locally across every charger, battery, solar array, and meter at the depot. Reservations, dispatches, and measured outcomes stay attached to evidence that can be reviewed later.",
     capabilities: [
-      "OCPP 1.6/2.0 native adapter",
-      "Session-level cryptographic signing",
-      "CPO/eMSP roaming reconciliation",
-      "Evidence packs for billing disputes",
-      "Fleet depot and public charger support",
+      "Mixed-vendor charger coordination at the site boundary",
+      "Local dispatch continuity when the cloud is unreachable",
+      "Signed records for reservations, commands, and measured outcomes",
+      "On-site forecasting for load and arrival planning",
+      "Partner-hardware deployment motion for repeatable installs",
     ],
-    outcome: "Every charge session metered, signed, and settled with cryptographic proof of energy delivered.",
+    outcome: "A strong fit for depots that need local control and defensible session history.",
     docsLink: "/docs/examples/ev-charging",
   },
   {
     id: "grid-audit",
-    eyebrow: "Solution 03",
-    title: "Grid Event Audit",
-    color: "bg-jb-accent",
-    accentBorder: "border-[#D06120]/24",
+    eyebrow: "Application 03",
+    title: "Multi-site rollout",
+    color: "bg-white/10",
+    accentBorder: "border-white/12",
     problem:
-      "CERC and state regulators demand reconstructable event histories for AT&C loss audits. Mutable logs and fragmented records make investigations slow, expensive, and impossible to defend.",
+      "Once one site is working, teams need a way to repeat the operating model across multiple locations without giving up local execution or creating a fresh reporting mess.",
     solution:
-      "Bridge Kernel creates a deterministic, tamper-evident event trail across IEC 61850 and Modbus sources — giving regulators and counterparties a cryptographically verifiable reconstruction of any grid event at any point in time.",
+      "The same runtime can be rolled out across additional sites while central surfaces distribute policy, ingest evidence, and expose a clear operating view. Local control stays local. Review gets easier as the program grows.",
     capabilities: [
-      "CERC and state regulator audit compliance",
-      "IEC 61850 and Modbus RTU/TCP support",
-      "Tamper-evident event-history reconstruction",
-      "AT&C loss audit evidence packs",
-      "BIS standards alignment",
+      "Central review surfaces for operating and evidence history",
+      "Policy distribution from cloud to local site runtimes",
+      "Exportable records for counterparties, finance, and compliance",
+      "Path from one production site to repeatable multi-site operation",
+      "Expansion only after the first site is proven",
     ],
-    outcome: "Reconstruct the precise state of any grid-connected asset with signed event chains that regulators can independently verify.",
+    outcome: "The repeatable rollout motion for teams growing from one site to several.",
     docsLink: "/docs/examples/grid-audit",
   },
 ];
@@ -74,17 +74,18 @@ const solutions = [
 export function SolutionsContent() {
   return (
     <>
-      <SectionWrapper className="bg-jb-dark pt-32 pb-10 md:pt-40 md:pb-14 section-lines">
+      <SectionWrapper className="bg-jb-dark pb-10 pt-32 section-lines md:pb-14 md:pt-40">
         <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <div>
-            <Eyebrow className="mb-6">Solutions</Eyebrow>
+            <Eyebrow className="mb-6">Applications</Eyebrow>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="jb-section-title mb-6 max-w-3xl"
             >
-              Verified evidence for the workflows where trust breaks down
+              One operating layer.{" "}
+              <span className="jb-title-gradient">Multiple site types.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -92,14 +93,15 @@ export function SolutionsContent() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="jb-section-copy"
             >
-              Bridge Kernel signs every reading at the edge, chains it into
-              cryptographic proofs, and delivers audit-ready evidence — for energy
-              settlement, EV charging, and grid audit in the Indian market.
+              Bridge Kernel gives industrial sites, EV depots, and expanding
+              multi-site programs the same core operating model: local control,
+              mixed-vendor integration, and audit-ready evidence attached to every
+              important decision.
             </motion.p>
           </div>
           <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.28)]">
             <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
-              Solution Evidence Pattern
+              Operating Flow
             </div>
             <DataFlowVisualization />
           </div>
@@ -108,8 +110,8 @@ export function SolutionsContent() {
 
       <SectionWrapper className="bg-jb-section-alt">
         <TextReveal
-          text="From meter to settlement. From charger to invoice. From grid event to audit record. Bridge Kernel makes every handoff provable."
-          highlightWords={["provable."]}
+          text="Start where the operating pain is real. Prove one site. Repeat the model."
+          highlightWords={["operating", "site.", "model."]}
           className=""
         />
       </SectionWrapper>
@@ -131,20 +133,20 @@ export function SolutionsContent() {
 
             <div className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
               <div className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(29,33,37,0.94),rgba(16,18,21,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
-                <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">The Problem</h3>
+                <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">Operating Context</h3>
                 <p className="leading-relaxed text-jb-white/64">{sol.problem}</p>
               </div>
 
               <div className={`relative border ${sol.accentBorder} bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.26)]`}>
                 <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">
-                  How JouleBridge Helps
+                  JouleBridge Fit
                 </h3>
                 <p className="leading-relaxed text-jb-white/64">{sol.solution}</p>
               </div>
             </div>
 
             <div className="mb-8">
-              <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">Key Capabilities</h3>
+              <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">What the stack enables</h3>
               <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 {sol.capabilities.map((cap, j) => (
                   <li key={j} className="flex items-start gap-3 text-sm text-jb-white/64">
@@ -171,14 +173,16 @@ export function SolutionsContent() {
       <SectionWrapper className="bg-jb-dark">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white md:text-3xl">
-            Want to test the right use case first?
+            Ready to scope a pilot?
           </h2>
           <p className="mb-8 text-jb-white/60">
-            Start a pilot conversation and we&apos;ll scope the right deployment and verification path for your workflow.
+            One conversation. We scope the site, the hardware path, the protocol
+            list, and the evidence requirements. You get a real proposal, not a
+            slideware estimate.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button href="/contact" variant="primary">
-              Start a Pilot
+              Scope a Pilot
             </Button>
             <Button href="/docs/get-started/quickstart" variant="tertiary">
               Read the Docs

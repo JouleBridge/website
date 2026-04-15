@@ -1,77 +1,66 @@
 ---
 title: Overview
-description: Bridge Kernel documentation — the deterministic, tamper-evident event ledger runtime for energy settlement.
+description: JouleBridge documentation for the runtime, proof, and coordination layer for distributed energy.
 ---
 
-# What is Bridge Kernel?
+# What is JouleBridge?
 
-Bridge Kernel is a deterministic, tamper-evident event ledger runtime. It ingests raw energy telemetry, generates cryptographic proofs, evaluates policy rules, and persists verified events to an immutable ledger.
+JouleBridge is the runtime, proof, and coordination layer for distributed energy.
 
-## What problem it solves
+The stack is designed around one practical requirement: a real site still needs to coordinate assets locally, and someone still needs a signed record of what happened after the fact.
 
-Distributed energy settlement depends on unverified meter reads and manual reconciliation. Bridge Kernel adds cryptographic proof from event capture to settlement, so operations, finance, and compliance teams can trust what actually happened at the device.
+The current public story is:
 
-## End-to-end flow
+- JouleBridge is the platform
+- DepotOS is the first commercial wedge for EV fleet depots
+- the runtime split is Asset Agent, Site Router, Portfolio Orchestrator, and Console
 
-1. Event arrives from an adapter (Modbus, SunSpec, OCPP, DNP3, webhook).
-2. Runtime checks timestamp and replay window.
-3. Event is converted to canonical JSON (sorted keys, no whitespace, UTF-8).
-4. SHA-256 hash is computed.
-5. Ed25519 signature is generated and verified.
-6. Policy engine decides allow or deny.
-7. If allowed, event plus proof are stored in the SQLite ledger.
-8. Event is marked unsynced until published to peers.
-9. Metrics, logs, and health are updated.
+## What the stack does
 
-## Major components
+1. Reads site state from mixed-vendor assets and partner hardware.
+2. Coordinates local actions against policy and safety limits.
+3. Produces a signed proof chain for reservations, dispatches, acknowledgements, measurements, and exceptions.
+4. Exposes portfolio and operator surfaces without moving the trust boundary away from the site.
 
-| Module | Purpose |
-|--------|---------|
-| `config` | Settings and validation |
-| `identity` | Signing key lifecycle and DID |
-| `hal` | Hardware abstraction (software or TPM signing) |
-| `proof` | Canonicalization, hashing, signing, verification |
-| `sense` | Input adapters and event normalization |
-| `runtime` | Central orchestrator |
-| `store` | SQLite ledger and sync state |
-| `p2p` | Peer synchronization protocol |
-| `policy` | Allow/deny rules before persistence |
-| `supervisor` | Signed policy stage/promote/rollback |
-| `observability` | Metrics, event logs, degraded status |
-
-## Documentation
+## Documentation map
 
 ### Get Started
-- [Quick Start](/docs/get-started/quickstart) — Clone, build, and run your first signed event.
-- [Beginner Guide](/docs/get-started/beginner-guide) — Slower walkthrough explaining each step.
+
+- [Quick Start](/docs/get-started/quickstart) - first deployment path
+- [Beginner Guide](/docs/get-started/beginner-guide) - plain-language runtime walkthrough
 
 ### Core Concepts
-- [Architecture](/docs/core-concepts/architecture) — Three-tier model and module chain.
-- [Proof System](/docs/core-concepts/proof-system) — Canonicalization, hashing, signing, verification.
-- [Policy Engine](/docs/core-concepts/policy) — Allow/deny rules and supervisor workflow.
-- [Adapters](/docs/core-concepts/adapters) — Protocol adapters and event normalization.
-- [P2P Sync](/docs/core-concepts/p2p-sync) — File-backed peer synchronization.
+
+- [Architecture](/docs/core-concepts/architecture) - runtime split and trust boundaries
+- [Proof System](/docs/core-concepts/proof-system) - what gets signed and why
+- [Policy Engine](/docs/core-concepts/policy) - how site policy is enforced
+- [Adapters](/docs/core-concepts/adapters) - mixed-vendor integration model
+- [P2P Sync](/docs/core-concepts/p2p-sync) - controlled proof movement between runtimes
 
 ### Configuration
-- [General Configuration](/docs/configuration/general) — YAML reference and environment profiles.
-- [Adapter Setup](/docs/configuration/adapter-setup) — Connect to devices and data sources.
-- [Policy Rules](/docs/configuration/policy-rules) — Write and deploy policy bundles.
-- [Environment](/docs/configuration/environment) — Environment variables and runtime profiles.
+
+- [General Configuration](/docs/configuration/general) - deployment-level settings
+- [Adapter Setup](/docs/configuration/adapter-setup) - asset and protocol configuration
+- [Policy Rules](/docs/configuration/policy-rules) - rule bundles and default actions
+- [Environment](/docs/configuration/environment) - runtime profiles and overrides
 
 ### Operations
-- [Deployment](/docs/operations/deployment) — Local, Docker, and production patterns.
-- [Observability](/docs/operations/observability) — Metrics, logs, health, and alerting.
-- [Security](/docs/operations/security) — Keys, replay protection, and hardening.
-- [Troubleshooting](/docs/operations/troubleshooting) — Common issues and resolution.
+
+- [Deployment](/docs/operations/deployment) - pilot deployment topology
+- [Observability](/docs/operations/observability) - metrics, health, and operator review
+- [Security](/docs/operations/security) - signing, custody, and trust boundaries
+- [Troubleshooting](/docs/operations/troubleshooting) - common site runtime issues
 
 ### Reference
-- [CLI Reference](/docs/reference/cli) — All `bridge-node ctl` commands.
-- [API Reference](/docs/reference/api) — REST and gRPC endpoints.
-- [Event Schema](/docs/reference/event-schema) — ProofEnvelope and COSE Sign1 format.
-- [Glossary](/docs/reference/glossary) — Key terms.
-- [FAQ](/docs/reference/faq) — Frequently asked questions.
+
+- [CLI Reference](/docs/reference/cli)
+- [API Reference](/docs/reference/api)
+- [Event Schema](/docs/reference/event-schema)
+- [Glossary](/docs/reference/glossary)
+- [FAQ](/docs/reference/faq)
 
 ### Examples
-- [C&I Energy Settlement](/docs/examples/energy-settlement) — Multi-source billing verification.
-- [EV Fleet Charging](/docs/examples/ev-charging) — Per-session proof envelopes.
-- [Grid Event Audit](/docs/examples/grid-audit) — Regulatory audit trails.
+
+- [EV Fleet Charging](/docs/examples/ev-charging) - the strongest current wedge
+- [Commercial Site Coordination](/docs/examples/energy-settlement) - emerging application path
+- [Grid Coordination Review](/docs/examples/grid-audit) - future-facing program path

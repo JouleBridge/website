@@ -9,10 +9,10 @@ const transition = {
 };
 
 const stageMeta = [
-  { label: "Raw Telemetry", sub: "Edge / File / Webhook", color: "text-white/70" },
-  { label: "Canonical JSON", sub: "Deterministic", color: "text-white/50" },
-  { label: "Proof Envelope", sub: "Signed Evidence", color: "text-white/30" },
-  { label: "Event Ledger", sub: "Review Ready", color: "text-white/60" },
+  { label: "Site Signals", sub: "Asset Agent", color: "text-white/70" },
+  { label: "Route Intent", sub: "Site Router", color: "text-white/50" },
+  { label: "Proof Record", sub: "Proof Chain", color: "text-white/30" },
+  { label: "Review Surface", sub: "Cloud Review", color: "text-white/60" },
 ];
 
 export function FlowLines({

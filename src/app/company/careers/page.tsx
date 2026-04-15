@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata = {
   title: "Careers | JouleBridge",
   description:
-    "Join JouleBridge and help build the trust layer for energy settlement.",
+    "Join JouleBridge and help build Bridge Kernel — the runtime for distributed energy.",
 };
 
 export default function CareersPage() {
@@ -16,13 +16,13 @@ export default function CareersPage() {
       <main className="min-h-screen pt-28 pb-16 bg-jb-dark section-lines">
         <div className="container mx-auto max-w-3xl px-6 lg:px-8 text-center">
           <Eyebrow className="mb-6">Careers</Eyebrow>
-          <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-6">
-            Build the trust layer for energy
+          <h1 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
+            Build high-trust software for distributed energy
           </h1>
           <p className="text-lg text-jb-text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            We&apos;re building infrastructure that makes energy settlement
-            provable. If you care about cryptography, distributed systems, and
-            energy markets, we want to hear from you.
+            We&apos;re building Bridge Kernel — the runtime for distributed energy.
+            If you care about edge systems, local control, on-device ML,
+            cryptography, and industrial software, we want to hear from you.
           </p>
 
           <div className="border border-jb-mid-gray/50 bg-jb-card/50 p-10 relative mb-10">
@@ -56,11 +56,11 @@ export default function CareersPage() {
               {[
                 {
                   title: "Precision over speed",
-                  desc: "We build settlement infrastructure. Correctness matters more than velocity.",
+                  desc: "We build systems that touch real site operations. Correctness matters more than velocity.",
                 },
                 {
                   title: "Evidence over opinion",
-                  desc: "Cryptographic proofs, not assumptions. We apply the same standard to how we work.",
+                  desc: "We like explanations that survive contact with logs, tests, and field conditions.",
                 },
                 {
                   title: "Ownership over process",

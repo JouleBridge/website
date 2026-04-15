@@ -5,7 +5,7 @@ import { CompanyContent } from "@/components/company/CompanyContent";
 export const metadata = {
   title: "About | JouleBridge",
   description:
-    "JouleBridge builds the trust layer for energy. Settlement-grade verification infrastructure for the world's energy transition.",
+    "JouleBridge builds software for high-stakes energy operations, starting with industrial sites and EV depots that need stronger local control and audit-ready records.",
 };
 
 export default function CompanyPage() {

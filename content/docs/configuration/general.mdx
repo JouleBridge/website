@@ -1,95 +1,15 @@
 ---
-title: Configuration
-description: YAML configuration reference and environment guidance.
+title: General Configuration
+description: General runtime configuration for site identity, deployment shape, and local services.
 ---
 
-# Configuration Reference
+# General Configuration
 
-Bridge Kernel is configured through YAML, usually `bridge.yaml`.
+General configuration should define:
 
-## Top-level sections
+- site identity
+- active runtime profile
+- service boundaries
+- storage and export paths
 
-- `runtime`
-- `layers.proof`
-- `sense` (adapters)
-- `policy`
-- `supervisor`
-- `observability`
-- `sync` (peer exchange paths and limits)
-
-## Baseline example
-
-```yaml
-runtime:
-  node_id: bridge-node-local
-  environment: dev
-  replay_window_seconds: 600
-  allowed_future_skew_seconds: 120
-
-layers:
-  proof:
-    provider: software
-    keystore_path: bridge-keystore.json
-
-sense:
-  adapters:
-    - type: mock
-      enabled: true
-
-policy:
-  active_bundle_path: policy/active/policy.bundle.json
-  fail_closed: true
-
-supervisor:
-  staged_dir: policy/staged
-  history_dir: policy/history
-
-observability:
-  metrics_path: bridge-metrics.json
-  event_log_path: bridge-events.jsonl
-
-sync:
-  outbound_dir: sync/outbound
-  inbound_dir: sync/inbound
-```
-
-## Runtime
-
-Controls node identity and event freshness constraints.
-
-- Keep `node_id` globally unique across peers.
-- Tune replay window for source behavior and transport delay.
-
-## Proof layer
-
-Controls signing provider and key material.
-
-- `software` for local and pilot deployments.
-- TPM-backed mode for strict production policy.
-
-## Policy
-
-Defines active policy bundle and fail behavior.
-
-- `fail_closed: true` recommended for production.
-- Store active bundle in durable storage with backups.
-
-## Observability
-
-Defines where metrics and event logs are written.
-
-- Use durable disk paths.
-- Rotate logs externally if using JSONL event logs.
-
-## Environment profiles
-
-- `dev`: flexible defaults, rapid iteration.
-- `staging`: strict checks, production-like controls.
-- `production`: enforce TPM, fail-closed, and signed policy workflow.
-
-## Validation checklist
-
-- Config parses and runtime starts without warnings.
-- Keystore path is readable and writable.
-- Policy bundle exists and verifies.
-- Metrics and logs are emitted to expected paths.
+The key rule is simple: the local site must remain supportable even if cloud connectivity is not.

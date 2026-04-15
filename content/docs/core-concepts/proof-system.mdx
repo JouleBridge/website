@@ -1,58 +1,38 @@
 ---
 title: Proof System
-description: Canonicalization, hashing, signing, and verification details.
+description: What JouleBridge signs, when it signs, and why the proof chain matters.
 ---
 
-# Proof and Signing
+# Proof System
 
-Bridge Kernel converts raw adapter events into signed `ProofEnvelope` records.
+The proof system exists so a site action can be reviewed later without depending on memory, screenshots, or informal reconstruction.
 
-## EventEnvelope
+## What gets sealed
 
-The normalized event before signing, produced by the adapter + runtime normalization path.
+Depending on the deployment path, the proof chain can include:
 
-## ProofEnvelope fields
+- incoming intent
+- reservation or routing decision
+- dispatch command
+- acknowledgement or rejection
+- measured outcome
+- exception path
 
-- `event`
-- `key_id`
-- `key_version`
-- `signature_context`
-- `signer_public_key_hex`
-- `payload_hash_hex`
-- `signature_hex`
-- `signed_at`
+## Why the proof chain matters
 
-## Canonical JSON rules
+It gives operators and counterparties a way to answer:
 
-- Sorted keys
-- No extra whitespace
-- UTF-8 bytes
+- what did the site think was true
+- what action did it take
+- what happened next
 
-Deterministic serialization ensures two nodes hash the same event bytes identically.
+## Cryptographic model
 
-## Hashing
+The current public model centers on:
 
-`SHA-256` is computed over canonical JSON bytes and stored as `payload_hash_hex`.
+- deterministic shaping
+- SHA-256 digests
+- Ed25519 signatures
+- explicit verification context
 
-## Signing
-
-`Ed25519` signs canonical payload bytes (or equivalent deterministic digest contract) through HAL abstraction.
-
-## Verification flow
-
-1. Rebuild canonical bytes.
-2. Recompute SHA-256 hash.
-3. Compare computed hash to `payload_hash_hex`.
-4. Verify Ed25519 signature using embedded public key and `signature_context`.
-
-## HAL options
-
-- `SoftwareHal`: software keypair in keystore.
-- `TpmHal`: hardware-backed signing path for strict environments.
-
-## Failure handling
-
-- Canonical mismatch: reject and log proof mismatch reason.
-- Hash mismatch: reject as tamper-evident failure.
-- Signature mismatch: reject and isolate source for triage.
-- Unknown key version: reject until key metadata is refreshed.
+The important point is not novelty. The important point is independent review.

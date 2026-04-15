@@ -36,7 +36,7 @@ const METRICS: MetricConfig[] = [
     prefix: "",
     suffix: "",
     decimals: 0,
-    subLabel: "All time · cumulative",
+    subLabel: "All time | cumulative",
     status: "accent",
     sparkValues: [0.3, 0.4, 0.38, 0.55, 0.62, 0.58, 0.7, 0.75, 0.68, 0.8, 0.85, 0.78, 0.9, 0.88, 0.95, 1],
   },
@@ -46,7 +46,7 @@ const METRICS: MetricConfig[] = [
     value: 48,
     suffix: "ms",
     decimals: 0,
-    subLabel: "p99 · last 24 h",
+    subLabel: "p99 | last 24 h",
     status: "nominal",
     sparkValues: [0.6, 0.55, 0.62, 0.58, 0.5, 0.48, 0.52, 0.45, 0.5, 0.47, 0.42, 0.44, 0.4, 0.38, 0.41, 0.35],
   },
@@ -307,7 +307,7 @@ function StatusBar({ isInView }: { isInView: boolean }) {
         />
       </div>
       <div className="mt-3 flex items-center gap-4">
-        {["Capture", "Prove", "Govern"].map((stage, i) => (
+        {["Observe", "Prove", "Review"].map((stage, i) => (
           <span key={stage} className="flex items-center gap-1.5">
             <span
               className="block h-2 w-2"
@@ -321,7 +321,7 @@ function StatusBar({ isInView }: { isInView: boolean }) {
           </span>
         ))}
         <span className="ml-auto font-mono text-[9px] tracking-[0.12em] text-white/20">
-          last updated · just now
+          last updated | just now
         </span>
       </div>
     </motion.div>
@@ -427,7 +427,7 @@ export function VerificationMetrics({ className }: VerificationMetricsProps) {
           {/* Footer */}
           <div className="mt-4 flex items-center justify-between">
             <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/20">
-              joulebridge · proof engine
+              joulebridge | proof engine
             </span>
             <div className="flex items-center gap-3">
               {["Ed25519", "SHA-256", "ISO 50001"].map((tag) => (

@@ -22,10 +22,10 @@ export function EnergyEvidenceIllustration({
       <div className="relative z-10 mb-5 flex flex-wrap items-start justify-between gap-4 border-b border-white/8 pb-4">
         <div>
           <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/80">
-            Bridge Kernel Architecture
+            JouleBridge Runtime Architecture
           </div>
           <div className="mt-2 text-lg font-semibold tracking-[-0.03em] text-white md:text-xl">
-            Trusted flow from energy source to settlement surface
+            Trusted flow from site signal to verified proof chain
           </div>
         </div>
         <div className="border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[#b7bbca]">
@@ -38,7 +38,7 @@ export function EnergyEvidenceIllustration({
         viewBox="0 0 1000 560"
         fill="none"
         className="relative z-10 w-full"
-        aria-label="Bridge Kernel architecture"
+        aria-label="JouleBridge runtime architecture"
       >
         <style>{`
           .flowing-line path {
@@ -204,63 +204,63 @@ export function EnergyEvidenceIllustration({
         <g fontFamily="'IBM Plex Mono', monospace" fontSize="11" fontWeight="600">
           <rect x="145" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="180" y="260" textAnchor="middle">OCPP</text>
-          <text className="t-ing-txt" x="180" y="274" textAnchor="middle">INGESTION</text>
+          <text className="t-ing-txt" x="180" y="274" textAnchor="middle">ADAPTER</text>
 
           <rect x="215" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="250" y="260" textAnchor="middle">MODBUS</text>
-          <text className="t-ing-txt" x="250" y="274" textAnchor="middle">INGESTION</text>
+          <text className="t-ing-txt" x="250" y="274" textAnchor="middle">ADAPTER</text>
 
           <rect x="285" y="248" width="70" height="32" fill="#141820" />
           <text className="t-ing-txt" x="320" y="260" textAnchor="middle">REST API</text>
-          <text className="t-ing-txt" x="320" y="274" textAnchor="middle">INGESTION</text>
+          <text className="t-ing-txt" x="320" y="274" textAnchor="middle">ADAPTER</text>
 
           <rect x="710" y="248" width="80" height="32" fill="#141820" />
-          <text className="t-mesh" x="750" y="260" textAnchor="middle">MESH, P2P,</text>
-          <text className="t-mesh" x="750" y="274" textAnchor="middle">WEBHOOKS</text>
+          <text className="t-mesh" x="750" y="260" textAnchor="middle">POLICY, HINTS,</text>
+          <text className="t-mesh" x="750" y="274" textAnchor="middle">PROOF SYNC</text>
         </g>
 
         <text x="500" y="45" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="16" fontWeight="700" letterSpacing="2" fill="#e8ebf3">
-          EXISTING ENERGY INFRASTRUCTURE
+          EXISTING SITE SIGNALS
         </text>
         <text x="500" y="265" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#f4f5f7">
-          BRIDGE KERNEL PIPELINE
+          JOULEBRIDGE PIPELINE
         </text>
         <text x="500" y="415" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="14" fontWeight="700" letterSpacing="2.5" fill="#9ca3ad">
-          BRIDGE KERNEL SETTLEMENT
+          PROOF + REVIEW
         </text>
 
         <g fontFamily="'IBM Plex Mono', monospace" fontWeight="600">
           <rect className="r-src" x="158" y="60" width="200" height="46" fill="#141820" stroke="#9ca3ad" strokeWidth="0.8" />
           <rect className="r-src" x="154" y="64" width="200" height="46" fill="#141820" stroke="#9ca3ad" strokeWidth="0.8" />
           <rect className="r-src" x="150" y="68" width="200" height="46" fill="#141820" strokeWidth="1.5" />
-          <text className="t-src" x="250" y="96" textAnchor="middle" fontSize="15">ENERGY SOURCE(S)</text>
+          <text className="t-src" x="250" y="96" textAnchor="middle" fontSize="15">SITE ASSETS</text>
 
           <rect className="r-gw" x="150" y="150" width="200" height="46" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-gw" x="250" y="178" textAnchor="middle" fontSize="15">ADAPTER GATEWAY</text>
+          <text className="t-gw" x="250" y="178" textAnchor="middle" fontSize="15">ASSET AGENT</text>
 
           <rect className="r-gw" x="400" y="150" width="200" height="46" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-gw" x="500" y="178" textAnchor="middle" fontSize="15">POLICY ENGINE</text>
+          <text className="t-gw" x="500" y="178" textAnchor="middle" fontSize="15">SITE ROUTER</text>
 
           <rect className="r-sync" x="650" y="150" width="200" height="46" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-sync" x="750" y="178" textAnchor="middle" fontSize="15">PEER SYNC</text>
+          <text className="t-sync" x="750" y="178" textAnchor="middle" fontSize="15">CLOUD SYNC</text>
 
           <rect className="r-ing" x="150" y="300" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-ing" x="250" y="330" textAnchor="middle" fontSize="16">INGEST</text>
+          <text className="t-ing" x="250" y="330" textAnchor="middle" fontSize="16">OBSERVE</text>
 
           <rect className="r-norm" x="400" y="300" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-norm" x="500" y="330" textAnchor="middle" fontSize="16">NORMALIZE</text>
+          <text className="t-norm" x="500" y="330" textAnchor="middle" fontSize="16">ROUTE</text>
 
           <rect className="r-prove" x="650" y="300" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
           <text className="t-prove" x="750" y="330" textAnchor="middle" fontSize="16">PROVE</text>
 
           <rect className="r-ledger" x="150" y="460" width="200" height="50" fill="#141820" />
-          <text className="t-ledger" x="250" y="490" textAnchor="middle" fontSize="16">LEDGER</text>
+          <text className="t-ledger" x="250" y="490" textAnchor="middle" fontSize="16">RECORD</text>
 
           <rect className="r-recon" x="400" y="460" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-recon" x="500" y="490" textAnchor="middle" fontSize="16">RECONCILE</text>
+          <text className="t-recon" x="500" y="490" textAnchor="middle" fontSize="16">REVIEW</text>
 
           <rect className="r-settle" x="650" y="460" width="200" height="50" fill="#11141a" strokeWidth="1.2" />
-          <text className="t-settle" x="750" y="490" textAnchor="middle" fontSize="16">SETTLE</text>
+          <text className="t-settle" x="750" y="490" textAnchor="middle" fontSize="16">EXPORT</text>
         </g>
 
         {compact && (

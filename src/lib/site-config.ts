@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "JouleBridge",
-  tagline: "Verified Data Infrastructure for Energy",
+  tagline: "On-site runtime for distributed energy operations",
   description:
-    "JouleBridge turns raw energy and device telemetry into deterministic records, cryptographic proofs, and audit-ready evidence for high-trust energy workflows.",
+    "JouleBridge helps industrial sites and EV depots coordinate mixed-vendor energy assets on-site, keep control local, and produce audit-ready records for dispatch and review.",
   docsUrl: "https://docs.joulebridge.com",
   contactEmail: "contact@joulebridge.com",
   contactPhone: "+91 8050647585",
@@ -13,17 +13,17 @@ export const siteConfig = {
   },
   nav: {
     main: [
-      { label: "Product", href: "/product" },
-      { label: "Solutions", href: "/solutions" },
+      { label: "Platform", href: "/product" },
+      { label: "Applications", href: "/solutions" },
       { label: "Docs", href: "/docs" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Pilot Program", href: "/pricing" },
       { label: "Company", href: "/company" },
       { label: "Resources", href: "/resources/blog" },
     ],
     solutions: [
-      { label: "Energy Settlement", href: "/solutions#energy-settlement" },
-      { label: "EV Charging", href: "/solutions#ev-charging" },
-      { label: "Grid Audit", href: "/solutions#grid-audit" },
+      { label: "Open-Access Industrial Sites", href: "/solutions#energy-settlement" },
+      { label: "EV Fleet Depots", href: "/solutions#ev-charging" },
+      { label: "Multi-Site Rollout", href: "/solutions#grid-audit" },
     ],
     company: [
       { label: "About", href: "/company" },
@@ -37,12 +37,15 @@ export const siteConfig = {
   },
   footer: {
     product: [
-      { label: "Bridge Kernel", href: "/product/bridge-kernel" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Platform", href: "/product" },
+      { label: "Asset Agent Runtime", href: "/product/bridge-kernel" },
+      { label: "Cloud Coordination", href: "/product/cloud" },
+      { label: "Hardware", href: "/product/hardware" },
       { label: "Documentation", href: "/docs" },
     ],
     resources: [
       { label: "Blog", href: "/resources/blog" },
+      { label: "Papers", href: "/resources/papers" },
       { label: "Videos", href: "/resources/video" },
       { label: "News", href: "/resources/news" },
     ],

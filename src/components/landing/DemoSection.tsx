@@ -14,24 +14,23 @@ export function DemoSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="jb-section-title max-w-2xl mb-3"
+        className="jb-section-title mb-3 max-w-2xl"
       >
-        Watch Bridge Kernel{" "}
+        Watch one site session{" "}
         <span className="text-jb-text-muted">
-          sign, verify, and govern
-        </span>{" "}
-        in real time
+          from startup to evidence export
+        </span>
       </motion.h2>
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="text-jb-text-muted max-w-2xl mb-8"
+        className="mb-8 max-w-2xl text-jb-text-muted"
       >
-        Step through an operator session: runtime startup, device input,
-        deterministic event handling, proof generation, and a policy violation
-        caught before it reaches the ledger.
+        A simplified site run: service startup, asset discovery, local
+        decisioning, measured outcome, and the review-ready record that remains
+        after.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 24 }}

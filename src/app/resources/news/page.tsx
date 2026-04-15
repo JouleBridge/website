@@ -4,43 +4,43 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export const metadata = {
   title: "News | JouleBridge",
-  description: "Product releases, milestones, and company announcements from JouleBridge.",
+  description: "Product releases, pilot milestones, and company announcements from JouleBridge.",
 };
 
 const news = [
   {
-    date: "2026-03-07",
-    title: "JouleBridge Launches Pilot Program for C&I Energy Settlement",
+    date: "2026-04-01",
+    title: "JouleBridge opens C&I pilot conversations for open-access industrial sites",
     description:
-      "We're opening our 12-week pilot program to commercial and industrial energy operators in India. Deploy Bridge Kernel at your site, measure settlement improvements, and decide with data.",
+      "We are focusing the first commercial motion on open-access industrial sites where tariff windows, mixed-vendor hardware, and the demand for signed evidence can be validated on a live site. Bridge Kernel ML runs forecasting on-device as part of the pilot.",
     tag: "Announcement",
   },
   {
     date: "2026-03-01",
-    title: "Bridge Kernel 2.0 Released with Full Observability Stack",
+    title: "Runtime stack hardening pass completed for local-first operations",
     description:
-      "Bridge Kernel 2.0 ships with Prometheus-compatible metrics, structured event logs, health degradation signals, and SLO-linked alerting. Plus: policy supervisor lifecycle with stage/promote/rollback.",
+      "The JouleBridge runtime adds stronger observability, policy lifecycle control, and proof-handling primitives needed for repeatable pilot deployments.",
     tag: "Product Release",
   },
   {
     date: "2026-01-15",
     title: "Documentation Portal Launched",
     description:
-      "Our comprehensive documentation portal is live with 13 pages covering quickstart guides, architecture overviews, adapter configuration, proof system details, and deployment instructions.",
+      "The technical docs now cover the runtime stack, deployment model, proof path, and operator-facing implementation details.",
     tag: "Product",
   },
   {
     date: "2025-11-20",
-    title: "Bridge Kernel v1.0: Seven Phases Complete",
+    title: "Core runtime foundation reaches first complete internal milestone",
     description:
-      "Bridge Kernel reaches v1.0 with all seven core phases implemented: foundation, data plane, runtime orchestration, adapters, P2P sync, policy engine, and observability. 26 tests passing.",
+      "The early runtime layers, adapters, policy path, proof flow, and observability baseline come together into the first coherent control stack.",
     tag: "Milestone",
   },
   {
     date: "2025-08-15",
     title: "JouleBridge Founded",
     description:
-      "JouleBridge is incorporated with a mission to build settlement trust rails for energy operations. Starting with India's C&I energy market as the beachhead.",
+      "JouleBridge is founded to build Bridge Kernel - the runtime for distributed energy - starting with open-access industrial sites and a repeatable path toward multi-site rollout.",
     tag: "Company",
   },
 ];
@@ -60,7 +60,7 @@ export default function NewsPage() {
       <main className="min-h-screen pt-28 pb-16 bg-jb-dark section-lines">
         <div className="container mx-auto max-w-4xl px-6 lg:px-8">
           <Eyebrow className="mb-6">News</Eyebrow>
-          <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">
             Company News
           </h1>
           <p className="text-lg text-jb-text-muted max-w-xl mb-10">

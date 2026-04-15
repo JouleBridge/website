@@ -1,63 +1,57 @@
 ---
 title: Architecture
-description: Core architecture and event flow for Bridge Kernel.
+description: The runtime split and trust boundaries behind the JouleBridge platform.
 ---
 
-# System Architecture
+# Architecture
 
-Bridge Kernel uses a practical three-tier model designed for verifiable energy settlement in real operations.
+JouleBridge follows a four-surface split:
 
-## Three tiers
+1. Asset Agent
+2. Site Router
+3. Portfolio Orchestrator
+4. Console
 
-1. **Edge**: adapters + Bridge Kernel runtime near devices.
-2. **P2P Sync**: peer exchange of signed events.
-3. **Cloud (future)**: optional analytics, aggregation, and external APIs.
+## Asset Agent
 
-## Module chain
+Lives closest to the equipment and protocol interfaces.
 
-`config -> identity -> hal -> sense -> proof -> policy -> store -> runtime -> p2p -> observability -> supervisor`
+Its job is to:
 
-## Module responsibilities
+- read site and asset state
+- normalize mixed-vendor inputs
+- participate in the local proof path
 
-- `config`: validates environment-specific settings and file paths.
-- `identity`: manages key identity (`key_id`, `key_version`, DID).
-- `hal`: abstracts signing provider (software or TPM-backed).
-- `sense`: normalizes adapter input into `AdapterEvent`.
-- `proof`: canonicalizes, hashes, signs, and verifies each event.
-- `policy`: allow/deny gate before persistence.
-- `store`: appends immutable ledger records and sync state.
-- `runtime`: orchestrates ingest, replay checks, policy checks, and persistence.
-- `p2p`: publishes unsynced events and imports verified peer events.
-- `observability`: metrics, logs, health status, degraded reasons.
-- `supervisor`: signed policy stage/promote/rollback workflow.
+## Site Router
 
-## Event data flow
+The site coordination surface.
 
-1. Event received from adapter.
-2. Replay check validates timestamp window.
-3. Canonical JSON built (stable ordering).
-4. SHA-256 hash computed.
-5. Ed25519 signature created.
-6. Signature verified.
-7. Policy gate evaluates allow/deny.
-8. SQLite ledger append.
-9. Unsynced event published to peers.
+Its job is to:
 
-## Storage and state
+- apply policy and constraints
+- turn intent into feasible actions
+- preserve the local trust boundary
 
-- Ledger records are append-only in SQLite.
-- Peer watermarks track last accepted sync position per peer.
-- Runtime cursor tracks local ingest progress.
-- Policy history preserves staged/promoted bundle lineage for audit.
+## Portfolio Orchestrator
 
-## Security foundations
+The cloud coordination surface.
 
-- Ed25519 key-based signing.
-- SHA-256 payload digesting.
-- Replay windows and skew limits.
-- Policy gates before storage.
-- HMAC-signed policy bundle workflow.
+Its job is to:
 
-## Why this matters
+- distribute policy
+- ingest proofs
+- send portfolio guidance back to sites
 
-You keep your existing device and billing stack, and add a cryptographic verification layer between them.
+## Console
+
+The operator surface.
+
+Its job is to:
+
+- expose site and portfolio state
+- help support teams understand what happened
+- make proofs and incidents reviewable
+
+## Design rule
+
+Local safety beats remote intent. The cloud is useful because the site runtime is strong first.

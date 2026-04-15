@@ -103,7 +103,7 @@ export function ProductContent() {
                 </Button>
               </motion.div>
             </div>
-            <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(32,36,40,0.96),rgba(17,19,22,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.3)]">
+            <div className="jb-theme-shell p-5">
               <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
                 Evidence Lifecycle
               </div>
@@ -142,7 +142,7 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.94))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_70px_rgba(0,0,0,0.24)]"
+              className="jb-theme-shell p-6"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center border border-white/14 bg-white/[0.04] font-mono text-sm text-[#D06120]">
@@ -177,7 +177,7 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(27,31,35,0.9),rgba(15,17,20,0.95))] p-5 transition-colors hover:border-white/16"
+              className="jb-theme-shell-soft relative p-5 transition-colors hover:border-white/16"
             >
               <div className="mb-1 font-mono text-xs uppercase tracking-widest text-white/60">
                 {adapter.protocol}
@@ -202,7 +202,7 @@ export function ProductContent() {
           <span className="text-jb-text-muted">turns monitoring, control, and forecasting into one signed chain</span>
         </motion.h2>
 
-        <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.96),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_75px_rgba(0,0,0,0.26)] md:p-6">
+        <div className="jb-theme-shell p-5 md:p-6">
           <div className="mb-8">
             <VerificationMetrics />
           </div>
@@ -236,7 +236,7 @@ export function ProductContent() {
               ))}
             </div>
 
-            <div className="overflow-hidden border border-white/10 bg-[#0d1014]">
+            <div className="jb-theme-shell overflow-hidden">
               <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3">
                 <div className="h-2.5 w-2.5 bg-white/10" />
                 <div className="h-2.5 w-2.5 bg-white/6" />
@@ -295,7 +295,7 @@ export function ProductContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="border border-white/10 bg-[linear-gradient(180deg,rgba(28,32,36,0.92),rgba(16,18,20,0.96))] p-6"
+              className="jb-theme-shell-soft p-6"
             >
               <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.15em] text-white">
                 {opt.title}
@@ -348,7 +348,7 @@ export function ProductContent() {
       </SectionWrapper>
 
       <SectionWrapper className="bg-jb-dark">
-        <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,30,34,0.92),rgba(14,16,18,0.94))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_80px_rgba(0,0,0,0.24)] md:p-8">
+        <div className="jb-theme-shell p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-center">
             <div>
               <Eyebrow className="mb-4">Operating View</Eyebrow>

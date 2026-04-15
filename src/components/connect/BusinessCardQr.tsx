@@ -78,7 +78,7 @@ export function BusinessCardQr({ fallbackUrl, label }: BusinessCardQrProps) {
         onReady={handleScriptReady}
       />
 
-      <div className="border border-white/10 bg-[#0b0d0f] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.42)]">
+      <div className="jb-theme-shell p-5">
         <div className="flex items-center justify-between gap-3 border-b border-white/8 pb-4">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#D06120]">
@@ -98,7 +98,7 @@ export function BusinessCardQr({ fallbackUrl, label }: BusinessCardQrProps) {
           ) : (
             <div className="flex aspect-square w-full items-center justify-center bg-[linear-gradient(135deg,#f6f7f8,#dde1e6)] p-6 text-center">
               <div className="space-y-3">
-                <div className="mx-auto h-12 w-12 border border-[#D06120] bg-[#111315]" />
+                <div className="mx-auto h-12 w-12 border border-[#D06120] bg-jb-card" />
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#111315]">
                   Preparing QR
                 </p>

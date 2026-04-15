@@ -15,7 +15,7 @@ export function Logo({ className }: LogoProps) {
       role="img"
     >
       <span className="text-[#D06120]">Joule</span>
-      <span className="text-white">Bridge</span>
+      <span className="text-jb-white">Bridge</span>
     </span>
   );
 }

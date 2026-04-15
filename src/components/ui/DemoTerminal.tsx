@@ -78,7 +78,7 @@ export function DemoTerminal() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,20,0.98),rgba(9,10,11,0.98))] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_32px_90px_rgba(0,0,0,0.36)]"
+      className="jb-theme-shell overflow-hidden"
     >
       <div className="flex items-center gap-2 border-b border-white/8 bg-white/[0.03] px-4 py-3">
         <div className="h-2.5 w-2.5 bg-white/20" />

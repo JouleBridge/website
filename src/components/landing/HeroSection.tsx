@@ -142,7 +142,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="hidden lg:block"
         >
-          <div className="border border-white/10 bg-black/60 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm">
+          <div className="jb-theme-shell overflow-hidden backdrop-blur-sm">
             <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3">
               <div className="h-2 w-2 bg-[#D06120]" />
               <div className="h-2 w-2 bg-white/20" />

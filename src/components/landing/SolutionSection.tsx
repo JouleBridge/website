@@ -74,7 +74,7 @@ export function SolutionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_24px_70px_rgba(0,0,0,0.24)]"
+              className="jb-theme-shell relative overflow-hidden p-6"
             >
               <div className="mb-4 font-mono text-xs uppercase tracking-widest text-white/60">
                 {String(i + 1).padStart(2, "0")}

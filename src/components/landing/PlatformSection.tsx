@@ -112,7 +112,7 @@ export function PlatformSection() {
               </Button>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[360px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_18px_60px_rgba(0,0,0,0.24)]">
+          <div className="jb-theme-shell mx-auto w-full max-w-[360px] p-4">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
               Multi-Site View
             </div>
@@ -125,7 +125,7 @@ export function PlatformSection() {
                 markerColor="rgba(208, 97, 32, 1)"
               />
             ) : (
-              <div className="mx-auto aspect-square max-h-[320px] w-full border border-white/6 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_40%),linear-gradient(180deg,rgba(18,20,22,0.92),rgba(11,13,15,0.98))]" />
+              <div className="mx-auto aspect-square max-h-[320px] w-full border border-white/6 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_40%)] bg-jb-card/70" />
             )}
           </div>
         </div>
@@ -139,7 +139,7 @@ export function PlatformSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
             >
-              <ParallaxCard className="h-full border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_60px_rgba(0,0,0,0.24)]">
+              <ParallaxCard className="jb-theme-shell h-full p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="border border-white/10 bg-black/20 p-2.5">
                     <item.icon className={`h-4 w-4 ${item.accent}`} />
@@ -163,7 +163,7 @@ export function PlatformSection() {
           {showHeavyVisuals ? (
             <EnergyEvidenceIllustration />
           ) : (
-            <div className="h-[420px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,13,15,0.98))]" />
+            <div className="jb-theme-shell h-[420px]" />
           )}
         </div>
       </div>

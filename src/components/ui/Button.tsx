@@ -20,9 +20,9 @@ const variantStyles: Record<ButtonVariant, string> = {
   secondary:
     "bg-transparent text-jb-white border border-white/12 hover:bg-white/[0.04] btn-jb-secondary",
   white:
-    "bg-transparent text-white border border-white/18 hover:bg-white/[0.05] btn-jb-secondary",
+    "bg-transparent text-jb-white border border-white/18 hover:bg-white/[0.05] btn-jb-secondary",
   tertiary:
-    "bg-transparent text-jb-white/84 hover:text-white btn-jb-secondary",
+    "bg-transparent text-jb-white/84 hover:text-jb-white btn-jb-secondary",
 };
 
 export function Button({

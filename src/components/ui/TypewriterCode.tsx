@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 interface TypewriterCodeProps {
   lines: string[];
   typingSpeed?: number; // ms per character
-  lineDelay?: number;   // ms delay between lines
+  lineDelay?: number; // ms delay between lines
   className?: string;
 }
 
@@ -35,20 +35,19 @@ export function TypewriterCode({
     const currentLine = lines[currentLineIndex];
 
     if (currentChars < currentLine.length) {
-      // Type next character
       const timer = setTimeout(() => {
-        setCurrentChars((c) => c + 1);
+        setCurrentChars((count) => count + 1);
       }, typingSpeed);
       return () => clearTimeout(timer);
-    } else {
-      // Line complete — move to next after delay
-      const timer = setTimeout(() => {
-        setCompletedLines((prev) => [...prev, currentLine]);
-        setCurrentLineIndex((i) => i + 1);
-        setCurrentChars(0);
-      }, lineDelay);
-      return () => clearTimeout(timer);
     }
+
+    const timer = setTimeout(() => {
+      setCompletedLines((previous) => [...previous, currentLine]);
+      setCurrentLineIndex((index) => index + 1);
+      setCurrentChars(0);
+    }, lineDelay);
+
+    return () => clearTimeout(timer);
   }, [started, done, currentLineIndex, currentChars, lines, typingSpeed, lineDelay]);
 
   const currentLine =
@@ -60,24 +59,22 @@ export function TypewriterCode({
     <div
       ref={containerRef}
       className={cn(
-        "font-mono text-sm leading-6 bg-black border border-white/10 p-4 overflow-x-auto",
+        "jb-theme-shell font-mono text-sm leading-6 p-4 overflow-x-auto",
         className
       )}
     >
-      {/* Completed lines */}
-      {completedLines.map((line, i) => (
-        <div key={i} className="text-white/80 whitespace-pre">
+      {completedLines.map((line, index) => (
+        <div key={index} className="text-white/80 whitespace-pre">
           {line || "\u00A0"}
         </div>
       ))}
 
-      {/* Currently typing line */}
       {currentLine !== null && (
-        <div className="text-white whitespace-pre flex items-center">
+        <div className="text-jb-white whitespace-pre flex items-center">
           <span>{currentLine}</span>
-          {/* Blinking square cursor — brand rule: square dots, never circles */}
+          {/* Blinking square cursor; the brand rule is square dots, never circles. */}
           <span
-            className="inline-block w-[0.55em] h-[1em] bg-[#D06120] ml-[1px]"
+            className="ml-[1px] inline-block h-[1em] w-[0.55em] bg-[#D06120]"
             style={{
               animation: "joulebridge-cursor-blink 1s step-start infinite",
             }}
@@ -85,10 +82,10 @@ export function TypewriterCode({
         </div>
       )}
 
-      {/* After all lines typed, show idle cursor on an empty final line */}
       {done && (
-        <div className="text-white whitespace-pre flex items-center">
-          <span className="inline-block w-[0.55em] h-[1em] bg-[#D06120] ml-[1px]"
+        <div className="text-jb-white whitespace-pre flex items-center">
+          <span
+            className="ml-[1px] inline-block h-[1em] w-[0.55em] bg-[#D06120]"
             style={{
               animation: "joulebridge-cursor-blink 1s step-start infinite",
             }}
@@ -96,11 +93,11 @@ export function TypewriterCode({
         </div>
       )}
 
-      {/* Cursor blink keyframes — injected as a style tag so no Tailwind config needed */}
+      {/* Inject the cursor keyframes locally so no Tailwind config is needed. */}
       <style>{`
         @keyframes joulebridge-cursor-blink {
           0%, 100% { opacity: 1; }
-          50%       { opacity: 0; }
+          50% { opacity: 0; }
         }
       `}</style>
     </div>

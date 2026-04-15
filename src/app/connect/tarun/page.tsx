@@ -127,7 +127,7 @@ export default function TarunConnectPage() {
                   rel={item.href.startsWith("mailto:") || item.href.startsWith("tel:") ? undefined : "noreferrer"}
                   className="group flex min-h-16 items-center gap-4 border border-white/10 bg-white/[0.03] px-4 py-3 transition-colors hover:border-[#D06120]/40 hover:bg-white/[0.05]"
                 >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-[#0d1012] text-[#D06120]">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-jb-card text-[#D06120]">
                     {item.icon === "email" && <Mail className="h-5 w-5" />}
                     {item.icon === "phone" && <Phone className="h-5 w-5" />}
                     {item.icon === "linkedin" && <LinkedInIcon />}

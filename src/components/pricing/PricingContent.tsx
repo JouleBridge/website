@@ -165,8 +165,8 @@ export function PricingContent() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className={`relative flex flex-col border p-8 ${
                   tier.featured
-                    ? "border-white/12 border-t-[2px] border-t-white/30 bg-gradient-to-b from-[#0f1114] to-[#0c0e10] jb-shadow-card-featured"
-                    : "border-white/8 bg-gradient-to-b from-[#0f1114] to-[#0c0e10] jb-shadow-card"
+                    ? "jb-theme-shell-featured border-t-[2px] border-t-white/30"
+                    : "jb-theme-shell"
                 }`}
               >
                 {tier.featured && (

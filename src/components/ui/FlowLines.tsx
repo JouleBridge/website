@@ -23,7 +23,7 @@ export function FlowLines({
   className?: string;
 }) {
   return (
-    <div className={cn("relative w-full overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(18,20,22,0.98),rgba(11,12,14,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.28)]", className)}>
+    <div className={cn("jb-theme-shell relative w-full overflow-hidden p-6", className)}>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:140px_140px] opacity-40" />
 
       <div className="relative z-10 mb-8 flex justify-between gap-3 px-2 md:px-10">

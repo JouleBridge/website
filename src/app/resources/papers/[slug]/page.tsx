@@ -65,7 +65,7 @@ export default async function PaperDetailPage(props: {
 
           <div className="mb-12 grid gap-4 sm:grid-cols-2">
             {paper.summary.map((item) => (
-              <div key={item} className="border border-white/10 bg-[linear-gradient(180deg,rgba(19,23,28,0.96),rgba(11,13,15,0.96))] p-5">
+              <div key={item} className="jb-theme-shell-soft p-5">
                 <p className="text-sm leading-relaxed text-jb-white/72">{item}</p>
               </div>
             ))}

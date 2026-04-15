@@ -99,7 +99,7 @@ export function SolutionsContent() {
               important decision.
             </motion.p>
           </div>
-          <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_90px_rgba(0,0,0,0.28)]">
+          <div className="jb-theme-shell p-5">
             <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
               Operating Flow
             </div>
@@ -132,12 +132,12 @@ export function SolutionsContent() {
             <h2 className="jb-section-title mb-10 max-w-3xl">{sol.title}</h2>
 
             <div className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
-              <div className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(29,33,37,0.94),rgba(16,18,21,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
+              <div className="jb-theme-shell relative p-6">
                 <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">Operating Context</h3>
                 <p className="leading-relaxed text-jb-white/64">{sol.problem}</p>
               </div>
 
-              <div className={`relative border ${sol.accentBorder} bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.26)]`}>
+              <div className={`jb-theme-shell relative ${sol.accentBorder} p-6`}>
                 <h3 className="mb-4 font-mono text-xs uppercase tracking-widest text-jb-text-muted">
                   JouleBridge Fit
                 </h3>

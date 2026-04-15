@@ -252,7 +252,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
             y1={trackY}
             x2={STAGE_X[1] - BOX_W / 2}
             y2={trackY}
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--jb-svg-faint)"
             strokeWidth={1}
           />
           <line
@@ -260,14 +260,14 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
             y1={trackY}
             x2={STAGE_X[2] - BOX_W / 2}
             y2={trackY}
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--jb-svg-faint)"
             strokeWidth={1}
           />
 
           {/* Animated foreground connector lines (draw on entrance) */}
           <motion.path
             d={connectorPath(0)}
-            stroke="rgba(255,255,255,0.35)"
+            stroke="var(--jb-svg-line)"
             strokeWidth={1.5}
             fill="none"
             strokeDasharray="4 4"
@@ -275,7 +275,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
           />
           <motion.path
             d={connectorPath(1)}
-            stroke="rgba(255,255,255,0.35)"
+            stroke="var(--jb-svg-line)"
             strokeWidth={1.5}
             fill="none"
             strokeDasharray="4 4"
@@ -293,7 +293,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
               markerHeight="5"
               orient="auto-start-reverse"
             >
-              <polygon points="0,0 8,4 0,8" fill="rgba(255,255,255,0.35)" />
+              <polygon points="0,0 8,4 0,8" fill="var(--jb-svg-line)" />
             </marker>
           </defs>
           <line
@@ -357,8 +357,8 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   y={cy - BOX_H / 2}
                   width={BOX_W}
                   height={BOX_H}
-                  fill={isAccent ? "rgba(208,97,32,0.1)" : "rgba(18,20,22,0.95)"}
-                  stroke={isAccent ? ACCENT : "rgba(255,255,255,0.18)"}
+                  fill={isAccent ? "rgba(208,97,32,0.1)" : "var(--jb-svg-box)"}
+                  stroke={isAccent ? ACCENT : "var(--jb-svg-border)"}
                   strokeWidth={isAccent ? 1.5 : 1}
                 />
 
@@ -375,7 +375,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                     y={dy}
                     width={4}
                     height={4}
-                    fill={isAccent ? ACCENT : "rgba(255,255,255,0.3)"}
+                    fill={isAccent ? ACCENT : "var(--jb-svg-dot)"}
                   />
                 ))}
 
@@ -388,7 +388,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   fontSize={10}
                   fontWeight={700}
                   letterSpacing="0.18em"
-                  fill={isAccent ? ACCENT : "#f4f5f7"}
+                  fill={isAccent ? ACCENT : "var(--color-jb-white)"}
                 >
                   {stage.label}
                 </text>
@@ -401,7 +401,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   fontFamily="'IBM Plex Mono', monospace"
                   fontSize={8}
                   letterSpacing="0.12em"
-                  fill={isAccent ? "rgba(208,97,32,0.7)" : "rgba(255,255,255,0.4)"}
+                  fill={isAccent ? "rgba(208,97,32,0.7)" : "var(--jb-svg-dim)"}
                 >
                   {stage.sub}
                 </text>
@@ -414,7 +414,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   fontFamily="'IBM Plex Mono', monospace"
                   fontSize={7.5}
                   letterSpacing="0.1em"
-                  fill="rgba(255,255,255,0.25)"
+                  fill="var(--jb-svg-muted)"
                 >
                   {stage.desc}
                 </text>
@@ -425,7 +425,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   y={cy - BOX_H / 2 - 16}
                   width={16}
                   height={12}
-                  fill={isAccent ? ACCENT : "rgba(255,255,255,0.07)"}
+                  fill={isAccent ? ACCENT : "var(--jb-svg-faint)"}
                 />
                 <text
                   x={cx}
@@ -434,7 +434,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                   fontFamily="'IBM Plex Mono', monospace"
                   fontSize={7}
                   fontWeight={700}
-                  fill={isAccent ? "#fff" : "rgba(255,255,255,0.5)"}
+                  fill={isAccent ? "#fff" : "var(--jb-svg-dim)"}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </text>
@@ -456,7 +456,7 @@ export function DataFlowVisualization({ className }: DataFlowVisualizationProps)
                 y={196}
                 width={2}
                 height={i % 3 === 0 ? 7 : 4}
-                fill="rgba(255,255,255,0.12)"
+                fill="var(--jb-svg-soft)"
               />
             ))}
             {/* active marker */}

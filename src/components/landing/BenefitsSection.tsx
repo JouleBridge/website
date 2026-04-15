@@ -98,7 +98,7 @@ export function BenefitsSection() {
             >
               <div>
                 <div
-                  className={`mb-4 flex h-12 w-12 items-center justify-center border border-white/10 bg-[linear-gradient(180deg,rgba(25,28,32,0.98),rgba(12,14,16,0.98))] ${item.glow}`}
+                  className={`mb-4 flex h-12 w-12 items-center justify-center border border-white/10 bg-jb-card ${item.glow}`}
                 >
                   <item.icon className={`h-5 w-5 ${item.iconColor} stroke-[2.2]`} />
                 </div>

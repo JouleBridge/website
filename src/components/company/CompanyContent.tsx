@@ -83,7 +83,7 @@ export function CompanyContent() {
               </motion.p>
             </div>
             <div className="grid gap-4">
-              <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.94),rgba(16,18,21,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
+              <div className="jb-theme-shell p-5">
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/60">
                   Company Focus
                 </div>
@@ -93,7 +93,7 @@ export function CompanyContent() {
                   <CompanyStat value="Mixed" label="Hardware reality" />
                 </div>
               </div>
-              <div className="border border-white/10 bg-[linear-gradient(180deg,rgba(26,29,33,0.92),rgba(14,16,18,0.96))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]">
+              <div className="jb-theme-shell-soft p-5">
                 <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-jb-text-muted">
                   Current Direction
                 </div>
@@ -167,7 +167,7 @@ export function CompanyContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="border border-white/10 bg-[linear-gradient(180deg,rgba(31,35,39,0.94),rgba(16,18,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
+                className="jb-theme-shell p-6"
               >
                 <h3 className="mb-3 text-xl font-semibold text-white">{belief.statement}</h3>
                 <p className="leading-relaxed text-jb-white/58">{belief.detail}</p>
@@ -196,7 +196,7 @@ export function CompanyContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="border border-white/10 bg-[linear-gradient(180deg,rgba(28,31,35,0.92),rgba(15,17,20,0.96))] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_72px_rgba(0,0,0,0.24)]"
+            className="jb-theme-shell-soft p-6"
           >
             <div className="mb-4 flex h-20 w-20 items-center justify-center border border-white/12 bg-white/[0.04]">
               <span className="font-mono text-2xl font-bold text-white/60">TT</span>
@@ -218,7 +218,7 @@ export function CompanyContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col items-center justify-center border border-dashed border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.75),rgba(13,15,17,0.9))] p-6 text-center"
+            className="jb-theme-shell-soft flex flex-col items-center justify-center border border-dashed border-white/10 p-6 text-center"
           >
             <div className="mb-4 flex h-20 w-20 items-center justify-center border border-dashed border-white/12 bg-black/10">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-jb-text-muted">
@@ -264,7 +264,7 @@ export function CompanyContent() {
                 className="flex gap-6"
               >
                 <div className="relative shrink-0">
-                  <div className="flex h-[23px] w-[23px] items-center justify-center border border-[#D06120]/50 bg-[#121518]">
+                  <div className="flex h-[23px] w-[23px] items-center justify-center border border-[#D06120]/50 bg-jb-card">
                     <div className="h-2 w-2 bg-[#D06120]" />
                   </div>
                 </div>

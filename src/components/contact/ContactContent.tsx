@@ -84,7 +84,7 @@ export function ContactContent() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="border border-white/15 bg-[linear-gradient(180deg,rgba(31,35,39,0.96),rgba(15,17,20,0.96))] p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]"
+                  className="jb-theme-shell p-8 text-center"
                 >
                   <div className="mb-3 font-mono text-sm uppercase tracking-widest text-white/60">
                     Message Sent
@@ -113,7 +113,7 @@ export function ContactContent() {
                       <input
                         name="name"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                        className="jb-theme-input w-full px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="Jane Doe"
                       />
                     </div>
@@ -125,7 +125,7 @@ export function ContactContent() {
                         name="email"
                         type="email"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                        className="jb-theme-input w-full px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="jane@company.com"
                       />
                     </div>
@@ -139,7 +139,7 @@ export function ContactContent() {
                       <input
                         name="company"
                         required
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                        className="jb-theme-input w-full px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="Acme Energy"
                       />
                     </div>
@@ -149,7 +149,7 @@ export function ContactContent() {
                       </label>
                       <input
                         name="role"
-                        className="w-full border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                        className="jb-theme-input w-full px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                         placeholder="Head of Operations"
                       />
                     </div>
@@ -162,7 +162,7 @@ export function ContactContent() {
                     <select
                       name="interest"
                       required
-                      className="w-full appearance-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                      className="jb-theme-input w-full appearance-none px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                     >
                       <option value="">Select an option</option>
                       <option value="Industrial site pilot">Industrial site pilot</option>
@@ -182,7 +182,7 @@ export function ContactContent() {
                       name="message"
                       required
                       rows={5}
-                      className="w-full resize-none border border-white/10 bg-[linear-gradient(180deg,rgba(24,27,31,0.96),rgba(14,16,18,0.98))] px-4 py-3 text-sm font-mono text-white transition-colors focus:border-white/30 focus:outline-none"
+                      className="jb-theme-input w-full resize-none px-4 py-3 text-sm font-mono transition-colors focus:border-white/30 focus:outline-none"
                       placeholder="Tell us about the site, the hardware mix, the protocols in scope, and the operating result you need."
                     />
                   </div>
@@ -205,7 +205,7 @@ export function ContactContent() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="lg:pt-32"
             >
-              <div className="relative border border-white/10 bg-[linear-gradient(180deg,rgba(30,34,38,0.92),rgba(16,18,21,0.96))] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_72px_rgba(0,0,0,0.24)]">
+              <div className="jb-theme-shell relative p-8">
                 <h2 className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-white/60">
                   Get in Touch
                 </h2>

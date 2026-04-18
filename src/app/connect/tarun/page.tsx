@@ -31,8 +31,8 @@ function LinkedInIcon() {
 const contactLinks = [
   {
     title: "Email",
-    href: "mailto:tarun.trilokesh@joulebridge.in",
-    detail: "tarun.trilokesh@joulebridge.in",
+    href: "mailto:tarun.trilokesh@joulebridge.com",
+    detail: "tarun.trilokesh@joulebridge.com",
     icon: "email",
   },
   {

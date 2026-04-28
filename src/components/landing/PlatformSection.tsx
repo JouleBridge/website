@@ -18,7 +18,7 @@ import { ParallaxCard } from "@/components/ui/ParallaxCards";
 
 const features = [
   {
-    title: "Asset Agent at the edge",
+    title: "Bridge Kernel at the edge",
     icon: Orbit,
     accent: "text-white/60",
     description:
@@ -32,7 +32,7 @@ const features = [
       "OCPP, Modbus, DLMS, SunSpec, CAN, IEC 62056, IEC 61850, and more - normalized into one operating model instead of scattered vendor tools.",
   },
   {
-    title: "Site Router local control",
+    title: "Local orchestration and control",
     icon: ShieldCheck,
     accent: "text-white/60",
     description:

@@ -5,14 +5,13 @@ description: The runtime split and trust boundaries behind the JouleBridge platf
 
 # Architecture
 
-JouleBridge follows a four-surface split:
+JouleBridge follows a three-product split:
 
-1. Asset Agent
-2. Site Router
-3. Portfolio Orchestrator
-4. Console
+1. Bridge Kernel
+2. JouleBridge Cloud
+3. JouleBridge Console
 
-## Asset Agent
+## Bridge Kernel
 
 Lives closest to the equipment and protocol interfaces.
 
@@ -20,21 +19,14 @@ Its job is to:
 
 - read site and asset state
 - normalize mixed-vendor inputs
-- participate in the local proof path
-
-## Site Router
-
-The site coordination surface.
-
-Its job is to:
-
 - apply policy and constraints
 - turn intent into feasible actions
 - preserve the local trust boundary
+- participate in the local proof path
 
-## Portfolio Orchestrator
+## JouleBridge Cloud
 
-The cloud coordination surface.
+The cloud service surface.
 
 Its job is to:
 
@@ -42,7 +34,7 @@ Its job is to:
 - ingest proofs
 - send portfolio guidance back to sites
 
-## Console
+## JouleBridge Console
 
 The operator surface.
 

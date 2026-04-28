@@ -39,8 +39,8 @@ export const siteConfig = {
   footer: {
     product: [
       { label: "Platform", href: "/product" },
-      { label: "Asset Agent Runtime", href: "/product/bridge-kernel" },
-      { label: "Cloud Coordination", href: "/product/cloud" },
+      { label: "Bridge Kernel", href: "/product/bridge-kernel" },
+      { label: "JouleBridge Cloud", href: "/product/cloud" },
       { label: "Hardware", href: "/product/hardware" },
       { label: "Documentation", href: "/docs" },
     ],

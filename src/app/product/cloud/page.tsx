@@ -16,7 +16,7 @@ const plannedFeatures = [
   },
   {
     title: "Policy distribution",
-    desc: "Stage, sign, and promote policy bundles across many sites while preserving local enforcement at the edge and site-router layers.",
+    desc: "Stage, sign, and promote policy bundles across many sites while preserving local enforcement inside Bridge Kernel.",
     status: "In Development",
   },
   {
@@ -55,7 +55,7 @@ export default function CloudPage() {
               Platform
             </Link>
             <span className="text-jb-text-muted">/</span>
-            <Eyebrow>Cloud Coordination</Eyebrow>
+            <Eyebrow>JouleBridge Cloud</Eyebrow>
           </div>
 
           <div className="inline-block border border-white/16 bg-white/6 px-3 py-1 mb-6">
@@ -111,7 +111,7 @@ export default function CloudPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-jb-white/60 max-w-3xl leading-relaxed mb-10"
           >
-            The cloud coordination layer handles fleet-wide policy, scheduling
+            JouleBridge Cloud handles fleet-wide policy, scheduling
             guidance, enrollment, and proof ingest. The cloud gets stronger because
             the site runtime is strong first, not because the site is hollowed out.
           </motion.p>

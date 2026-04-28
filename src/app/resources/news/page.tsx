@@ -12,7 +12,7 @@ const news = [
     date: "2026-04-01",
     title: "JouleBridge opens C&I pilot conversations for open-access industrial sites",
     description:
-      "We are focusing the first commercial motion on open-access industrial sites where tariff windows, mixed-vendor hardware, and the demand for signed evidence can be validated on a live site. Bridge Kernel ML runs forecasting on-device as part of the pilot.",
+      "We are focusing one early commercial motion on open-access industrial sites where tariff windows, mixed-vendor hardware, and the demand for signed evidence can be validated on a live site. Bridge Kernel ML runs forecasting on-device as part of the pilot.",
     tag: "Announcement",
   },
   {
@@ -40,7 +40,7 @@ const news = [
     date: "2025-08-15",
     title: "JouleBridge Founded",
     description:
-      "JouleBridge is founded to build Bridge Kernel - the runtime for distributed energy - starting with open-access industrial sites and a repeatable path toward multi-site rollout.",
+      "JouleBridge is founded to build Bridge Kernel - the runtime for distributed energy - starting with industrial sites, EV depots, and a repeatable path toward multi-site rollout.",
     tag: "Company",
   },
 ];

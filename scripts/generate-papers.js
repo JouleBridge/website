@@ -33,7 +33,7 @@ const papers = [
         heading: "Abstract",
         paragraphs: [
           "JouleBridge is the runtime, proof, and coordination layer for distributed energy sites. The system is designed so control decisions stay close to the assets while the resulting actions remain reviewable later by another team.",
-          "This paper explains the runtime architecture as an operating system for real sites: how the Asset Agent, Site Router, Portfolio Orchestrator, and Console divide responsibilities without collapsing local execution into a cloud-only product story.",
+          "This paper explains the runtime architecture as an operating system for real sites: how Bridge Kernel, JouleBridge Cloud, and Console divide responsibilities without collapsing local execution into a cloud-only product story.",
         ],
       },
       {
@@ -46,7 +46,7 @@ const papers = [
       {
         heading: "2. Runtime Split",
         paragraphs: [
-          "The Asset Agent sits close to the equipment and adapter layer. The Site Router converts policy, limits, and site state into feasible local actions. The Portfolio Orchestrator distributes bundles, receives proofs, and gives the fleet view. The Console presents the operator surface.",
+          "Bridge Kernel sits close to the equipment and adapter layer, then converts policy, limits, and site state into feasible local actions. JouleBridge Cloud distributes bundles, receives proofs, and gives the fleet view. The Console presents the operator surface.",
           "Each runtime has a narrow job. None of them should pretend to be the whole platform on its own.",
         ],
       },
@@ -75,7 +75,7 @@ const papers = [
         heading: "6. Deployment Posture",
         paragraphs: [
           "The preferred deployment model is partner hardware first. The commercial target is a repeatable install path on real site infrastructure before broader platform claims are made.",
-          "That is why DepotOS starts with EV fleet depots rather than trying to tell every distributed-energy story at once.",
+          "That is why JouleBridge starts with EV fleet depots and industrial sites rather than trying to tell every distributed-energy story at once.",
         ],
       },
       {
@@ -88,20 +88,20 @@ const papers = [
   },
   {
     slug: "energy-settlement-verification-whitepaper",
-    title: "DepotOS Pilot Deployment Brief",
+    title: "EV Depot Pilot Deployment Brief",
     type: "Deployment Brief",
     sections: [
       {
         heading: "Executive Summary",
         paragraphs: [
-          "DepotOS is the first commercial wedge for the JouleBridge platform. The aim is not to present a generic smart-site narrative. The aim is to solve an urgent operating problem where mixed-vendor coordination matters every day.",
+          "EV fleet depots are one early commercial wedge for the JouleBridge platform. The aim is not to present a generic smart-site narrative. The aim is to solve an urgent operating problem where mixed-vendor coordination matters every day.",
           "EV fleet depots satisfy that requirement because departure times, constrained power, charger heterogeneity, and commercial uptime pressure all collide in one environment.",
         ],
       },
       {
         heading: "1. Why Depots First",
         paragraphs: [
-          "A first wedge should be painful, sellable, and repeatable. Fleet depots are painful because missed charging windows disrupt real operations. They are sellable because the business case is immediate. They are repeatable because the coordination pattern appears across many sites.",
+          "An early wedge should be painful, sellable, and repeatable. Fleet depots are painful because missed charging windows disrupt real operations. They are sellable because the business case is immediate. They are repeatable because the coordination pattern appears across many sites.",
           "That makes depots a stronger first surface than trying to position JouleBridge as the answer to every distributed-energy workflow at once.",
         ],
       },
@@ -122,7 +122,7 @@ const papers = [
       {
         heading: "Conclusion",
         paragraphs: [
-          "DepotOS matters because it gives JouleBridge one credible starting point. If the runtime can keep a real depot coordinated and provable, the platform story becomes much easier to defend elsewhere.",
+          "The depot wedge matters because it gives JouleBridge one credible starting point. If the runtime can keep a real depot coordinated and provable, the platform story becomes much easier to defend elsewhere.",
         ],
       },
     ],

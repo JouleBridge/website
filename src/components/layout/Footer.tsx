@@ -61,7 +61,7 @@ export function Footer() {
               dispatch and review.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
-              {["Asset Agent", "Site Router", "Local Control", "Audit-Ready Records"].map((item) => (
+              {["Bridge Kernel", "Local Control", "Cloud Review", "Audit-Ready Records"].map((item) => (
                 <span
                   key={item}
                   className="border border-jb-mid-gray/70 bg-jb-card/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-jb-white/55 sm:text-[11px] sm:tracking-[0.18em]"

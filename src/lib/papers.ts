@@ -28,7 +28,7 @@ export const papers: PaperMeta[] = [
     slug: "bridge-kernel-technical-architecture",
     title: "Bridge Kernel Runtime Architecture",
     description:
-      "A practical paper on the four-layer runtime split - Asset Agent, Site Router, Cloud Coordination, Console - and how Bridge Kernel keeps control local while signing every decision.",
+      "A practical paper on the active product split - Bridge Kernel, JouleBridge Cloud, and JouleBridge Console - and how Bridge Kernel keeps control local while signing every decision.",
     type: "Architecture Paper",
     pages: "3 pages",
     downloadHref: "/papers/bridge-kernel-technical-architecture.pdf",
@@ -36,7 +36,7 @@ export const papers: PaperMeta[] = [
     icon: Network,
     summary: [
       "Bridge Kernel is the runtime for distributed energy — monitor, control, orchestrate, prove.",
-      "The paper explains how the Asset Agent, Site Router, Cloud Coordination, and Console relate to one another and where on-site intelligence runs.",
+      "The paper explains how Bridge Kernel, JouleBridge Cloud, and Console relate to one another and where on-site intelligence runs.",
     ],
     sections: [
       {
@@ -49,14 +49,14 @@ export const papers: PaperMeta[] = [
       {
         heading: "Runtime Split",
         body: [
-          "The Asset Agent sits close to the equipment. The Site Router turns policy, constraints, and on-site forecasts into feasible local actions. The cloud coordination layer distributes policy, ingests evidence, and supports multi-site review. The Console exposes the operator view.",
+          "Bridge Kernel sits close to the equipment and turns policy, constraints, and on-site forecasts into feasible local actions. JouleBridge Cloud distributes policy, ingests evidence, and supports multi-site review. Console exposes the operator view.",
           "Each surface has a clear job. None of them should pretend to be the whole platform on its own.",
         ],
       },
       {
         heading: "Deployment Posture",
         body: [
-          "The preferred deployment model is open-access industrial sites first. The goal is one repeatable install path on real site infrastructure before broader platform claims are made.",
+          "The preferred deployment model starts with industrial sites and EV depots. The goal is one repeatable install path on real site infrastructure before broader platform claims are made.",
         ],
       },
     ],
@@ -65,14 +65,14 @@ export const papers: PaperMeta[] = [
     slug: "energy-settlement-verification-whitepaper",
     title: "C&I Open-Access Pilot Brief",
     description:
-      "A short paper on why open-access industrial sites are the first commercial wedge for Bridge Kernel.",
+      "A short paper on why open-access industrial sites are one early commercial wedge for Bridge Kernel.",
     type: "Deployment Brief",
     pages: "2 pages",
     downloadHref: "/papers/energy-settlement-verification-whitepaper.pdf",
     accent: "from-white/40 via-white/20 to-white/10",
     icon: FileStack,
     summary: [
-      "The first commercial wedge should be painful, sellable, and repeatable on real hardware.",
+      "The first commercial wedges should be painful, sellable, and repeatable on real hardware.",
       "Open-access industrial sites meet that bar: real tariff windows, real mixed-vendor sites, and a natural path into repeatable multi-site rollouts.",
     ],
     sections: [

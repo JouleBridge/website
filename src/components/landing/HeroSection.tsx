@@ -8,7 +8,7 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { TypewriterCode } from "@/components/ui/TypewriterCode";
 
 const stats = [
-  { value: 4, prefix: "", suffix: "", label: "Layers: observe, route, prove, review" },
+  { value: 4, prefix: "", suffix: "", label: "Loop: observe, control, prove, review" },
   { value: 8, prefix: "", suffix: "+", label: "Protocol and adapter lanes" },
   { value: 12, prefix: "", suffix: "-week", label: "Pilot window on one production site" },
   { value: 0, prefix: "", suffix: "", label: "Required rip-and-replace for first pilot" },
@@ -157,7 +157,7 @@ export function HeroSection() {
                 "[OK] meter, inverter, storage, and charger surfaces mapped",
                 "[OK] local policy loaded",
                 "[OK] forecast model ready",
-                "$ site-router dispatch --window peak --target-kw 480",
+                "$ bridge-kernel dispatch --window peak --target-kw 480",
                 "-> local safety envelope: pass",
                 "-> dispatch issued at site boundary",
                 "-> evidence bundle sealed",

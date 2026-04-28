@@ -44,7 +44,7 @@ const modules = [
 ];
 
 const specs = [
-  { label: "Role", value: "Asset Agent" },
+  { label: "Role", value: "Site runtime" },
   { label: "Language", value: "Rust" },
   { label: "Execution", value: "Local-first" },
   { label: "Proof", value: "Ed25519 signed" },
@@ -68,7 +68,7 @@ export default function BridgeKernelPage() {
               Platform
             </Link>
             <span className="text-jb-text-muted">/</span>
-            <Eyebrow>Asset Agent Runtime</Eyebrow>
+            <Eyebrow>Bridge Kernel Runtime</Eyebrow>
           </div>
 
           <motion.h1
@@ -191,7 +191,7 @@ export default function BridgeKernelPage() {
                 className="text-jb-white/60 leading-relaxed max-w-lg"
               >
                 Without a neutral edge runtime, the site turns into disconnected
-                control islands. The Asset Agent keeps the local record and the local
+                control islands. Bridge Kernel keeps the local record and local
                 execution path disciplined enough for the wider stack to trust.
               </motion.p>
             </div>
@@ -240,12 +240,12 @@ export default function BridgeKernelPage() {
             <TypewriterCode
               lines={[
                 "$ jb-ctl provision --token site-plant-07",
-                "  ✓ Asset Agent enrolled",
+                "  ✓ Bridge Kernel enrolled",
                 "  ✓ Local keystore initialized",
-                "$ asset-agent start --profile pilot",
+                "$ bridge-kernel start --profile pilot",
                 "  [INFO] adapter: ocpp connected",
                 "  [INFO] adapter: modbus ESS online",
-                "  [INFO] site-router link established",
+                "  [INFO] local orchestration ready",
                 "  [INFO] proof: signing active",
                 "  [INFO] runtime ready - site boundary live",
               ]}

@@ -48,7 +48,7 @@ const deployOptions = [
   { title: "Industrial Gateway", desc: "Primary target for open-access industrial and EV depot sites with mixed-vendor hardware." },
   { title: "Reference Site Kit", desc: "Controlled deployment shape for pilot replication and support runbooks." },
   { title: "On-Prem Linux Host", desc: "Useful when local compute already exists inside a site operations environment." },
-  { title: "Cloud Coordination Plane", desc: "For policy distribution, evidence ingest, and multi-site review after the first site is live." },
+  { title: "JouleBridge Cloud", desc: "For policy distribution, evidence ingest, and multi-site review after the first site is live." },
 ];
 
 const securityFeatures = [
@@ -56,7 +56,7 @@ const securityFeatures = [
   "On-device predictions attached to the dispatches they inform",
   "Replay-aware verification and monotonic bundle checks",
   "Policy stage, promote, and rollback control flow",
-  "Separate identities across edge, site, and cloud runtimes",
+  "Separate identities across Bridge Kernel and cloud services",
   "Encrypted runtime state for software-key-provider pilots",
   "Secure-element upgrade path for later pilot stages",
 ];
@@ -84,10 +84,11 @@ export function ProductContent() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="jb-section-copy mb-8"
               >
-                Bridge Kernel combines an Asset Agent at the edge, a Site Router
-                for local control and on-site forecasting, central coordination
-                surfaces for policy and review, and evidence outputs that explain
-                what happened after the fact.
+                Bridge Kernel combines edge adapters, local orchestration,
+                on-site forecasting, and signed evidence into one runtime.
+                JouleBridge Cloud and Console add policy distribution,
+                evidence ingest, and operator review without taking over the
+                site boundary.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -357,10 +358,10 @@ export function ProductContent() {
                 <span className="jb-title-gradient">explain what happened</span>
               </h2>
               <p className="jb-section-copy mb-5">
-                The Asset Agent and Site Router keep monitoring, control, and
-                on-site forecasting local. Central coordination distributes policy,
-                ingests signed records, and gives operators a clear review surface
-                across deployed sites.
+                Bridge Kernel keeps monitoring, local control, and on-site
+                forecasting inside the site boundary. JouleBridge Cloud
+                distributes policy, ingests signed records, and gives operators a
+                clear Console review surface across deployed sites.
               </p>
               <p className="jb-section-copy">
                 The result: operators, counterparties, and regulators get a

@@ -31,6 +31,7 @@ export const siteConfig = {
       { label: "Contact", href: "/contact" },
     ],
     resources: [
+      { label: "Verify Export", href: "/verify" },
       { label: "Video", href: "/resources/video" },
       { label: "News", href: "/resources/news" },
     ],

@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const TARUN_SUBDOMAIN = "tarun.joulebridge.in";
+const TARUN_SUBDOMAIN = "tarun.joulebridge.com";
 const TARUN_ROUTE = "/connect/tarun";
 
 function isAssetPath(pathname: string) {

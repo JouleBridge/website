@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, Globe, Mail, Phone } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 
-const pageUrl = "https://tarun.joulebridge.in";
+const pageUrl = "https://tarun.joulebridge.com";
 
 function XIcon() {
   return (
@@ -49,8 +49,8 @@ const contactLinks = [
   },
   {
     title: "Website",
-    href: "https://www.joulebridge.in/",
-    detail: "joulebridge.in",
+    href: "https://www.joulebridge.com/",
+    detail: "joulebridge.com",
     icon: "website",
   },
   {
@@ -152,7 +152,7 @@ export default function TarunConnectPage() {
 
           <div className="border-t border-white/8 pt-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-jb-text-muted">
-              tarun.joulebridge.in
+              tarun.joulebridge.com
             </p>
           </div>
         </section>

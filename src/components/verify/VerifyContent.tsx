@@ -97,8 +97,13 @@ async function verifyDocument(input: unknown): Promise<Check[]> {
     };
     let checked = 0;
     let failed = 0;
+    let skipped = 0;
     for (const artifact of artifacts) {
       const artifactType = String(artifact.artifact_type || "");
+      if (artifactType === "site_proof_export_json") {
+        skipped += 1;
+        continue;
+      }
       const content = contentByType[artifactType];
       if (!content || !artifact.checksum_sha256_hex) {
         continue;
@@ -109,6 +114,9 @@ async function verifyDocument(input: unknown): Promise<Check[]> {
       }
     }
     add("manifest_checksums", failed === 0 ? "pass" : "fail", `${checked} artifact checksum${checked === 1 ? "" : "s"} checked; ${failed} failed.`);
+    if (skipped > 0) {
+      add("export_container_checksum", "warn", "Skipped the export-container checksum because it is self-referential; bundle, report, feedback, and diagnostics checks still ran.");
+    }
   }
 
   const signedExport = exportDoc.signed_export as Record<string, unknown> | undefined;

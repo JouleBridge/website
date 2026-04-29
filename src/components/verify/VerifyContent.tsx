@@ -144,6 +144,7 @@ export function VerifyContent() {
   const [input, setInput] = useState("");
   const [checks, setChecks] = useState<Check[]>([]);
   const [error, setError] = useState("");
+  const [sampleLoading, setSampleLoading] = useState(false);
 
   const runVerification = async () => {
     setError("");
@@ -153,6 +154,25 @@ export function VerifyContent() {
       setChecks(await verifyDocument(parsed));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Invalid JSON");
+    }
+  };
+
+  const loadDemoSample = async () => {
+    setSampleLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/samples/yc-demo-site-proof-export.json", { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Sample export request failed: ${response.status}`);
+      }
+      const sample = await response.json();
+      const formatted = JSON.stringify(sample, null, 2);
+      setInput(formatted);
+      setChecks(await verifyDocument(sample));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not load sample export");
+    } finally {
+      setSampleLoading(false);
     }
   };
 
@@ -193,6 +213,14 @@ export function VerifyContent() {
               onClick={runVerification}
             >
               Verify JSON
+            </button>
+            <button
+              className="ml-3 mt-4 border border-white/15 px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-white"
+              type="button"
+              onClick={loadDemoSample}
+              disabled={sampleLoading}
+            >
+              {sampleLoading ? "Loading Sample" : "Load Demo Sample"}
             </button>
             {error && <div className="mt-4 border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-200">{error}</div>}
             <div className="mt-5 grid gap-3">

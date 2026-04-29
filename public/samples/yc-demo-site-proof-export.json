@@ -1,0 +1,123 @@
+{
+  "schema_version": "site-proof-export/v1",
+  "export_id": "yc-demo-export-sample",
+  "bundle_id": "yc-demo-bundle-sample",
+  "tenant_id": "yc-demo-depot",
+  "site_id": "yc-demo-site-01",
+  "device_id": "yc-demo-edge-01",
+  "route_id": "yc-route-sample",
+  "generated_at": "2026-04-29T06:15:00.000Z",
+  "verification_state": "verified",
+  "bundle": {
+    "schema_version": "site-proof-bundle/v1",
+    "bundle_id": "yc-demo-bundle-sample",
+    "tenant_id": "yc-demo-depot",
+    "site_id": "yc-demo-site-01",
+    "device_id": "yc-demo-edge-01",
+    "route_id": "yc-route-sample",
+    "generated_at": "2026-04-29T06:15:00.000Z",
+    "root_hash_hex": "cbca089fde70f6d0089a19fa6674960e3a1f684096630902047ac0d7b141668f",
+    "live_cloud_source": true,
+    "summary": {
+      "dispatch_count": 1,
+      "admitted_session_count": 1,
+      "rejected_session_count": 0,
+      "total_allocated_kw": 48
+    },
+    "entries": [
+      {
+        "stage": "dispatch_intent",
+        "payload": {
+          "dispatch_id": "dispatch-demo-001",
+          "site_id": "yc-demo-site-01",
+          "device_id": "yc-demo-edge-01",
+          "target_kw": 48,
+          "recorded_at": "2026-04-29T06:09:33.690Z"
+        },
+        "previous_hash_hex": null,
+        "hash_hex": "7dfa3dc1536ecd755defa12833f06e0209471849cb20f8072e9b64c9553ce879"
+      },
+      {
+        "stage": "measured_outcome",
+        "payload": {
+          "dispatch_id": "dispatch-demo-001",
+          "meter_kwh": 12.4,
+          "peak_kw": 47.6,
+          "recorded_at": "2026-04-29T06:14:33.690Z"
+        },
+        "previous_hash_hex": "7dfa3dc1536ecd755defa12833f06e0209471849cb20f8072e9b64c9553ce879",
+        "hash_hex": "cbca089fde70f6d0089a19fa6674960e3a1f684096630902047ac0d7b141668f"
+      }
+    ]
+  },
+  "verification_report": {
+    "schema_version": "proof-verification-report/v1",
+    "verification_state": "verified",
+    "summary": {
+      "pass_count": 4,
+      "warn_count": 0,
+      "fail_count": 0
+    },
+    "checks": [
+      {
+        "name": "hash_chain",
+        "status": "pass"
+      },
+      {
+        "name": "root_hash",
+        "status": "pass"
+      }
+    ]
+  },
+  "dispatch_feedback": {
+    "schema_version": "dispatch-feedback/v1",
+    "summary": {
+      "acknowledged_dispatch_count": 1,
+      "applied_dispatch_count": 1,
+      "rejected_dispatch_count": 0,
+      "timed_out_dispatch_count": 0
+    },
+    "route_delivery": {
+      "delivery_state": "delivered",
+      "target_endpoint": "demo-edge://yc-demo-depot/bridge-kernel"
+    }
+  },
+  "diagnostics": {
+    "schema_version": "site-routing-diagnostics/v1",
+    "live_cloud_source": true,
+    "bus_peer_endpoint": "demo-edge://yc-demo-depot/bridge-kernel",
+    "degraded_reasons": []
+  },
+  "manifest": {
+    "artifacts": [
+      {
+        "artifact_id": "artifact-bundle",
+        "artifact_type": "site_proof_bundle_json",
+        "file_name": "site-proof-bundle.json",
+        "content_type": "application/json",
+        "checksum_sha256_hex": "705fd047f531587641f3341fb7befe3ecce6bdfacb4fac1022899fc55f77abda"
+      },
+      {
+        "artifact_id": "artifact-verification",
+        "artifact_type": "proof_verification_report_json",
+        "file_name": "proof-verification-report.json",
+        "content_type": "application/json",
+        "checksum_sha256_hex": "efb655e24e7711eb3715ffe8c80b212458e0a3456b3a7049e18ae1ade932877e"
+      },
+      {
+        "artifact_id": "artifact-feedback",
+        "artifact_type": "dispatch_feedback_json",
+        "file_name": "dispatch-feedback.json",
+        "content_type": "application/json",
+        "checksum_sha256_hex": "f499b2667f718371db7d07b6c9ac329451be8157ca5af4e57bdb25fdc2c1d002"
+      },
+      {
+        "artifact_id": "artifact-diagnostics",
+        "artifact_type": "site_routing_diagnostics_json",
+        "file_name": "site-routing-diagnostics.json",
+        "content_type": "application/json",
+        "checksum_sha256_hex": "c898e8ce0f7c78ac25b82b9a016fa78aadbcc5ba8b16df6af61e11c40d3b0d77"
+      }
+    ]
+  }
+}

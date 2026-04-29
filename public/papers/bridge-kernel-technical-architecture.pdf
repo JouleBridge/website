@@ -80,7 +80,7 @@ ET
 BT
 /F1 11.5 Tf
 52 610 Td
-(sites: how the Asset Agent, Site Router, Portfolio Orchestrator, and Console) Tj
+(sites: how the Asset Agent, Site Kernel, Portfolio Orchestrator, and Console) Tj
 ET
 BT
 /F1 11.5 Tf
@@ -140,7 +140,7 @@ ET
 BT
 /F1 11.5 Tf
 52 377 Td
-(The Asset Agent sits close to the equipment and adapter layer. The Site Router) Tj
+(The Asset Agent sits close to the equipment and adapter layer. The Site Kernel) Tj
 ET
 BT
 /F1 11.5 Tf

@@ -10,7 +10,7 @@ const transition = {
 
 const stageMeta = [
   { label: "Site Signals", sub: "Asset Agent", color: "text-white/70" },
-  { label: "Route Intent", sub: "Site Router", color: "text-white/50" },
+  { label: "Route Intent", sub: "Bridge Kernel", color: "text-white/50" },
   { label: "Proof Record", sub: "Proof Chain", color: "text-white/30" },
   { label: "Review Surface", sub: "Cloud Review", color: "text-white/60" },
 ];

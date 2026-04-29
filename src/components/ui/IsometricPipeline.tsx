@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function IsometricPipeline() {
   const layers = [
     { label: "OBSERVE", sublabel: "Asset Agent", color: "#FFFFFF", y: 0 },
-    { label: "ROUTE", sublabel: "Site Router", color: "#D06120", y: 1 },
+    { label: "ROUTE", sublabel: "Bridge Kernel", color: "#D06120", y: 1 },
     { label: "PROVE", sublabel: "Proof Chain", color: "#FFFFFF", y: 2 },
     { label: "REVIEW", sublabel: "Cloud Review", color: "#FFFFFF", y: 3 },
   ];

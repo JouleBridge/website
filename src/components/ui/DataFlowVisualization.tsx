@@ -28,7 +28,7 @@ const STAGES = [
     id: "route",
     label: "ROUTE",
     sub: "Feasible Intent",
-    desc: "Site Router",
+    desc: "Bridge Kernel",
   },
   {
     id: "prove",
